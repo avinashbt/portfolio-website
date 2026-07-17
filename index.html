@@ -75,9 +75,17 @@
 
 <body onload="timeCount();">
 
+  <!-- Particles Canvas (3D Background) -->
+  <canvas id="particles-canvas"></canvas>
+
   <!-- Header -->
   <header id="home" class="header">
     <div class="hero-bg-gradient"></div>
+
+    <!-- 3D Floating Shapes -->
+    <div class="floating-shape"></div>
+    <div class="floating-shape"></div>
+    <div class="floating-shape"></div>
     <!-- Navigation -->
     <nav class="nav">
       <div class="navigation container">
@@ -823,13 +831,16 @@
       `${dateDifference.years} years, ${dateDifference.months} months, ${dateDifference.days} days`;
     document.getElementById("datefrom").innerHTML = `28-May-2021 to ${todaysdates}`;
 
-    // Greeting
-    const hour = new Date().getHours();
-    let greet;
-    if (hour >= 6 && hour < 12) greet = "Good morning";
-    else if (hour >= 12 && hour < 17) greet = "Good afternoon";
-    else greet = "Good evening";
-    document.getElementById("greets").textContent = greet;
+    // Greeting (safe check)
+    const greetEl = document.getElementById("greets");
+    if (greetEl) {
+      const hour = new Date().getHours();
+      let greet;
+      if (hour >= 6 && hour < 12) greet = "Good morning";
+      else if (hour >= 12 && hour < 17) greet = "Good afternoon";
+      else greet = "Good evening";
+      greetEl.textContent = greet;
+    }
   </script>
 
   <!-- Firebase Contact Form -->

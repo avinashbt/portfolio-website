@@ -6,10 +6,8 @@ A modern and responsive personal portfolio website showcasing my skills, project
 
 Add your live website link here:
 
-https://your-portfolio-link.com
-
----
-
+https://github.com/avinashbt/Portfolio-website
+ 
 ## 📌 Features
 
 - Responsive Design for Mobile, Tablet & Desktop
