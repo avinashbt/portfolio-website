@@ -1,0 +1,770 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>React Calculator Project Tutorial | Avinash Bawage - Frontend Developer & React Engineer</title>
+  <meta name="description" content="Build a complete React calculator with keyboard support, calculation history, scientific functions, and unit tests. Full step-by-step tutorial.">
+  <meta name="keywords" content="React calculator, React project, Vite, useReducer, calculator app, keyboard input, scientific calculator, React tutorial">
+  <link rel="shortcut icon" href="../favicon.jpg" type="image/x-icon">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800&family=JetBrains+Mono:wght@400;500&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css">
+  <link rel="stylesheet" href="../styles.css">
+  <link rel="stylesheet" href="../blog.css">
+</head>
+<body>
+
+  <!-- NAV -->
+  <nav class="nav scrolled" id="nav">
+    <div class="nav-container">
+      <a href="../index.html" class="nav-logo">
+        <span class="logo-bracket">{</span> AB <span class="logo-bracket">}</span>
+      </a>
+      <ul class="nav-links">
+        <li><a href="../index.html#about">About</a></li>
+        <li><a href="../index.html#skills">Skills</a></li>
+        <li><a href="../index.html#projects">Projects</a></li>
+        <li><a href="../blog.html" class="nav-blog-link" style="color:#6366f1">Blog</a></li>
+        <li><a href="../index.html#contact" class="nav-cta">Hire Me</a></li>
+      </ul>
+      <button class="hamburger" id="hamburger" aria-label="Toggle menu">
+        <span></span><span></span><span></span>
+      </button>
+    </div>
+  </nav>
+
+  <div class="mobile-menu" id="mobileMenu">
+    <ul>
+      <li><a href="../index.html#about">About</a></li>
+      <li><a href="../index.html#skills">Skills</a></li>
+      <li><a href="../index.html#projects">Projects</a></li>
+      <li><a href="../blog.html">Blog</a></li>
+      <li><a href="../index.html#contact">Hire Me</a></li>
+    </ul>
+  </div>
+
+  <!-- BLOG HEADER -->
+  <header class="blog-hero">
+    <div class="container">
+      <a href="../blog.html" class="blog-back"><i class="fas fa-arrow-left"></i> Back to Blog</a>
+      <h1 class="blog-hero-title">React Calculator Project Tutorial</h1>
+      <p class="blog-hero-desc">Build a feature-rich calculator with keyboard support, history, and scientific functions.</p>
+    </div>
+  </header>
+
+  <article class="blog-article" id="react-calculator">
+    <div class="container">
+      <div class="article-header">
+        <div class="article-meta">
+          <span class="article-tag">React Project</span>
+          <span class="article-date"><i class="fas fa-calendar"></i> 2026</span>
+          <span class="article-read"><i class="fas fa-clock"></i> 10 min read</span>
+        </div>
+        <h1 class="article-title">React Calculator Project Tutorial</h1>
+        <p class="article-subtitle">From basic operations to scientific functions — a complete calculator built with React and useReducer.</p>
+        <div class="article-author">
+          <img src="../profile1.jpg" alt="Avinash Bawage" class="author-avatar">
+          <div>
+            <span class="author-name">Avinash Bawage</span>
+            <span class="author-role">Frontend Developer & React Engineer</span>
+          </div>
+        </div>
+      </div>
+
+      <div class="article-content">
+        <div class="toc">
+          <h3>Table of Contents</h3>
+          <ol>
+            <li><a href="#overview">Project Overview</a></li>
+            <li><a href="#setup">Setting Up with Vite</a></li>
+            <li><a href="#ui">Building the Calculator UI</a></li>
+            <li><a href="#logic">Implementing Calculator Logic</a></li>
+            <li><a href="#keyboard">Handling Keyboard Input</a></li>
+            <li><a href="#history">Adding Calculation History</a></li>
+            <li><a href="#styling">Styling the Calculator</a></li>
+            <li><a href="#scientific">Adding Scientific Functions</a></li>
+            <li><a href="#testing">Testing the Calculator</a></li>
+            <li><a href="#deploy">Deploying Your Calculator</a></li>
+          </ol>
+        </div>
+
+        <!-- SECTION 1 -->
+        <section id="overview">
+          <h2>1. Project Overview</h2>
+          <p>This calculator project is more than a basic four-function app. It demonstrates core React patterns that you'll use in production: state management with <code>useReducer</code>, effect handling with <code>useEffect</code>, custom hooks, localStorage persistence, and keyboard event handling.</p>
+
+          <h3>Features</h3>
+          <ul>
+            <li><strong>Basic operations:</strong> Addition, subtraction, multiplication, division</li>
+            <li><strong>Calculation history:</strong> Saved to localStorage, viewable in a side panel</li>
+            <li><strong>Keyboard support:</strong> Type numbers and operators directly from your keyboard</li>
+            <li><strong>Scientific functions:</strong> sin, cos, log, square root, and power</li>
+            <li><strong>Error handling:</strong> Division by zero, invalid expressions</li>
+            <li><strong>Responsive design:</strong> Works on desktop and mobile</li>
+          </ul>
+
+          <div class="callout callout-info">
+            <strong>Why a calculator?</strong> Don't underestimate this project. A well-built calculator demonstrates your understanding of state machines, reducer patterns, event handling, and clean component architecture — exactly what interviewers want to see.
+          </div>
+        </section>
+
+        <!-- SECTION 2 -->
+        <section id="setup">
+          <h2>2. Setting Up with Vite</h2>
+          <p>Create a new React project with Vite for fast development.</p>
+
+          <pre><code># Create the project
+npm create vite@latest calculator -- --template react
+cd calculator
+
+# Install dependencies
+npm install
+
+# No additional libraries needed — pure React!</code></pre>
+
+          <h3>Clean Up the Default Files</h3>
+          <p>Remove the default Vite boilerplate from <code>App.jsx</code> and <code>App.css</code>. We'll build everything from scratch.</p>
+
+          <pre><code>// src/main.jsx
+import React from 'react';
+import ReactDOM from 'react-dom/client';
+import App from './App';
+import './index.css';
+
+ReactDOM.createRoot(document.getElementById('root')).render(
+  &lt;React.StrictMode&gt;
+    &lt;App /&gt;
+  &lt;/React.StrictMode&gt;
+);</code></pre>
+
+          <div class="callout callout-tip">
+            <strong>No extra dependencies:</strong> This project uses only React. No state management libraries, no utility packages. This keeps the bundle small and demonstrates that you can build functionality from scratch.
+          </div>
+        </section>
+
+        <!-- SECTION 3 -->
+        <section id="ui">
+          <h2>3. Building the Calculator UI</h2>
+          <p>The calculator has two main parts: the display and the button grid.</p>
+
+          <pre><code>// components/Display.jsx
+export default function Display({ expression, result, history }) {
+  return (
+    &lt;div className="calculator-display"&gt;
+      &lt;div className="expression"&gt;
+        {expression || '0'}
+      &lt;/div&gt;
+      &lt;div className="result"&gt;
+        {result}
+      &lt;/div&gt;
+    &lt;/div&gt;
+  );
+}</code></pre>
+
+          <pre><code>// components/ButtonGrid.jsx
+const buttons = [
+  ['C', '(', ')', '/'],
+  ['7', '8', '9', '*'],
+  ['4', '5', '6', '-'],
+  ['1', '2', '3', '+'],
+  ['0', '.', 'DEL', '='],
+];
+
+export default function ButtonGrid({ onButtonPress }) {
+  return (
+    &lt;div className="button-grid"&gt;
+      {buttons.flat().map((btn) =&gt; (
+        &lt;button
+          key={btn}
+          onClick={() =&gt; onButtonPress(btn)}
+          className={`calc-btn ${btn === '=' ? 'btn-equals' : ''}
+            ${['+', '-', '*', '/', '(', ')'].includes(btn) ? 'btn-operator' : ''}
+            ${btn === 'C' || btn === 'DEL' ? 'btn-action' : ''}`}
+        &gt;
+          {btn}
+        &lt;/button&gt;
+      ))}
+    &lt;/div&gt;
+  );
+}</code></pre>
+
+          <h3>App Component</h3>
+          <pre><code>// App.jsx
+import { useReducer } from 'react';
+import Display from './components/Display';
+import ButtonGrid from './components/ButtonGrid';
+import History from './components/History';
+import { calculatorReducer, initialState } from './reducer';
+
+export default function App() {
+  const [state, dispatch] = useReducer(calculatorReducer, initialState);
+
+  return (
+    &lt;div className="calculator-container"&gt;
+      &lt;div className="calculator"&gt;
+        &lt;Display expression={state.expression} result={state.result} /&gt;
+        &lt;ButtonGrid onButtonPress={(btn) =&gt; dispatch({ type: 'BUTTON_PRESS', payload: btn })} /&gt;
+      &lt;/div&gt;
+      &lt;History history={state.history} /&gt;
+    &lt;/div&gt;
+  );
+}</code></pre>
+        </section>
+
+        <!-- SECTION 4 -->
+        <section id="logic">
+          <h2>4. Implementing Calculator Logic</h2>
+          <p>We use <code>useReducer</code> to manage calculator state. This is cleaner than multiple <code>useState</code> calls and makes the state transitions explicit and testable.</p>
+
+          <pre><code>// reducer.js
+export const initialState = {
+  expression: '',
+  result: '0',
+  history: JSON.parse(localStorage.getItem('calcHistory')) || [],
+  shouldReset: false,
+};
+
+export function calculatorReducer(state, action) {
+  switch (action.type) {
+    case 'BUTTON_PRESS': {
+      const btn = action.payload;
+
+      if (btn === 'C') {
+        return { ...state, expression: '', result: '0', shouldReset: false };
+      }
+
+      if (btn === 'DEL') {
+        const newExpr = state.expression.slice(0, -1);
+        return { ...state, expression: newExpr, result: newExpr || '0' };
+      }
+
+      if (btn === '=') {
+        try {
+          const result = evaluateExpression(state.expression);
+          const newHistory = [
+            { expression: state.expression, result: String(result) },
+            ...state.history,
+          ].slice(0, 20);
+
+          localStorage.setItem('calcHistory', JSON.stringify(newHistory));
+          return {
+            ...state,
+            expression: '',
+            result: String(result),
+            history: newHistory,
+            shouldReset: true,
+          };
+        } catch {
+          return { ...state, result: 'Error' };
+        }
+      }
+
+      // Number or operator
+      const newExpression = state.shouldReset
+        ? btn
+        : state.expression + btn;
+
+      return {
+        ...state,
+        expression: newExpression,
+        result: newExpression,
+        shouldReset: false,
+      };
+    }
+
+    case 'LOAD_HISTORY': {
+      return {
+        ...state,
+        expression: action.payload.expression,
+        result: action.payload.result,
+        shouldReset: false,
+      };
+    }
+
+    case 'CLEAR_HISTORY': {
+      localStorage.removeItem('calcHistory');
+      return { ...state, history: [] };
+    }
+
+    default:
+      return state;
+  }
+}
+
+function evaluateExpression(expr) {
+  // Sanitize: only allow numbers, operators, parens, decimals
+  if (!/^[\d+\-*/.()]+$/.test(expr)) {
+    throw new Error('Invalid expression');
+  }
+  // Use Function constructor for safe evaluation
+  const result = new Function(`return (${expr})`)();
+  if (!isFinite(result)) throw new Error('Invalid result');
+  return Math.round(result * 1e10) / 1e10; // Avoid floating point issues
+}</code></pre>
+
+          <div class="callout callout-warning">
+            <strong>Security note:</strong> Never use <code>eval()</code> with user input in production. For a calculator, we sanitize the input with a regex and use <code>new Function()</code> in an isolated context. For production apps, consider a math expression parser library.
+          </div>
+        </section>
+
+        <!-- SECTION 5 -->
+        <section id="keyboard">
+          <h2>5. Handling Keyboard Input</h2>
+          <p>Adding keyboard support makes the calculator much more usable. We'll listen for keydown events and map them to calculator actions.</p>
+
+          <pre><code>// hooks/useKeyboard.js
+import { useEffect } from 'react';
+
+const KEY_MAP = {
+  '0': '0', '1': '1', '2': '2', '3': '3', '4': '4',
+  '5': '5', '6': '6', '7': '7', '8': '8', '9': '9',
+  '+': '+', '-': '-', '*': '*', '/': '/',
+  '.': '.', '(': '(', ')': ')',
+  Enter: '=', '=': '=',
+  Backspace: 'DEL',
+  Delete: 'C',
+  Escape: 'C',
+};
+
+export function useKeyboard(onKeyPress) {
+  useEffect(() => {
+    const handler = (e) =&gt; {
+      const action = KEY_MAP[e.key];
+      if (action) {
+        e.preventDefault();
+        onKeyPress(action);
+      }
+    };
+
+    window.addEventListener('keydown', handler);
+    return () =&gt; window.removeEventListener('keydown', handler);
+  }, [onKeyPress]);
+}</code></pre>
+
+          <h3>Integrate into App</h3>
+          <pre><code>// In App.jsx
+import { useKeyboard } from './hooks/useKeyboard';
+import { useCallback } from 'react';
+
+function App() {
+  const [state, dispatch] = useReducer(calculatorReducer, initialState);
+
+  const handleKeyPress = useCallback(
+    (btn) =&gt; dispatch({ type: 'BUTTON_PRESS', payload: btn }),
+    []
+  );
+
+  useKeyboard(handleKeyPress);
+
+  // ... rest of component
+}</code></pre>
+
+          <div class="callout callout-tip">
+            <strong>Why useCallback?</strong> We wrap the dispatch callback to prevent the keyboard hook from re-attaching the event listener on every render. This is a common performance optimization.
+          </div>
+        </section>
+
+        <!-- SECTION 6 -->
+        <section id="history">
+          <h2>6. Adding Calculation History</h2>
+          <p>Persist calculation history to localStorage so users can review and reuse previous calculations.</p>
+
+          <pre><code>// components/History.jsx
+import { RotateCcw, Trash2 } from 'lucide-react';
+
+export default function History({ history, onLoad, onClear }) {
+  if (history.length === 0) {
+    return (
+      &lt;div className="history-panel"&gt;
+        &lt;h3&gt;History&lt;/h3&gt;
+        &lt;p className="empty-history"&gt;No calculations yet&lt;/p&gt;
+      &lt;/div&gt;
+    );
+  }
+
+  return (
+    &lt;div className="history-panel"&gt;
+      &lt;div className="history-header"&gt;
+        &lt;h3&gt;History&lt;/h3&gt;
+        &lt;button onClick={onClear} className="clear-btn"&gt;
+          &lt;Trash2 size={16} /&gt;
+        &lt;/button&gt;
+      &lt;/div&gt;
+      &lt;ul className="history-list"&gt;
+        {history.map((item, index) =&gt; (
+          &lt;li key={index} onClick={() =&gt; onLoad(item)} className="history-item"&gt;
+            &lt;span className="history-expression"&gt;{item.expression}&lt;/span&gt;
+            &lt;span className="history-result"&gt;= {item.result}&lt;/span&gt;
+          &lt;/li&gt;
+        ))}
+      &lt;/ul&gt;
+    &lt;/div&gt;
+  );
+}</code></pre>
+
+          <h3>localStorage Integration</h3>
+          <p>The reducer already handles localStorage in the <code>'='</code> case. We read from it on initialization and write to it on each evaluation. The history is capped at 20 entries to avoid storage bloat.</p>
+
+          <pre><code>// Initialize from localStorage
+const initialState = {
+  expression: '',
+  result: '0',
+  history: JSON.parse(localStorage.getItem('calcHistory')) || [],
+  shouldReset: false,
+};
+
+// Save on equals
+localStorage.setItem('calcHistory', JSON.stringify(newHistory));
+
+// Clear history
+localStorage.removeItem('calcHistory');</code></pre>
+        </section>
+
+        <!-- SECTION 7 -->
+        <section id="styling">
+          <h2>7. Styling the Calculator</h2>
+          <p>Use CSS Grid for the button layout and flexbox for the overall structure.</p>
+
+          <pre><code>/* styles.css */
+.calculator-container {
+  display: flex;
+  gap: 1rem;
+  max-width: 600px;
+  margin: 2rem auto;
+  padding: 1rem;
+}
+
+.calculator {
+  flex: 1;
+  background: #1a1a2e;
+  border-radius: 16px;
+  overflow: hidden;
+  box-shadow: 0 20px 60px rgba(0, 0, 0, 0.3);
+}
+
+.calculator-display {
+  padding: 1.5rem;
+  text-align: right;
+  min-height: 120px;
+  display: flex;
+  flex-direction: column;
+  justify-content: flex-end;
+}
+
+.expression {
+  font-size: 1rem;
+  color: #8888aa;
+  font-family: 'JetBrains Mono', monospace;
+  word-break: break-all;
+}
+
+.result {
+  font-size: 2.5rem;
+  font-weight: 700;
+  color: #ffffff;
+  font-family: 'JetBrains Mono', monospace;
+  margin-top: 0.5rem;
+}
+
+.button-grid {
+  display: grid;
+  grid-template-columns: repeat(4, 1fr);
+  gap: 1px;
+  padding: 1px;
+}
+
+.calc-btn {
+  aspect-ratio: 1;
+  border: none;
+  background: #16213e;
+  color: #ffffff;
+  font-size: 1.25rem;
+  font-family: 'Inter', sans-serif;
+  cursor: pointer;
+  transition: background 0.15s;
+}
+
+.calc-btn:hover {
+  background: #1a1a40;
+}
+
+.calc-btn:active {
+  background: #0f3460;
+}
+
+.btn-operator {
+  background: #0f3460;
+  color: #e94560;
+}
+
+.btn-equals {
+  background: #e94560;
+  color: #ffffff;
+  grid-column: span 1;
+}
+
+.btn-action {
+  color: #e94560;
+  font-weight: 600;
+}
+
+/* Responsive */
+@media (max-width: 500px) {
+  .calculator-container {
+    flex-direction: column;
+  }
+
+  .history-panel {
+    max-height: 200px;
+  }
+
+  .result {
+    font-size: 2rem;
+  }
+}</code></pre>
+
+          <div class="callout callout-tip">
+            <strong>Aspect ratio trick:</strong> Using <code>aspect-ratio: 1</code> on calculator buttons ensures they stay square regardless of screen size. This is much cleaner than fixed heights.
+          </div>
+        </section>
+
+        <!-- SECTION 8 -->
+        <section id="scientific">
+          <h2>8. Adding Scientific Functions</h2>
+          <p>Extend the calculator with trigonometric, logarithmic, and other scientific operations.</p>
+
+          <pre><code>// reducer.js - Add scientific operations
+const SCIENTIFIC_FUNCTIONS = {
+  sin: (x) =&gt; Math.sin(x * Math.PI / 180),
+  cos: (x) =&gt; Math.cos(x * Math.PI / 180),
+  log: (x) =&gt; Math.log10(x),
+  ln: (x) =&gt; Math.log(x),
+  sqrt: (x) =&gt; Math.sqrt(x),
+  pow2: (x) =&gt; Math.pow(x, 2),
+};
+
+case 'SCIENTIFIC': {
+  const { func, value } = action.payload;
+  const num = parseFloat(value || state.result);
+  if (isNaN(num)) return state;
+  const result = SCIENTIFIC_FUNCTIONS[func](num);
+  const newHistory = [
+    { expression: `${func}(${num})`, result: String(result) },
+    ...state.history,
+  ].slice(0, 20);
+  localStorage.setItem('calcHistory', JSON.stringify(newHistory));
+  return {
+    ...state,
+    expression: '',
+    result: String(Math.round(result * 1e10) / 1e10),
+    history: newHistory,
+    shouldReset: true,
+  };
+}</code></pre>
+
+          <h3>Scientific Button Row</h3>
+          <pre><code>// components/ScientificButtons.jsx
+const scientificBtns = ['sin', 'cos', 'log', 'sqrt', 'pow2'];
+
+export default function ScientificButtons({ onScientific }) {
+  return (
+    &lt;div className="scientific-row"&gt;
+      {scientificBtns.map((func) =&gt; (
+        &lt;button
+          key={func}
+          onClick={() =&gt; onScientific(func)}
+          className="sci-btn"
+        &gt;
+          {func === 'pow2' ? 'x²' : func}
+        &lt;/button&gt;
+      ))}
+    &lt;/div&gt;
+  );
+}</code></pre>
+
+          <div class="callout callout-info">
+            <strong>Angle mode:</strong> By default, trigonometric functions use degrees (not radians). Convert with <code>x * Math.PI / 180</code>. You can add a degree/radian toggle as an extra feature.
+          </div>
+        </section>
+
+        <!-- SECTION 9 -->
+        <section id="testing">
+          <h2>9. Testing the Calculator</h2>
+          <p>Unit test the reducer logic to ensure calculations are correct and edge cases are handled.</p>
+
+          <pre><code>// reducer.test.js
+import { describe, it, expect, beforeEach } from 'vitest';
+import { calculatorReducer, initialState } from './reducer';
+
+// Helper to run multiple button presses
+function pressButtons(reducer, state, buttons) {
+  return buttons.reduce(
+    (s, btn) =&gt; reducer(s, { type: 'BUTTON_PRESS', payload: btn }),
+    state
+  );
+}
+
+describe('Calculator Reducer', () =&gt; {
+  let state;
+
+  beforeEach(() =&gt; {
+    state = { ...initialState, history: [] };
+  });
+
+  it('handles basic addition', () =&gt; {
+    state = pressButtons(calculatorReducer, state, ['2', '+', '3', '=']);
+    expect(state.result).toBe('5');
+  });
+
+  it('handles decimal numbers', () =&gt; {
+    state = pressButtons(calculatorReducer, state, ['1', '.', '5', '+', '2', '.', '5', '=']);
+    expect(state.result).toBe('4');
+  });
+
+  it('clears with C', () =&gt; {
+    state = pressButtons(calculatorReducer, state, ['5', '+', '3']);
+    state = calculatorReducer(state, { type: 'BUTTON_PRESS', payload: 'C' });
+    expect(state.expression).toBe('');
+    expect(state.result).toBe('0');
+  });
+
+  it('deletes last character with DEL', () =&gt; {
+    state = pressButtons(calculatorReducer, state, ['1', '2', '3']);
+    state = calculatorReducer(state, { type: 'BUTTON_PRESS', payload: 'DEL' });
+    expect(state.expression).toBe('12');
+  });
+
+  it('handles division by zero', () =&gt; {
+    state = pressButtons(calculatorReducer, state, ['5', '/', '0', '=']);
+    expect(state.result).toBe('Error');
+  });
+
+  it('saves history on equals', () =&gt; {
+    state = pressButtons(calculatorReducer, state, ['2', '*', '3', '=']);
+    expect(state.history).toHaveLength(1);
+    expect(state.history[0]).toEqual({ expression: '2*3', result: '6' });
+  });
+
+  it('handles chained operations', () =&gt; {
+    state = pressButtons(calculatorReducer, state, ['2', '+', '3', '=']);
+    state = calculatorReducer(state, { type: 'BUTTON_PRESS', payload: '*' });
+    state = pressButtons(calculatorReducer, state, ['4', '=']);
+    expect(state.result).toBe('20');
+  });
+});</code></pre>
+
+          <div class="callout callout-tip">
+            <strong>Test edge cases:</strong> Focus on division by zero, empty expressions, consecutive operators, and floating point precision. These are the bugs that ship to production.
+          </div>
+        </section>
+
+        <!-- SECTION 10 -->
+        <section id="deploy">
+          <h2>10. Deploying Your Calculator</h2>
+          <p>Deploy to Vercel in under a minute.</p>
+
+          <h3>Step 1: Push to GitHub</h3>
+          <pre><code>git init
+git add .
+git commit -m "feat: React calculator with keyboard support"
+git remote add origin https://github.com/yourusername/calculator.git
+git push -u origin main</code></pre>
+
+          <h3>Step 2: Deploy on Vercel</h3>
+          <ol>
+            <li>Go to <a href="https://vercel.com" target="_blank">vercel.com</a> and sign in with GitHub</li>
+            <li>Click "Add New Project"</li>
+            <li>Select your calculator repository</li>
+            <li>Vercel auto-detects Vite — no configuration needed</li>
+            <li>Click "Deploy"</li>
+          </ol>
+
+          <h3>Step 3: Custom Domain (Optional)</h3>
+          <pre><code># In Vercel dashboard, go to Settings &gt; Domains
+# Add your custom domain and follow the DNS instructions</code></pre>
+
+          <div class="callout callout-info">
+            <strong>Vercel + Vite:</strong> Vercel automatically detects Vite projects and sets the correct build command (<code>npm run build</code>) and output directory (<code>dist</code>). Zero configuration required.
+          </div>
+
+          <h3>Performance Checklist</h3>
+          <ul>
+            <li>Run <code>npm run build</code> and check the bundle size</li>
+            <li>Verify the app works at your deployment URL</li>
+            <li>Test keyboard input on the live version</li>
+            <li>Check responsive layout on mobile devices</li>
+            <li>Verify localStorage persists across page reloads</li>
+          </ul>
+
+          <p>Congratulations! You've built a fully functional calculator with React that includes keyboard support, history persistence, scientific functions, and tests. This project demonstrates clean state management with <code>useReducer</code>, custom hooks, and production deployment — skills that translate directly to larger applications.</p>
+
+          <div class="callout callout-tip">
+            <strong>Next steps:</strong> Add unit conversion, graphing capabilities, or integrate with a math API for symbolic computation. Each addition pushes your skills further.
+          </div>
+        </section>
+      </div>
+    </div>
+  </article>
+
+  <div class="back-to-top">
+    <a href="#top" class="btn btn-primary">
+      <i class="fas fa-arrow-up"></i> Back to Top
+    </a>
+  </div>
+
+  <footer class="footer">
+    <div class="container">
+      <div class="footer-content">
+        <div class="footer-brand">
+          <a href="../index.html" class="nav-logo">
+            <span class="logo-bracket">{</span> AB <span class="logo-bracket">}</span>
+          </a>
+          <p>Building modern web experiences with clean code, comprehensive tests, and continuous improvement.</p>
+        </div>
+        <div class="footer-links">
+          <h4>Navigation</h4>
+          <ul>
+            <li><a href="../index.html">Portfolio</a></li>
+            <li><a href="../index.html#about">About</a></li>
+            <li><a href="../index.html#projects">Projects</a></li>
+            <li><a href="../index.html#contact">Contact</a></li>
+          </ul>
+        </div>
+        <div class="footer-social">
+          <h4>Connect</h4>
+          <div class="footer-icons">
+            <a href="https://github.com/avinashbt" target="_blank"><i class="fab fa-github"></i></a>
+            <a href="https://www.linkedin.com/in/avinash-bawage-99ba58200/?locale=en_US" target="_blank"><i class="fab fa-linkedin-in"></i></a>
+            <a href="https://twitter.com/AvinashBawge" target="_blank"><i class="fab fa-twitter"></i></a>
+            <a href="mailto:avi.bawge9@gmail.com"><i class="fas fa-envelope"></i></a>
+          </div>
+        </div>
+      </div>
+      <div class="footer-bottom">
+        <p>Built with <span class="footer-heart">&hearts;</span> by Avinash Bawage &mdash; &copy; 2026</p>
+      </div>
+    </div>
+  </footer>
+
+  <script>
+    const hamburger = document.getElementById('hamburger');
+    const mobileMenu = document.getElementById('mobileMenu');
+    let overlay = document.createElement('div');
+    overlay.className = 'mobile-overlay';
+    document.body.appendChild(overlay);
+
+    function toggleMenu() {
+      hamburger.classList.toggle('active');
+      mobileMenu.classList.toggle('active');
+      overlay.classList.toggle('active');
+      document.body.style.overflow = mobileMenu.classList.contains('active') ? 'hidden' : '';
+    }
+
+    hamburger.addEventListener('click', toggleMenu);
+    overlay.addEventListener('click', toggleMenu);
+    document.querySelectorAll('.mobile-menu a').forEach(a => a.addEventListener('click', toggleMenu));
+  </script>
+</body>
+</html>

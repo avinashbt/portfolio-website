@@ -1,0 +1,603 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>React Developer Portfolio Project Ideas | Avinash Bawage - Frontend Developer & React Engineer</title>
+  <meta name="description" content="Discover the best React portfolio project ideas for beginners, intermediate, and advanced developers. Stand out with real-world projects that showcase your skills.">
+  <meta name="keywords" content="React projects, portfolio projects, React developer, project ideas, beginner projects, advanced React, web development">
+  <link rel="shortcut icon" href="../favicon.jpg" type="image/x-icon">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800&family=JetBrains+Mono:wght@400;500&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css">
+  <link rel="stylesheet" href="../styles.css">
+  <link rel="stylesheet" href="../blog.css">
+</head>
+<body>
+
+  <!-- NAV -->
+  <nav class="nav scrolled" id="nav">
+    <div class="nav-container">
+      <a href="../index.html" class="nav-logo">
+        <span class="logo-bracket">{</span> AB <span class="logo-bracket">}</span>
+      </a>
+      <ul class="nav-links">
+        <li><a href="../index.html#about">About</a></li>
+        <li><a href="../index.html#skills">Skills</a></li>
+        <li><a href="../index.html#projects">Projects</a></li>
+        <li><a href="../blog.html" class="nav-blog-link" style="color:#6366f1">Blog</a></li>
+        <li><a href="../index.html#contact" class="nav-cta">Hire Me</a></li>
+      </ul>
+      <button class="hamburger" id="hamburger" aria-label="Toggle menu">
+        <span></span><span></span><span></span>
+      </button>
+    </div>
+  </nav>
+
+  <div class="mobile-menu" id="mobileMenu">
+    <ul>
+      <li><a href="../index.html#about">About</a></li>
+      <li><a href="../index.html#skills">Skills</a></li>
+      <li><a href="../index.html#projects">Projects</a></li>
+      <li><a href="../blog.html">Blog</a></li>
+      <li><a href="../index.html#contact">Hire Me</a></li>
+    </ul>
+  </div>
+
+  <!-- BLOG HEADER -->
+  <header class="blog-hero">
+    <div class="container">
+      <a href="../blog.html" class="blog-back"><i class="fas fa-arrow-left"></i> Back to Blog</a>
+      <h1 class="blog-hero-title">React Developer Portfolio Project Ideas</h1>
+      <p class="blog-hero-desc">From beginner to advanced — real-world React projects that impress recruiters and sharpen your skills.</p>
+    </div>
+  </header>
+
+  <article class="blog-article" id="react-portfolio-projects">
+    <div class="container">
+      <div class="article-header">
+        <div class="article-meta">
+          <span class="article-tag">React</span>
+          <span class="article-date"><i class="fas fa-calendar"></i> 2026</span>
+          <span class="article-read"><i class="fas fa-clock"></i> 10 min read</span>
+        </div>
+        <h1 class="article-title">React Developer Portfolio Project Ideas</h1>
+        <p class="article-subtitle">Stop building to-do lists. Build projects that actually get you hired.</p>
+        <div class="article-author">
+          <img src="../profile1.jpg" alt="Avinash Bawage" class="author-avatar">
+          <div>
+            <span class="author-name">Avinash Bawage</span>
+            <span class="author-role">Frontend Developer & React Engineer</span>
+          </div>
+        </div>
+      </div>
+
+      <div class="article-content">
+        <div class="toc">
+          <h3>Table of Contents</h3>
+          <ol>
+            <li><a href="#why-build">Why Build Portfolio Projects</a></li>
+            <li><a href="#beginner">Beginner Projects</a></li>
+            <li><a href="#intermediate">Intermediate Projects</a></li>
+            <li><a href="#advanced">Advanced Projects</a></li>
+            <li><a href="#choose">How to Choose the Right Project</a></li>
+            <li><a href="#showcase">Showcasing Projects on Your Portfolio</a></li>
+            <li><a href="#testing">Adding Tests to Your Projects</a></li>
+            <li><a href="#deployment">Deployment Checklist</a></li>
+            <li><a href="#mistakes">Common Mistakes to Avoid</a></li>
+          </ol>
+        </div>
+
+        <!-- SECTION 1 -->
+        <section id="why-build">
+          <h2>1. Why Build Portfolio Projects</h2>
+          <p>In a competitive job market, a well-crafted portfolio is your strongest weapon. Recruiters spend an average of 6 seconds scanning a resume — but they'll spend minutes exploring a live project that demonstrates your skills in action.</p>
+          <p>Portfolio projects serve three critical purposes:</p>
+          <ul>
+            <li><strong>Stand out from the crowd:</strong> Thousands of developers claim to know React on their resumes. A deployed, functional project proves it.</li>
+            <li><strong>Learn by doing:</strong> Tutorials teach syntax, but projects teach problem-solving. You'll encounter real bugs, edge cases, and architectural decisions.</li>
+            <li><strong>Build a conversation starter:</strong> During interviews, discussing your projects gives you control of the narrative. You can walk through your decisions, trade-offs, and what you learned.</li>
+          </ul>
+
+          <div class="callout callout-info">
+            <strong>Did you know?</strong> According to a 2025 Stack Overflow survey, 85% of hiring managers consider personal projects when evaluating junior developers. Your GitHub profile is often reviewed before your resume.
+          </div>
+
+          <p>The key is building projects that are <em>unique enough</em> to stand out but <em>familiar enough</em> that recruiters understand the problem you're solving. A clone of Netflix is less impressive than a novel tool that solves a real problem — even if it's simpler.</p>
+        </section>
+
+        <!-- SECTION 2 -->
+        <section id="beginner">
+          <h2>2. Beginner Projects</h2>
+          <p>These projects focus on fundamental React concepts: components, state management, props, and API integration. They're ideal for developers who've completed a React course and want to apply their knowledge.</p>
+
+          <h3>Todo App with Full CRUD</h3>
+          <p>Go beyond a basic list. Build a todo app with create, read, update, delete, filtering, priority levels, and localStorage persistence.</p>
+          <pre><code>// TodoItem.jsx - Reusable component with edit/delete
+import { useState } from 'react';
+
+function TodoItem({ todo, onToggle, onDelete, onEdit }) {
+  const [isEditing, setIsEditing] = useState(false);
+  const [editText, setEditText] = useState(todo.text);
+
+  const handleSave = () => {
+    if (editText.trim()) {
+      onEdit(todo.id, editText);
+      setIsEditing(false);
+    }
+  };
+
+  return (
+    &lt;li className={`todo-item ${todo.completed ? 'completed' : ''}`}&gt;
+      {isEditing ? (
+        &lt;input
+          type="text"
+          value={editText}
+          onChange={(e) =&gt; setEditText(e.target.value)}
+          onBlur={handleSave}
+          onKeyDown={(e) =&gt; e.key === 'Enter' &amp;&amp; handleSave()}
+          autoFocus
+        /&gt;
+      ) : (
+        &lt;span onDoubleClick={() =&gt; setIsEditing(true)}&gt;
+          {todo.text}
+        &lt;/span&gt;
+      )}
+      &lt;div className="todo-actions"&gt;
+        &lt;button onClick={() =&gt; onToggle(todo.id)}&gt;
+          {todo.completed ? '↩' : '✓'}
+        &lt;/button&gt;
+        &lt;button onClick={() =&gt; onDelete(todo.id)}&gt;✕&lt;/button&gt;
+      &lt;/div&gt;
+    &lt;/li&gt;
+  );
+}</code></pre>
+
+          <h3>Weather App</h3>
+          <p>Fetch real weather data from an API (OpenWeatherMap), display current conditions, forecasts, and handle loading/error states gracefully.</p>
+          <pre><code>// useWeather.js - Custom hook for weather data
+import { useState, useEffect } from 'react';
+
+export function useWeather(city) {
+  const [data, setData] = useState(null);
+  const [loading, setLoading] = useState(true);
+  const [error, setError] = useState(null);
+
+  useEffect(() => {
+    if (!city) return;
+    const controller = new AbortController();
+
+    async function fetchWeather() {
+      setLoading(true);
+      try {
+        const res = await fetch(
+          `https://api.openweathermap.org/data/2.5/weather?q=${city}&amp;appid=${import.meta.env.VITE_API_KEY}&amp;units=metric`,
+          { signal: controller.signal }
+        );
+        if (!res.ok) throw new Error('City not found');
+        setData(await res.json());
+      } catch (err) {
+        if (err.name !== 'AbortError') setError(err.message);
+      } finally {
+        setLoading(false);
+      }
+    }
+    fetchWeather();
+    return () =&gt; controller.abort();
+  }, [city]);
+
+  return { data, loading, error };
+}</code></pre>
+
+          <div class="callout callout-tip">
+            <strong>Pro tip:</strong> Always handle loading and error states in API-driven apps. Interviewers specifically look for how you handle edge cases like network failures.
+          </div>
+
+          <h3>Quiz App</h3>
+          <p>Build an interactive quiz with timed questions, score tracking, multiple categories, and a results screen. Use the Open Trivia DB API for questions.</p>
+          <pre><code>// QuizApp.jsx - Core quiz state with useReducer
+import { useReducer } from 'react';
+
+const quizReducer = (state, action) => {
+  switch (action.type) {
+    case 'START_QUIZ':
+      return { ...state, questions: action.questions, currentQ: 0, score: 0, answered: false };
+    case 'ANSWER':
+      const correct = action.answer === state.questions[state.currentQ].correct_answer;
+      return { ...state, score: correct ? state.score + 1 : state.score, answered: true, selectedAnswer: action.answer };
+    case 'NEXT_QUESTION':
+      return { ...state, currentQ: state.currentQ + 1, answered: false, selectedAnswer: null };
+    case 'RESET':
+      return { questions: [], currentQ: 0, score: 0, answered: false, selectedAnswer: null };
+    default:
+      return state;
+  }
+};</code></pre>
+        </section>
+
+        <!-- SECTION 3 -->
+        <section id="intermediate">
+          <h2>3. Intermediate Projects</h2>
+          <p>These projects introduce more complex patterns: state management libraries, routing, drag-and-drop, and API design.</p>
+
+          <h3>E-commerce Shopping Cart</h3>
+          <p>Build a full shopping experience with product listing, filtering, cart management, checkout flow, and order history. Use Zustand or Context API for state.</p>
+          <ul>
+            <li>Product catalog with search, filter by category/price</li>
+            <li>Shopping cart with quantity management and total calculation</li>
+            <li>Checkout form with validation</li>
+            <li>Order history with localStorage persistence</li>
+          </ul>
+
+          <h3>Blog with CMS</h3>
+          <p>Create a markdown-powered blog with a simple admin dashboard. Use MDX for rich content and a lightweight headless CMS or JSON-based storage.</p>
+          <pre><code>// BlogPost.jsx - Dynamic MDX rendering
+import { MDXProvider } from '@mdx-js/react';
+import CodeBlock from './CodeBlock';
+import Callout from './Callout';
+
+const components = {
+  pre: CodeBlock,
+  Callout,
+  h2: (props) =&gt; &lt;h2 className="blog-heading" {...props} /&gt;,
+};
+
+export default function BlogPost({ content, frontmatter }) {
+  return (
+    &lt;article className="blog-post"&gt;
+      &lt;header&gt;
+        &lt;h1&gt;{frontmatter.title}&lt;/h1&gt;
+        &lt;time&gt;{frontmatter.date}&lt;/time&gt;
+      &lt;/header&gt;
+      &lt;MDXProvider components={components}&gt;
+        {content}
+      &lt;/MDXProvider&gt;
+    &lt;/article&gt;
+  );
+}</code></pre>
+
+          <h3>Task Manager with Drag-and-Drop</h3>
+          <p>A Kanban-style board (like Trello) using <code>@dnd-kit</code> or <code>react-beautiful-dnd</code> for drag-and-drop between columns.</p>
+          <pre><code>// KanbanBoard.jsx - Drag and drop with @dnd-kit
+import { DndContext, closestCorners } from '@dnd-kit/core';
+import { SortableContext, verticalListSortingStrategy } from '@dnd-kit/sortable';
+
+function KanbanBoard({ columns, onMoveTask }) {
+  const handleDragEnd = (event) => {
+    const { active, over } = event;
+    if (!over || active.id === over.id) return;
+    onMoveTask(active.id, over.id);
+  };
+
+  return (
+    &lt;DndContext collisionDetection={closestCorners} onDragEnd={handleDragEnd}&gt;
+      &lt;div className="kanban-board"&gt;
+        {columns.map((col) =&gt; (
+          &lt;KanbanColumn key={col.id} column={col} /&gt;
+        ))}
+      &lt;/div&gt;
+    &lt;/DndContext&gt;
+  );
+}</code></pre>
+
+          <div class="callout callout-warning">
+            <strong>Common pitfall:</strong> When building drag-and-drop, always test on touch devices. <code>react-beautiful-dnd</code> has known issues on mobile — consider <code>@dnd-kit</code> as a more modern alternative.
+          </div>
+        </section>
+
+        <!-- SECTION 4 -->
+        <section id="advanced">
+          <h2>4. Advanced Projects</h2>
+          <p>These projects demonstrate mastery of complex React patterns, real-time data, and system design.</p>
+
+          <h3>Real-time Chat Application</h3>
+          <p>Build a messaging app with WebSocket connections, typing indicators, message history, and online status. Use Socket.io with a Node.js backend or Firebase Realtime Database.</p>
+          <ul>
+            <li>Real-time message delivery with WebSockets</li>
+            <li>Typing indicators and online/offline status</li>
+            <li>Message read receipts</li>
+            <li>Image/file sharing</li>
+            <li>Chat rooms and direct messages</li>
+          </ul>
+
+          <h3>Social Media Dashboard</h3>
+          <p>An analytics dashboard with real-time charts, data aggregation, and API integrations. Pull data from multiple sources and visualize trends.</p>
+          <ul>
+            <li>Interactive charts with Recharts or D3.js</li>
+            <li>Date range filtering and data export</li>
+            <li>Responsive grid layout with widget customization</li>
+            <li>WebSocket for live data updates</li>
+          </ul>
+
+          <h3>AI-powered Application</h3>
+          <p>Integrate OpenAI or a local LLM into a React app. Ideas include a code review tool, writing assistant, or image analyzer.</p>
+          <pre><code>// useAI.js - Custom hook for AI streaming responses
+import { useState, useCallback } from 'react';
+
+export function useAI() {
+  const [response, setResponse] = useState('');
+  const [loading, setLoading] = useState(false);
+
+  const generate = useCallback(async (prompt) => {
+    setLoading(true);
+    setResponse('');
+    try {
+      const res = await fetch('/api/generate', {
+        method: 'POST',
+        headers: { 'Content-Type': 'application/json' },
+        body: JSON.stringify({ prompt }),
+      });
+      const reader = res.body.getReader();
+      const decoder = new TextDecoder();
+
+      while (true) {
+        const { done, value } = await reader.read();
+        if (done) break;
+        setResponse((prev) =&gt; prev + decoder.decode(value));
+      }
+    } finally {
+      setLoading(false);
+    }
+  }, []);
+
+  return { response, loading, generate };
+}</code></pre>
+        </section>
+
+        <!-- SECTION 5 -->
+        <section id="choose">
+          <h2>5. How to Choose the Right Project</h2>
+          <p>The best project is one you'll actually finish. Here's a framework for choosing:</p>
+
+          <h3>Assess Your Skill Level</h3>
+          <p>Be honest about where you are. If you just learned React last week, don't start with a real-time chat app. Start with a weather app and work your way up.</p>
+
+          <h3>Consider Your Time</h3>
+          <ul>
+            <li><strong>1-2 weeks:</strong> Todo app, calculator, weather app</li>
+            <li><strong>3-4 weeks:</strong> E-commerce cart, blog with CMS, task manager</li>
+            <li><strong>1-2 months:</strong> Chat app, social dashboard, full-stack app</li>
+          </ul>
+
+          <h3>Follow Your Interest</h3>
+          <p>Passion projects are easier to finish and more impressive to discuss. Love music? Build a Spotify clone. Into fitness? Build a workout tracker. Interested in finance? Build a budget dashboard.</p>
+
+          <div class="callout callout-tip">
+            <strong>The finishing rule:</strong> It's better to have 3 polished, deployed projects than 10 half-finished ones. Quality over quantity always wins.
+          </div>
+        </section>
+
+        <!-- SECTION 6 -->
+        <section id="showcase">
+          <h2>6. Showcasing Projects on Your Portfolio</h2>
+          <p>How you present a project matters as much as the project itself.</p>
+
+          <h3>Essential Elements for Each Project</h3>
+          <ul>
+            <li><strong>Screenshot or video:</strong> A hero image showing the app in action</li>
+            <li><strong>Live demo link:</strong> Deployed version — recruiters want to click and explore</li>
+            <li><strong>GitHub repository:</strong> Clean code with a comprehensive README</li>
+            <li><strong>Technology stack:</strong> List the frameworks, libraries, and tools used</li>
+            <li><strong>Key features:</strong> Bullet points of what makes this project notable</li>
+          </ul>
+
+          <h3>Writing a Great README</h3>
+          <pre><code># Weather Dashboard
+
+A responsive weather application built with React and OpenWeatherMap API.
+
+## Features
+- Current weather with 5-day forecast
+- Search by city name or use geolocation
+- Responsive design (mobile-first)
+- Unit conversion (°C / °F)
+- Loading skeletons and error states
+
+## Tech Stack
+- React 18 + Vite
+- Tailwind CSS
+- OpenWeatherMap API
+- React Testing Library + Vitest
+
+## Live Demo
+🔗 [weather-demo.vercel.app](https://weather-demo.vercel.app)
+
+## Getting Started
+npm install
+npm run dev</code></pre>
+        </section>
+
+        <!-- SECTION 7 -->
+        <section id="testing">
+          <h2>7. Adding Tests to Your Projects</h2>
+          <p>Tests show that you care about code quality and reliability. Even basic test coverage sets you apart from other applicants.</p>
+
+          <h3>Unit Testing with Vitest</h3>
+          <pre><code>// calculator.test.js - Unit testing calculator logic
+import { describe, it, expect } from 'vitest';
+import { calculate } from './calculator';
+
+describe('Calculator', () =&gt; {
+  it('adds two numbers correctly', () =&gt; {
+    expect(calculate(2, '+', 3)).toBe(5);
+  });
+
+  it('divides by zero returns error', () =&gt; {
+    expect(calculate(10, '/', 0)).toBe('Error');
+  });
+
+  it('handles decimal precision', () =&gt; {
+    expect(calculate(0.1, '+', 0.2)).toBeCloseTo(0.3);
+  });
+
+  it('chains operations', () =&gt; {
+    let result = calculate(5, '+', 3);
+    result = calculate(result, '*', 2);
+    expect(result).toBe(16);
+  });
+});</code></pre>
+
+          <h3>Integration Testing with React Testing Library</h3>
+          <pre><code>// TodoApp.test.jsx
+import { render, screen, fireEvent } from '@testing-library/react';
+import TodoApp from './TodoApp';
+
+describe('TodoApp', () =&gt; {
+  it('adds a new todo', () =&gt; {
+    render(&lt;TodoApp /&gt;);
+    fireEvent.change(screen.getByPlaceholderText(/add a task/i), {
+      target: { value: 'Write tests' },
+    });
+    fireEvent.click(screen.getByText(/add/i));
+    expect(screen.getByText('Write tests')).toBeInTheDocument();
+  });
+
+  it('toggles todo completion', () =&gt; {
+    render(&lt;TodoApp /&gt;);
+    const todo = screen.getByText('Write tests');
+    fireEvent.click(todo);
+    expect(todo).toHaveClass('completed');
+  });
+});</code></pre>
+
+          <div class="callout callout-info">
+            <strong>Coverage goal:</strong> Aim for 80%+ test coverage on your business logic. Don't test CSS or simple wrappers — focus on components with state, event handlers, and API calls.
+          </div>
+        </section>
+
+        <!-- SECTION 8 -->
+        <section id="deployment">
+          <h2>8. Deployment Checklist</h2>
+          <p>Before deploying, run through this checklist to ensure your project is production-ready:</p>
+
+          <h3>Environment Variables</h3>
+          <ul>
+            <li>Never commit <code>.env</code> files — add to <code>.gitignore</code></li>
+            <li>Use environment-specific prefixes: <code>VITE_API_KEY</code></li>
+            <li>Document required env vars in your README</li>
+            <li>Set env vars in your hosting platform (Vercel, Netlify, etc.)</li>
+          </ul>
+
+          <h3>Build Optimization</h3>
+          <pre><code>// vite.config.js - Production optimizations
+import { defineConfig } from 'vite';
+import react from '@vitejs/plugin-react';
+
+export default defineConfig({
+  plugins: [react()],
+  build: {
+    rollupOptions: {
+      output: {
+        manualChunks: {
+          vendor: ['react', 'react-dom'],
+          charts: ['recharts'],
+        },
+      },
+    },
+    chunkSizeWarningLimit: 500,
+  },
+});</code></pre>
+
+          <h3>Performance</h3>
+          <ul>
+            <li>Run Lighthouse audit — aim for 90+ on all metrics</li>
+            <li>Check bundle size with <code>npm run build -- --analyze</code></li>
+            <li>Implement lazy loading for routes and heavy components</li>
+            <li>Optimize images (WebP format, proper sizing)</li>
+            <li>Enable compression on your hosting platform</li>
+          </ul>
+
+          <div class="callout callout-warning">
+            <strong>Don't forget:</strong> Test your deployed app on mobile devices. Many developers only test on desktop and miss critical responsive issues.
+          </div>
+        </section>
+
+        <!-- SECTION 9 -->
+        <section id="mistakes">
+          <h2>9. Common Mistakes to Avoid</h2>
+          <p>After reviewing hundreds of developer portfolios, here are the most common mistakes:</p>
+
+          <h3>Too Many Projects, No Depth</h3>
+          <p>Five half-built projects are worse than two polished ones. Each project should demonstrate a specific skill set and be fully functional.</p>
+
+          <h3>No Documentation</h3>
+          <p>A project without a README is a red flag. If you can't document your own code, how will you document shared code at work?</p>
+
+          <h3>Broken Links and Dead Demos</h3>
+          <p>Always check your live demo links before sharing your portfolio. A broken link is an instant turn-off. Deploy on reliable platforms and test after every update.</p>
+
+          <h3>Not Explaining Your Decisions</h3>
+          <p>In your README or project description, explain <em>why</em> you made certain choices. "I chose Zustand over Redux because..." shows critical thinking.</p>
+
+          <h3>Ignoring Accessibility</h3>
+          <p>Add proper ARIA labels, keyboard navigation, and semantic HTML. This is a bonus that shows professional-level attention to detail.</p>
+
+          <div class="callout callout-tip">
+            <strong>Final advice:</strong> Start building today. Your first project won't be perfect — and that's okay. Ship it, learn from it, and build the next one better.
+          </div>
+        </section>
+      </div>
+    </div>
+  </article>
+
+  <div class="back-to-top">
+    <a href="#top" class="btn btn-primary">
+      <i class="fas fa-arrow-up"></i> Back to Top
+    </a>
+  </div>
+
+  <footer class="footer">
+    <div class="container">
+      <div class="footer-content">
+        <div class="footer-brand">
+          <a href="../index.html" class="nav-logo">
+            <span class="logo-bracket">{</span> AB <span class="logo-bracket">}</span>
+          </a>
+          <p>Building modern web experiences with clean code, comprehensive tests, and continuous improvement.</p>
+        </div>
+        <div class="footer-links">
+          <h4>Navigation</h4>
+          <ul>
+            <li><a href="../index.html">Portfolio</a></li>
+            <li><a href="../index.html#about">About</a></li>
+            <li><a href="../index.html#projects">Projects</a></li>
+            <li><a href="../index.html#contact">Contact</a></li>
+          </ul>
+        </div>
+        <div class="footer-social">
+          <h4>Connect</h4>
+          <div class="footer-icons">
+            <a href="https://github.com/avinashbt" target="_blank"><i class="fab fa-github"></i></a>
+            <a href="https://www.linkedin.com/in/avinash-bawage-99ba58200/?locale=en_US" target="_blank"><i class="fab fa-linkedin-in"></i></a>
+            <a href="https://twitter.com/AvinashBawge" target="_blank"><i class="fab fa-twitter"></i></a>
+            <a href="mailto:avi.bawge9@gmail.com"><i class="fas fa-envelope"></i></a>
+          </div>
+        </div>
+      </div>
+      <div class="footer-bottom">
+        <p>Built with <span class="footer-heart">&hearts;</span> by Avinash Bawage &mdash; &copy; 2026</p>
+      </div>
+    </div>
+  </footer>
+
+  <script>
+    const hamburger = document.getElementById('hamburger');
+    const mobileMenu = document.getElementById('mobileMenu');
+    let overlay = document.createElement('div');
+    overlay.className = 'mobile-overlay';
+    document.body.appendChild(overlay);
+
+    function toggleMenu() {
+      hamburger.classList.toggle('active');
+      mobileMenu.classList.toggle('active');
+      overlay.classList.toggle('active');
+      document.body.style.overflow = mobileMenu.classList.contains('active') ? 'hidden' : '';
+    }
+
+    hamburger.addEventListener('click', toggleMenu);
+    overlay.addEventListener('click', toggleMenu);
+    document.querySelectorAll('.mobile-menu a').forEach(a => a.addEventListener('click', toggleMenu));
+  </script>
+</body>
+</html>

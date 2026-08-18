@@ -1,0 +1,900 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>React Text to Speech Project | Avinash Bawage - Frontend Developer &amp; React Engineer</title>
+  <meta name="description" content="Build a React text to speech app using the Web Speech API with voice selection, speed controls, word highlighting, and dark mode.">
+  <meta name="keywords" content="React text to speech, Web Speech API, SpeechSynthesis, voice selection, accessibility, React project">
+  <link rel="shortcut icon" href="../favicon.jpg" type="image/x-icon">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800&family=JetBrains+Mono:wght@400;500&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css">
+  <link rel="stylesheet" href="../styles.css">
+  <link rel="stylesheet" href="../blog.css">
+</head>
+<body>
+
+  <!-- NAV -->
+  <nav class="nav scrolled" id="nav">
+    <div class="nav-container">
+      <a href="../index.html" class="nav-logo">
+        <span class="logo-bracket">{</span> AB <span class="logo-bracket">}</span>
+      </a>
+      <ul class="nav-links">
+        <li><a href="../index.html#about">About</a></li>
+        <li><a href="../index.html#skills">Skills</a></li>
+        <li><a href="../index.html#projects">Projects</a></li>
+        <li><a href="../blog.html" class="nav-blog-link" style="color:#6366f1">Blog</a></li>
+        <li><a href="../index.html#contact" class="nav-cta">Hire Me</a></li>
+      </ul>
+      <button class="hamburger" id="hamburger" aria-label="Toggle menu">
+        <span></span><span></span><span></span>
+      </button>
+    </div>
+  </nav>
+
+  <div class="mobile-menu" id="mobileMenu">
+    <ul>
+      <li><a href="../index.html#about">About</a></li>
+      <li><a href="../index.html#skills">Skills</a></li>
+      <li><a href="../index.html#projects">Projects</a></li>
+      <li><a href="../blog.html">Blog</a></li>
+      <li><a href="../index.html#contact">Hire Me</a></li>
+    </ul>
+  </div>
+
+  <!-- BLOG HEADER -->
+  <header class="blog-hero">
+    <div class="container">
+      <a href="../blog.html" class="blog-back"><i class="fas fa-arrow-left"></i> Back to Blog</a>
+      <h1 class="blog-hero-title">React Text to Speech Project</h1>
+      <p class="blog-hero-desc">Build an accessible text to speech app in React using the Web Speech API with voice selection, speed controls, and word highlighting.</p>
+    </div>
+  </header>
+
+  <article class="blog-article" id="react-text-to-speech">
+    <div class="container">
+      <div class="article-header">
+        <div class="article-meta">
+          <span class="article-tag">React Project</span>
+          <span class="article-date"><i class="fas fa-calendar"></i> 2026</span>
+          <span class="article-read"><i class="fas fa-clock"></i> 8 min read</span>
+        </div>
+        <h1 class="article-title">React Text to Speech Project</h1>
+        <p class="article-subtitle">A complete guide to building a text-to-speech application with the Web Speech API in React</p>
+        <div class="article-author">
+          <img src="../profile1.jpg" alt="Avinash Bawage" class="author-avatar">
+          <div>
+            <span class="author-name">Avinash Bawage</span>
+            <span class="author-role">Frontend Developer &amp; React Engineer</span>
+          </div>
+        </div>
+      </div>
+
+      <div class="article-content">
+        <div class="toc">
+          <h3>Table of Contents</h3>
+          <ol>
+            <li><a href="#intro-web-speech">Introduction to Web Speech API</a></li>
+            <li><a href="#project-setup">Project Setup</a></li>
+            <li><a href="#basic-tts">Basic Text to Speech</a></li>
+            <li><a href="#building-ui">Building the UI</a></li>
+            <li><a href="#voice-selection">Voice Selection</a></li>
+            <li><a href="#speed-pitch">Speed &amp; Pitch Controls</a></li>
+            <li><a href="#highlighting">Highlighting Spoken Words</a></li>
+            <li><a href="#saving-favorites">Saving Favorite Texts</a></li>
+            <li><a href="#responsive-polish">Responsive Design &amp; Polish</a></li>
+          </ol>
+        </div>
+
+        <section id="intro-web-speech">
+          <h2>1. Introduction to Web Speech API</h2>
+          <p>The Web Speech API provides two interfaces: <code>SpeechRecognition</code> for speech-to-text and <code>SpeechSynthesis</code> for text-to-speech. We'll focus on <code>SpeechSynthesis</code>, which lets browsers convert text into spoken audio using built-in or downloadable voices.</p>
+
+          <h3>Browser Support</h3>
+          <ul>
+            <li><strong>Chrome:</strong> Full support (including multiple languages)</li>
+            <li><strong>Edge:</strong> Full support (uses same engine as Chrome)</li>
+            <li><strong>Firefox:</strong> Supported with some voice limitations</li>
+            <li><strong>Safari:</strong> Supported on macOS and iOS</li>
+          </ul>
+
+          <h3>Key Interfaces</h3>
+          <pre><code>// The SpeechSynthesis interface
+window.speechSynthesis  // The main controller
+  .getVoices()          // Get available voices
+  .speak(utterance)     // Start speaking
+  .pause()              // Pause
+  .resume()             // Resume
+  .cancel()             // Stop
+
+// SpeechSynthesisUtterance - what to speak
+const utterance = new SpeechSynthesisUtterance('Hello world');
+utterance.voice = voice;      // Set the voice
+utterance.rate = 1;           // Speed (0.1 to 10)
+utterance.pitch = 1;          // Pitch (0 to 2)
+utterance.volume = 1;         // Volume (0 to 1)
+utterance.lang = 'en-US';     // Language code</code></pre>
+
+          <div class="callout callout-info">
+            <i class="fas fa-info-circle"></i>
+            <p><strong>Note:</strong> Voices load asynchronously. On Chrome, you may need to wait for the <code>voiceschanged</code> event before accessing the full list of available voices.</p>
+          </div>
+        </section>
+
+        <section id="project-setup">
+          <h2>2. Project Setup</h2>
+          <p>Create a new React project with Vite and set up the project structure.</p>
+
+          <pre><code>npm create vite@latest text-to-speech -- --template react
+cd text-to-speech
+npm install</code></pre>
+
+          <h3>Project Structure</h3>
+          <pre><code>text-to-speech/
+├── src/
+│   ├── components/
+│   │   ├── TextInput.jsx
+│   │   ├── PlayerControls.jsx
+│   │   ├── VoiceSelector.jsx
+│   │   ├── SpeedPitchControls.jsx
+│   │   ├── HighlightedText.jsx
+│   │   └── SavedTexts.jsx
+│   ├── hooks/
+│   │   └── useSpeechSynthesis.js
+│   ├── App.jsx
+│   ├── App.css
+│   └── main.jsx
+└── package.json</code></pre>
+
+          <div class="callout callout-tip">
+            <i class="fas fa-lightbulb"></i>
+            <p><strong>Tip:</strong> No external dependencies are needed for this project — the Web Speech API is built into modern browsers. This keeps our bundle size minimal.</p>
+          </div>
+        </section>
+
+        <section id="basic-tts">
+          <h2>3. Basic Text to Speech</h2>
+          <p>Let's start with the core functionality — reading text aloud using <code>window.speechSynthesis</code>.</p>
+
+          <h3>The useSpeechSynthesis Hook</h3>
+          <pre><code>// src/hooks/useSpeechSynthesis.js
+import { useState, useEffect, useCallback, useRef } from 'react';
+
+export function useSpeechSynthesis() {
+  const [voices, setVoices] = useState([]);
+  const [isSpeaking, setIsSpeaking] = useState(false);
+  const [isPaused, setIsPaused] = useState(false);
+  const [currentWordIndex, setCurrentWordIndex] = useState(-1);
+  const utteranceRef = useRef(null);
+
+  useEffect(() => {
+    const loadVoices = () => {
+      const availableVoices = window.speechSynthesis.getVoices();
+      setVoices(availableVoices);
+    };
+
+    loadVoices();
+    window.speechSynthesis.addEventListener('voiceschanged', loadVoices);
+
+    return () => {
+      window.speechSynthesis.removeEventListener('voiceschanged', loadVoices);
+    };
+  }, []);
+
+  const speak = useCallback((text, options = {}) => {
+    window.speechSynthesis.cancel();
+
+    const utterance = new SpeechSynthesisUtterance(text);
+
+    if (options.voice) utterance.voice = options.voice;
+    if (options.rate) utterance.rate = options.rate;
+    if (options.pitch) utterance.pitch = options.pitch;
+    if (options.volume) utterance.volume = options.volume;
+
+    utterance.onstart = () => {
+      setIsSpeaking(true);
+      setIsPaused(false);
+    };
+
+    utterance.onend = () => {
+      setIsSpeaking(false);
+      setIsPaused(false);
+      setCurrentWordIndex(-1);
+    };
+
+    utterance.onboundary = (event) => {
+      if (event.name === 'word') {
+        const wordIndex = text.substring(0, event.charIndex)
+          .split(/\s+/).length - 1;
+        setCurrentWordIndex(wordIndex);
+      }
+    };
+
+    utterance.onerror = (event) => {
+      console.error('Speech error:', event);
+      setIsSpeaking(false);
+      setIsPaused(false);
+    };
+
+    utteranceRef.current = utterance;
+    window.speechSynthesis.speak(utterance);
+  }, []);
+
+  const pause = useCallback(() => {
+    window.speechSynthesis.pause();
+    setIsPaused(true);
+  }, []);
+
+  const resume = useCallback(() => {
+    window.speechSynthesis.resume();
+    setIsPaused(false);
+  }, []);
+
+  const stop = useCallback(() => {
+    window.speechSynthesis.cancel();
+    setIsSpeaking(false);
+    setIsPaused(false);
+    setCurrentWordIndex(-1);
+  }, []);
+
+  return {
+    voices,
+    isSpeaking,
+    isPaused,
+    currentWordIndex,
+    speak,
+    pause,
+    resume,
+    stop,
+  };
+}</code></pre>
+
+          <div class="callout callout-warning">
+            <i class="fas fa-exclamation-triangle"></i>
+            <p><strong>Browser quirk:</strong> Some browsers limit the total amount of text that can be spoken at once. For very long texts, you may need to split the text into chunks and queue them.</p>
+          </div>
+        </section>
+
+        <section id="building-ui">
+          <h2>4. Building the UI</h2>
+          <p>We'll create a clean interface with a text area, playback controls, and visual feedback.</p>
+
+          <h3>PlayerControls Component</h3>
+          <pre><code>// src/components/PlayerControls.jsx
+export default function PlayerControls({ isSpeaking, isPaused, onPlay, onPause, onResume, onStop }) {
+  return (
+    &lt;div className="player-controls"&gt;
+      {!isSpeaking ? (
+        &lt;button className="control-btn play-btn" onClick={onPlay}&gt;
+          &lt;i className="fas fa-play"&gt;&lt;/i&gt;
+          &lt;span&gt;Play&lt;/span&gt;
+        &lt;/button&gt;
+      ) : isPaused ? (
+        &lt;button className="control-btn resume-btn" onClick={onResume}&gt;
+          &lt;i className="fas fa-play"&gt;&lt;/i&gt;
+          &lt;span&gt;Resume&lt;/span&gt;
+        &lt;/button&gt;
+      ) : (
+        &lt;button className="control-btn pause-btn" onClick={onPause}&gt;
+          &lt;i className="fas fa-pause"&gt;&lt;/i&gt;
+          &lt;span&gt;Pause&lt;/span&gt;
+        &lt;/button&gt;
+      )}
+
+      &lt;button
+        className="control-btn stop-btn"
+        onClick={onStop}
+        disabled={!isSpeaking}
+      &gt;
+        &lt;i className="fas fa-stop"&gt;&lt;/i&gt;
+        &lt;span&gt;Stop&lt;/span&gt;
+      &lt;/button&gt;
+    &lt;/div&gt;
+  );
+}</code></pre>
+
+          <h3>Putting It Together in App.jsx</h3>
+          <pre><code>// src/App.jsx
+import { useState } from 'react';
+import TextInput from './components/TextInput';
+import PlayerControls from './components/PlayerControls';
+import VoiceSelector from './components/VoiceSelector';
+import SpeedPitchControls from './components/SpeedPitchControls';
+import HighlightedText from './components/HighlightedText';
+import { useSpeechSynthesis } from './hooks/useSpeechSynthesis';
+import './App.css';
+
+function App() {
+  const [text, setText] = useState('Hello! This is a text to speech demo built with React and the Web Speech API.');
+  const [selectedVoice, setSelectedVoice] = useState(null);
+  const [rate, setRate] = useState(1);
+  const [pitch, setPitch] = useState(1);
+
+  const { voices, isSpeaking, isPaused, currentWordIndex, speak, pause, resume, stop } =
+    useSpeechSynthesis();
+
+  const handlePlay = () => {
+    speak(text, { voice: selectedVoice, rate, pitch });
+  };
+
+  return (
+    &lt;div className="app"&gt;
+      &lt;header className="app-header"&gt;
+        &lt;h1&gt;🔊 Text to Speech&lt;/h1&gt;
+        &lt;p&gt;Convert your text into natural-sounding speech&lt;/p&gt;
+      &lt;/header&gt;
+
+      &lt;main className="tts-main"&gt;
+        &lt;TextInput text={text} onChange={setText} /&gt;
+
+        &lt;div className="controls-section"&gt;
+          &lt;VoiceSelector
+            voices={voices}
+            selected={selectedVoice}
+            onSelect={setSelectedVoice}
+          /&gt;
+
+          &lt;SpeedPitchControls
+            rate={rate}
+            pitch={pitch}
+            onRateChange={setRate}
+            onPitchChange={setPitch}
+          /&gt;
+
+          &lt;PlayerControls
+            isSpeaking={isSpeaking}
+            isPaused={isPaused}
+            onPlay={handlePlay}
+            onPause={pause}
+            onResume={resume}
+            onStop={stop}
+          /&gt;
+        &lt;/div&gt;
+
+        &lt;HighlightedText
+          text={text}
+          currentWordIndex={currentWordIndex}
+          isSpeaking={isSpeaking}
+        /&gt;
+      &lt;/main&gt;
+    &lt;/div&gt;
+  );
+}
+
+export default App;</code></pre>
+        </section>
+
+        <section id="voice-selection">
+          <h2>5. Voice Selection</h2>
+          <p>The available voices vary by browser and operating system. We'll create a selector that groups voices by language.</p>
+
+          <pre><code>// src/components/VoiceSelector.jsx
+import { useMemo } from 'react';
+
+export default function VoiceSelector({ voices, selected, onSelect }) {
+  const groupedVoices = useMemo(() => {
+    const groups = {};
+    voices.forEach((voice) => {
+      const lang = voice.lang.split('-')[0];
+      if (!groups[lang]) groups[lang] = [];
+      groups[lang].push(voice);
+    });
+    return groups;
+  }, [voices]);
+
+  const languages = Object.keys(groupedVoices).sort();
+
+  return (
+    &lt;div className="voice-selector"&gt;
+      &lt;label htmlFor="voice-select"&gt;
+        &lt;i className="fas fa-microphone"&gt;&lt;/i&gt; Voice
+      &lt;/label&gt;
+      &lt;select
+        id="voice-select"
+        value={selected?.name || ''}
+        onChange={(e) =&gt; {
+          const voice = voices.find((v) =&gt; v.name === e.target.value);
+          onSelect(voice);
+        }}
+      &gt;
+        &lt;option value=""&gt;Default Voice&lt;/option&gt;
+        {languages.map((lang) =&gt; (
+          &lt;optgroup key={lang} label={lang.toUpperCase()}&gt;
+            {groupedVoices[lang].map((voice) =&gt; (
+              &lt;option key={voice.name} value={voice.name}&gt;
+                {voice.name} ({voice.lang})
+                {voice.localService ? ' — Local' : ' — Remote'}
+              &lt;/option&gt;
+            ))}
+          &lt;/optgroup&gt;
+        ))}
+      &lt;/select&gt;
+    &lt;/div&gt;
+  );
+}</code></pre>
+
+          <div class="callout callout-info">
+            <i class="fas fa-info-circle"></i>
+            <p><strong>Voice types:</strong> <code>localService: true</code> means the voice is installed on the device and works offline. Remote voices may have slightly higher quality but require an internet connection.</p>
+          </div>
+        </section>
+
+        <section id="speed-pitch">
+          <h2>6. Speed &amp; Pitch Controls</h2>
+          <p>Customize the speech output with rate (speed) and pitch sliders.</p>
+
+          <pre><code>// src/components/SpeedPitchControls.jsx
+export default function SpeedPitchControls({ rate, pitch, onRateChange, onPitchChange }) {
+  return (
+    &lt;div className="speed-pitch-controls"&gt;
+      &lt;div className="control-group"&gt;
+        &lt;label htmlFor="rate-slider"&gt;
+          &lt;i className="fas fa-tachometer-alt"&gt;&lt;/i&gt;
+          Speed: {rate.toFixed(1)}x
+        &lt;/label&gt;
+        &lt;input
+          id="rate-slider"
+          type="range"
+          min="0.1"
+          max="3"
+          step="0.1"
+          value={rate}
+          onChange={(e) =&gt; onRateChange(parseFloat(e.target.value))}
+          className="slider"
+        /&gt;
+        &lt;div className="slider-labels"&gt;
+          &lt;span&gt;0.1x&lt;/span&gt;
+          &lt;span&gt;1x (normal)&lt;/span&gt;
+          &lt;span&gt;3x&lt;/span&gt;
+        &lt;/div&gt;
+      &lt;/div&gt;
+
+      &lt;div className="control-group"&gt;
+        &lt;label htmlFor="pitch-slider"&gt;
+          &lt;i className="fas fa-music"&gt;&lt;/i&gt;
+          Pitch: {pitch.toFixed(1)}
+        &lt;/label&gt;
+        &lt;input
+          id="pitch-slider"
+          type="range"
+          min="0"
+          max="2"
+          step="0.1"
+          value={pitch}
+          onChange={(e) =&gt; onPitchChange(parseFloat(e.target.value))}
+          className="slider"
+        /&gt;
+        &lt;div className="slider-labels"&gt;
+          &lt;span&gt;0 (low)&lt;/span&gt;
+          &lt;span&gt;1 (normal)&lt;/span&gt;
+          &lt;span&gt;2 (high)&lt;/span&gt;
+        &lt;/div&gt;
+      &lt;/div&gt;
+    &lt;/div&gt;
+  );
+}</code></pre>
+
+          <h3>Slider Styling</h3>
+          <pre><code>.slider {
+  width: 100%;
+  height: 6px;
+  -webkit-appearance: none;
+  appearance: none;
+  background: rgba(99, 102, 241, 0.2);
+  border-radius: 3px;
+  outline: none;
+  cursor: pointer;
+}
+
+.slider::-webkit-slider-thumb {
+  -webkit-appearance: none;
+  appearance: none;
+  width: 20px;
+  height: 20px;
+  border-radius: 50%;
+  background: #6366f1;
+  cursor: pointer;
+  border: 2px solid #1a1a2e;
+  box-shadow: 0 2px 8px rgba(99, 102, 241, 0.4);
+}
+
+.slider::-moz-range-thumb {
+  width: 20px;
+  height: 20px;
+  border-radius: 50%;
+  background: #6366f1;
+  cursor: pointer;
+  border: 2px solid #1a1a2e;
+}
+
+.slider-labels {
+  display: flex;
+  justify-content: space-between;
+  font-size: 0.75rem;
+  color: #94a3b8;
+  margin-top: 0.25rem;
+}</code></pre>
+
+          <div class="callout callout-tip">
+            <i class="fas fa-lightbulb"></i>
+            <p><strong>UX Tip:</strong> Show the current value next to the label (e.g., "Speed: 1.5x") so users immediately see the effect of their adjustment without having to remember the slider position.</p>
+          </div>
+        </section>
+
+        <section id="highlighting">
+          <h2>7. Highlighting Spoken Words</h2>
+          <p>We'll use the <code>onboundary</code> event of SpeechSynthesisUtterance to highlight each word as it's spoken.</p>
+
+          <pre><code>// src/components/HighlightedText.jsx
+import { useMemo } from 'react';
+
+export default function HighlightedText({ text, currentWordIndex, isSpeaking }) {
+  const words = useMemo(() => text.split(/(\s+)/), [text]);
+
+  if (!text.trim()) {
+    return (
+      &lt;div className="highlighted-text empty"&gt;
+        &lt;p&gt;Enter some text above to see it highlighted as it's read aloud.&lt;/p&gt;
+      &lt;/div&gt;
+    );
+  }
+
+  let wordCounter = -1;
+
+  return (
+    &lt;div className="highlighted-text"&gt;
+      &lt;h3&gt;
+        &lt;i className="fas fa-eye"&gt;&lt;/i&gt; Live Preview
+      &lt;/h3&gt;
+      &lt;p className="text-display"&gt;
+        {words.map((segment, index) =&gt; {
+          if (/^\s+$/.test(segment)) {
+            return &lt;span key={index}&gt;{segment}&lt;/span&gt;;
+          }
+
+          wordCounter++;
+          const wordIndex = wordCounter;
+          const isHighlighted = isSpeaking &amp;&amp; wordIndex === currentWordIndex;
+          const isSpoken = isSpeaking &amp;&amp; wordIndex &lt; currentWordIndex;
+
+          return (
+            &lt;span
+              key={index}
+              className={`word ${isHighlighted ? 'highlighted' : ''} ${isSpoken ? 'spoken' : ''}`}
+            &gt;
+              {segment}
+            &lt;/span&gt;
+          );
+        })}
+      &lt;/p&gt;
+    &lt;/div&gt;
+  );
+}</code></pre>
+
+          <h3>Highlighting CSS</h3>
+          <pre><code>.highlighted-text {
+  background: #1a1a2e;
+  border-radius: 12px;
+  padding: 1.5rem;
+  margin-top: 1.5rem;
+}
+
+.text-display {
+  font-size: 1.1rem;
+  line-height: 2;
+}
+
+.word {
+  padding: 2px 4px;
+  border-radius: 4px;
+  transition: all 0.15s ease;
+}
+
+.word.highlighted {
+  background: #6366f1;
+  color: white;
+  border-radius: 4px;
+  transform: scale(1.05);
+  display: inline-block;
+}
+
+.word.spoken {
+  color: #94a3b8;
+}</code></pre>
+
+          <div class="callout callout-info">
+            <i class="fas fa-info-circle"></i>
+            <p><strong>How it works:</strong> The <code>onboundary</code> event fires at word boundaries with a <code>charIndex</code>. We convert this character index to a word index and use it to highlight the current word in the UI.</p>
+          </div>
+        </section>
+
+        <section id="saving-favorites">
+          <h2>8. Saving Favorite Texts</h2>
+          <p>Let users save frequently-used texts to localStorage for quick access.</p>
+
+          <pre><code>// src/components/SavedTexts.jsx
+import { useState, useEffect } from 'react';
+
+export default function SavedTexts({ onSelect }) {
+  const [savedTexts, setSavedTexts] = useState(() => {
+    const saved = localStorage.getItem('tts-saved-texts');
+    return saved ? JSON.parse(saved) : [];
+  });
+  const [newName, setNewName] = useState('');
+
+  useEffect(() => {
+    localStorage.setItem('tts-saved-texts', JSON.stringify(savedTexts));
+  }, [savedTexts]);
+
+  const saveText = (text) => {
+    if (!newName.trim() || !text.trim()) return;
+    setSavedTexts((prev) => [
+      ...prev,
+      { id: Date.now(), name: newName.trim(), text },
+    ]);
+    setNewName('');
+  };
+
+  const deleteText = (id) => {
+    setSavedTexts((prev) =&gt; prev.filter((t) =&gt; t.id !== id));
+  };
+
+  return (
+    &lt;div className="saved-texts"&gt;
+      &lt;h3&gt;&lt;i class="fas fa-bookmark"&gt;&lt;/i&gt; Saved Texts&lt;/h3&gt;
+
+      &lt;div className="save-form"&gt;
+        &lt;input
+          type="text"
+          placeholder="Name this text..."
+          value={newName}
+          onChange={(e) =&gt; setNewName(e.target.value)}
+        /&gt;
+      &lt;/div&gt;
+
+      {savedTexts.length === 0 ? (
+        &lt;p className="empty-msg"&gt;No saved texts yet.&lt;/p&gt;
+      ) : (
+        &lt;ul className="saved-list"&gt;
+          {savedTexts.map((item) =&gt; (
+            &lt;li key={item.id}&gt;
+              &lt;button className="saved-name" onClick={() =&gt; onSelect(item.text)}&gt;
+                {item.name}
+              &lt;/button&gt;
+              &lt;button className="delete-btn" onClick={() =&gt; deleteText(item.id)}&gt;
+                &lt;i className="fas fa-times"&gt;&lt;/i&gt;
+              &lt;/button&gt;
+            &lt;/li&gt;
+          ))}
+        &lt;/ul&gt;
+      )}
+    &lt;/div&gt;
+  );
+}</code></pre>
+
+          <div class="callout callout-tip">
+            <i class="fas fa-lightbulb"></i>
+            <p><strong>Extension idea:</strong> Add an import/export feature so users can share their saved texts as JSON files. This is useful for accessibility tools used across devices.</p>
+          </div>
+        </section>
+
+        <section id="responsive-polish">
+          <h2>9. Responsive Design &amp; Polish</h2>
+          <p>Make the app look great on all devices with mobile-first CSS and dark mode support.</p>
+
+          <h3>Mobile-First Layout</h3>
+          <pre><code>.app {
+  min-height: 100vh;
+  background: #0f0f1a;
+  color: #e2e8f0;
+}
+
+.app-header {
+  text-align: center;
+  padding: 3rem 1rem 2rem;
+}
+
+.tts-main {
+  max-width: 800px;
+  margin: 0 auto;
+  padding: 0 1rem 3rem;
+}
+
+/* Text Input */
+.text-input {
+  width: 100%;
+  min-height: 150px;
+  padding: 1rem;
+  background: #1a1a2e;
+  border: 2px solid rgba(99, 102, 241, 0.2);
+  border-radius: 12px;
+  color: #e2e8f0;
+  font-size: 1rem;
+  font-family: 'Inter', sans-serif;
+  line-height: 1.7;
+  resize: vertical;
+  outline: none;
+  transition: border-color 0.3s;
+}
+
+.text-input:focus {
+  border-color: #6366f1;
+}
+
+/* Controls Section */
+.controls-section {
+  display: flex;
+  flex-direction: column;
+  gap: 1.5rem;
+  margin-top: 1.5rem;
+}
+
+/* Player Controls */
+.player-controls {
+  display: flex;
+  gap: 0.75rem;
+  justify-content: center;
+}
+
+.control-btn {
+  display: flex;
+  align-items: center;
+  gap: 0.5rem;
+  padding: 0.875rem 1.5rem;
+  border: none;
+  border-radius: 50px;
+  font-size: 1rem;
+  font-weight: 600;
+  cursor: pointer;
+  transition: all 0.2s;
+}
+
+.play-btn, .resume-btn {
+  background: #6366f1;
+  color: white;
+}
+
+.play-btn:hover, .resume-btn:hover {
+  background: #4f46e5;
+  transform: scale(1.05);
+}
+
+.pause-btn {
+  background: #f59e0b;
+  color: #1a1a2e;
+}
+
+.stop-btn {
+  background: rgba(239, 68, 68, 0.15);
+  color: #ef4444;
+  border: 1px solid rgba(239, 68, 68, 0.3);
+}
+
+.stop-btn:disabled {
+  opacity: 0.3;
+  cursor: not-allowed;
+}
+
+/* Voice Selector */
+.voice-selector select {
+  width: 100%;
+  padding: 0.75rem 1rem;
+  background: #1a1a2e;
+  border: 2px solid rgba(99, 102, 241, 0.2);
+  border-radius: 8px;
+  color: #e2e8f0;
+  font-size: 0.95rem;
+  outline: none;
+  cursor: pointer;
+}
+
+.voice-selector label {
+  display: block;
+  margin-bottom: 0.5rem;
+  font-weight: 500;
+  color: #cbd5e1;
+}
+
+/* Dark mode is default, add light mode toggle */
+@media (prefers-color-scheme: light) {
+  .app {
+    background: #f8fafc;
+    color: #1e293b;
+  }
+
+  .text-input, .voice-selector select, .highlighted-text {
+    background: white;
+    border-color: rgba(99, 102, 241, 0.3);
+    color: #1e293b;
+  }
+}
+
+/* Responsive */
+@media (max-width: 640px) {
+  .player-controls {
+    flex-direction: column;
+  }
+
+  .control-btn {
+    justify-content: center;
+  }
+
+  .app-header h1 {
+    font-size: 1.75rem;
+  }
+}</code></pre>
+
+          <div class="callout callout-info">
+            <i class="fas fa-info-circle"></i>
+            <p><strong>Accessibility:</strong> Text-to-speech is itself an accessibility feature. Make sure your app is keyboard-navigable and that all controls have proper ARIA labels for screen reader users.</p>
+          </div>
+
+          <p>This project demonstrates how the Web Speech API can be integrated into a React application to create a powerful accessibility tool. The key takeaways are managing the speech lifecycle with custom hooks, handling asynchronous voice loading, and providing visual feedback through word highlighting. You can extend this with language translation, document reading, or a Chrome extension for reading any webpage aloud.</p>
+        </section>
+      </div>
+    </div>
+  </article>
+
+  <div class="back-to-top">
+    <a href="#top" class="btn btn-primary">
+      <i class="fas fa-arrow-up"></i> Back to Top
+    </a>
+  </div>
+
+  <footer class="footer">
+    <div class="container">
+      <div class="footer-content">
+        <div class="footer-brand">
+          <a href="../index.html" class="nav-logo">
+            <span class="logo-bracket">{</span> AB <span class="logo-bracket">}</span>
+          </a>
+          <p>Building modern web experiences with clean code, comprehensive tests, and continuous improvement.</p>
+        </div>
+        <div class="footer-links">
+          <h4>Navigation</h4>
+          <ul>
+            <li><a href="../index.html">Portfolio</a></li>
+            <li><a href="../index.html#about">About</a></li>
+            <li><a href="../index.html#projects">Projects</a></li>
+            <li><a href="../index.html#contact">Contact</a></li>
+          </ul>
+        </div>
+        <div class="footer-social">
+          <h4>Connect</h4>
+          <div class="footer-icons">
+            <a href="https://github.com/avinashbt" target="_blank"><i class="fab fa-github"></i></a>
+            <a href="https://www.linkedin.com/in/avinash-bawage-99ba58200/?locale=en_US" target="_blank"><i class="fab fa-linkedin-in"></i></a>
+            <a href="https://twitter.com/AvinashBawge" target="_blank"><i class="fab fa-twitter"></i></a>
+            <a href="mailto:avi.bawge9@gmail.com"><i class="fas fa-envelope"></i></a>
+          </div>
+        </div>
+      </div>
+      <div class="footer-bottom">
+        <p>Built with <span class="footer-heart">&hearts;</span> by Avinash Bawage &mdash; &copy; 2026</p>
+      </div>
+    </div>
+  </footer>
+
+  <script>
+    const hamburger = document.getElementById('hamburger');
+    const mobileMenu = document.getElementById('mobileMenu');
+    let overlay = document.createElement('div');
+    overlay.className = 'mobile-overlay';
+    document.body.appendChild(overlay);
+
+    function toggleMenu() {
+      hamburger.classList.toggle('active');
+      mobileMenu.classList.toggle('active');
+      overlay.classList.toggle('active');
+      document.body.style.overflow = mobileMenu.classList.contains('active') ? 'hidden' : '';
+    }
+
+    hamburger.addEventListener('click', toggleMenu);
+    overlay.addEventListener('click', toggleMenu);
+    document.querySelectorAll('.mobile-menu a').forEach(a => a.addEventListener('click', toggleMenu));
+  </script>
+</body>
+</html>

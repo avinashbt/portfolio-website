@@ -1,0 +1,729 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>React Word Counter Project | Avinash Bawage - Frontend Developer & React Engineer</title>
+  <meta name="description" content="Build a React word counter app with character count, reading time estimation, keyword density analysis, and export functionality. Complete tutorial.">
+  <meta name="keywords" content="React word counter, text analysis, reading time calculator, keyword density, React project, Vite React tutorial">
+  <link rel="shortcut icon" href="../favicon.jpg" type="image/x-icon">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800&family=JetBrains+Mono:wght@400;500&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css">
+  <link rel="stylesheet" href="../styles.css">
+  <link rel="stylesheet" href="../blog.css">
+</head>
+<body>
+
+  <!-- NAV -->
+  <nav class="nav scrolled" id="nav">
+    <div class="nav-container">
+      <a href="../index.html" class="nav-logo">
+        <span class="logo-bracket">{</span> AB <span class="logo-bracket">}</span>
+      </a>
+      <ul class="nav-links">
+        <li><a href="../index.html#about">About</a></li>
+        <li><a href="../index.html#skills">Skills</a></li>
+        <li><a href="../index.html#projects">Projects</a></li>
+        <li><a href="../blog.html" class="nav-blog-link" style="color:#6366f1">Blog</a></li>
+        <li><a href="../index.html#contact" class="nav-cta">Hire Me</a></li>
+      </ul>
+      <button class="hamburger" id="hamburger" aria-label="Toggle menu">
+        <span></span><span></span><span></span>
+      </button>
+    </div>
+  </nav>
+
+  <div class="mobile-menu" id="mobileMenu">
+    <ul>
+      <li><a href="../index.html#about">About</a></li>
+      <li><a href="../index.html#skills">Skills</a></li>
+      <li><a href="../index.html#projects">Projects</a></li>
+      <li><a href="../blog.html">Blog</a></li>
+      <li><a href="../index.html#contact">Hire Me</a></li>
+    </ul>
+  </div>
+
+  <!-- BLOG HEADER -->
+  <header class="blog-hero">
+    <div class="container">
+      <a href="../blog.html" class="blog-back"><i class="fas fa-arrow-left"></i> Back to Blog</a>
+      <h1 class="blog-hero-title">React Word Counter Project</h1>
+      <p class="blog-hero-desc">Build a powerful word counter app in React with reading time, keyword density, and export features.</p>
+    </div>
+  </header>
+
+  <article class="blog-article" id="react-word-counter">
+    <div class="container">
+      <div class="article-header">
+        <div class="article-meta">
+          <span class="article-tag">React Project</span>
+          <span class="article-date"><i class="fas fa-calendar"></i> 2026</span>
+          <span class="article-read"><i class="fas fa-clock"></i> 8 min read</span>
+        </div>
+        <h1 class="article-title">React Word Counter Project</h1>
+        <p class="article-subtitle">A practical React project that analyzes text with word count, reading time, and keyword density</p>
+        <div class="article-author">
+          <img src="../profile1.jpg" alt="Avinash Bawage" class="author-avatar">
+          <div>
+            <span class="author-name">Avinash Bawage</span>
+            <span class="author-role">Frontend Developer & React Engineer</span>
+          </div>
+        </div>
+      </div>
+
+      <div class="article-content">
+        <div class="toc">
+          <h3>Table of Contents</h3>
+          <ol>
+            <li><a href="#project-overview">Project Overview</a></li>
+            <li><a href="#setting-up">Setting Up the Project</a></li>
+            <li><a href="#text-input">Building the Text Input</a></li>
+            <li><a href="#word-count-logic">Implementing Word Count Logic</a></li>
+            <li><a href="#reading-time">Reading Time Calculation</a></li>
+            <li><a href="#keyword-density">Keyword Density Analysis</a></li>
+            <li><a href="#copy-clear">Adding Copy &amp; Clear Buttons</a></li>
+            <li><a href="#styling">Styling with CSS</a></li>
+            <li><a href="#export-results">Export Results</a></li>
+          </ol>
+        </div>
+
+        <section id="project-overview">
+          <h2>1. Project Overview</h2>
+          <p>A word counter is a deceptively simple yet incredibly useful tool. Writers, students, and professionals need to track word counts, estimate reading time, and analyze keyword usage. We'll build all of this in React.</p>
+
+          <h3>Features</h3>
+          <ul>
+            <li><strong>Word count</strong> — total words and unique words</li>
+            <li><strong>Character count</strong> — with and without spaces</li>
+            <li><strong>Reading time estimation</strong> — based on 200 words per minute</li>
+            <li><strong>Keyword density</strong> — percentage of most frequent words</li>
+            <li><strong>Copy to clipboard</strong> — one-click copy</li>
+            <li><strong>Clear button</strong> — reset the text area</li>
+            <li><strong>Export results</strong> — download stats as a text file</li>
+          </ul>
+
+          <div class="callout callout-info">
+            <i class="fas fa-info-circle"></i>
+            <p><strong>Why build this?</strong> Word counters teach fundamental React concepts: controlled components, derived state, memoization, and side effects — all in a practical, real-world context.</p>
+          </div>
+        </section>
+
+        <section id="setting-up">
+          <h2>2. Setting Up the Project</h2>
+          <p>We'll use Vite for a fast development experience with React.</p>
+
+          <pre><code>npm create vite@latest word-counter -- --template react
+cd word-counter
+npm install</code></pre>
+
+          <h3>Project Structure</h3>
+          <pre><code>word-counter/
+├── src/
+│   ├── components/
+│   │   ├── TextInput.jsx
+│   │   ├── StatsCards.jsx
+│   │   ├── KeywordDensity.jsx
+│   │   └── ActionBar.jsx
+│   ├── hooks/
+│   │   └── useTextAnalysis.js
+│   ├── utils/
+│   │   └── textUtils.js
+│   ├── App.jsx
+│   ├── App.css
+│   └── main.jsx
+└── package.json</code></pre>
+
+          <h3>Text Utility Functions</h3>
+          <pre><code>// src/utils/textUtils.js
+export const countWords = (text) => {
+  if (!text.trim()) return 0;
+  return text.trim().split(/\s+/).filter(Boolean).length;
+};
+
+export const countCharacters = (text) => text.length;
+
+export const countCharactersNoSpaces = (text) => text.replace(/\s/g, '').length;
+
+export const getUniqueWords = (text) => {
+  const words = text.toLowerCase().match(/\b[a-z']+\b/g) || [];
+  return new Set(words).size;
+};
+
+export const getReadingTime = (wordCount) => {
+  const wordsPerMinute = 200;
+  const minutes = Math.ceil(wordCount / wordsPerMinute);
+  return minutes;
+};
+
+export const getKeywordDensity = (text, topN = 5) => {
+  const words = text.toLowerCase().match(/\b[a-z']+\b/g) || [];
+  const stopWords = new Set([
+    'the', 'a', 'an', 'and', 'or', 'but', 'in', 'on', 'at', 'to',
+    'for', 'of', 'with', 'by', 'is', 'are', 'was', 'were', 'be',
+    'been', 'being', 'have', 'has', 'had', 'do', 'does', 'did',
+    'will', 'would', 'could', 'should', 'may', 'might', 'can',
+    'this', 'that', 'these', 'those', 'it', 'its', 'i', 'you',
+    'he', 'she', 'we', 'they', 'me', 'him', 'her', 'us', 'them',
+  ]);
+
+  const frequency = {};
+  words.forEach((word) => {
+    if (!stopWords.has(word) &amp;&amp; word.length > 2) {
+      frequency[word] = (frequency[word] || 0) + 1;
+    }
+  });
+
+  const totalFiltered = Object.values(frequency).reduce((a, b) => a + b, 0);
+  return Object.entries(frequency)
+    .sort(([, a], [, b]) => b - a)
+    .slice(0, topN)
+    .map(([word, count]) => ({
+      word,
+      count,
+      density: ((count / totalFiltered) * 100).toFixed(1),
+    }));
+};</code></pre>
+
+          <div class="callout callout-tip">
+            <i class="fas fa-lightbulb"></i>
+            <p><strong>Tip:</strong> Separating utility functions from components makes them independently testable and reusable across other projects.</p>
+          </div>
+        </section>
+
+        <section id="text-input">
+          <h2>3. Building the Text Input</h2>
+          <p>The text input is a controlled textarea that updates state on every keystroke, providing real-time analysis.</p>
+
+          <pre><code>// src/components/TextInput.jsx
+import { useRef, useEffect } from 'react';
+
+export default function TextInput({ text, onChange, charLimit = 5000 }) {
+  const textareaRef = useRef(null);
+  const remaining = charLimit - text.length;
+
+  useEffect(() => {
+    if (textareaRef.current) {
+      textareaRef.current.style.height = 'auto';
+      textareaRef.current.style.height = textareaRef.current.scrollHeight + 'px';
+    }
+  }, [text]);
+
+  return (
+    &lt;div className="text-input-wrapper"&gt;
+      &lt;textarea
+        ref={textareaRef}
+        className="text-input"
+        value={text}
+        onChange={(e) =&gt; {
+          if (e.target.value.length &lt;= charLimit) {
+            onChange(e.target.value);
+          }
+        }}
+        placeholder="Paste or type your text here..."
+        rows={8}
+      /&gt;
+      &lt;div className={`char-counter ${remaining &lt; 50 ? 'warning' : ''} ${remaining &lt; 10 ? 'danger' : ''}`}&gt;
+        {text.length.toLocaleString()} / {charLimit.toLocaleString()} characters
+        {remaining &lt; 50 &amp;&amp; &lt;span className="remaining"&gt; ({remaining} remaining)&lt;/span&gt;}
+      &lt;/div&gt;
+    &lt;/div&gt;
+  );
+}</code></pre>
+
+          <div class="callout callout-warning">
+            <i class="fas fa-exclamation-triangle"></i>
+            <p><strong>Performance:</strong> For very large texts, consider debouncing the analysis or using <code>useTransition</code> in React 18+ to keep the UI responsive.</p>
+          </div>
+        </section>
+
+        <section id="word-count-logic">
+          <h2>4. Implementing Word Count Logic</h2>
+          <p>We'll create a custom hook that derives all text statistics from the current input.</p>
+
+          <pre><code>// src/hooks/useTextAnalysis.js
+import { useMemo } from 'react';
+import {
+  countWords,
+  countCharacters,
+  countCharactersNoSpaces,
+  getUniqueWords,
+  getReadingTime,
+  getKeywordDensity,
+} from '../utils/textUtils';
+
+export function useTextAnalysis(text) {
+  const stats = useMemo(() => {
+    const wordCount = countWords(text);
+    const charCount = countCharacters(text);
+    const charNoSpaces = countCharactersNoSpaces(text);
+    const uniqueWords = getUniqueWords(text);
+    const readingTime = getReadingTime(wordCount);
+    const sentenceCount = text.split(/[.!?]+/).filter(Boolean).length;
+    const paragraphCount = text.split(/\n\n+/).filter(Boolean).length;
+    const keywordDensity = getKeywordDensity(text);
+
+    return {
+      wordCount,
+      charCount,
+      charNoSpaces,
+      uniqueWords,
+      readingTime,
+      sentenceCount,
+      paragraphCount,
+      keywordDensity,
+    };
+  }, [text]);
+
+  return stats;
+}</code></pre>
+
+          <p>The <code>useMemo</code> hook ensures expensive calculations only run when the text actually changes, not on every render.</p>
+        </section>
+
+        <section id="reading-time">
+          <h2>5. Reading Time Calculation</h2>
+          <p>Reading time estimation uses an average reading speed of 200 words per minute for adult readers.</p>
+
+          <pre><code>// src/utils/textUtils.js
+export const getReadingTime = (wordCount) => {
+  const wordsPerMinute = 200;
+  const minutes = Math.ceil(wordCount / wordsPerMinute);
+
+  if (minutes === 0) return 'Less than a minute';
+  if (minutes === 1) return '1 minute';
+  return `${minutes} minutes`;
+};
+
+// For more detailed breakdown
+export const getDetailedReadingTime = (wordCount) => {
+  const wordsPerMinute = 200;
+  const totalSeconds = Math.ceil((wordCount / wordsPerMinute) * 60);
+
+  if (totalSeconds &lt; 60) {
+    return { minutes: 0, seconds: totalSeconds, display: `${totalSeconds} seconds` };
+  }
+
+  const minutes = Math.floor(totalSeconds / 60);
+  const seconds = totalSeconds % 60;
+  return {
+    minutes,
+    seconds,
+    display: seconds > 0 ? `${minutes} min ${seconds} sec` : `${minutes} min`,
+  };
+};</code></pre>
+
+          <div class="callout callout-info">
+            <i class="fas fa-info-circle"></i>
+            <p><strong>Accuracy:</strong> The 200 WPM average is for silent reading. Audio narration is typically 150 WPM, and speed readers average 400+ WPM. Adjust based on your audience.</p>
+          </div>
+        </section>
+
+        <section id="keyword-density">
+          <h2>6. Keyword Density Analysis</h2>
+          <p>Keyword density shows which words appear most frequently in your text, excluding common stop words.</p>
+
+          <h3>KeywordDensity Component</h3>
+          <pre><code>// src/components/KeywordDensity.jsx
+export default function KeywordDensity({ keywords }) {
+  if (keywords.length === 0) return null;
+
+  const maxCount = keywords[0]?.count || 1;
+
+  return (
+    &lt;div className="keyword-density"&gt;
+      &lt;h3&gt;Top Keywords&lt;/h3&gt;
+      &lt;div className="keyword-list"&gt;
+        {keywords.map(({ word, count, density }) =&gt; (
+          &lt;div key={word} className="keyword-item"&gt;
+            &lt;div className="keyword-header"&gt;
+              &lt;span className="keyword-word"&gt;{word}&lt;/span&gt;
+              &lt;span className="keyword-stats"&gt;
+                {count} times ({density}%)
+              &lt;/span&gt;
+            &lt;/div&gt;
+            &lt;div className="keyword-bar"&gt;
+              &lt;div
+                className="keyword-fill"
+                style={{ width: `${(count / maxCount) * 100}%` }}
+              /&gt;
+            &lt;/div&gt;
+          &lt;/div&gt;
+        ))}
+      &lt;/div&gt;
+    &lt;/div&gt;
+  );
+}</code></pre>
+
+          <h3>CSS for Keyword Bars</h3>
+          <pre><code>.keyword-item {
+  margin-bottom: 0.75rem;
+}
+
+.keyword-header {
+  display: flex;
+  justify-content: space-between;
+  margin-bottom: 0.25rem;
+}
+
+.keyword-word {
+  font-weight: 600;
+  color: #6366f1;
+  text-transform: capitalize;
+}
+
+.keyword-stats {
+  color: #94a3b8;
+  font-size: 0.875rem;
+}
+
+.keyword-bar {
+  height: 6px;
+  background: rgba(99, 102, 241, 0.1);
+  border-radius: 3px;
+  overflow: hidden;
+}
+
+.keyword-fill {
+  height: 100%;
+  background: linear-gradient(90deg, #6366f1, #8b5cf6);
+  border-radius: 3px;
+  transition: width 0.3s ease;
+}</code></pre>
+        </section>
+
+        <section id="copy-clear">
+          <h2>7. Adding Copy &amp; Clear Buttons</h2>
+          <p>We'll add utility buttons for copying text to clipboard and clearing the input.</p>
+
+          <pre><code>// src/components/ActionBar.jsx
+import { useState } from 'react';
+
+export default function ActionBar({ text, onClear, stats }) {
+  const [copied, setCopied] = useState(false);
+
+  const handleCopy = async () => {
+    try {
+      await navigator.clipboard.writeText(text);
+      setCopied(true);
+      setTimeout(() =&gt; setCopied(false), 2000);
+    } catch (err) {
+      // Fallback for older browsers
+      const textarea = document.createElement('textarea');
+      textarea.value = text;
+      document.body.appendChild(textarea);
+      textarea.select();
+      document.execCommand('copy');
+      document.body.removeChild(textarea);
+      setCopied(true);
+      setTimeout(() =&gt; setCopied(false), 2000);
+    }
+  };
+
+  return (
+    &lt;div className="action-bar"&gt;
+      &lt;button
+        className="action-btn copy-btn"
+        onClick={handleCopy}
+        disabled={!text.trim()}
+      &gt;
+        &lt;i className={`fas ${copied ? 'fa-check' : 'fa-copy'}`}&gt;&lt;/i&gt;
+        {copied ? 'Copied!' : 'Copy Text'}
+      &lt;/button&gt;
+
+      &lt;button
+        className="action-btn clear-btn"
+        onClick={onClear}
+        disabled={!text.trim()}
+      &gt;
+        &lt;i className="fas fa-trash-alt"&gt;&lt;/i&gt;
+        Clear
+      &lt;/button&gt;
+    &lt;/div&gt;
+  );
+}</code></pre>
+
+          <div class="callout callout-tip">
+            <i class="fas fa-lightbulb"></i>
+            <p><strong>Clipboard API:</strong> <code>navigator.clipboard.writeText()</code> is the modern approach but requires HTTPS or localhost. Always provide a fallback using <code>document.execCommand('copy')</code> for compatibility.</p>
+          </div>
+        </section>
+
+        <section id="styling">
+          <h2>8. Styling with CSS</h2>
+          <p>A clean, modern UI with responsive stats cards that adapt to different screen sizes.</p>
+
+          <pre><code>/* Stats Cards */
+.stats-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(140px, 1fr));
+  gap: 1rem;
+  margin: 1.5rem 0;
+}
+
+.stat-card {
+  background: linear-gradient(135deg, #1a1a2e, #16213e);
+  border-radius: 12px;
+  padding: 1.25rem;
+  text-align: center;
+  border: 1px solid rgba(99, 102, 241, 0.1);
+  transition: transform 0.2s, border-color 0.2s;
+}
+
+.stat-card:hover {
+  transform: translateY(-2px);
+  border-color: rgba(99, 102, 241, 0.3);
+}
+
+.stat-value {
+  font-size: 2rem;
+  font-weight: 800;
+  color: #6366f1;
+  line-height: 1;
+  margin-bottom: 0.25rem;
+}
+
+.stat-label {
+  font-size: 0.8rem;
+  color: #94a3b8;
+  text-transform: uppercase;
+  letter-spacing: 0.05em;
+}
+
+/* Text Input */
+.text-input-wrapper {
+  position: relative;
+}
+
+.text-input {
+  width: 100%;
+  min-height: 200px;
+  padding: 1.25rem;
+  background: #1a1a2e;
+  border: 2px solid rgba(99, 102, 241, 0.2);
+  border-radius: 12px;
+  color: #e2e8f0;
+  font-size: 1rem;
+  font-family: 'Inter', sans-serif;
+  line-height: 1.7;
+  resize: vertical;
+  outline: none;
+  transition: border-color 0.3s;
+}
+
+.text-input:focus {
+  border-color: #6366f1;
+}
+
+.text-input::placeholder {
+  color: #4a5568;
+}
+
+.char-counter {
+  text-align: right;
+  padding: 0.5rem 0;
+  font-size: 0.85rem;
+  color: #94a3b8;
+}
+
+.char-counter.warning {
+  color: #f59e0b;
+}
+
+.char-counter.danger {
+  color: #ef4444;
+}
+
+/* Action Buttons */
+.action-bar {
+  display: flex;
+  gap: 0.75rem;
+  margin-top: 1rem;
+}
+
+.action-btn {
+  display: flex;
+  align-items: center;
+  gap: 0.5rem;
+  padding: 0.75rem 1.25rem;
+  border: none;
+  border-radius: 8px;
+  font-size: 0.9rem;
+  font-weight: 500;
+  cursor: pointer;
+  transition: all 0.2s;
+}
+
+.copy-btn {
+  background: #6366f1;
+  color: white;
+}
+
+.copy-btn:hover {
+  background: #4f46e5;
+}
+
+.clear-btn {
+  background: rgba(239, 68, 68, 0.1);
+  color: #ef4444;
+  border: 1px solid rgba(239, 68, 68, 0.2);
+}
+
+.clear-btn:hover {
+  background: rgba(239, 68, 68, 0.2);
+}
+
+.action-btn:disabled {
+  opacity: 0.4;
+  cursor: not-allowed;
+}
+
+/* Mobile Responsive */
+@media (max-width: 640px) {
+  .stats-grid {
+    grid-template-columns: repeat(2, 1fr);
+  }
+
+  .stat-value {
+    font-size: 1.5rem;
+  }
+
+  .action-bar {
+    flex-direction: column;
+  }
+
+  .action-btn {
+    justify-content: center;
+  }
+}</code></pre>
+        </section>
+
+        <section id="export-results">
+          <h2>9. Export Results</h2>
+          <p>Finally, let's add the ability to export all analysis results as a downloadable text file.</p>
+
+          <pre><code>// src/utils/exportUtils.js
+export const exportResults = (text, stats) => {
+  const report = `
+TEXT ANALYSIS REPORT
+====================
+Generated: ${new Date().toLocaleDateString()}
+
+WORD STATISTICS
+---------------
+Total Words:       ${stats.wordCount}
+Unique Words:      ${stats.uniqueWords}
+Characters:        ${stats.charCount}
+Characters (no spaces): ${stats.charNoSpaces}
+Sentences:         ${stats.sentenceCount}
+Paragraphs:        ${stats.paragraphCount}
+Estimated Reading Time: ${stats.readingTime}
+
+TOP KEYWORDS
+-------------
+${stats.keywordDensity.map((k, i) =>
+  `${i + 1}. "${k.word}" — ${k.count} times (${k.density}%)`
+).join('\n')}
+
+ORIGINAL TEXT
+--------------
+${text}
+  `.trim();
+
+  const blob = new Blob([report], { type: 'text/plain' });
+  const url = URL.createObjectURL(blob);
+  const link = document.createElement('a');
+  link.href = url;
+  link.download = `text-analysis-${Date.now()}.txt`;
+  document.body.appendChild(link);
+  link.click();
+  document.body.removeChild(link);
+  URL.revokeObjectURL(url);
+};</code></pre>
+
+          <h3>Using the Export in ActionBar</h3>
+          <pre><code>// Updated ActionBar with export
+import { exportResults } from '../utils/exportUtils';
+
+// Add to ActionBar component
+&lt;button
+  className="action-btn export-btn"
+  onClick={() =&gt; exportResults(text, stats)}
+  disabled={!text.trim()}
+&gt;
+  &lt;i className="fas fa-download"&gt;&lt;/i&gt;
+  Export Report
+&lt;/button&gt;</code></pre>
+
+          <div class="callout callout-info">
+            <i class="fas fa-info-circle"></i>
+            <p><strong>Tip:</strong> Using <code>URL.createObjectURL</code> is more reliable than data URLs for large text blobs. Always revoke the URL after the download to free memory.</p>
+          </div>
+
+          <p>This word counter demonstrates how a seemingly simple tool can teach powerful React patterns. The key lessons are deriving state from props, memoizing expensive calculations, and building reusable utility functions. You can extend this further by adding spell checking, sentiment analysis, or readability scores like Flesch-Kincaid.</p>
+        </section>
+      </div>
+    </div>
+  </article>
+
+  <div class="back-to-top">
+    <a href="#top" class="btn btn-primary">
+      <i class="fas fa-arrow-up"></i> Back to Top
+    </a>
+  </div>
+
+  <footer class="footer">
+    <div class="container">
+      <div class="footer-content">
+        <div class="footer-brand">
+          <a href="../index.html" class="nav-logo">
+            <span class="logo-bracket">{</span> AB <span class="logo-bracket">}</span>
+          </a>
+          <p>Building modern web experiences with clean code, comprehensive tests, and continuous improvement.</p>
+        </div>
+        <div class="footer-links">
+          <h4>Navigation</h4>
+          <ul>
+            <li><a href="../index.html">Portfolio</a></li>
+            <li><a href="../index.html#about">About</a></li>
+            <li><a href="../index.html#projects">Projects</a></li>
+            <li><a href="../index.html#contact">Contact</a></li>
+          </ul>
+        </div>
+        <div class="footer-social">
+          <h4>Connect</h4>
+          <div class="footer-icons">
+            <a href="https://github.com/avinashbt" target="_blank"><i class="fab fa-github"></i></a>
+            <a href="https://www.linkedin.com/in/avinash-bawage-99ba58200/?locale=en_US" target="_blank"><i class="fab fa-linkedin-in"></i></a>
+            <a href="https://twitter.com/AvinashBawge" target="_blank"><i class="fab fa-twitter"></i></a>
+            <a href="mailto:avi.bawge9@gmail.com"><i class="fas fa-envelope"></i></a>
+          </div>
+        </div>
+      </div>
+      <div class="footer-bottom">
+        <p>Built with <span class="footer-heart">&hearts;</span> by Avinash Bawage &mdash; &copy; 2026</p>
+      </div>
+    </div>
+  </footer>
+
+  <script>
+    const hamburger = document.getElementById('hamburger');
+    const mobileMenu = document.getElementById('mobileMenu');
+    let overlay = document.createElement('div');
+    overlay.className = 'mobile-overlay';
+    document.body.appendChild(overlay);
+
+    function toggleMenu() {
+      hamburger.classList.toggle('active');
+      mobileMenu.classList.toggle('active');
+      overlay.classList.toggle('active');
+      document.body.style.overflow = mobileMenu.classList.contains('active') ? 'hidden' : '';
+    }
+
+    hamburger.addEventListener('click', toggleMenu);
+    overlay.addEventListener('click', toggleMenu);
+    document.querySelectorAll('.mobile-menu a').forEach(a => a.addEventListener('click', toggleMenu));
+  </script>
+</body>
+</html>

@@ -1,0 +1,948 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>React API Integration for Beginners | Avinash Bawage - Frontend Developer &amp; React Engineer</title>
+  <meta name="description" content="Learn React API integration from scratch — GET/POST requests with axios, loading states, pagination, authentication, caching with React Query, and best practices.">
+  <meta name="keywords" content="React API integration, axios React, REST API, React Query, TanStack Query, useEffect API, React tutorial beginners">
+  <link rel="shortcut icon" href="../favicon.jpg" type="image/x-icon">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800&family=JetBrains+Mono:wght@400;500&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css">
+  <link rel="stylesheet" href="../styles.css">
+  <link rel="stylesheet" href="../blog.css">
+</head>
+<body>
+
+  <!-- NAV -->
+  <nav class="nav scrolled" id="nav">
+    <div class="nav-container">
+      <a href="../index.html" class="nav-logo">
+        <span class="logo-bracket">{</span> AB <span class="logo-bracket">}</span>
+      </a>
+      <ul class="nav-links">
+        <li><a href="../index.html#about">About</a></li>
+        <li><a href="../index.html#skills">Skills</a></li>
+        <li><a href="../index.html#projects">Projects</a></li>
+        <li><a href="../blog.html" class="nav-blog-link" style="color:#6366f1">Blog</a></li>
+        <li><a href="../index.html#contact" class="nav-cta">Hire Me</a></li>
+      </ul>
+      <button class="hamburger" id="hamburger" aria-label="Toggle menu">
+        <span></span><span></span><span></span>
+      </button>
+    </div>
+  </nav>
+
+  <div class="mobile-menu" id="mobileMenu">
+    <ul>
+      <li><a href="../index.html#about">About</a></li>
+      <li><a href="../index.html#skills">Skills</a></li>
+      <li><a href="../index.html#projects">Projects</a></li>
+      <li><a href="../blog.html">Blog</a></li>
+      <li><a href="../index.html#contact">Hire Me</a></li>
+    </ul>
+  </div>
+
+  <!-- BLOG HEADER -->
+  <header class="blog-hero">
+    <div class="container">
+      <a href="../blog.html" class="blog-back"><i class="fas fa-arrow-left"></i> Back to Blog</a>
+      <h1 class="blog-hero-title">React API Integration for Beginners</h1>
+      <p class="blog-hero-desc">A comprehensive guide to connecting your React app to any REST or GraphQL API — from basic GET requests to caching with React Query.</p>
+    </div>
+  </header>
+
+  <article class="blog-article" id="react-api-integration">
+    <div class="container">
+      <div class="article-header">
+        <div class="article-meta">
+          <span class="article-tag">React</span>
+          <span class="article-date"><i class="fas fa-calendar"></i> 2026</span>
+          <span class="article-read"><i class="fas fa-clock"></i> 10 min read</span>
+        </div>
+        <h1 class="article-title">React API Integration for Beginners</h1>
+        <p class="article-subtitle">Everything you need to know about connecting React applications to external APIs</p>
+        <div class="article-author">
+          <img src="../profile1.jpg" alt="Avinash Bawage" class="author-avatar">
+          <div>
+            <span class="author-name">Avinash Bawage</span>
+            <span class="author-role">Frontend Developer &amp; React Engineer</span>
+          </div>
+        </div>
+      </div>
+
+      <div class="article-content">
+        <div class="toc">
+          <h3>Table of Contents</h3>
+          <ol>
+            <li><a href="#what-is-api">What is API Integration</a></li>
+            <li><a href="#setting-up-project">Setting Up a React Project</a></li>
+            <li><a href="#fetching-with-useeffect">Fetching Data with useEffect</a></li>
+            <li><a href="#using-axios">Using Axios</a></li>
+            <li><a href="#post-requests">POST Requests</a></li>
+            <li><a href="#loading-error-states">Loading &amp; Error States</a></li>
+            <li><a href="#pagination">Pagination</a></li>
+            <li><a href="#authentication">Authentication with APIs</a></li>
+            <li><a href="#caching">Caching API Responses</a></li>
+            <li><a href="#best-practices">Best Practices</a></li>
+          </ol>
+        </div>
+
+        <section id="what-is-api">
+          <h2>1. What is API Integration</h2>
+          <p>API (Application Programming Interface) integration is how your frontend React app communicates with backend servers, databases, and third-party services. Almost every modern web application needs to fetch, create, update, or delete data from remote servers.</p>
+
+          <h3>REST vs GraphQL</h3>
+          <ul>
+            <li><strong>REST (Representational State Transfer):</strong> Uses multiple endpoints with HTTP methods (GET, POST, PUT, DELETE). Each endpoint returns a fixed data structure. Example: <code>/api/users</code>, <code>/api/posts/123</code></li>
+            <li><strong>GraphQL:</strong> A single endpoint where the client specifies exactly what data it needs. Reduces over-fetching and under-fetching. Example: <code>/graphql</code> with a query body</li>
+          </ul>
+
+          <h3>HTTP Methods</h3>
+          <pre><code>GET    /api/users          — Fetch all users
+GET    /api/users/123      — Fetch single user
+POST   /api/users          — Create a new user
+PUT    /api/users/123      — Update user 123
+PATCH  /api/users/123      — Partial update user 123
+DELETE /api/users/123      — Delete user 123</code></pre>
+
+          <div class="callout callout-info">
+            <i class="fas fa-info-circle"></i>
+            <p><strong>This guide focuses on REST APIs</strong> since they're the most common and a great starting point. Once you're comfortable with REST, exploring GraphQL with Apollo Client or urql is a natural next step.</p>
+          </div>
+        </section>
+
+        <section id="setting-up-project">
+          <h2>2. Setting Up a React Project</h2>
+          <p>We'll use Vite for a fast, modern development setup.</p>
+
+          <pre><code>npm create vite@latest api-demo -- --template react
+cd api-demo
+npm install
+npm install axios</code></pre>
+
+          <h3>Project Structure</h3>
+          <pre><code>api-demo/
+├── src/
+│   ├── components/
+│   │   ├── UserList.jsx
+│   │   ├── UserForm.jsx
+│   │   ├── PostList.jsx
+│   │   ├── Pagination.jsx
+│   │   ├── Spinner.jsx
+│   │   └── ErrorMessage.jsx
+│   ├── services/
+│   │   └── api.js
+│   ├── context/
+│   │   └── AuthContext.jsx
+│   ├── hooks/
+│   │   └── useFetch.js
+│   ├── App.jsx
+│   └── main.jsx
+├── .env
+└── package.json</code></pre>
+
+          <h3>Environment Variables</h3>
+          <pre><code># .env
+VITE_API_BASE_URL=https://jsonplaceholder.typicode.com
+VITE_API_KEY=your_api_key_here</code></pre>
+
+          <div class="callout callout-warning">
+            <i class="fas fa-exclamation-triangle"></i>
+            <p><strong>Never expose API keys in frontend code.</strong> For sensitive keys, always use a backend proxy. The <code>.env</code> variables are embedded in the JavaScript bundle and visible to anyone who inspects it.</p>
+          </div>
+        </section>
+
+        <section id="fetching-with-useeffect">
+          <h2>3. Fetching Data with useEffect</h2>
+          <p>The most fundamental pattern for API calls in React is using <code>useEffect</code> combined with <code>async/await</code>.</p>
+
+          <h3>Custom useFetch Hook</h3>
+          <pre><code>// src/hooks/useFetch.js
+import { useState, useEffect } from 'react';
+
+export function useFetch(url) {
+  const [data, setData] = useState(null);
+  const [loading, setLoading] = useState(true);
+  const [error, setError] = useState(null);
+
+  useEffect(() => {
+    const controller = new AbortController();
+
+    const fetchData = async () => {
+      setLoading(true);
+      setError(null);
+
+      try {
+        const response = await fetch(url, {
+          signal: controller.signal,
+        });
+
+        if (!response.ok) {
+          throw new Error(`HTTP error! status: ${response.status}`);
+        }
+
+        const result = await response.json();
+        setData(result);
+      } catch (err) {
+        if (err.name !== 'AbortError') {
+          setError(err.message);
+        }
+      } finally {
+        setLoading(false);
+      }
+    };
+
+    fetchData();
+
+    // Cleanup: abort request if component unmounts
+    return () => controller.abort();
+  }, [url]);
+
+  return { data, loading, error };
+}</code></pre>
+
+          <h3>Using the Hook</h3>
+          <pre><code>// src/components/UserList.jsx
+import { useFetch } from '../hooks/useFetch';
+
+export default function UserList() {
+  const { data: users, loading, error } = useFetch(
+    'https://jsonplaceholder.typicode.com/users'
+  );
+
+  if (loading) return &lt;Spinner /&gt;;
+  if (error) return &lt;ErrorMessage message={error} /&gt;;
+
+  return (
+    &lt;div className="user-list"&gt;
+      &lt;h2&gt;Users ({users.length})&lt;/h2&gt;
+      {users.map((user) =&gt; (
+        &lt;div key={user.id} className="user-card"&gt;
+          &lt;h3&gt;{user.name}&lt;/h3&gt;
+          &lt;p&gt;{user.email}&lt;/p&gt;
+          &lt;p&gt;{user.company.name}&lt;/p&gt;
+        &lt;/div&gt;
+      ))}
+    &lt;/div&gt;
+  );
+}</code></pre>
+
+          <div class="callout callout-info">
+            <i class="fas fa-info-circle"></i>
+            <p><strong>Cleanup is critical:</strong> The <code>AbortController</code> cancels the fetch request if the component unmounts before it completes. Without this, you'll get "Can't perform a React state update on an unmounted component" warnings and potential memory leaks.</p>
+          </div>
+        </section>
+
+        <section id="using-axios">
+          <h2>4. Using Axios</h2>
+          <p>Axios is a popular HTTP client that provides automatic JSON parsing, request/response interceptors, and better error handling than the native fetch API.</p>
+
+          <h3>API Service Setup</h3>
+          <pre><code>// src/services/api.js
+import axios from 'axios';
+
+const API_BASE = import.meta.env.VITE_API_BASE_URL;
+
+const api = axios.create({
+  baseURL: API_BASE,
+  timeout: 10000,
+  headers: {
+    'Content-Type': 'application/json',
+  },
+});
+
+// Request interceptor — runs before every request
+api.interceptors.request.use(
+  (config) => {
+    const token = localStorage.getItem('auth-token');
+    if (token) {
+      config.headers.Authorization = `Bearer ${token}`;
+    }
+    return config;
+  },
+  (error) => Promise.reject(error)
+);
+
+// Response interceptor — runs after every response
+api.interceptors.response.use(
+  (response) => response.data,
+  (error) => {
+    if (error.response) {
+      // Server responded with error status
+      const message = error.response.data?.message || error.message;
+      return Promise.reject(new Error(message));
+    }
+    if (error.request) {
+      // Request made but no response received
+      return Promise.reject(new Error('Network error — please check your connection'));
+    }
+    return Promise.reject(error);
+  }
+);
+
+// API methods
+export const getUsers = () => api.get('/users');
+export const getUserById = (id) => api.get(`/users/${id}`);
+export const createUser = (data) => api.post('/users', data);
+export const updateUser = (id, data) => api.put(`/users/${id}`, data);
+export const deleteUser = (id) => api.delete(`/users/${id}`);
+
+export default api;</code></pre>
+
+          <h3>Advantages Over Fetch</h3>
+          <ul>
+            <li>Automatic JSON parsing (no <code>.json()</code> call needed)</li>
+            <li>Built-in request timeout support</li>
+            <li>Interceptors for auth tokens and error handling</li>
+            <li>Better error objects with response data</li>
+            <li>Request cancellation via AbortController</li>
+          </ul>
+
+          <div class="callout callout-tip">
+            <i class="fas fa-lightbulb"></i>
+            <p><strong>Tip:</strong> The response interceptor automatically unwraps <code>response.data</code>, so your components receive the data directly without needing to call <code>.json()</code> or access <code>.data</code>.</p>
+          </div>
+        </section>
+
+        <section id="post-requests">
+          <h2>5. POST Requests</h2>
+          <p>Sending data to a server is essential for creating new resources. Here's how to handle form submissions.</p>
+
+          <pre><code>// src/components/UserForm.jsx
+import { useState } from 'react';
+import { createUser } from '../services/api';
+
+export default function UserForm({ onUserCreated }) {
+  const [formData, setFormData] = useState({
+    name: '',
+    email: '',
+    phone: '',
+  });
+  const [submitting, setSubmitting] = useState(false);
+  const [error, setError] = useState(null);
+  const [success, setSuccess] = useState(false);
+
+  const handleChange = (e) => {
+    const { name, value } = e.target;
+    setFormData((prev) =&gt; ({ ...prev, [name]: value }));
+  };
+
+  const handleSubmit = async (e) => {
+    e.preventDefault();
+    setSubmitting(true);
+    setError(null);
+    setSuccess(false);
+
+    try {
+      const newUser = await createUser(formData);
+      setSuccess(true);
+      setFormData({ name: '', email: '', phone: '' });
+      onUserCreated?.(newUser);
+    } catch (err) {
+      setError(err.message);
+    } finally {
+      setSubmitting(false);
+    }
+  };
+
+  return (
+    &lt;form className="user-form" onSubmit={handleSubmit}&gt;
+      &lt;h3&gt;Create New User&lt;/h3&gt;
+
+      {error &amp;&amp; &lt;div className="form-error"&gt;{error}&lt;/div&gt;}
+      {success &amp;&amp; &lt;div className="form-success"&gt;User created successfully!&lt;/div&gt;}
+
+      &lt;div className="form-group"&gt;
+        &lt;label htmlFor="name"&gt;Name&lt;/label&gt;
+        &lt;input
+          type="text"
+          id="name"
+          name="name"
+          value={formData.name}
+          onChange={handleChange}
+          required
+        /&gt;
+      &lt;/div&gt;
+
+      &lt;div className="form-group"&gt;
+        &lt;label htmlFor="email"&gt;Email&lt;/label&gt;
+        &lt;input
+          type="email"
+          id="email"
+          name="email"
+          value={formData.email}
+          onChange={handleChange}
+          required
+        /&gt;
+      &lt;/div&gt;
+
+      &lt;div className="form-group"&gt;
+        &lt;label htmlFor="phone"&gt;Phone&lt;/label&gt;
+        &lt;input
+          type="tel"
+          id="phone"
+          name="phone"
+          value={formData.phone}
+          onChange={handleChange}
+        /&gt;
+      &lt;/div&gt;
+
+      &lt;button type="submit" disabled={submitting}&gt;
+        {submitting ? 'Creating...' : 'Create User'}
+      &lt;/button&gt;
+    &lt;/form&gt;
+  );
+}</code></pre>
+
+          <div class="callout callout-warning">
+            <i class="fas fa-exclamation-triangle"></i>
+            <p><strong>Always validate on the server too.</strong> Client-side validation improves UX but can be bypassed. Your backend must validate all incoming data regardless of frontend checks.</p>
+          </div>
+        </section>
+
+        <section id="loading-error-states">
+          <h2>6. Loading &amp; Error States</h2>
+          <p>Proper loading and error handling is what separates a polished app from a frustrating one.</p>
+
+          <h3>Spinner Component</h3>
+          <pre><code>// src/components/Spinner.jsx
+export default function Spinner({ size = 'medium', message = 'Loading...' }) {
+  return (
+    &lt;div className={`spinner-wrapper spinner-${size}`}&gt;
+      &lt;div className="spinner"&gt;&lt;/div&gt;
+      {message &amp;&amp; &lt;p className="spinner-message"&gt;{message}&lt;/p&gt;}
+    &lt;/div&gt;
+  );
+}</code></pre>
+
+          <h3>Error Boundary Component</h3>
+          <pre><code>// src/components/ErrorBoundary.jsx
+import { Component } from 'react';
+
+export default class ErrorBoundary extends Component {
+  constructor(props) {
+    super(props);
+    this.state = { hasError: false, error: null };
+  }
+
+  static getDerivedStateFromError(error) {
+    return { hasError: true, error };
+  }
+
+  componentDidCatch(error, errorInfo) {
+    console.error('Error caught by boundary:', error, errorInfo);
+  }
+
+  render() {
+    if (this.state.hasError) {
+      return (
+        &lt;div className="error-boundary"&gt;
+          &lt;h2&gt;Something went wrong&lt;/h2&gt;
+          &lt;p&gt;{this.state.error?.message}&lt;/p&gt;
+          &lt;button onClick={() =&gt; this.setState({ hasError: false })}&gt;
+            Try Again
+          &lt;/button&gt;
+        &lt;/div&gt;
+      );
+    }
+
+    return this.props.children;
+  }
+}</code></pre>
+
+          <h3>Retry Logic Hook</h3>
+          <pre><code>// src/hooks/useFetchWithRetry.js
+import { useState, useEffect, useCallback } from 'react';
+
+export function useFetchWithRetry(url, maxRetries = 3) {
+  const [data, setData] = useState(null);
+  const [loading, setLoading] = useState(true);
+  const [error, setError] = useState(null);
+  const [retryCount, setRetryCount] = useState(0);
+
+  const fetchData = useCallback(async () => {
+    setLoading(true);
+    setError(null);
+
+    for (let attempt = 0; attempt &lt;= maxRetries; attempt++) {
+      try {
+        const response = await fetch(url);
+        if (!response.ok) throw new Error(`HTTP ${response.status}`);
+        const result = await response.json();
+        setData(result);
+        setLoading(false);
+        return;
+      } catch (err) {
+        if (attempt === maxRetries) {
+          setError(err.message);
+          setLoading(false);
+          return;
+        }
+        // Wait before retrying (exponential backoff)
+        await new Promise((r) =&gt; setTimeout(r, 1000 * Math.pow(2, attempt)));
+      }
+    }
+  }, [url, maxRetries]);
+
+  useEffect(() => {
+    fetchData();
+  }, [fetchData, retryCount]);
+
+  const retry = () =&gt; setRetryCount((c) =&gt; c + 1);
+
+  return { data, loading, error, retry };
+}</code></pre>
+
+          <div class="callout callout-tip">
+            <i class="fas fa-lightbulb"></i>
+            <p><strong>Exponential backoff:</strong> Delay each retry attempt exponentially (1s, 2s, 4s). This prevents hammering a struggling server and gives it time to recover.</p>
+          </div>
+        </section>
+
+        <section id="pagination">
+          <h2>7. Pagination</h2>
+          <p>For large datasets, pagination is essential. We'll implement both page-number and infinite-scroll approaches.</p>
+
+          <h3>Page Number Pagination</h3>
+          <pre><code>// src/components/Pagination.jsx
+export default function Pagination({ currentPage, totalPages, onPageChange }) {
+  const getPageNumbers = () => {
+    const pages = [];
+    const maxVisible = 5;
+
+    let start = Math.max(1, currentPage - Math.floor(maxVisible / 2));
+    let end = Math.min(totalPages, start + maxVisible - 1);
+
+    if (end - start &lt; maxVisible - 1) {
+      start = Math.max(1, end - maxVisible + 1);
+    }
+
+    for (let i = start; i &lt;= end; i++) {
+      pages.push(i);
+    }
+    return pages;
+  };
+
+  return (
+    &lt;div className="pagination"&gt;
+      &lt;button
+        className="page-btn"
+        onClick={() =&gt; onPageChange(currentPage - 1)}
+        disabled={currentPage === 1}
+      &gt;
+        &lt;i className="fas fa-chevron-left"&gt;&lt;/i&gt;
+      &lt;/button&gt;
+
+      {getPageNumbers().map((page) =&gt; (
+        &lt;button
+          key={page}
+          className={`page-btn ${page === currentPage ? 'active' : ''}`}
+          onClick={() =&gt; onPageChange(page)}
+        &gt;
+          {page}
+        &lt;/button&gt;
+      ))}
+
+      &lt;button
+        className="page-btn"
+        onClick={() =&gt; onPageChange(currentPage + 1)}
+        disabled={currentPage === totalPages}
+      &gt;
+        &lt;i className="fas fa-chevron-right"&gt;&lt;/i&gt;
+      &lt;/button&gt;
+    &lt;/div&gt;
+  );
+}</code></pre>
+
+          <h3>Using Pagination in a Component</h3>
+          <pre><code>// src/components/PostList.jsx
+import { useState, useEffect } from 'react';
+import Pagination from './Pagination';
+import Spinner from './Spinner';
+
+const POSTS_PER_PAGE = 10;
+
+export default function PostList() {
+  const [posts, setPosts] = useState([]);
+  const [loading, setLoading] = useState(true);
+  const [currentPage, setCurrentPage] = useState(1);
+  const [totalPosts, setTotalPosts] = useState(0);
+
+  useEffect(() => {
+    const fetchPosts = async () => {
+      setLoading(true);
+      try {
+        const res = await fetch(
+          `https://jsonplaceholder.typicode.com/posts?_page=${currentPage}&_limit=${POSTS_PER_PAGE}`
+        );
+        const data = await res.json();
+        const total = parseInt(res.headers.get('X-Total-Count') || '100');
+        setPosts(data);
+        setTotalPosts(total);
+      } catch (err) {
+        console.error(err);
+      } finally {
+        setLoading(false);
+      }
+    };
+    fetchPosts();
+  }, [currentPage]);
+
+  const totalPages = Math.ceil(totalPosts / POSTS_PER_PAGE);
+
+  if (loading) return &lt;Spinner /&gt;;
+
+  return (
+    &lt;div&gt;
+      &lt;div className="posts-grid"&gt;
+        {posts.map((post) =&gt; (
+          &lt;article key={post.id} className="post-card"&gt;
+            &lt;h3&gt;{post.title}&lt;/h3&gt;
+            &lt;p&gt;{post.body.substring(0, 100)}...&lt;/p&gt;
+          &lt;/article&gt;
+        ))}
+      &lt;/div&gt;
+
+      &lt;Pagination
+        currentPage={currentPage}
+        totalPages={totalPages}
+        onPageChange={setCurrentPage}
+      /&gt;
+    &lt;/div&gt;
+  );
+}</code></pre>
+
+          <div class="callout callout-info">
+            <i class="fas fa-info-circle"></i>
+            <p><strong>When to use infinite scroll vs pagination:</strong> Use pagination for content that users might want to jump to (search results, admin dashboards). Use infinite scroll for feeds and timelines where linear browsing is natural (social media, product listings).</p>
+          </div>
+        </section>
+
+        <section id="authentication">
+          <h2>8. Authentication with APIs</h2>
+          <p>Most real-world APIs require authentication. We'll implement token-based auth using React Context.</p>
+
+          <pre><code>// src/context/AuthContext.jsx
+import { createContext, useContext, useState, useEffect } from 'react';
+import api from '../services/api';
+
+const AuthContext = createContext(null);
+
+export function AuthProvider({ children }) {
+  const [user, setUser] = useState(null);
+  const [token, setToken] = useState(() =&gt; localStorage.getItem('auth-token'));
+  const [loading, setLoading] = useState(true);
+
+  useEffect(() => {
+    if (token) {
+      api.defaults.headers.common['Authorization'] = `Bearer ${token}`;
+      fetchCurrentUser();
+    } else {
+      setLoading(false);
+    }
+  }, [token]);
+
+  const fetchCurrentUser = async () => {
+    try {
+      const userData = await api.get('/auth/me');
+      setUser(userData);
+    } catch {
+      logout();
+    } finally {
+      setLoading(false);
+    }
+  };
+
+  const login = async (email, password) => {
+    const response = await api.post('/auth/login', { email, password });
+    const { token: newToken, user: userData } = response;
+    localStorage.setItem('auth-token', newToken);
+    setToken(newToken);
+    setUser(userData);
+  };
+
+  const logout = () => {
+    localStorage.removeItem('auth-token');
+    delete api.defaults.headers.common['Authorization'];
+    setToken(null);
+    setUser(null);
+  };
+
+  return (
+    &lt;AuthContext.Provider value={{ user, token, loading, login, logout }}&gt;
+      {children}
+    &lt;/AuthContext.Provider&gt;
+  );
+}
+
+export const useAuth = () =&gt; useContext(AuthContext);</code></pre>
+
+          <h3>Protected Route Component</h3>
+          <pre><code>// src/components/ProtectedRoute.jsx
+import { Navigate } from 'react-router-dom';
+import { useAuth } from '../context/AuthContext';
+import Spinner from './Spinner';
+
+export default function ProtectedRoute({ children }) {
+  const { user, loading } = useAuth();
+
+  if (loading) return &lt;Spinner /&gt;;
+  if (!user) return &lt;Navigate to="/login" replace /&gt;;
+
+  return children;
+}</code></pre>
+
+          <div class="callout callout-warning">
+            <i class="fas fa-exclamation-triangle"></i>
+            <p><strong>Token security:</strong> Store tokens in httpOnly cookies for production apps, not localStorage. localStorage is vulnerable to XSS attacks. For this tutorial, localStorage demonstrates the pattern, but always consult security best practices for production.</p>
+          </div>
+        </section>
+
+        <section id="caching">
+          <h2>9. Caching API Responses</h2>
+          <p>React Query (TanStack Query) is the industry standard for server state management. It handles caching, background refetching, and stale data automatically.</p>
+
+          <h3>Setup</h3>
+          <pre><code>npm install @tanstack/react-query</code></pre>
+
+          <pre><code>// src/main.jsx
+import { QueryClient, QueryClientProvider } from '@tanstack/react-query';
+import App from './App';
+
+const queryClient = new QueryClient({
+  defaultOptions: {
+    queries: {
+      staleTime: 5 * 60 * 1000,      // 5 minutes
+      cacheTime: 30 * 60 * 1000,     // 30 minutes
+      refetchOnWindowFocus: false,
+      retry: 2,
+    },
+  },
+});
+
+ReactDOM.createRoot(document.getElementById('root')).render(
+  &lt;QueryClientProvider client={queryClient}&gt;
+    &lt;App /&gt;
+  &lt;/QueryClientProvider&gt;
+);</code></pre>
+
+          <h3>Using useQuery</h3>
+          <pre><code>// src/components/UserList.jsx
+import { useQuery } from '@tanstack/react-query';
+import { getUsers } from '../services/api';
+import Spinner from './Spinner';
+import ErrorMessage from './ErrorMessage';
+
+export default function UserList() {
+  const {
+    data: users,
+    isLoading,
+    isError,
+    error,
+    refetch,
+    isFetching,
+  } = useQuery({
+    queryKey: ['users'],
+    queryFn: getUsers,
+    staleTime: 5 * 60 * 1000,
+  });
+
+  if (isLoading) return &lt;Spinner message="Loading users..." /&gt;;
+  if (isError) return &lt;ErrorMessage message={error.message} onRetry={refetch} /&gt;;
+
+  return (
+    &lt;div className="user-list"&gt;
+      {isFetching &amp;&amp; &lt;div className="refetch-indicator"&gt;Updating...&lt;/div&gt;}
+      &lt;h2&gt;Users ({users.length})&lt;/h2&gt;
+      {users.map((user) =&gt; (
+        &lt;div key={user.id} className="user-card"&gt;
+          &lt;h3&gt;{user.name}&lt;/h3&gt;
+          &lt;p&gt;{user.email}&lt;/p&gt;
+        &lt;/div&gt;
+      ))}
+    &lt;/div&gt;
+  );
+}</code></pre>
+
+          <h3>Mutations with useMutation</h3>
+          <pre><code>import { useMutation, useQueryClient } from '@tanstack/react-query';
+import { createUser } from '../services/api';
+
+export function useCreateUser() {
+  const queryClient = useQueryClient();
+
+  return useMutation({
+    mutationFn: createUser,
+    onSuccess: () => {
+      // Invalidate and refetch the users list
+      queryClient.invalidateQueries({ queryKey: ['users'] });
+    },
+    onError: (error) => {
+      console.error('Create user failed:', error);
+    },
+  });
+}
+
+// Usage in component
+const createUserMutation = useCreateUser();
+
+const handleSubmit = (formData) =&gt; {
+  createUserMutation.mutate(formData);
+};
+
+// Check state
+createUserMutation.isPending   // Loading
+createUserMutation.isError     // Error occurred
+createUserMutation.isSuccess   // Completed successfully</code></pre>
+
+          <div class="callout callout-tip">
+            <i class="fas fa-lightbulb"></i>
+            <p><strong>Why React Query?</strong> It eliminates the need for manual loading states, error handling, caching, and refetching logic. The average React app saves 50-70% of its data-fetching code by switching to React Query.</p>
+          </div>
+        </section>
+
+        <section id="best-practices">
+          <h2>10. Best Practices</h2>
+          <p>Follow these patterns to build robust, maintainable API integrations.</p>
+
+          <h3>Error Handling</h3>
+          <pre><code>// Centralized error handler
+export const handleApiError = (error) => {
+  if (error.response) {
+    switch (error.response.status) {
+      case 401:
+        // Redirect to login
+        window.location.href = '/login';
+        break;
+      case 403:
+        return 'You do not have permission for this action';
+      case 404:
+        return 'Resource not found';
+      case 422:
+        return error.response.data?.errors || 'Validation failed';
+      case 500:
+        return 'Server error — please try again later';
+      default:
+        return error.response.data?.message || 'An error occurred';
+    }
+  }
+  if (error.request) {
+    return 'Network error — please check your connection';
+  }
+  return error.message;
+};</code></pre>
+
+          <h3>Environment Variables</h3>
+          <pre><code># .env.development
+VITE_API_BASE_URL=http://localhost:3001/api
+
+# .env.production
+VITE_API_BASE_URL=https://api.yourapp.com/api
+
+# .env.local (not committed to git)
+VITE_API_KEY=secret_key_here</code></pre>
+
+          <h3>Organized API Layer</h3>
+          <pre><code>// src/services/
+// api.js          — axios instance and interceptors
+// users.js        — user-related API calls
+// posts.js        — post-related API calls
+// auth.js         — authentication API calls
+
+// src/services/users.js
+import api from './api';
+
+export const userApi = {
+  getAll: (params) =&gt; api.get('/users', { params }),
+  getById: (id) =&gt; api.get(`/users/${id}`),
+  create: (data) =&gt; api.post('/users', data),
+  update: (id, data) =&gt; api.put(`/users/${id}`, data),
+  delete: (id) =&gt; api.delete(`/users/${id}`),
+};</code></pre>
+
+          <h3>Checklist</h3>
+          <ul>
+            <li>Always handle loading, success, and error states</li>
+            <li>Use AbortController to cancel requests on unmount</li>
+            <li>Store API keys in environment variables, never in code</li>
+            <li>Implement retry logic with exponential backoff</li>
+            <li>Cache responses to reduce redundant network requests</li>
+            <li>Validate all data on the server — never trust the client</li>
+            <li>Use TypeScript for type safety with API responses</li>
+            <li>Log errors to a monitoring service (Sentry, LogRocket)</li>
+          </ul>
+
+          <div class="callout callout-info">
+            <i class="fas fa-info-circle"></i>
+            <p><strong>Next steps:</strong> Once you're comfortable with these patterns, explore TypeScript for API type safety, GraphQL with Apollo Client, and server-side rendering with Next.js for SEO-friendly data fetching.</p>
+          </div>
+
+          <p>API integration is the backbone of modern web applications. Master these patterns — useEffect with cleanup, axios interceptors, loading/error states, pagination, authentication, and caching — and you'll be able to connect React to any backend or third-party service with confidence. Start with the basics, handle errors gracefully, and progressively adopt tools like React Query as your apps grow in complexity.</p>
+        </section>
+      </div>
+    </div>
+  </article>
+
+  <div class="back-to-top">
+    <a href="#top" class="btn btn-primary">
+      <i class="fas fa-arrow-up"></i> Back to Top
+    </a>
+  </div>
+
+  <footer class="footer">
+    <div class="container">
+      <div class="footer-content">
+        <div class="footer-brand">
+          <a href="../index.html" class="nav-logo">
+            <span class="logo-bracket">{</span> AB <span class="logo-bracket">}</span>
+          </a>
+          <p>Building modern web experiences with clean code, comprehensive tests, and continuous improvement.</p>
+        </div>
+        <div class="footer-links">
+          <h4>Navigation</h4>
+          <ul>
+            <li><a href="../index.html">Portfolio</a></li>
+            <li><a href="../index.html#about">About</a></li>
+            <li><a href="../index.html#projects">Projects</a></li>
+            <li><a href="../index.html#contact">Contact</a></li>
+          </ul>
+        </div>
+        <div class="footer-social">
+          <h4>Connect</h4>
+          <div class="footer-icons">
+            <a href="https://github.com/avinashbt" target="_blank"><i class="fab fa-github"></i></a>
+            <a href="https://www.linkedin.com/in/avinash-bawage-99ba58200/?locale=en_US" target="_blank"><i class="fab fa-linkedin-in"></i></a>
+            <a href="https://twitter.com/AvinashBawge" target="_blank"><i class="fab fa-twitter"></i></a>
+            <a href="mailto:avi.bawge9@gmail.com"><i class="fas fa-envelope"></i></a>
+          </div>
+        </div>
+      </div>
+      <div class="footer-bottom">
+        <p>Built with <span class="footer-heart">&hearts;</span> by Avinash Bawage &mdash; &copy; 2026</p>
+      </div>
+    </div>
+  </footer>
+
+  <script>
+    const hamburger = document.getElementById('hamburger');
+    const mobileMenu = document.getElementById('mobileMenu');
+    let overlay = document.createElement('div');
+    overlay.className = 'mobile-overlay';
+    document.body.appendChild(overlay);
+
+    function toggleMenu() {
+      hamburger.classList.toggle('active');
+      mobileMenu.classList.toggle('active');
+      overlay.classList.toggle('active');
+      document.body.style.overflow = mobileMenu.classList.contains('active') ? 'hidden' : '';
+    }
+
+    hamburger.addEventListener('click', toggleMenu);
+    overlay.addEventListener('click', toggleMenu);
+    document.querySelectorAll('.mobile-menu a').forEach(a => a.addEventListener('click', toggleMenu));
+  </script>
+</body>
+</html>

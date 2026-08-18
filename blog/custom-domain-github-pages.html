@@ -1,0 +1,484 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>How to Add Custom Domain to GitHub Pages | Avinash Bawage - Frontend Developer & React Engineer</title>
+  <meta name="description" content="Step-by-step guide to adding a custom domain to GitHub Pages with DNS configuration, HTTPS setup, and best practices.">
+  <meta name="keywords" content="custom domain GitHub Pages, GitHub Pages DNS, CNAME GitHub, HTTPS GitHub Pages, domain setup">
+  <link rel="shortcut icon" href="../favicon.jpg" type="image/x-icon">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800&family=JetBrains+Mono:wght@400;500&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css">
+  <link rel="stylesheet" href="../styles.css">
+  <link rel="stylesheet" href="../blog.css">
+</head>
+<body>
+
+  <!-- NAV -->
+  <nav class="nav scrolled" id="nav">
+    <div class="nav-container">
+      <a href="../index.html" class="nav-logo">
+        <span class="logo-bracket">{</span> AB <span class="logo-bracket">}</span>
+      </a>
+      <ul class="nav-links">
+        <li><a href="../index.html#about">About</a></li>
+        <li><a href="../index.html#skills">Skills</a></li>
+        <li><a href="../index.html#projects">Projects</a></li>
+        <li><a href="../blog.html" class="nav-blog-link" style="color:#6366f1">Blog</a></li>
+        <li><a href="../index.html#contact" class="nav-cta">Hire Me</a></li>
+      </ul>
+      <button class="hamburger" id="hamburger" aria-label="Toggle menu">
+        <span></span><span></span><span></span>
+      </button>
+    </div>
+  </nav>
+
+  <div class="mobile-menu" id="mobileMenu">
+    <ul>
+      <li><a href="../index.html#about">About</a></li>
+      <li><a href="../index.html#skills">Skills</a></li>
+      <li><a href="../index.html#projects">Projects</a></li>
+      <li><a href="../blog.html">Blog</a></li>
+      <li><a href="../index.html#contact">Hire Me</a></li>
+    </ul>
+  </div>
+
+  <!-- BLOG HEADER -->
+  <header class="blog-hero">
+    <div class="container">
+      <a href="../blog.html" class="blog-back"><i class="fas fa-arrow-left"></i> Back to Blog</a>
+      <h1 class="blog-hero-title">How to Add Custom Domain to GitHub Pages</h1>
+      <p class="blog-hero-desc">Point your own domain to GitHub Pages — with DNS configuration, HTTPS, and SEO best practices.</p>
+    </div>
+  </header>
+
+  <article class="blog-article" id="custom-domain-github-pages">
+    <div class="container">
+      <div class="article-header">
+        <div class="article-meta">
+          <span class="article-tag">Deployment</span>
+          <span class="article-date"><i class="fas fa-calendar"></i> 2026</span>
+          <span class="article-read"><i class="fas fa-clock"></i> 8 min read</span>
+        </div>
+        <h1 class="article-title">How to Add Custom Domain to GitHub Pages</h1>
+        <p class="article-subtitle">A practical, step-by-step guide to connecting your custom domain to GitHub Pages with proper DNS, SSL, and SEO considerations.</p>
+        <div class="article-author">
+          <img src="../profile1.jpg" alt="Avinash Bawage" class="author-avatar">
+          <div>
+            <span class="author-name">Avinash Bawage</span>
+            <span class="author-role">Frontend Developer & React Engineer</span>
+          </div>
+        </div>
+      </div>
+
+      <div class="article-content">
+        <!-- TOC -->
+        <div class="toc">
+          <h3>Table of Contents</h3>
+          <ol>
+            <li><a href="#cdp-buy">Buying a Domain</a></li>
+            <li><a href="#cdp-dns">Setting Up DNS Records</a></li>
+            <li><a href="#cdp-repo">Configuring GitHub Repository</a></li>
+            <li><a href="#cdp-cname">Creating CNAME File</a></li>
+            <li><a href="#cdp-https">Enforcing HTTPS</a></li>
+            <li><a href="#cdp-apex">Setting Up Apex Domain</a></li>
+            <li><a href="#cdp-test">Testing Your Domain</a></li>
+            <li><a href="#cdp-best">Best Practices</a></li>
+          </ol>
+        </div>
+
+        <!-- Section 1 -->
+        <section id="cdp-buy">
+          <h2>1. Buying a Domain</h2>
+          <p>You need a domain name to point to your GitHub Pages site. Here are popular domain registrars.</p>
+
+          <div class="comparison-table">
+            <table>
+              <thead>
+                <tr><th>Registrar</th><th>Starting Price</th><th>Free WHOIS Privacy</th><th>Notes</th></tr>
+              </thead>
+              <tbody>
+                <tr><td>Namecheap</td><td>~$8.88/yr</td><td>Yes</td><td>Great UI, frequent sales</td></tr>
+                <tr><td>Cloudflare Registrar</td><td>At-cost pricing</td><td>Yes</td><td>Cheapest option, no markup</td></tr>
+                <tr><td>Google Domains</td><td>~$12/yr</td><td>Yes</td><td>Simple, integrated with Google</td></tr>
+                <tr><td>Porkbun</td><td>~$8.50/yr</td><td>Yes</td><td>Cheap, good support</td></tr>
+                <tr><td>GoDaddy</td><td>~$11.99/yr</td><td>No (paid)</td><td>Most well-known</td></tr>
+              </tbody>
+            </table>
+          </div>
+
+          <div class="callout callout-tip">
+            <i class="fas fa-lightbulb"></i>
+            <div>
+              <strong>Recommendation:</strong> Cloudflare Registrar offers domains at wholesale cost with no markup. If you're already using Cloudflare for CDN/DNS, it's the easiest option.
+            </div>
+          </div>
+        </section>
+
+        <!-- Section 2 -->
+        <section id="cdp-dns">
+          <h2>2. Setting Up DNS Records</h2>
+          <p>DNS (Domain Name System) tells the internet where to find your site. You need to add specific records pointing to GitHub's servers.</p>
+
+          <h3>For the www Subdomain</h3>
+          <p>Add a <strong>CNAME</strong> record that points <code>www</code> to your GitHub Pages URL:</p>
+
+          <pre><code># DNS Record
+Type:  CNAME
+Name:  www
+Value: YOUR_USERNAME.github.io
+TTL:   3600</code></pre>
+
+          <h3>For the Root Domain (Apex)</h3>
+          <p>Add <strong>A</strong> records pointing to GitHub's IP addresses:</p>
+
+          <pre><code># DNS Records
+Type:  A
+Name:  @
+Value: 185.199.108.153
+TTL:   3600
+
+Type:  A
+Name:  @
+Value: 185.199.109.153
+TTL:   3600
+
+Type:  A
+Name:  @
+Value: 185.199.110.153
+TTL:   3600
+
+Type:  A
+Name:  @
+Value: 185.199.111.153
+TTL:   3600</code></pre>
+
+          <div class="callout callout-info">
+            <i class="fas fa-info-circle"></i>
+            <div>
+              <strong>Why 4 A records?</strong> GitHub uses multiple IP addresses for redundancy and load balancing. All four must be added to ensure your domain resolves correctly.
+            </div>
+          </div>
+
+          <h3>Complete DNS Setup</h3>
+          <div class="comparison-table">
+            <table>
+              <thead>
+                <tr><th>Type</th><th>Name</th><th>Value</th><th>Purpose</th></tr>
+              </thead>
+              <tbody>
+                <tr><td>A</td><td>@</td><td>185.199.108.153</td><td>Root domain → GitHub</td></tr>
+                <tr><td>A</td><td>@</td><td>185.199.109.153</td><td>Root domain → GitHub</td></tr>
+                <tr><td>A</td><td>@</td><td>185.199.110.153</td><td>Root domain → GitHub</td></tr>
+                <tr><td>A</td><td>@</td><td>185.199.111.153</td><td>Root domain → GitHub</td></tr>
+                <tr><td>CNAME</td><td>www</td><td>username.github.io</td><td>www subdomain → GitHub</td></tr>
+              </tbody>
+            </table>
+          </div>
+        </section>
+
+        <!-- Section 3 -->
+        <section id="cdp-repo">
+          <h2>3. Configuring GitHub Repository</h2>
+          <p>After setting up DNS, tell GitHub about your custom domain.</p>
+
+          <h3>Step-by-Step</h3>
+          <ol>
+            <li>Go to your repository on GitHub</li>
+            <li>Click <strong>Settings</strong> → <strong>Pages</strong> (in the left sidebar)</li>
+            <li>Under <strong>Building and deployment</strong>, find the <strong>Custom domain</strong> section</li>
+            <li>Enter your domain: <code>yourdomain.com</code></li>
+            <li>Click <strong>Save</strong></li>
+            <li>Wait for DNS check to complete (may take a few minutes)</li>
+            <li>Check <strong>Enforce HTTPS</strong> once the certificate is provisioned</li>
+          </ol>
+
+          <div class="callout callout-warning">
+            <i class="fas fa-exclamation-triangle"></i>
+            <div>
+              <strong>DNS verification:</strong> GitHub checks your DNS records before enabling the custom domain. If the check fails, verify that your A and CNAME records are correctly configured and wait up to 24 hours for propagation.
+            </div>
+          </div>
+        </section>
+
+        <!-- Section 4 -->
+        <section id="cdp-cname">
+          <h2>4. Creating CNAME File</h2>
+          <p>GitHub Pages requires a <code>CNAME</code> file in your repository root to know which domain to serve.</p>
+
+          <h3>Manual Creation</h3>
+          <pre><code># In your project's public/ or root directory
+echo "yourdomain.com" &gt; public/CNAME
+
+# For Create React App
+echo "yourdomain.com" &gt; public/CNAME
+
+# For Vite
+echo "yourdomain.com" &gt; public/CNAME</code></pre>
+
+          <h3>The CNAME File Content</h3>
+          <pre><code># public/CNAME — just one line, no extra spaces or lines
+yourdomain.com</code></pre>
+
+          <div class="callout callout-info">
+            <i class="fas fa-info-circle"></i>
+            <div>
+              <strong>No protocol:</strong> The CNAME file should contain only the domain name — no <code>https://</code>, no trailing slash, no www prefix (unless that's the domain you're configuring).
+            </div>
+          </div>
+        </section>
+
+        <!-- Section 5 -->
+        <section id="cdp-https">
+          <h2>5. Enforcing HTTPS</h2>
+          <p>GitHub Pages provides free SSL certificates through Let's Encrypt. Once your domain is verified, you can enable HTTPS.</p>
+
+          <h3>Enable HTTPS</h3>
+          <ol>
+            <li>Go to repository <strong>Settings</strong> → <strong>Pages</strong></li>
+            <li>Under <strong>Custom domain</strong>, check <strong>Enforce HTTPS</strong></li>
+          </ol>
+
+          <h3>Wait for Certificate</h3>
+          <p>GitHub automatically provisions a Let's Encrypt SSL certificate. This usually takes 5-15 minutes but can take up to 24 hours.</p>
+
+          <pre><code># Verify SSL is working
+curl -I https://yourdomain.com
+
+# Should show:
+# HTTP/2 200
+# strict-transport-security: max-age=31536000
+# x-content-type-options: nosniff</code></pre>
+
+          <div class="callout callout-tip">
+            <i class="fas fa-lightbulb"></i>
+            <div>
+              <strong>SEO benefit:</strong> Google uses HTTPS as a ranking signal. Always enforce HTTPS for your portfolio site — it improves both security and search engine visibility.
+            </div>
+          </div>
+        </section>
+
+        <!-- Section 6 -->
+        <section id="cdp-apex">
+          <h2>6. Setting Up Apex Domain</h2>
+          <p>The apex domain (also called root domain or bare domain) is <code>yourdomain.com</code> without the <code>www</code> prefix.</p>
+
+          <h3>The Challenge</h3>
+          <p>GitHub Pages doesn't support ALIAS or ANAME records, which means you can't directly point a root domain to a CNAME. Instead, you must use A records.</p>
+
+          <h3>Cloudflare Alternative (Recommended)</h3>
+          <p>If you use Cloudflare, you can use their CNAME flattening feature:</p>
+
+          <pre><code># In Cloudflare DNS dashboard
+Type:  CNAME
+Name:  @
+Value: username.github.io
+Proxy: DNS only (gray cloud)</code></pre>
+
+          <h3>Traditional DNS (A Records)</h3>
+          <pre><code># Point root domain to GitHub's IPs
+Type:  A
+Name:  @
+Value: 185.199.108.153
+
+Type:  A
+Name:  @
+Value: 185.199.109.153
+
+Type:  A
+Name:  @
+Value: 185.199.110.153
+
+Type:  A
+Name:  @
+Value: 185.199.111.153</code></pre>
+
+          <div class="comparison-table">
+            <table>
+              <thead>
+                <tr><th>DNS Provider</th><th>Root Domain Support</th><th>Method</th></tr>
+              </thead>
+              <tbody>
+                <tr><td>Cloudflare</td><td>Yes</td><td>CNAME flattening</td></tr>
+                <tr><td>Namecheap</td><td>Yes</td><td>A records</td></tr>
+                <tr><td>Google Domains</td><td>Yes</td><td>ALIAS record</td></tr>
+                <tr><td>Porkbun</td><td>Yes</td><td>ANAME record</td></tr>
+              </tbody>
+            </table>
+          </div>
+        </section>
+
+        <!-- Section 7 -->
+        <section id="cdp-test">
+          <h2>7. Testing Your Domain</h2>
+          <p>After configuring everything, verify that your domain works correctly.</p>
+
+          <h3>DNS Propagation Check</h3>
+          <pre><code># Using dig (Linux/Mac)
+dig yourdomain.com +short
+# Should show: 185.199.108.153 (or similar)
+
+dig www.yourdomain.com +short
+# Should show: username.github.io
+
+# Using nslookup (Windows)
+nslookup yourdomain.com
+nslookup www.yourdomain.com</code></pre>
+
+          <h3>Online Tools</h3>
+          <ul>
+            <li><strong>dnschecker.org</strong> — Check DNS propagation worldwide</li>
+            <li><strong>whatsmydns.net</strong> — Visual DNS propagation map</li>
+            <li><strong>ssllabs.com/ssltest</strong> — Verify SSL certificate</li>
+          </ul>
+
+          <h3>Verify Site Loads</h3>
+          <pre><code># Test HTTP response
+curl -I http://yourdomain.com
+# Should redirect to https://yourdomain.com
+
+curl -I https://www.yourdomain.com
+# Should return 200 OK</code></pre>
+
+          <div class="callout callout-warning">
+            <i class="fas fa-exclamation-triangle"></i>
+            <div>
+              <strong>Propagation delay:</strong> DNS changes can take 24-48 hours to propagate globally. If your domain doesn't work immediately, don't panic — wait and check again.
+            </div>
+          </div>
+        </section>
+
+        <!-- Section 8 -->
+        <section id="cdp-best">
+          <h2>8. Best Practices</h2>
+
+          <h3>SEO Considerations</h3>
+          <pre><code># Add a canonical link in your HTML head
+&lt;link rel="canonical" href="https://yourdomain.com" /&gt;
+
+# Redirect non-www to www (or vice versa) in your index.html
+# Add this meta tag for search engines
+&lt;meta http-equiv="refresh" content="0;url=https://yourdomain.com"&gt;
+
+# Use consistent URLs in your sitemap
+&lt;url&gt;
+  &lt;loc&gt;https://yourdomain.com/&lt;/loc&gt;
+&lt;/url&gt;</code></pre>
+
+          <h3>Redirect Setup</h3>
+          <p>Choose ONE canonical version (either with or without www) and redirect the other.</p>
+
+          <pre><code># In your repository root, create a simple redirect
+# For root → www redirect:
+
+# Create separate HTML files for the non-canonical domain
+# Or use Cloudflare Page Rules for automatic redirects
+
+# Cloudflare Page Rule (free tier allows 3)
+# URL: http://yourdomain.com/*
+# Setting: Forwarding URL (301)
+# Destination: https://www.yourdomain.com/$1</code></pre>
+
+          <h3>Performance Tips</h3>
+          <ul class="feature-list">
+            <li><i class="fas fa-check"></i> <strong>Enable Cloudflare proxy</strong> for caching and DDoS protection (optional)</li>
+            <li><i class="fas fa-check"></i> <strong>Use relative URLs</strong> in your React app to avoid mixed content issues</li>
+            <li><i class="fas fa-check"></i> <strong>Set proper Cache-Control headers</strong> for static assets</li>
+            <li><i class="fas fa-check"></i> <strong>Add a 404.html page</strong> that redirects back to your main site</li>
+          </ul>
+
+          <div class="callout callout-tip">
+            <i class="fas fa-lightbulb"></i>
+            <div>
+              <strong>Portfolio SEO tip:</strong> Set up Google Search Console with your custom domain, submit your sitemap, and monitor search performance. Use the <code>site:yourdomain.com</code> query to check indexing status.
+            </div>
+          </div>
+
+          <h3>Quick Reference: Full DNS Configuration</h3>
+          <pre><code># Complete DNS setup for GitHub Pages with custom domain
+
+# Root domain → GitHub (A records)
+@  A     185.199.108.153
+@  A     185.199.109.153
+@  A     185.199.110.153
+@  A     185.199.111.153
+
+# www → GitHub (CNAME)
+www  CNAME  username.github.io
+
+# GitHub-side CNAME file
+# File: public/CNAME
+# Content: yourdomain.com
+
+# GitHub Settings → Pages
+# Custom domain: yourdomain.com
+# Enforce HTTPS: ✅</code></pre>
+        </section>
+      </div>
+    </div>
+  </article>
+
+  <!-- BACK TO TOP -->
+  <div class="back-to-top">
+    <a href="#top" class="btn btn-primary">
+      <i class="fas fa-arrow-up"></i> Back to Top
+    </a>
+  </div>
+
+  <!-- FOOTER -->
+  <footer class="footer">
+    <div class="container">
+      <div class="footer-content">
+        <div class="footer-brand">
+          <a href="../index.html" class="nav-logo">
+            <span class="logo-bracket">{</span> AB <span class="logo-bracket">}</span>
+          </a>
+          <p>Building modern web experiences with clean code, comprehensive tests, and continuous improvement.</p>
+        </div>
+        <div class="footer-links">
+          <h4>Navigation</h4>
+          <ul>
+            <li><a href="../index.html">Portfolio</a></li>
+            <li><a href="../index.html#about">About</a></li>
+            <li><a href="../index.html#projects">Projects</a></li>
+            <li><a href="../index.html#contact">Contact</a></li>
+          </ul>
+        </div>
+        <div class="footer-social">
+          <h4>Connect</h4>
+          <div class="footer-icons">
+            <a href="https://github.com/avinashbt" target="_blank"><i class="fab fa-github"></i></a>
+            <a href="https://www.linkedin.com/in/avinash-bawage-99ba58200/?locale=en_US" target="_blank"><i class="fab fa-linkedin-in"></i></a>
+            <a href="https://twitter.com/AvinashBawge" target="_blank"><i class="fab fa-twitter"></i></a>
+            <a href="mailto:avi.bawge9@gmail.com"><i class="fas fa-envelope"></i></a>
+          </div>
+        </div>
+      </div>
+      <div class="footer-bottom">
+        <p>Built with <span class="footer-heart">&hearts;</span> by Avinash Bawage &mdash; &copy; 2026</p>
+      </div>
+    </div>
+  </footer>
+
+  <script>
+    const hamburger = document.getElementById('hamburger');
+    const mobileMenu = document.getElementById('mobileMenu');
+    let overlay = document.createElement('div');
+    overlay.className = 'mobile-overlay';
+    document.body.appendChild(overlay);
+
+    function toggleMenu() {
+      hamburger.classList.toggle('active');
+      mobileMenu.classList.toggle('active');
+      overlay.classList.toggle('active');
+      document.body.style.overflow = mobileMenu.classList.contains('active') ? 'hidden' : '';
+    }
+
+    hamburger.addEventListener('click', toggleMenu);
+    overlay.addEventListener('click', toggleMenu);
+    document.querySelectorAll('.mobile-menu a').forEach(a => a.addEventListener('click', toggleMenu));
+  </script>
+</body>
+</html>

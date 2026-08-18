@@ -1,0 +1,684 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>React Admin Dashboard Project for Beginners | Avinash Bawage - Frontend Developer & React Engineer</title>
+  <meta name="description" content="Step-by-step tutorial to build a React admin dashboard with sidebar, charts, data tables, dark mode, and responsive design using Vite and Tailwind CSS.">
+  <meta name="keywords" content="React dashboard, admin panel, React project, Tailwind CSS, Vite, data table, charts, dark mode, responsive design">
+  <link rel="shortcut icon" href="../favicon.jpg" type="image/x-icon">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800&family=JetBrains+Mono:wght@400;500&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css">
+  <link rel="stylesheet" href="../styles.css">
+  <link rel="stylesheet" href="../blog.css">
+</head>
+<body>
+
+  <!-- NAV -->
+  <nav class="nav scrolled" id="nav">
+    <div class="nav-container">
+      <a href="../index.html" class="nav-logo">
+        <span class="logo-bracket">{</span> AB <span class="logo-bracket">}</span>
+      </a>
+      <ul class="nav-links">
+        <li><a href="../index.html#about">About</a></li>
+        <li><a href="../index.html#skills">Skills</a></li>
+        <li><a href="../index.html#projects">Projects</a></li>
+        <li><a href="../blog.html" class="nav-blog-link" style="color:#6366f1">Blog</a></li>
+        <li><a href="../index.html#contact" class="nav-cta">Hire Me</a></li>
+      </ul>
+      <button class="hamburger" id="hamburger" aria-label="Toggle menu">
+        <span></span><span></span><span></span>
+      </button>
+    </div>
+  </nav>
+
+  <div class="mobile-menu" id="mobileMenu">
+    <ul>
+      <li><a href="../index.html#about">About</a></li>
+      <li><a href="../index.html#skills">Skills</a></li>
+      <li><a href="../index.html#projects">Projects</a></li>
+      <li><a href="../blog.html">Blog</a></li>
+      <li><a href="../index.html#contact">Hire Me</a></li>
+    </ul>
+  </div>
+
+  <!-- BLOG HEADER -->
+  <header class="blog-hero">
+    <div class="container">
+      <a href="../blog.html" class="blog-back"><i class="fas fa-arrow-left"></i> Back to Blog</a>
+      <h1 class="blog-hero-title">React Admin Dashboard Project for Beginners</h1>
+      <p class="blog-hero-desc">Build a production-quality admin panel from scratch with React, Vite, and Tailwind CSS.</p>
+    </div>
+  </header>
+
+  <article class="blog-article" id="react-admin-dashboard">
+    <div class="container">
+      <div class="article-header">
+        <div class="article-meta">
+          <span class="article-tag">React Project</span>
+          <span class="article-date"><i class="fas fa-calendar"></i> 2026</span>
+          <span class="article-read"><i class="fas fa-clock"></i> 14 min read</span>
+        </div>
+        <h1 class="article-title">React Admin Dashboard Project for Beginners</h1>
+        <p class="article-subtitle">A complete walkthrough to building a responsive admin panel with sidebar, charts, data tables, and dark mode.</p>
+        <div class="article-author">
+          <img src="../profile1.jpg" alt="Avinash Bawage" class="author-avatar">
+          <div>
+            <span class="author-name">Avinash Bawage</span>
+            <span class="author-role">Frontend Developer & React Engineer</span>
+          </div>
+        </div>
+      </div>
+
+      <div class="article-content">
+        <div class="toc">
+          <h3>Table of Contents</h3>
+          <ol>
+            <li><a href="#what-youll-build">What You'll Build</a></li>
+            <li><a href="#setup">Setting Up the Project</a></li>
+            <li><a href="#structure">Project Structure</a></li>
+            <li><a href="#sidebar">Building the Sidebar</a></li>
+            <li><a href="#layout">Creating the Dashboard Layout</a></li>
+            <li><a href="#stats-cards">Stats Cards with Charts</a></li>
+            <li><a href="#data-table">Data Table Component</a></li>
+            <li><a href="#dark-mode">Dark/Light Mode Toggle</a></li>
+            <li><a href="#routing">Adding React Router</a></li>
+            <li><a href="#tailwind">Styling with Tailwind CSS</a></li>
+          </ol>
+        </div>
+
+        <!-- SECTION 1 -->
+        <section id="what-youll-build">
+          <h2>1. What You'll Build</h2>
+          <p>In this tutorial, we'll build a complete admin dashboard that includes features commonly found in production applications. By the end, you'll have a project that demonstrates real-world React skills.</p>
+
+          <h3>Features Overview</h3>
+          <ul>
+            <li><strong>Sidebar navigation</strong> with collapse/expand toggle and active route highlighting</li>
+            <li><strong>Stats cards</strong> showing key metrics with trend indicators</li>
+            <li><strong>Interactive charts</strong> for revenue, users, and sales data</li>
+            <li><strong>Data table</strong> with sorting, filtering, and pagination</li>
+            <li><strong>Dark/Light mode</strong> toggle with CSS variables</li>
+            <li><strong>Multi-page routing</strong> with React Router</li>
+            <li><strong>Responsive design</strong> — works on mobile, tablet, and desktop</li>
+          </ul>
+
+          <div class="callout callout-info">
+            <strong>Why this project?</strong> Admin dashboards are one of the most in-demand UI patterns in web development. Building one teaches you layout management, state coordination, data visualization, and responsive design — all essential skills for a frontend developer.
+          </div>
+
+          <h3>Tech Stack</h3>
+          <ul>
+            <li>React 18 with Vite</li>
+            <li>Tailwind CSS for styling</li>
+            <li>Recharts for data visualization</li>
+            <li>React Router v6 for navigation</li>
+            <li>Lucide React for icons</li>
+          </ul>
+        </section>
+
+        <!-- SECTION 2 -->
+        <section id="setup">
+          <h2>2. Setting Up the Project</h2>
+          <p>We'll use Vite for fast development and hot module replacement.</p>
+
+          <h3>Create the Project</h3>
+          <pre><code># Create a new Vite + React project
+npm create vite@latest admin-dashboard -- --template react
+cd admin-dashboard
+
+# Install dependencies
+npm install
+
+# Install additional packages
+npm install react-router-dom recharts lucide-react
+
+# Install Tailwind CSS
+npm install -D tailwindcss @tailwindcss/vite</code></pre>
+
+          <h3>Configure Tailwind</h3>
+          <pre><code>// vite.config.js
+import { defineConfig } from 'vite'
+import react from '@vitejs/plugin-react'
+import tailwindcss from '@tailwindcss/vite'
+
+export default defineConfig({
+  plugins: [react(), tailwindcss()],
+})</code></pre>
+
+          <pre><code>/* src/index.css */
+@import "tailwindcss";</code></pre>
+
+          <div class="callout callout-tip">
+            <strong>Tip:</strong> Vite with the <code>@tailwindcss/vite</code> plugin is the fastest setup for Tailwind CSS v4. It handles PostCSS configuration automatically.
+          </div>
+        </section>
+
+        <!-- SECTION 3 -->
+        <section id="structure">
+          <h2>3. Project Structure</h2>
+          <p>A well-organized folder structure makes your project maintainable and easy to navigate.</p>
+
+          <pre><code>src/
+├── components/
+│   ├── layout/
+│   │   ├── Sidebar.jsx
+│   │   ├── Header.jsx
+│   │   └── DashboardLayout.jsx
+│   ├── charts/
+│   │   ├── RevenueChart.jsx
+│   │   └── UsersChart.jsx
+│   ├── ui/
+│   │   ├── StatsCard.jsx
+│   │   ├── DataTable.jsx
+│   │   └── ThemeToggle.jsx
+│   └── common/
+│       └── SearchBar.jsx
+├── pages/
+│   ├── Dashboard.jsx
+│   ├── Analytics.jsx
+│   ├── Users.jsx
+│   └── Settings.jsx
+├── context/
+│   └── ThemeContext.jsx
+├── hooks/
+│   └── useTheme.js
+├── data/
+│   └── mockData.js
+├── App.jsx
+└── main.jsx</code></pre>
+
+          <p>Each component has a single responsibility. Layout components handle structure, chart components handle visualization, and UI components are reusable building blocks.</p>
+        </section>
+
+        <!-- SECTION 4 -->
+        <section id="sidebar">
+          <h2>4. Building the Sidebar</h2>
+          <p>The sidebar is the navigation backbone of the dashboard. It needs to support collapsible state, active route highlighting, and responsive behavior.</p>
+
+          <pre><code>// components/layout/Sidebar.jsx
+import { useState } from 'react';
+import { NavLink } from 'react-router-dom';
+import {
+  LayoutDashboard, BarChart3, Users,
+  Settings, ChevronLeft, ChevronRight
+} from 'lucide-react';
+
+const navItems = [
+  { path: '/', label: 'Dashboard', icon: LayoutDashboard },
+  { path: '/analytics', label: 'Analytics', icon: BarChart3 },
+  { path: '/users', label: 'Users', icon: Users },
+  { path: '/settings', label: 'Settings', icon: Settings },
+];
+
+export default function Sidebar({ collapsed, onToggle }) {
+  return (
+    &lt;aside className={`
+      fixed left-0 top-0 h-full bg-gray-900 text-white
+      transition-all duration-300 z-40
+      ${collapsed ? 'w-20' : 'w-64'}
+    `}&gt;
+      &lt;div className="flex items-center justify-between p-4"&gt;
+        {!collapsed &amp;&amp; &lt;span className="text-xl font-bold"&gt;Dashboard&lt;/span&gt;}
+        &lt;button onClick={onToggle} className="p-2 hover:bg-gray-700 rounded"&gt;
+          {collapsed ? &lt;ChevronRight size={20} /&gt; : &lt;ChevronLeft size={20} /&gt;}
+        &lt;/button&gt;
+      &lt;/div&gt;
+      &lt;nav className="mt-4"&gt;
+        {navItems.map((item) =&gt; (
+          &lt;NavLink
+            key={item.path}
+            to={item.path}
+            end={item.path === '/'}
+            className={({ isActive }) =&gt; `
+              flex items-center gap-3 px-4 py-3 mx-2 rounded-lg
+              transition-colors
+              ${isActive ? 'bg-indigo-600 text-white' : 'text-gray-400 hover:bg-gray-800'}
+            `}
+          &gt;
+            &lt;item.icon size={20} /&gt;
+            {!collapsed &amp;&amp; &lt;span&gt;{item.label}&lt;/span&gt;}
+          &lt;/NavLink&gt;
+        ))}
+      &lt;/nav&gt;
+    &lt;/aside&gt;
+  );
+}</code></pre>
+
+          <div class="callout callout-info">
+            <strong>Active state:</strong> React Router's <code>NavLink</code> automatically adds an <code>isActive</code> class to the current route. We use the <code>end</code> prop on the root path to prevent it from matching all routes.
+          </div>
+        </section>
+
+        <!-- SECTION 5 -->
+        <section id="layout">
+          <h2>5. Creating the Dashboard Layout</h2>
+          <p>The layout component coordinates the sidebar, header, and main content area with a responsive grid system.</p>
+
+          <pre><code>// components/layout/DashboardLayout.jsx
+import { useState } from 'react';
+import { Outlet } from 'react-router-dom';
+import Sidebar from './Sidebar';
+import Header from './Header';
+
+export default function DashboardLayout() {
+  const [sidebarCollapsed, setSidebarCollapsed] = useState(false);
+
+  return (
+    &lt;div className="min-h-screen bg-gray-100 dark:bg-gray-950"&gt;
+      &lt;Sidebar
+        collapsed={sidebarCollapsed}
+        onToggle={() =&gt; setSidebarCollapsed(!sidebarCollapsed)}
+      /&gt;
+      &lt;div className={`
+        transition-all duration-300
+        ${sidebarCollapsed ? 'ml-20' : 'ml-64'}
+      `}&gt;
+        &lt;Header /&gt;
+        &lt;main className="p-6"&gt;
+          &lt;Outlet /&gt;
+        &lt;/main&gt;
+      &lt;/div&gt;
+    &lt;/div&gt;
+  );
+}</code></pre>
+
+          <h3>Responsive Considerations</h3>
+          <p>On mobile, the sidebar should overlay the content with a backdrop, not push it. Use a media query or hook to detect screen width:</p>
+
+          <pre><code>// hooks/useMediaQuery.js
+import { useState, useEffect } from 'react';
+
+export function useMediaQuery(query) {
+  const [matches, setMatches] = useState(
+    () =&gt; window.matchMedia(query).matches
+  );
+
+  useEffect(() =&gt; {
+    const mq = window.matchMedia(query);
+    const handler = (e) =&gt; setMatches(e.matches);
+    mq.addEventListener('change', handler);
+    return () =&gt; mq.removeEventListener('change', handler);
+  }, [query]);
+
+  return matches;
+}</code></pre>
+
+          <div class="callout callout-warning">
+            <strong>Mobile first:</strong> On screens below 768px, the sidebar should collapse to icons only or become a slide-out drawer. Don't just scale down the desktop layout — redesign for touch interactions.
+          </div>
+        </section>
+
+        <!-- SECTION 6 -->
+        <section id="stats-cards">
+          <h2>6. Stats Cards with Charts</h2>
+          <p>Stats cards provide a quick overview of key metrics. Each card should show the metric, its value, and a trend indicator.</p>
+
+          <pre><code>// components/ui/StatsCard.jsx
+import { TrendingUp, TrendingDown } from 'lucide-react';
+
+export default function StatsCard({ title, value, change, icon: Icon, color }) {
+  const isPositive = change &gt;= 0;
+
+  return (
+    &lt;div className="bg-white dark:bg-gray-800 rounded-xl p-6 shadow-sm"&gt;
+      &lt;div className="flex items-center justify-between"&gt;
+        &lt;div&gt;
+          &lt;p className="text-sm text-gray-500 dark:text-gray-400"&gt;{title}&lt;/p&gt;
+          &lt;p className="text-2xl font-bold mt-1"&gt;{value}&lt;/p&gt;
+          &lt;p className={`
+            text-sm mt-2 flex items-center gap-1
+            ${isPositive ? 'text-green-600' : 'text-red-600'}
+          `}&gt;
+            {isPositive ? &lt;TrendingUp size={16} /&gt; : &lt;TrendingDown size={16} /&gt;}
+            {Math.abs(change)}% from last month
+          &lt;/p&gt;
+        &lt;/div&gt;
+        &lt;div className={`p-3 rounded-lg ${color}`}&gt;
+          &lt;Icon size={24} className="text-white" /&gt;
+        &lt;/div&gt;
+      &lt;/div&gt;
+    &lt;/div&gt;
+  );
+}</code></pre>
+
+          <h3>Revenue Chart with Recharts</h3>
+          <pre><code>// components/charts/RevenueChart.jsx
+import { AreaChart, Area, XAxis, YAxis, CartesianGrid, Tooltip, ResponsiveContainer } from 'recharts';
+
+const data = [
+  { month: 'Jan', revenue: 4000, expenses: 2400 },
+  { month: 'Feb', revenue: 3000, expenses: 1398 },
+  { month: 'Mar', revenue: 5000, expenses: 3800 },
+  { month: 'Apr', revenue: 4780, expenses: 3908 },
+  { month: 'May', revenue: 5890, expenses: 4800 },
+  { month: 'Jun', revenue: 6390, expenses: 3800 },
+];
+
+export default function RevenueChart() {
+  return (
+    &lt;div className="bg-white dark:bg-gray-800 rounded-xl p-6 shadow-sm"&gt;
+      &lt;h3 className="text-lg font-semibold mb-4"&gt;Revenue Overview&lt;/h3&gt;
+      &lt;ResponsiveContainer width="100%" height={300}&gt;
+        &lt;AreaChart data={data}&gt;
+          &lt;CartesianGrid strokeDasharray="3 3" /&gt;
+          &lt;XAxis dataKey="month" /&gt;
+          &lt;YAxis /&gt;
+          &lt;Tooltip /&gt;
+          &lt;Area type="monotone" dataKey="revenue" stroke="#6366f1" fill="#6366f1" fillOpacity={0.2} /&gt;
+          &lt;Area type="monotone" dataKey="expenses" stroke="#ef4444" fill="#ef4444" fillOpacity={0.2} /&gt;
+        &lt;/AreaChart&gt;
+      &lt;/ResponsiveContainer&gt;
+    &lt;/div&gt;
+  );
+}</code></pre>
+
+          <div class="callout callout-tip">
+            <strong>Always use ResponsiveContainer:</strong> Recharts requires a parent with defined dimensions. <code>ResponsiveContainer</code> makes your charts automatically resize with the viewport.
+          </div>
+        </section>
+
+        <!-- SECTION 7 -->
+        <section id="data-table">
+          <h2>7. Data Table Component</h2>
+          <p>A reusable data table with sorting, filtering, and pagination — one of the most common components in admin dashboards.</p>
+
+          <pre><code>// components/ui/DataTable.jsx
+import { useState, useMemo } from 'react';
+import { ChevronUp, ChevronDown, ChevronLeft, ChevronRight } from 'lucide-react';
+
+export default function DataTable({ columns, data, rowsPerPage = 10 }) {
+  const [sortConfig, setSortConfig] = useState({ key: null, direction: 'asc' });
+  const [filter, setFilter] = useState('');
+  const [currentPage, setCurrentPage] = useState(1);
+
+  const filteredData = useMemo(() =&gt; {
+    let result = data;
+    if (filter) {
+      result = result.filter((row) =&gt;
+        Object.values(row).some((val) =&gt;
+          String(val).toLowerCase().includes(filter.toLowerCase())
+        )
+      );
+    }
+    if (sortConfig.key) {
+      result.sort((a, b) =&gt; {
+        if (a[sortConfig.key] &lt; b[sortConfig.key]) return sortConfig.direction === 'asc' ? -1 : 1;
+        if (a[sortConfig.key] &gt; b[sortConfig.key]) return sortConfig.direction === 'asc' ? 1 : -1;
+        return 0;
+      });
+    }
+    return result;
+  }, [data, filter, sortConfig]);
+
+  const totalPages = Math.ceil(filteredData.length / rowsPerPage);
+  const paginatedData = filteredData.slice(
+    (currentPage - 1) * rowsPerPage,
+    currentPage * rowsPerPage
+  );
+
+  const handleSort = (key) =&gt; {
+    setSortConfig((prev) =&gt; ({
+      key,
+      direction: prev.key === key &amp;&amp; prev.direction === 'asc' ? 'desc' : 'asc',
+    }));
+  };
+
+  return (
+    &lt;div className="bg-white dark:bg-gray-800 rounded-xl shadow-sm overflow-hidden"&gt;
+      &lt;div className="p-4 border-b dark:border-gray-700"&gt;
+        &lt;input
+          type="text"
+          placeholder="Search..."
+          value={filter}
+          onChange={(e) =&gt; { setFilter(e.target.value); setCurrentPage(1); }}
+          className="px-4 py-2 border rounded-lg dark:bg-gray-700 dark:border-gray-600"
+        /&gt;
+      &lt;/div&gt;
+      &lt;table className="w-full"&gt;
+        &lt;thead className="bg-gray-50 dark:bg-gray-700"&gt;
+          &lt;tr&gt;
+            {columns.map((col) =&gt; (
+              &lt;th
+                key={col.key}
+                onClick={() =&gt; col.sortable &amp;&amp; handleSort(col.key)}
+                className={`px-6 py-3 text-left text-sm font-medium text-gray-500
+                  ${col.sortable ? 'cursor-pointer hover:text-gray-700' : ''}`}
+              &gt;
+                {col.label}
+                {sortConfig.key === col.key &amp;&amp; (
+                  sortConfig.direction === 'asc' ? &lt;ChevronUp size={14} /&gt; : &lt;ChevronDown size={14} /&gt;
+                )}
+              &lt;/th&gt;
+            ))}
+          &lt;/tr&gt;
+        &lt;/thead&gt;
+        &lt;tbody&gt;
+          {paginatedData.map((row, i) =&gt; (
+            &lt;tr key={i} className="border-t dark:border-gray-700 hover:bg-gray-50 dark:hover:bg-gray-700"&gt;
+              {columns.map((col) =&gt; (
+                &lt;td key={col.key} className="px-6 py-4 text-sm"&gt;
+                  {col.render ? col.render(row[col.key], row) : row[col.key]}
+                &lt;/td&gt;
+              ))}
+            &lt;/tr&gt;
+          ))}
+        &lt;/tbody&gt;
+      &lt;/table&gt;
+      &lt;div className="flex items-center justify-between p-4 border-t dark:border-gray-700"&gt;
+        &lt;span className="text-sm text-gray-500"&gt;
+          Showing {((currentPage - 1) * rowsPerPage) + 1} to {Math.min(currentPage * rowsPerPage, filteredData.length)} of {filteredData.length}
+        &lt;/span&gt;
+        &lt;div className="flex gap-2"&gt;
+          &lt;button onClick={() =&gt; setCurrentPage((p) =&gt; Math.max(1, p - 1))} disabled={currentPage === 1}&gt;
+            &lt;ChevronLeft /&gt;
+          &lt;/button&gt;
+          &lt;button onClick={() =&gt; setCurrentPage((p) =&gt; Math.min(totalPages, p + 1))} disabled={currentPage === totalPages}&gt;
+            &lt;ChevronRight /&gt;
+          &lt;/button&gt;
+        &lt;/div&gt;
+      &lt;/div&gt;
+    &lt;/div&gt;
+  );
+}</code></pre>
+
+          <div class="callout callout-warning">
+            <strong>Performance:</strong> For tables with 1000+ rows, consider virtualization with <code>react-window</code> or <code>@tanstack/react-virtual</code> to avoid rendering all rows at once.
+          </div>
+        </section>
+
+        <!-- SECTION 8 -->
+        <section id="dark-mode">
+          <h2>8. Dark/Light Mode Toggle</h2>
+          <p>Dark mode is a must-have feature for modern dashboards. We'll use React Context and CSS variables to implement a smooth theme switch.</p>
+
+          <pre><code>// context/ThemeContext.jsx
+import { createContext, useContext, useState, useEffect } from 'react';
+
+const ThemeContext = createContext();
+
+export function ThemeProvider({ children }) {
+  const [theme, setTheme] = useState(() =&gt; {
+    const saved = localStorage.getItem('theme');
+    if (saved) return saved;
+    return window.matchMedia('(prefers-color-scheme: dark)').matches ? 'dark' : 'light';
+  });
+
+  useEffect(() =&gt; {
+    document.documentElement.classList.toggle('dark', theme === 'dark');
+    localStorage.setItem('theme', theme);
+  }, [theme]);
+
+  const toggleTheme = () =&gt; setTheme((t) =&gt; (t === 'light' ? 'dark' : 'light'));
+
+  return (
+    &lt;ThemeContext.Provider value={{ theme, toggleTheme }}&gt;
+      {children}
+    &lt;/ThemeContext.Provider&gt;
+  );
+}
+
+export const useTheme = () =&gt; useContext(ThemeContext);</code></pre>
+
+          <h3>Theme Toggle Component</h3>
+          <pre><code>// components/ui/ThemeToggle.jsx
+import { Sun, Moon } from 'lucide-react';
+import { useTheme } from '../../context/ThemeContext';
+
+export default function ThemeToggle() {
+  const { theme, toggleTheme } = useTheme();
+
+  return (
+    &lt;button
+      onClick={toggleTheme}
+      className="p-2 rounded-lg bg-gray-200 dark:bg-gray-700 hover:bg-gray-300 dark:hover:bg-gray-600 transition-colors"
+      aria-label="Toggle theme"
+    &gt;
+      {theme === 'light' ? &lt;Moon size={20} /&gt; : &lt;Sun size={20} /&gt;}
+    &lt;/button&gt;
+  );
+}</code></pre>
+
+          <div class="callout callout-tip">
+            <strong>Respect user preference:</strong> On first visit, check <code>prefers-color-scheme</code> to match the user's OS setting. Store the choice in localStorage so it persists across sessions.
+          </div>
+        </section>
+
+        <!-- SECTION 9 -->
+        <section id="routing">
+          <h2>9. Adding React Router</h2>
+          <p>React Router v6 provides clean, declarative routing for multi-page dashboards.</p>
+
+          <pre><code>// App.jsx
+import { BrowserRouter, Routes, Route } from 'react-router-dom';
+import DashboardLayout from './components/layout/DashboardLayout';
+import Dashboard from './pages/Dashboard';
+import Analytics from './pages/Analytics';
+import Users from './pages/Users';
+import Settings from './pages/Settings';
+
+export default function App() {
+  return (
+    &lt;BrowserRouter&gt;
+      &lt;Routes&gt;
+        &lt;Route path="/" element={&lt;DashboardLayout /&gt;}&gt;
+          &lt;Route index element={&lt;Dashboard /&gt;} /&gt;
+          &lt;Route path="analytics" element={&lt;Analytics /&gt;} /&gt;
+          &lt;Route path="users" element={&lt;Users /&gt;} /&gt;
+          &lt;Route path="settings" element={&lt;Settings /&gt;} /&gt;
+        &lt;/Route&gt;
+      &lt;/Routes&gt;
+    &lt;/BrowserRouter&gt;
+  );
+}</code></pre>
+
+          <p>The nested route structure means the <code>DashboardLayout</code> wraps all pages. The <code>&lt;Outlet /&gt;</code> component renders the matched child route.</p>
+
+          <div class="callout callout-info">
+            <strong>Route configuration:</strong> Use nested routes to share layout components. This avoids duplicating the sidebar and header across every page.
+          </div>
+        </section>
+
+        <!-- SECTION 10 -->
+        <section id="tailwind">
+          <h2>10. Styling with Tailwind CSS</h2>
+          <p>Tailwind CSS lets us build complex layouts quickly without writing custom CSS. Here are the key patterns used in this dashboard:</p>
+
+          <h3>Dark Mode Classes</h3>
+          <pre><code>&lt;!-- Dark mode with Tailwind --&gt;
+&lt;div class="bg-white dark:bg-gray-800"&gt;
+  &lt;h2 class="text-gray-900 dark:text-white"&gt;Dashboard&lt;/h2&gt;
+  &lt;p class="text-gray-500 dark:text-gray-400"&gt;Welcome back&lt;/p&gt;
+&lt;/div&gt;</code></pre>
+
+          <h3>Responsive Grid</h3>
+          <pre><code>{/* Stats cards grid — 1 col mobile, 2 col tablet, 4 col desktop */}
+&lt;div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-6"&gt;
+  &lt;StatsCard title="Revenue" value="$45,231" change={12.5} icon={DollarSign} color="bg-indigo-500" /&gt;
+  &lt;StatsCard title="Users" value="2,345" change={8.2} icon={Users} color="bg-green-500" /&gt;
+  &lt;StatsCard title="Orders" value="1,234" change={-3.1} icon={ShoppingCart} color="bg-yellow-500" /&gt;
+  &lt;StatsCard title="Conversion" value="3.2%" change={5.7} icon={TrendingUp} color="bg-red-500" /&gt;
+&lt;/div&gt;</code></pre>
+
+          <h3>Utility Classes Cheat Sheet</h3>
+          <ul>
+            <li><code>flex items-center justify-between</code> — flexbox alignment</li>
+            <li><code>grid grid-cols-1 md:grid-cols-3 gap-4</code> — responsive grid</li>
+            <li><code>transition-all duration-300</code> — smooth animations</li>
+            <li><code>hover:bg-gray-100 dark:hover:bg-gray-700</code> — hover states</li>
+            <li><code>shadow-sm rounded-xl</code> — card styling</li>
+          </ul>
+
+          <div class="callout callout-tip">
+            <strong>Customize your palette:</strong> Extend Tailwind's default colors in <code>tailwind.config.js</code> to match your brand. Use consistent colors across all charts and UI elements for a polished look.
+          </div>
+
+          <p>That's it! You now have a fully functional admin dashboard with sidebar navigation, interactive charts, a sortable data table, dark mode, and responsive design. This project demonstrates core React skills that employers look for.</p>
+        </section>
+      </div>
+    </div>
+  </article>
+
+  <div class="back-to-top">
+    <a href="#top" class="btn btn-primary">
+      <i class="fas fa-arrow-up"></i> Back to Top
+    </a>
+  </div>
+
+  <footer class="footer">
+    <div class="container">
+      <div class="footer-content">
+        <div class="footer-brand">
+          <a href="../index.html" class="nav-logo">
+            <span class="logo-bracket">{</span> AB <span class="logo-bracket">}</span>
+          </a>
+          <p>Building modern web experiences with clean code, comprehensive tests, and continuous improvement.</p>
+        </div>
+        <div class="footer-links">
+          <h4>Navigation</h4>
+          <ul>
+            <li><a href="../index.html">Portfolio</a></li>
+            <li><a href="../index.html#about">About</a></li>
+            <li><a href="../index.html#projects">Projects</a></li>
+            <li><a href="../index.html#contact">Contact</a></li>
+          </ul>
+        </div>
+        <div class="footer-social">
+          <h4>Connect</h4>
+          <div class="footer-icons">
+            <a href="https://github.com/avinashbt" target="_blank"><i class="fab fa-github"></i></a>
+            <a href="https://www.linkedin.com/in/avinash-bawage-99ba58200/?locale=en_US" target="_blank"><i class="fab fa-linkedin-in"></i></a>
+            <a href="https://twitter.com/AvinashBawge" target="_blank"><i class="fab fa-twitter"></i></a>
+            <a href="mailto:avi.bawge9@gmail.com"><i class="fas fa-envelope"></i></a>
+          </div>
+        </div>
+      </div>
+      <div class="footer-bottom">
+        <p>Built with <span class="footer-heart">&hearts;</span> by Avinash Bawage &mdash; &copy; 2026</p>
+      </div>
+    </div>
+  </footer>
+
+  <script>
+    const hamburger = document.getElementById('hamburger');
+    const mobileMenu = document.getElementById('mobileMenu');
+    let overlay = document.createElement('div');
+    overlay.className = 'mobile-overlay';
+    document.body.appendChild(overlay);
+
+    function toggleMenu() {
+      hamburger.classList.toggle('active');
+      mobileMenu.classList.toggle('active');
+      overlay.classList.toggle('active');
+      document.body.style.overflow = mobileMenu.classList.contains('active') ? 'hidden' : '';
+    }
+
+    hamburger.addEventListener('click', toggleMenu);
+    overlay.addEventListener('click', toggleMenu);
+    document.querySelectorAll('.mobile-menu a').forEach(a => a.addEventListener('click', toggleMenu));
+  </script>
+</body>
+</html>

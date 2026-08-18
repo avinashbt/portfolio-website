@@ -1,0 +1,873 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>React Portfolio Website Tutorial for Beginners | Avinash Bawage - Frontend Developer & React Engineer</title>
+  <meta name="description" content="Step-by-step tutorial to build a modern React portfolio website from scratch with hero section, projects showcase, contact form, and animations.">
+  <meta name="keywords" content="React portfolio tutorial, build React website, React beginner tutorial, portfolio website React, React project tutorial">
+  <link rel="shortcut icon" href="../favicon.jpg" type="image/x-icon">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800&family=JetBrains+Mono:wght@400;500&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css">
+  <link rel="stylesheet" href="../styles.css">
+  <link rel="stylesheet" href="../blog.css">
+</head>
+<body>
+
+  <!-- NAV -->
+  <nav class="nav scrolled" id="nav">
+    <div class="nav-container">
+      <a href="../index.html" class="nav-logo">
+        <span class="logo-bracket">{</span> AB <span class="logo-bracket">}</span>
+      </a>
+      <ul class="nav-links">
+        <li><a href="../index.html#about">About</a></li>
+        <li><a href="../index.html#skills">Skills</a></li>
+        <li><a href="../index.html#projects">Projects</a></li>
+        <li><a href="../blog.html" class="nav-blog-link" style="color:#6366f1">Blog</a></li>
+        <li><a href="../index.html#contact" class="nav-cta">Hire Me</a></li>
+      </ul>
+      <button class="hamburger" id="hamburger" aria-label="Toggle menu">
+        <span></span><span></span><span></span>
+      </button>
+    </div>
+  </nav>
+
+  <div class="mobile-menu" id="mobileMenu">
+    <ul>
+      <li><a href="../index.html#about">About</a></li>
+      <li><a href="../index.html#skills">Skills</a></li>
+      <li><a href="../index.html#projects">Projects</a></li>
+      <li><a href="../blog.html">Blog</a></li>
+      <li><a href="../index.html#contact">Hire Me</a></li>
+    </ul>
+  </div>
+
+  <!-- BLOG HEADER -->
+  <header class="blog-hero">
+    <div class="container">
+      <a href="../blog.html" class="blog-back"><i class="fas fa-arrow-left"></i> Back to Blog</a>
+      <h1 class="blog-hero-title">React Portfolio Website Tutorial for Beginners</h1>
+      <p class="blog-hero-desc">Build a complete, modern portfolio from scratch using React — from project setup to deployment.</p>
+    </div>
+  </header>
+
+  <article class="blog-article" id="react-portfolio-tutorial">
+    <div class="container">
+      <div class="article-header">
+        <div class="article-meta">
+          <span class="article-tag">React</span>
+          <span class="article-date"><i class="fas fa-calendar"></i> 2026</span>
+          <span class="article-read"><i class="fas fa-clock"></i> 12 min read</span>
+        </div>
+        <h1 class="article-title">React Portfolio Website Tutorial for Beginners</h1>
+        <p class="article-subtitle">A comprehensive, step-by-step guide to building a professional developer portfolio with React — complete with real code, animations, and deployment tips.</p>
+        <div class="article-author">
+          <img src="../profile1.jpg" alt="Avinash Bawage" class="author-avatar">
+          <div>
+            <span class="author-name">Avinash Bawage</span>
+            <span class="author-role">Frontend Developer & React Engineer</span>
+          </div>
+        </div>
+      </div>
+
+      <div class="article-content">
+        <!-- TOC -->
+        <div class="toc">
+          <h3>Table of Contents</h3>
+          <ol>
+            <li><a href="#rp-setup">Setting Up Your React Project</a></li>
+            <li><a href="#rp-structure">Project Structure &amp; Components</a></li>
+            <li><a href="#rp-hero">Building the Hero Section</a></li>
+            <li><a href="#rp-about">Creating the About Section</a></li>
+            <li><a href="#rp-skills">Skills Section with Progress Bars</a></li>
+            <li><a href="#rp-projects">Projects Showcase</a></li>
+            <li><a href="#rp-contact">Contact Form with Validation</a></li>
+            <li><a href="#rp-animations">Adding Animations</a></li>
+            <li><a href="#rp-deploy">Deploying to Vercel or Netlify</a></li>
+          </ol>
+        </div>
+
+        <!-- Section 1 -->
+        <section id="rp-setup">
+          <h2>1. Setting Up Your React Project</h2>
+          <p>First, let's scaffold a new React project using Vite (recommended) or Create React App. Vite is significantly faster and produces a smaller build.</p>
+
+          <h3>Using Vite (Recommended)</h3>
+          <pre><code># Create a new React project
+npm create vite@latest portfolio -- --template react
+
+# Navigate into the project
+cd portfolio
+
+# Install dependencies
+npm install
+
+# Start the dev server
+npm run dev</code></pre>
+
+          <h3>Using Create React App</h3>
+          <pre><code>npx create-react-app portfolio
+cd portfolio
+npm start</code></pre>
+
+          <p>After running the dev server, you'll see your app at <code>http://localhost:5173</code> (Vite) or <code>http://localhost:3000</code> (CRA).</p>
+
+          <h3>Initial Folder Structure</h3>
+          <pre><code>portfolio/
+├── public/
+│   └── favicon.jpg
+├── src/
+│   ├── assets/
+│   ├── App.jsx
+│   ├── App.css
+│   ├── index.css
+│   └── main.jsx
+├── index.html
+├── package.json
+└── vite.config.js</code></pre>
+
+          <div class="callout callout-tip">
+            <i class="fas fa-lightbulb"></i>
+            <div>
+              <strong>Why Vite over CRA?</strong> Vite offers instant HMR (Hot Module Replacement), faster builds, and native ES module support. Create React App is deprecated and no longer maintained by the React team.
+            </div>
+          </div>
+        </section>
+
+        <!-- Section 2 -->
+        <section id="rp-structure">
+          <h2>2. Project Structure &amp; Components</h2>
+          <p>A clean folder structure keeps your project maintainable as it grows. Organize by feature, not by file type.</p>
+
+          <h3>Recommended Folder Structure</h3>
+          <pre><code>src/
+├── components/
+│   ├── Navbar.jsx
+│   ├── Hero.jsx
+│   ├── About.jsx
+│   ├── Skills.jsx
+│   ├── Projects.jsx
+│   ├── Contact.jsx
+│   └── Footer.jsx
+├── data/
+│   └── portfolio.js
+├── styles/
+│   ├── global.css
+│   ├── navbar.css
+│   ├── hero.css
+│   └── ...
+├── App.jsx
+├── App.css
+└── main.jsx</code></pre>
+
+          <h3>App.jsx — The Main Layout</h3>
+          <pre><code>import Navbar from './components/Navbar'
+import Hero from './components/Hero'
+import About from './components/About'
+import Skills from './components/Skills'
+import Projects from './components/Projects'
+import Contact from './components/Contact'
+import Footer from './components/Footer'
+
+function App() {
+  return (
+    &lt;div className="App"&gt;
+      &lt;Navbar /&gt;
+      &lt;Hero /&gt;
+      &lt;About /&gt;
+      &lt;Skills /&gt;
+      &lt;Projects /&gt;
+      &lt;Contact /&gt;
+      &lt;Footer /&gt;
+    &lt;/div&gt;
+  )
+}
+
+export default App</code></pre>
+
+          <div class="callout callout-info">
+            <i class="fas fa-info-circle"></i>
+            <div>
+              <strong>Component rule of thumb:</strong> If a section of your page has its own logic or UI, extract it into its own component. Components should be small, focused, and reusable.
+            </div>
+          </div>
+        </section>
+
+        <!-- Section 3 -->
+        <section id="rp-hero">
+          <h2>3. Building the Hero Section</h2>
+          <p>The hero section is the first thing visitors see. Let's build one with a typewriter effect using <code>useState</code> and <code>useEffect</code>.</p>
+
+          <h3>Hero.jsx</h3>
+          <pre><code>import { useState, useEffect } from 'react'
+
+const titles = [
+  'Frontend Developer',
+  'React Engineer',
+  'UI/UX Enthusiast',
+  'Problem Solver'
+]
+
+export default function Hero() {
+  const [currentTitle, setCurrentTitle] = useState(0)
+  const [displayText, setDisplayText] = useState('')
+  const [isDeleting, setIsDeleting] = useState(false)
+
+  useEffect(() => {
+    const fullText = titles[currentTitle]
+    let timeout
+
+    if (!isDeleting && displayText === fullText) {
+      timeout = setTimeout(() => setIsDeleting(true), 2000)
+    } else if (isDeleting && displayText === '') {
+      setIsDeleting(false)
+      setCurrentTitle((prev) =&gt; (prev + 1) % titles.length)
+    } else {
+      timeout = setTimeout(() =&gt; {
+        setDisplayText(
+          isDeleting
+            ? fullText.substring(0, displayText.length - 1)
+            : fullText.substring(0, displayText.length + 1)
+        )
+      }, isDeleting ? 50 : 100)
+    }
+
+    return () =&gt; clearTimeout(timeout)
+  }, [displayText, isDeleting, currentTitle])
+
+  return (
+    &lt;section className="hero" id="home"&gt;
+      &lt;div className="hero-container"&gt;
+        &lt;h1 className="hero-name"&gt;
+          Hi, I'm &lt;span className="highlight"&gt;Avinash&lt;/span&gt;
+        &lt;/h1&gt;
+        &lt;h2 className="hero-title"&gt;
+          {displayText}
+          &lt;span className="cursor"&gt;|&lt;/span&gt;
+        &lt;/h2&gt;
+        &lt;p className="hero-desc"&gt;
+          I build modern, performant web applications with React.
+        &lt;/p&gt;
+        &lt;div className="hero-buttons"&gt;
+          &lt;a href="#projects" className="btn btn-primary"&gt;
+            View My Work
+          &lt;/a&gt;
+          &lt;a href="#contact" className="btn btn-secondary"&gt;
+            Get In Touch
+          &lt;/a&gt;
+        &lt;/div&gt;
+      &lt;/div&gt;
+    &lt;/section&gt;
+  )
+}</code></pre>
+
+          <h3>CSS for the Typewriter Cursor</h3>
+          <pre><code>.cursor {
+  animation: blink 1s step-end infinite;
+  color: #6366f1;
+  font-weight: 300;
+}
+
+@keyframes blink {
+  50% { opacity: 0; }
+}</code></pre>
+        </section>
+
+        <!-- Section 4 -->
+        <section id="rp-about">
+          <h2>4. Creating the About Section</h2>
+          <p>The About section uses component composition and props to render a reusable layout.</p>
+
+          <h3>About.jsx</h3>
+          <pre><code>export default function About() {
+  const highlights = [
+    { icon: 'fa-code', label: 'Clean Code' },
+    { icon: 'fa-rocket', label: 'Performance' },
+    { icon: 'fa-palette', label: 'UI/UX Design' },
+    { icon: 'fa-vial', label: 'Testing' },
+  ]
+
+  return (
+    &lt;section className="about" id="about"&gt;
+      &lt;div className="container"&gt;
+        &lt;h2 className="section-title"&gt;About Me&lt;/h2&gt;
+        &lt;div className="about-content"&gt;
+          &lt;div className="about-text"&gt;
+            &lt;p&gt;
+              I'm a frontend developer specializing in React
+              and modern JavaScript. I love building intuitive
+              interfaces and writing clean, testable code.
+            &lt;/p&gt;
+            &lt;p&gt;
+              With experience in component-driven development,
+              state management, and end-to-end testing, I focus
+              on delivering reliable, performant web applications.
+            &lt;/p&gt;
+          &lt;/div&gt;
+          &lt;div className="about-highlights"&gt;
+            {highlights.map((item, index) =&gt; (
+              &lt;HighlightCard key={index} {...item} /&gt;
+            ))}
+          &lt;/div&gt;
+        &lt;/div&gt;
+      &lt;/div&gt;
+    &lt;/section&gt;
+  )
+}
+
+function HighlightCard({ icon, label }) {
+  return (
+    &lt;div className="highlight-card"&gt;
+      &lt;i className={`fas ${icon}`}&gt;&lt;/i&gt;
+      &lt;span&gt;{label}&lt;/span&gt;
+    &lt;/div&gt;
+  )
+}</code></pre>
+
+          <div class="callout callout-tip">
+            <i class="fas fa-lightbulb"></i>
+            <div>
+              <strong>Props spreading:</strong> Using <code>{...item}</code> passes all object properties as individual props. It's clean and avoids repetitive prop drilling.
+            </div>
+          </div>
+        </section>
+
+        <!-- Section 5 -->
+        <section id="rp-skills">
+          <h2>5. Skills Section with Progress Bars</h2>
+          <p>Display your skills as animated progress bars using array mapping and CSS transitions.</p>
+
+          <h3>Skills.jsx</h3>
+          <pre><code>import { useState, useEffect, useRef } from 'react'
+
+const skillsData = [
+  { name: 'React', level: 90, color: '#61DAFB' },
+  { name: 'JavaScript', level: 88, color: '#F7DF1E' },
+  { name: 'TypeScript', level: 80, color: '#3178C6' },
+  { name: 'CSS/SASS', level: 85, color: '#CC6699' },
+  { name: 'Node.js', level: 70, color: '#68A063' },
+  { name: 'Testing (Jest/Cypress)', level: 82, color: '#22C55E' },
+]
+
+export default function Skills() {
+  const [visible, setVisible] = useState(false)
+  const sectionRef = useRef(null)
+
+  useEffect(() =&gt; {
+    const observer = new IntersectionObserver(
+      ([entry]) =&gt; {
+        if (entry.isIntersecting) {
+          setVisible(true)
+          observer.disconnect()
+        }
+      },
+      { threshold: 0.3 }
+    )
+
+    if (sectionRef.current) observer.observe(sectionRef.current)
+    return () =&gt; observer.disconnect()
+  }, [])
+
+  return (
+    &lt;section className="skills" id="skills" ref={sectionRef}&gt;
+      &lt;div className="container"&gt;
+        &lt;h2 className="section-title"&gt;Skills&lt;/h2&gt;
+        &lt;div className="skills-grid"&gt;
+          {skillsData.map((skill, index) =&gt; (
+            &lt;div className="skill-item" key={index}&gt;
+              &lt;div className="skill-header"&gt;
+                &lt;span className="skill-name"&gt;{skill.name}&lt;/span&gt;
+                &lt;span className="skill-percent"&gt;{skill.level}%&lt;/span&gt;
+              &lt;/div&gt;
+              &lt;div className="skill-bar"&gt;
+                &lt;div
+                  className="skill-progress"
+                  style={{
+                    width: visible ? `${skill.level}%` : '0%',
+                    backgroundColor: skill.color,
+                    transitionDelay: `${index * 0.1}s`,
+                  }}
+                &gt;&lt;/div&gt;
+              &lt;/div&gt;
+            &lt;/div&gt;
+          ))}
+        &lt;/div&gt;
+      &lt;/div&gt;
+    &lt;/section&gt;
+  )
+}</code></pre>
+
+          <h3>Progress Bar CSS</h3>
+          <pre><code>.skill-bar {
+  background: rgba(255, 255, 255, 0.08);
+  border-radius: 10px;
+  height: 10px;
+  overflow: hidden;
+}
+
+.skill-progress {
+  height: 100%;
+  border-radius: 10px;
+  width: 0;
+  transition: width 1.2s ease-out;
+}</code></pre>
+
+          <div class="callout callout-info">
+            <i class="fas fa-info-circle"></i>
+            <div>
+              <strong>IntersectionObserver:</strong> We use it to trigger the animation only when the skills section scrolls into view, creating a nice reveal effect without any external library.
+            </div>
+          </div>
+        </section>
+
+        <!-- Section 6 -->
+        <section id="rp-projects">
+          <h2>6. Projects Showcase</h2>
+          <p>Display projects in a responsive card grid with conditional rendering for tags and links.</p>
+
+          <h3>Projects.jsx</h3>
+          <pre><code>const projectsData = [
+  {
+    title: 'E-Commerce Dashboard',
+    description: 'A real-time admin dashboard built with React and Chart.js for monitoring sales and inventory.',
+    tags: ['React', 'Chart.js', 'Firebase'],
+    github: 'https://github.com/avinashbt/ecommerce-dash',
+    live: 'https://ecommerce-demo.vercel.app',
+    image: '/projects/ecommerce.jpg',
+  },
+  {
+    title: 'Testing Framework Guide',
+    description: 'Interactive guide for learning Cypress and Jest with runnable code examples.',
+    tags: ['React', 'Cypress', 'Jest'],
+    github: 'https://github.com/avinashbt/testing-guide',
+    live: null,
+    image: '/projects/testing.jpg',
+  },
+]
+
+export default function Projects() {
+  return (
+    &lt;section className="projects" id="projects"&gt;
+      &lt;div className="container"&gt;
+        &lt;h2 className="section-title"&gt;Projects&lt;/h2&gt;
+        &lt;div className="projects-grid"&gt;
+          {projectsData.map((project, index) =&gt; (
+            &lt;div className="project-card" key={index}&gt;
+              &lt;img
+                src={project.image}
+                alt={project.title}
+                className="project-image"
+              /&gt;
+              &lt;div className="project-info"&gt;
+                &lt;h3&gt;{project.title}&lt;/h3&gt;
+                &lt;p&gt;{project.description}&lt;/p&gt;
+                &lt;div className="project-tags"&gt;
+                  {project.tags.map((tag, i) =&gt; (
+                    &lt;span key={i} className="tag"&gt;{tag}&lt;/span&gt;
+                  ))}
+                &lt;/div&gt;
+                &lt;div className="project-links"&gt;
+                  {project.github &amp;&amp; (
+                    &lt;a href={project.github} target="_blank" rel="noreferrer"&gt;
+                      &lt;i className="fab fa-github"&gt;&lt;/i&gt; Code
+                    &lt;/a&gt;
+                  )}
+                  {project.live &amp;&amp; (
+                    &lt;a href={project.live} target="_blank" rel="noreferrer"&gt;
+                      &lt;i className="fas fa-external-link-alt"&gt;&lt;/i&gt; Live
+                    &lt;/a&gt;
+                  )}
+                &lt;/div&gt;
+              &lt;/div&gt;
+            &lt;/div&gt;
+          ))}
+        &lt;/div&gt;
+      &lt;/div&gt;
+    &lt;/section&gt;
+  )
+}</code></pre>
+
+          <div class="callout callout-warning">
+            <i class="fas fa-exclamation-triangle"></i>
+            <div>
+              <strong>Always use conditional rendering for optional links:</strong> If a project doesn't have a live demo, don't render the link. Using <code>{project.live &amp;&amp; ...}</code> prevents rendering an empty anchor tag.
+            </div>
+          </div>
+        </section>
+
+        <!-- Section 7 -->
+        <section id="rp-contact">
+          <h2>7. Contact Form with Validation</h2>
+          <p>A contact form with client-side validation using <code>useState</code> and email regex.</p>
+
+          <h3>Contact.jsx</h3>
+          <pre><code>import { useState } from 'react'
+
+export default function Contact() {
+  const [formData, setFormData] = useState({
+    name: '',
+    email: '',
+    subject: '',
+    message: '',
+  })
+  const [errors, setErrors] = useState({})
+  const [submitted, setSubmitted] = useState(false)
+
+  const validateEmail = (email) =&gt; {
+    return /^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(email)
+  }
+
+  const validate = () =&gt; {
+    const newErrors = {}
+    if (!formData.name.trim()) newErrors.name = 'Name is required'
+    if (!formData.email.trim()) {
+      newErrors.email = 'Email is required'
+    } else if (!validateEmail(formData.email)) {
+      newErrors.email = 'Invalid email address'
+    }
+    if (!formData.message.trim()) newErrors.message = 'Message is required'
+    return newErrors
+  }
+
+  const handleChange = (e) =&gt; {
+    const { name, value } = e.target
+    setFormData((prev) =&gt; ({ ...prev, [name]: value }))
+    if (errors[name]) {
+      setErrors((prev) =&gt; ({ ...prev, [name]: '' }))
+    }
+  }
+
+  const handleSubmit = (e) =&gt; {
+    e.preventDefault()
+    const newErrors = validate()
+    if (Object.keys(newErrors).length &gt; 0) {
+      setErrors(newErrors)
+      return
+    }
+    // Send form data to your backend or email service
+    console.log('Form submitted:', formData)
+    setSubmitted(true)
+    setFormData({ name: '', email: '', subject: '', message: '' })
+  }
+
+  if (submitted) {
+    return (
+      &lt;section className="contact" id="contact"&gt;
+        &lt;div className="container"&gt;
+          &lt;div className="success-message"&gt;
+            &lt;i className="fas fa-check-circle"&gt;&lt;/i&gt;
+            &lt;h3&gt;Message Sent!&lt;/h3&gt;
+            &lt;p&gt;Thank you for reaching out. I'll reply soon.&lt;/p&gt;
+          &lt;/div&gt;
+        &lt;/div&gt;
+      &lt;/section&gt;
+    )
+  }
+
+  return (
+    &lt;section className="contact" id="contact"&gt;
+      &lt;div className="container"&gt;
+        &lt;h2 className="section-title"&gt;Get In Touch&lt;/h2&gt;
+        &lt;form className="contact-form" onSubmit={handleSubmit}&gt;
+          &lt;div className="form-group"&gt;
+            &lt;label htmlFor="name"&gt;Name&lt;/label&gt;
+            &lt;input
+              type="text"
+              id="name"
+              name="name"
+              value={formData.name}
+              onChange={handleChange}
+              className={errors.name ? 'error' : ''}
+            /&gt;
+            {errors.name &amp;&amp; &lt;span className="error-text"&gt;{errors.name}&lt;/span&gt;}
+          &lt;/div&gt;
+          &lt;div className="form-group"&gt;
+            &lt;label htmlFor="email"&gt;Email&lt;/label&gt;
+            &lt;input
+              type="email"
+              id="email"
+              name="email"
+              value={formData.email}
+              onChange={handleChange}
+              className={errors.email ? 'error' : ''}
+            /&gt;
+            {errors.email &amp;&amp; &lt;span className="error-text"&gt;{errors.email}&lt;/span&gt;}
+          &lt;/div&gt;
+          &lt;div className="form-group"&gt;
+            &lt;label htmlFor="subject"&gt;Subject&lt;/label&gt;
+            &lt;input
+              type="text"
+              id="subject"
+              name="subject"
+              value={formData.subject}
+              onChange={handleChange}
+            /&gt;
+          &lt;/div&gt;
+          &lt;div className="form-group"&gt;
+            &lt;label htmlFor="message"&gt;Message&lt;/label&gt;
+            &lt;textarea
+              id="message"
+              name="message"
+              rows="5"
+              value={formData.message}
+              onChange={handleChange}
+              className={errors.message ? 'error' : ''}
+            &gt;&lt;/textarea&gt;
+            {errors.message &amp;&amp; &lt;span className="error-text"&gt;{errors.message}&lt;/span&gt;}
+          &lt;/div&gt;
+          &lt;button type="submit" className="btn btn-primary"&gt;
+            &lt;i className="fas fa-paper-plane"&gt;&lt;/i&gt; Send Message
+          &lt;/button&gt;
+        &lt;/form&gt;
+      &lt;/div&gt;
+    &lt;/section&gt;
+  )
+}</code></pre>
+
+          <div class="callout callout-tip">
+            <i class="fas fa-lightbulb"></i>
+            <div>
+              <strong>Clear errors on change:</strong> By clearing the error for a field when the user starts typing again, you provide immediate feedback that their correction is being recognized.
+            </div>
+          </div>
+        </section>
+
+        <!-- Section 8 -->
+        <section id="rp-animations">
+          <h2>8. Adding Animations</h2>
+          <p>Scroll-based animations make your portfolio feel dynamic. Here are two approaches: AOS library and custom IntersectionObserver.</p>
+
+          <h3>Option A: AOS (Animate on Scroll)</h3>
+          <pre><code># Install AOS
+npm install aos
+
+# Import in main.jsx
+import AOS from 'aos'
+import 'aos/dist/aos.css'
+
+AOS.init({
+  duration: 800,
+  easing: 'ease-out-cubic',
+  once: true,
+})</code></pre>
+
+          <pre><code>&lt;!-- Use in JSX --&gt;
+&lt;div data-aos="fade-up"&gt;
+  &lt;h2&gt;About Me&lt;/h2&gt;
+&lt;/div&gt;
+
+&lt;div data-aos="fade-left" data-aos-delay="200"&gt;
+  &lt;p&gt;Animated paragraph&lt;/p&gt;
+&lt;/div&gt;</code></pre>
+
+          <h3>Option B: Custom CSS Animations</h3>
+          <pre><code>/* Define animation keyframes */
+@keyframes fadeInUp {
+  from {
+    opacity: 0;
+    transform: translateY(30px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+/* Apply with IntersectionObserver */
+.animate-in {
+  animation: fadeInUp 0.6s ease-out forwards;
+}</code></pre>
+
+          <h3>useInView Custom Hook</h3>
+          <pre><code>import { useState, useEffect, useRef } from 'react'
+
+export function useInView(options = {}) {
+  const ref = useRef(null)
+  const [isInView, setIsInView] = useState(false)
+
+  useEffect(() =&gt; {
+    const observer = new IntersectionObserver(([entry]) =&gt; {
+      if (entry.isIntersecting) {
+        setIsInView(true)
+        observer.disconnect()
+      }
+    }, { threshold: 0.1, ...options })
+
+    if (ref.current) observer.observe(ref.current)
+    return () =&gt; observer.disconnect()
+  }, [])
+
+  return [ref, isInView]
+}
+
+// Usage
+function AnimatedSection({ children }) {
+  const [ref, isInView] = useInView()
+
+  return (
+    &lt;div
+      ref={ref}
+      className={isInView ? 'animate-in' : 'opacity-0'}
+    &gt;
+      {children}
+    &lt;/div&gt;
+  )
+}</code></pre>
+
+          <div class="callout callout-info">
+            <i class="fas fa-info-circle"></i>
+            <div>
+              <strong>Performance tip:</strong> Use <code>transform</code> and <code>opacity</code> for animations — they're GPU-accelerated and won't cause layout reflows. Avoid animating <code>width</code>, <code>height</code>, or <code>margin</code>.
+            </div>
+          </div>
+        </section>
+
+        <!-- Section 9 -->
+        <section id="rp-deploy">
+          <h2>9. Deploying to Vercel or Netlify</h2>
+          <p>Once your portfolio is ready, deploy it for the world to see.</p>
+
+          <h3>Deploy to Vercel</h3>
+          <pre><code># Install Vercel CLI
+npm install -g vercel
+
+# Login
+vercel login
+
+# Deploy (from project root)
+vercel
+
+# Deploy to production
+vercel --prod</code></pre>
+
+          <h3>Deploy to Netlify</h3>
+          <pre><code># Install Netlify CLI
+npm install -g netlify-cli
+
+# Login
+netlify login
+
+# Initialize and deploy
+netlify init
+netlify deploy --prod</code></pre>
+
+          <h3>GitHub Actions Auto-Deploy</h3>
+          <pre><code># .github/workflows/deploy.yml
+name: Deploy to Vercel
+
+on:
+  push:
+    branches: [main]
+
+jobs:
+  deploy:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+
+      - uses: actions/setup-node@v4
+        with:
+          node-version: 18
+
+      - run: npm ci
+      - run: npm run build
+
+      - name: Deploy to Vercel
+        uses: amondnet/vercel-action@v25
+        with:
+          vercel-token: ${{ secrets.VERCEL_TOKEN }}
+          vercel-org-id: ${{ secrets.VERCEL_ORG_ID }}
+          vercel-project-id: ${{ secrets.VERCEL_PROJECT_ID }}
+          vercel-args: '--prod'</code></pre>
+
+          <div class="comparison-table">
+            <table>
+              <thead>
+                <tr><th>Feature</th><th>Vercel</th><th>Netlify</th></tr>
+              </thead>
+              <tbody>
+                <tr><td>Free Tier</td><td>Unlimited deploys</td><td>100GB bandwidth</td></tr>
+                <tr><td>Build Speed</td><td>Very fast</td><td>Fast</td></tr>
+                <tr><td>Serverless Functions</td><td>Built-in</td><td>Built-in</td></tr>
+                <tr><td>Custom Domains</td><td>Free SSL</td><td>Free SSL</td></tr>
+                <tr><td>Framework Support</td><td>First-class React/Next.js</td><td>Good React support</td></tr>
+              </tbody>
+            </table>
+          </div>
+
+          <div class="callout callout-tip">
+            <i class="fas fa-lightbulb"></i>
+            <div>
+              <strong>Post-deployment checklist:</strong> Test all links, verify images load, check responsive behavior on mobile, validate meta tags, and run Lighthouse for performance scores.
+            </div>
+          </div>
+        </section>
+      </div>
+    </div>
+  </article>
+
+  <!-- BACK TO TOP -->
+  <div class="back-to-top">
+    <a href="#top" class="btn btn-primary">
+      <i class="fas fa-arrow-up"></i> Back to Top
+    </a>
+  </div>
+
+  <!-- FOOTER -->
+  <footer class="footer">
+    <div class="container">
+      <div class="footer-content">
+        <div class="footer-brand">
+          <a href="../index.html" class="nav-logo">
+            <span class="logo-bracket">{</span> AB <span class="logo-bracket">}</span>
+          </a>
+          <p>Building modern web experiences with clean code, comprehensive tests, and continuous improvement.</p>
+        </div>
+        <div class="footer-links">
+          <h4>Navigation</h4>
+          <ul>
+            <li><a href="../index.html">Portfolio</a></li>
+            <li><a href="../index.html#about">About</a></li>
+            <li><a href="../index.html#projects">Projects</a></li>
+            <li><a href="../index.html#contact">Contact</a></li>
+          </ul>
+        </div>
+        <div class="footer-social">
+          <h4>Connect</h4>
+          <div class="footer-icons">
+            <a href="https://github.com/avinashbt" target="_blank"><i class="fab fa-github"></i></a>
+            <a href="https://www.linkedin.com/in/avinash-bawage-99ba58200/?locale=en_US" target="_blank"><i class="fab fa-linkedin-in"></i></a>
+            <a href="https://twitter.com/AvinashBawge" target="_blank"><i class="fab fa-twitter"></i></a>
+            <a href="mailto:avi.bawge9@gmail.com"><i class="fas fa-envelope"></i></a>
+          </div>
+        </div>
+      </div>
+      <div class="footer-bottom">
+        <p>Built with <span class="footer-heart">&hearts;</span> by Avinash Bawage &mdash; &copy; 2026</p>
+      </div>
+    </div>
+  </footer>
+
+  <script>
+    const hamburger = document.getElementById('hamburger');
+    const mobileMenu = document.getElementById('mobileMenu');
+    let overlay = document.createElement('div');
+    overlay.className = 'mobile-overlay';
+    document.body.appendChild(overlay);
+
+    function toggleMenu() {
+      hamburger.classList.toggle('active');
+      mobileMenu.classList.toggle('active');
+      overlay.classList.toggle('active');
+      document.body.style.overflow = mobileMenu.classList.contains('active') ? 'hidden' : '';
+    }
+
+    hamburger.addEventListener('click', toggleMenu);
+    overlay.addEventListener('click', toggleMenu);
+    document.querySelectorAll('.mobile-menu a').forEach(a => a.addEventListener('click', toggleMenu));
+  </script>
+</body>
+</html>

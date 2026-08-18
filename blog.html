@@ -4,8 +4,8 @@
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>Blog | Avinash Bawage - Frontend Developer & React Engineer</title>
-  <meta name="description" content="Technical articles on Cypress E2E testing, Jest unit testing, React development, and QA best practices by Avinash Bawage.">
-  <meta name="keywords" content="Cypress testing tutorial, Jest testing guide, React testing, QA automation, unit testing, E2E testing">
+  <meta name="description" content="Technical articles on React development, testing, deployment, and frontend engineering best practices by Avinash Bawage.">
+  <meta name="keywords" content="React tutorial, frontend development, testing, deployment, JavaScript, web development blog">
   <link rel="shortcut icon" href="./favicon.jpg" type="image/x-icon">
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
@@ -13,6 +13,112 @@
   <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css">
   <link rel="stylesheet" href="styles.css">
   <link rel="stylesheet" href="blog.css">
+  <style>
+    .blog-index-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fill, minmax(340px, 1fr));
+      gap: 2.4rem;
+      margin-top: 4rem;
+    }
+    .blog-index-card {
+      background: rgba(255,255,255,.03);
+      border: 1px solid rgba(255,255,255,.06);
+      border-radius: 1.6rem;
+      padding: 3rem;
+      transition: all .3s;
+      display: flex;
+      flex-direction: column;
+      text-decoration: none;
+    }
+    .blog-index-card:hover {
+      border-color: rgba(99,102,241,.3);
+      transform: translateY(-4px);
+      box-shadow: 0 12px 40px rgba(99,102,241,.1);
+    }
+    .blog-index-card-icon {
+      width: 5rem;
+      height: 5rem;
+      border-radius: 1.2rem;
+      background: rgba(99,102,241,.1);
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      font-size: 2.2rem;
+      color: #6366f1;
+      margin-bottom: 2rem;
+    }
+    .blog-index-card-tag {
+      display: inline-block;
+      background: rgba(99,102,241,.1);
+      color: #a5b4fc;
+      padding: .3rem 1rem;
+      border-radius: 50px;
+      font-size: 1.1rem;
+      font-weight: 600;
+      letter-spacing: .5px;
+      text-transform: uppercase;
+      margin-bottom: 1.2rem;
+      width: fit-content;
+    }
+    .blog-index-card h3 {
+      font-size: 1.8rem;
+      font-weight: 700;
+      color: #fff;
+      margin-bottom: 1rem;
+      line-height: 1.4;
+    }
+    .blog-index-card p {
+      font-size: 1.4rem;
+      color: rgba(255,255,255,.45);
+      line-height: 1.7;
+      flex: 1;
+      margin-bottom: 1.5rem;
+    }
+    .blog-index-card-meta {
+      display: flex;
+      align-items: center;
+      gap: 1.5rem;
+      font-size: 1.2rem;
+      color: rgba(255,255,255,.3);
+    }
+    .blog-index-card-meta i {
+      margin-right: .4rem;
+    }
+    .blog-index-card-read {
+      display: inline-flex;
+      align-items: center;
+      gap: .6rem;
+      color: #6366f1;
+      font-size: 1.3rem;
+      font-weight: 600;
+      margin-top: 1.5rem;
+      transition: gap .3s;
+    }
+    .blog-index-card:hover .blog-index-card-read {
+      gap: 1rem;
+    }
+    .blog-category-label {
+      font-size: 1.4rem;
+      font-weight: 700;
+      color: rgba(255,255,255,.5);
+      margin: 4rem 0 2rem;
+      padding-bottom: 1rem;
+      border-bottom: 1px solid rgba(255,255,255,.06);
+    }
+    .blog-category-label i {
+      color: #6366f1;
+      margin-right: .8rem;
+    }
+    @media (max-width: 768px) {
+      .blog-index-grid {
+        grid-template-columns: 1fr;
+        gap: 1.6rem;
+      }
+      .blog-index-card {
+        padding: 2rem;
+      }
+    }
+  </style>
 </head>
 <body>
 
@@ -50,1144 +156,168 @@
     <div class="container">
       <a href="index.html" class="blog-back"><i class="fas fa-arrow-left"></i> Back to Portfolio</a>
       <h1 class="blog-hero-title">Technical Blog</h1>
-      <p class="blog-hero-desc">Articles on testing, frontend development, and engineering best practices.</p>
+      <p class="blog-hero-desc">Articles on React development, testing, deployment, and frontend engineering best practices.</p>
     </div>
   </header>
 
-  <!-- ARTICLE 1: CYPRESS -->
-  <article class="blog-article" id="cypress-testing">
+  <!-- BLOG INDEX -->
+  <section class="blog-article" style="padding-top:2rem;">
     <div class="container">
-      <div class="article-header">
-        <div class="article-meta">
-          <span class="article-tag">E2E Testing</span>
-          <span class="article-date"><i class="fas fa-calendar"></i> 2026</span>
-          <span class="article-read"><i class="fas fa-clock"></i> 15 min read</span>
-        </div>
-        <h1 class="article-title">Complete Guide to Cypress Testing in 2026</h1>
-        <p class="article-subtitle">From zero to production-ready end-to-end tests — a hands-on guide with real-world examples and best practices.</p>
-        <div class="article-author">
-          <img src="profile1.jpg" alt="Avinash Bawage" class="author-avatar">
-          <div>
-            <span class="author-name">Avinash Bawage</span>
-            <span class="author-role">Frontend Developer & React Engineer</span>
+
+      <!-- TESTING ARTICLES -->
+      <h2 class="blog-category-label"><i class="fas fa-vial"></i> Testing & Quality</h2>
+      <div class="blog-index-grid">
+        <a href="blog/cypress-testing.html" class="blog-index-card">
+          <div class="blog-index-card-icon"><i class="fas fa-check-double"></i></div>
+          <span class="blog-index-card-tag">E2E Testing</span>
+          <h3>Complete Guide to Cypress Testing in 2026</h3>
+          <p>From zero to production-ready end-to-end tests — a hands-on guide with real-world examples and best practices.</p>
+          <div class="blog-index-card-meta">
+            <span><i class="fas fa-clock"></i> 15 min read</span>
+            <span><i class="fas fa-calendar"></i> 2026</span>
           </div>
-        </div>
+          <span class="blog-index-card-read">Read Article <i class="fas fa-arrow-right"></i></span>
+        </a>
+        <a href="blog/jest-testing.html" class="blog-index-card">
+          <div class="blog-index-card-icon"><i class="fas fa-database"></i></div>
+          <span class="blog-index-card-tag">Unit Testing</span>
+          <h3>Mastering Jest: Unit Testing for Modern JavaScript Apps</h3>
+          <p>Write reliable unit and integration tests with Jest, React Testing Library, and advanced mocking strategies.</p>
+          <div class="blog-index-card-meta">
+            <span><i class="fas fa-clock"></i> 14 min read</span>
+            <span><i class="fas fa-calendar"></i> 2026</span>
+          </div>
+          <span class="blog-index-card-read">Read Article <i class="fas fa-arrow-right"></i></span>
+        </a>
       </div>
 
-      <div class="article-content">
-        <!-- TOC -->
-        <div class="toc">
-          <h3>Table of Contents</h3>
-          <ol>
-            <li><a href="#cypress-intro">Why Cypress?</a></li>
-            <li><a href="#cypress-setup">Setting Up Cypress</a></li>
-            <li><a href="#cypress-first">Writing Your First Test</a></li>
-            <li><a href="#cypress-selectors">Selectors & Commands</a></li>
-            <li><a href="#cypress-intercept">Intercepting API Calls</a></li>
-            <li><a href="#cypress-fixtures">Working with Fixtures</a></li>
-            <li><a href="#cypress-custom">Custom Commands</a></li>
-            <li><a href="#cypress-ci">CI/CD Integration</a></li>
-            <li><a href="#cypress-best">Best Practices</a></li>
-          </ol>
-        </div>
-
-        <!-- Section 1 -->
-        <section id="cypress-intro">
-          <h2>1. Why Cypress?</h2>
-          <p>Cypress is a modern E2E (end-to-end) testing framework built for the modern web. Unlike Selenium, Cypress runs <strong>inside the browser</strong>, giving you real-time debugging, automatic waiting, and reliable selectors.</p>
-
-          <h3>Key Advantages Over Selenium</h3>
-          <div class="comparison-table">
-            <table>
-              <thead>
-                <tr><th>Feature</th><th>Cypress</th><th>Selenium</th></tr>
-              </thead>
-              <tbody>
-                <tr><td>Execution Speed</td><td>Fast (runs in-browser)</td><td>Slower (out-of-process)</td></tr>
-                <tr><td>Auto-Waiting</td><td>Built-in</td><td>Manual waits</td></tr>
-                <tr><td>Debugging</td><td>Time-travel debugger</td><td>Log-based debugging</td></tr>
-                <tr><td>Network Interception</td><td>Built-in <code>cy.intercept()</code></td><td>Requires external proxy</td></tr>
-                <tr><td>Setup Complexity</td><td>Zero config</td><td>Driver management</td></tr>
-                <tr><td>Screenshots/Video</td><td>Automatic</td><td>Manual setup</td></tr>
-              </tbody>
-            </table>
+      <!-- REACT ARTICLES -->
+      <h2 class="blog-category-label"><i class="fab fa-react"></i> React Development</h2>
+      <div class="blog-index-grid">
+        <a href="blog/react-portfolio-tutorial.html" class="blog-index-card">
+          <div class="blog-index-card-icon"><i class="fas fa-code"></i></div>
+          <span class="blog-index-card-tag">React</span>
+          <h3>React Portfolio Website Tutorial for Beginners</h3>
+          <p>Build a stunning portfolio website from scratch using React — component architecture, styling, animations, and deployment.</p>
+          <div class="blog-index-card-meta">
+            <span><i class="fas fa-clock"></i> 12 min read</span>
+            <span><i class="fas fa-calendar"></i> 2026</span>
           </div>
-
-          <div class="callout callout-info">
-            <i class="fas fa-info-circle"></i>
-            <div>
-              <strong>When to use Cypress:</strong> Best for single-page applications (SPAs), React/Angular/Vue projects, and teams wanting fast, reliable E2E tests with minimal setup.
-            </div>
+          <span class="blog-index-card-read">Read Article <i class="fas fa-arrow-right"></i></span>
+        </a>
+        <a href="blog/react-portfolio-project-ideas.html" class="blog-index-card">
+          <div class="blog-index-card-icon"><i class="fas fa-lightbulb"></i></div>
+          <span class="blog-index-card-tag">React</span>
+          <h3>React Developer Portfolio Project Ideas</h3>
+          <p>From beginner to advanced — project ideas that showcase your React skills and impress hiring managers.</p>
+          <div class="blog-index-card-meta">
+            <span><i class="fas fa-clock"></i> 10 min read</span>
+            <span><i class="fas fa-calendar"></i> 2026</span>
           </div>
-        </section>
-
-        <!-- Section 2 -->
-        <section id="cypress-setup">
-          <h2>2. Setting Up Cypress</h2>
-          <p>Getting Cypress up and running takes under 5 minutes.</p>
-
-          <h3>Installation</h3>
-          <pre><code># Navigate to your project
-cd your-react-app
-
-# Install Cypress as a dev dependency
-npm install cypress --save-dev
-
-# Open Cypress for the first time
-npx cypress open</code></pre>
-
-          <p>When you run <code>cypress open</code> for the first time, Cypress creates a <code>cypress/</code> folder with example tests and configuration:</p>
-
-          <pre><code>your-project/
-├── cypress/
-│   ├── e2e/              # Your test files go here
-│   │   └── home.cy.js
-│   ├── fixtures/         # Test data (JSON files)
-│   ├── support/          # Custom commands, hooks
-│   │   ├── commands.js
-│   │   └── e2e.js
-│   └── downloads/
-├── cypress.config.js     # Cypress configuration
-└── package.json</code></pre>
-
-          <h3>cypress.config.js</h3>
-          <pre><code>const { defineConfig } = require('cypress')
-
-module.exports = defineConfig({
-  e2e: {
-    baseUrl: 'http://localhost:3000',  // Your app's URL
-    viewportWidth: 1280,
-    viewportHeight: 720,
-    video: true,
-    screenshotOnRunFailure: true,
-    specPattern: 'cypress/e2e/**/*.cy.{js,jsx,ts,tsx}',
-    setupNodeEvents(on, config) {
-      // implement node event listeners here
-    },
-  },
-})</code></pre>
-
-          <h3>Adding Scripts to package.json</h3>
-          <pre><code>{
-  "scripts": {
-    "cy:open": "cypress open",
-    "cy:run": "cypress run",
-    "cy:headless": "cypress run --headless --browser chrome"
-  }
-}</code></pre>
-        </section>
-
-        <!-- Section 3 -->
-        <section id="cypress-first">
-          <h2>3. Writing Your First Test</h2>
-          <p>Let's create a test for a typical React portfolio page.</p>
-
-          <h3>Basic Test Structure</h3>
-          <pre><code>// cypress/e2e/home.cy.js
-
-describe('Homepage', () => {
-  beforeEach(() => {
-    cy.visit('/')
-  })
-
-  it('loads the page successfully', () => {
-    cy.title().should('include', 'Avinash Bawage')
-    cy.get('body').should('be.visible')
-  })
-
-  it('displays the hero section', () => {
-    cy.get('.hero-name')
-      .should('be.visible')
-      .and('contain', 'Avinash Bawage')
-  })
-
-  it('has working navigation links', () => {
-    cy.get('.nav-links a').should('have.length.greaterThan', 3)
-    cy.get('.nav-links a').each(($link) => {
-      cy.wrap($link).should('have.attr', 'href')
-    })
-  })
-
-  it('scrolls to contact section when "Hire Me" is clicked', () => {
-    cy.get('.nav-cta').click()
-    cy.url().should('include', '#contact')
-    cy.get('#contact').should('be.visible')
-  })
-
-  it('submits the contact form', () => {
-    cy.get('#fullname').type('John Doe')
-    cy.get('#email').type('john@example.com')
-    cy.get('#subject').type('Test Inquiry')
-    cy.get('#message').type('Hello from Cypress!')
-    cy.get('#frmContact').submit()
-    cy.on('window:alert', (text) => {
-      expect(text).to.contain('Message sent')
-    })
-  })
-})</code></pre>
-
-          <div class="callout callout-tip">
-            <i class="fas fa-lightbulb"></i>
-            <div>
-              <strong>Cypress best practice:</strong> Use <code>data-testid</code> attributes for stable selectors instead of CSS classes that may change with styling updates.
-            </div>
+          <span class="blog-index-card-read">Read Article <i class="fas fa-arrow-right"></i></span>
+        </a>
+        <a href="blog/react-api-integration.html" class="blog-index-card">
+          <div class="blog-index-card-icon"><i class="fas fa-plug"></i></div>
+          <span class="blog-index-card-tag">React</span>
+          <h3>React API Integration for Beginners</h3>
+          <p>Master fetching, posting, and managing API data in React with fetch, Axios, and TanStack Query.</p>
+          <div class="blog-index-card-meta">
+            <span><i class="fas fa-clock"></i> 10 min read</span>
+            <span><i class="fas fa-calendar"></i> 2026</span>
           </div>
-        </section>
-
-        <!-- Section 4 -->
-        <section id="cypress-selectors">
-          <h2>4. Selectors & Commands</h2>
-          <p>Cypress provides powerful selectors and chainable commands for interacting with elements.</p>
-
-          <h3>Querying Elements</h3>
-          <pre><code>// By CSS selector
-cy.get('button.submit')
-
-// By data-testid (recommended!)
-cy.get('[data-testid="login-button"]')
-
-// By text content
-cy.contains('Sign In')
-
-// By role (accessibility-first)
-cy.get('button').contains('Submit')
-
-// Finding child elements
-cy.get('.form-group')
-  .first()
-  .find('input')
-  .type('Hello')
-
-// Chaining
-cy.get('#contact')
-  .find('form')
-  .should('exist')
-  .within(() => {
-    cy.get('input').first().type('Name')
-  })</code></pre>
-
-          <h3>Actions</h3>
-          <pre><code>// Click
-cy.get('.btn-primary').click()
-cy.get('.btn-primary').click({ force: true })  // Override actionability
-
-// Type
-cy.get('input').type('Hello World')
-cy.get('input').type('{selectall}New text')
-cy.get('input').type('text', { delay: 100 })
-
-// Clear
-cy.get('input').clear()
-
-// Select dropdown
-cy.get('select').select('option-value')
-
-// Check/Uncheck
-cy.get('input[type="checkbox"]').check()
-cy.get('input[type="checkbox"]').uncheck()
-
-// Scroll
-cy.get('#section').scrollIntoView()</code></pre>
-
-          <h3>Assertions</h3>
-          <pre><code>// Visibility
-cy.get('.alert').should('be.visible')
-cy.get('.spinner').should('not.exist')
-
-// Text content
-cy.get('h1').should('contain', 'Welcome')
-cy.get('h1').should('have.text', 'Welcome Home')
-
-// Attribute
-cy.get('a').should('have.attr', 'href', '/login')
-
-// Class
-cy.get('button').should('have.class', 'active')
-
-// Value
-cy.get('input').should('have.value', 'John')
-
-// Length
-cy.get('.list-item').should('have.length', 5)
-
-// Style
-cy.get('.btn').should('have.css', 'background-color', 'rgb(99, 102, 241)')</code></pre>
-        </section>
-
-        <!-- Section 5 -->
-        <section id="cypress-intercept">
-          <h2>5. Intercepting API Calls</h2>
-          <p>Cypress can intercept and mock network requests, letting you test your UI without a real backend.</p>
-
-          <h3>Basic Intercept</h3>
-          <pre><code>describe('API Interception', () => {
-  it('intercepts a GET request', () => {
-    // Intercept and alias
-    cy.intercept('GET', '/api/projects').as('getProjects')
-
-    cy.visit('/projects')
-    cy.wait('@getProjects').then((interception) => {
-      expect(interception.response.statusCode).to.eq(200)
-    })
-  })
-
-  it('mocks API response', () => {
-    cy.intercept('GET', '/api/projects', {
-      statusCode: 200,
-      body: [
-        { id: 1, name: 'Project A' },
-        { id: 2, name: 'Project B' },
-      ],
-    }).as('mockProjects')
-
-    cy.visit('/projects')
-    cy.wait('@mockProjects')
-    cy.get('.project-card').should('have.length', 2)
-  })
-
-  it('simulates slow network', () => {
-    cy.intercept('GET', '/api/data', (req) => {
-      req.reply((res) => {
-        res.send({ delay: 2000, body: res.body })
-      })
-    })
-  })
-
-  it('returns error status', () => {
-    cy.intercept('POST', '/api/contact', {
-      statusCode: 500,
-      body: { error: 'Server error' },
-    })
-
-    cy.get('#frmContact').submit()
-    cy.get('.error-message').should('contain', 'Something went wrong')
-  })
-})</code></pre>
-        </section>
-
-        <!-- Section 6 -->
-        <section id="cypress-fixtures">
-          <h2>6. Working with Fixtures</h2>
-          <p>Fixtures let you load test data from external JSON files.</p>
-
-          <h3>cypress/fixtures/users.json</h3>
-          <pre><code>{
-  "valid": {
-    "name": "John Doe",
-    "email": "john@example.com",
-    "subject": "Test Inquiry",
-    "message": "Hello from Cypress!"
-  },
-  "invalid": {
-    "name": "",
-    "email": "not-an-email",
-    "subject": "",
-    "message": ""
-  }
-}</code></pre>
-
-          <h3>Using Fixtures in Tests</h3>
-          <pre><code>describe('Contact Form', () => {
-  beforeEach(function () {
-    cy.fixture('users').as('users')
-  })
-
-  it('submits with valid data', function () {
-    cy.get('#fullname').type(this.users.valid.name)
-    cy.get('#email').type(this.users.valid.email)
-    cy.get('#subject').type(this.users.valid.subject)
-    cy.get('#message').type(this.users.valid.message)
-    cy.get('#frmContact').submit()
-  })
-
-  it('rejects invalid email', function () {
-    cy.get('#email').type(this.users.invalid.email)
-    cy.get('#email').should('have.value', 'not-an-email')
-    // HTML5 validation should prevent submit
-  })
-})</code></pre>
-        </section>
-
-        <!-- Section 7 -->
-        <section id="cypress-custom">
-          <h2>7. Custom Commands</h2>
-          <p>Reusable commands keep your tests DRY (Don't Repeat Yourself).</p>
-
-          <h3>cypress/support/commands.js</h3>
-          <pre><code>// Custom command: Login
-Cypress.Commands.add('login', (email, password) => {
-  cy.session([email, password], () => {
-    cy.visit('/login')
-    cy.get('#email').type(email)
-    cy.get('#password').type(password)
-    cy.get('button[type="submit"]').click()
-    cy.url().should('not.include', '/login')
-  })
-})
-
-// Custom command: Fill contact form
-Cypress.Commands.add('fillContactForm', (data) => {
-  cy.get('#fullname').type(data.name)
-  cy.get('#email').type(data.email)
-  cy.get('#subject').type(data.subject)
-  cy.get('#message').type(data.message)
-})
-
-// Custom command: Check if element is in viewport
-Cypress.Commands.add('isInViewport', { prevSubject: true }, (subject) => {
-  const rect = subject[0].getBoundingClientRect()
-  expect(rect.top).to.be.lessThan(Cypress.config('viewportHeight'))
-  expect(rect.bottom).to.be.greaterThan(0)
-  return subject
-})
-
-// Usage in tests
-describe('Portfolio', () => {
-  it('uses custom commands', () => {
-    cy.visit('/')
-    cy.fillContactForm({
-      name: 'Test User',
-      email: 'test@example.com',
-      subject: 'Hello',
-      message: 'Testing!'
-    })
-  })
-})</code></pre>
-        </section>
-
-        <!-- Section 8 -->
-        <section id="cypress-ci">
-          <h2>8. CI/CD Integration</h2>
-          <p>Run Cypress tests automatically on every push using GitHub Actions.</p>
-
-          <h3>.github/workflows/cypress.yml</h3>
-          <pre><code>name: Cypress Tests
-
-on:
-  push:
-    branches: [main]
-  pull_request:
-    branches: [main]
-
-jobs:
-  cypress-run:
-    runs-on: ubuntu-latest
-    steps:
-      - name: Checkout
-        uses: actions/checkout@v4
-
-      - name: Setup Node
-        uses: actions/setup-node@v4
-        with:
-          node-version: 18
-
-      - name: Install dependencies
-        run: npm ci
-
-      - name: Start dev server
-        run: npm start &
-        env:
-          CI: true
-
-      - name: Wait for server
-        run: npx wait-on http://localhost:3000
-
-      - name: Run Cypress tests
-        run: npx cypress run
-
-      - name: Upload screenshots
-        uses: actions/upload-artifact@v4
-        if: failure()
-        with:
-          name: cypress-screenshots
-          path: cypress/screenshots</code></pre>
-        </section>
-
-        <!-- Section 9 -->
-        <section id="cypress-best">
-          <h2>9. Best Practices</h2>
-          <div class="best-practices">
-            <div class="practice-item">
-              <h4><i class="fas fa-check-circle"></i> Use data-testid Selectors</h4>
-              <pre><code>// Instead of this (fragile)
-cy.get('.btn-primary > span')
-
-// Do this (stable)
-cy.get('[data-testid="submit-btn"]')</code></pre>
-            </div>
-            <div class="practice-item">
-              <h4><i class="fas fa-check-circle"></i> Use cy.intercept() to Mock APIs</h4>
-              <pre><code>// Don't rely on real backend in E2E tests
-cy.intercept('GET', '/api/projects', { fixture: 'projects.json' })</code></pre>
-            </div>
-            <div class="practice-item">
-              <h4><i class="fas fa-check-circle"></i> Use cy.session() for Authentication</h4>
-              <pre><code>// Cache login across tests in the same describe block
-cy.session([email, password], () => {
-  cy.visit('/login')
-  cy.login(email, password)
-})</code></pre>
-            </div>
-            <div class="practice-item">
-              <h4><i class="fas fa-check-circle"></i> Don't Test What You Don't Own</h4>
-              <p>Avoid testing third-party libraries — focus on your application's behavior and user flows.</p>
-            </div>
-            <div class="practice-item">
-              <h4><i class="fas fa-check-circle"></i> Run Tests in Parallel</h4>
-              <pre><code>// cypress.config.js
-module.exports = defineConfig({
-  e2e: {
-    experimentalRunAllSpecs: true,  // For Cypress < 13
-  },
-})</code></pre>
-            </div>
-          </div>
-        </section>
+          <span class="blog-index-card-read">Read Article <i class="fas fa-arrow-right"></i></span>
+        </a>
       </div>
+
+      <!-- REACT PROJECTS -->
+      <h2 class="blog-category-label"><i class="fas fa-rocket"></i> React Projects</h2>
+      <div class="blog-index-grid">
+        <a href="blog/react-admin-dashboard.html" class="blog-index-card">
+          <div class="blog-index-card-icon"><i class="fas fa-th-large"></i></div>
+          <span class="blog-index-card-tag">React Project</span>
+          <h3>React Admin Dashboard Project for Beginners</h3>
+          <p>Build a full admin dashboard with sidebar navigation, charts, data tables, and dark/light mode.</p>
+          <div class="blog-index-card-meta">
+            <span><i class="fas fa-clock"></i> 14 min read</span>
+            <span><i class="fas fa-calendar"></i> 2026</span>
+          </div>
+          <span class="blog-index-card-read">Read Article <i class="fas fa-arrow-right"></i></span>
+        </a>
+        <a href="blog/react-calculator-project.html" class="blog-index-card">
+          <div class="blog-index-card-icon"><i class="fas fa-calculator"></i></div>
+          <span class="blog-index-card-tag">React Project</span>
+          <h3>React Calculator Project Tutorial</h3>
+          <p>Build a fully functional calculator with useReducer, keyboard support, calculation history, and scientific functions.</p>
+          <div class="blog-index-card-meta">
+            <span><i class="fas fa-clock"></i> 10 min read</span>
+            <span><i class="fas fa-calendar"></i> 2026</span>
+          </div>
+          <span class="blog-index-card-read">Read Article <i class="fas fa-arrow-right"></i></span>
+        </a>
+        <a href="blog/react-movie-search-app.html" class="blog-index-card">
+          <div class="blog-index-card-icon"><i class="fas fa-film"></i></div>
+          <span class="blog-index-card-tag">React Project</span>
+          <h3>React Movie Search App Using API</h3>
+          <p>Search movies via OMDB/TMDB API, display results, view details, and save favorites with localStorage.</p>
+          <div class="blog-index-card-meta">
+            <span><i class="fas fa-clock"></i> 11 min read</span>
+            <span><i class="fas fa-calendar"></i> 2026</span>
+          </div>
+          <span class="blog-index-card-read">Read Article <i class="fas fa-arrow-right"></i></span>
+        </a>
+        <a href="blog/react-word-counter.html" class="blog-index-card">
+          <div class="blog-index-card-icon"><i class="fas fa-font"></i></div>
+          <span class="blog-index-card-tag">React Project</span>
+          <h3>React Word Counter Project</h3>
+          <p>Count words, characters, reading time, and keyword density with a clean, real-time UI.</p>
+          <div class="blog-index-card-meta">
+            <span><i class="fas fa-clock"></i> 8 min read</span>
+            <span><i class="fas fa-calendar"></i> 2026</span>
+          </div>
+          <span class="blog-index-card-read">Read Article <i class="fas fa-arrow-right"></i></span>
+        </a>
+        <a href="blog/react-text-to-speech.html" class="blog-index-card">
+          <div class="blog-index-card-icon"><i class="fas fa-volume-up"></i></div>
+          <span class="blog-index-card-tag">React Project</span>
+          <h3>React Text to Speech Project</h3>
+          <p>Convert text to speech using the Web Speech API with voice selection, speed controls, and word highlighting.</p>
+          <div class="blog-index-card-meta">
+            <span><i class="fas fa-clock"></i> 8 min read</span>
+            <span><i class="fas fa-calendar"></i> 2026</span>
+          </div>
+          <span class="blog-index-card-read">Read Article <i class="fas fa-arrow-right"></i></span>
+        </a>
+      </div>
+
+      <!-- DEPLOYMENT ARTICLES -->
+      <h2 class="blog-category-label"><i class="fas fa-cloud-upload-alt"></i> Deployment</h2>
+      <div class="blog-index-grid">
+        <a href="blog/deploy-react-github-pages.html" class="blog-index-card">
+          <div class="blog-index-card-icon"><i class="fab fa-github"></i></div>
+          <span class="blog-index-card-tag">Deployment</span>
+          <h3>How to Deploy React App on GitHub Pages</h3>
+          <p>Step-by-step guide to deploying your React app using GitHub Actions and gh-pages — with routing tips.</p>
+          <div class="blog-index-card-meta">
+            <span><i class="fas fa-clock"></i> 10 min read</span>
+            <span><i class="fas fa-calendar"></i> 2026</span>
+          </div>
+          <span class="blog-index-card-read">Read Article <i class="fas fa-arrow-right"></i></span>
+        </a>
+        <a href="blog/custom-domain-github-pages.html" class="blog-index-card">
+          <div class="blog-index-card-icon"><i class="fas fa-globe"></i></div>
+          <span class="blog-index-card-tag">Deployment</span>
+          <h3>How to Add Custom Domain to GitHub Pages</h3>
+          <p>Connect your custom domain to GitHub Pages with DNS records, HTTPS, and apex domain configuration.</p>
+          <div class="blog-index-card-meta">
+            <span><i class="fas fa-clock"></i> 8 min read</span>
+            <span><i class="fas fa-calendar"></i> 2026</span>
+          </div>
+          <span class="blog-index-card-read">Read Article <i class="fas fa-arrow-right"></i></span>
+        </a>
+      </div>
+
     </div>
-  </article>
-
-  <!-- ARTICLE DIVIDER -->
-  <div class="article-divider">
-    <div class="container"><hr></div>
-  </div>
-
-  <!-- ARTICLE 2: JEST -->
-  <article class="blog-article" id="jest-testing">
-    <div class="container">
-      <div class="article-header">
-        <div class="article-meta">
-          <span class="article-tag">Unit Testing</span>
-          <span class="article-date"><i class="fas fa-calendar"></i> 2026</span>
-          <span class="article-read"><i class="fas fa-clock"></i> 14 min read</span>
-        </div>
-        <h1 class="article-title">Mastering Jest: Unit Testing for Modern JavaScript Apps</h1>
-        <p class="article-subtitle">Write reliable unit and integration tests with Jest, React Testing Library, and advanced mocking strategies.</p>
-        <div class="article-author">
-          <img src="profile1.jpg" alt="Avinash Bawage" class="author-avatar">
-          <div>
-            <span class="author-name">Avinash Bawage</span>
-            <span class="author-role">Frontend Developer & React Engineer</span>
-          </div>
-        </div>
-      </div>
-
-      <div class="article-content">
-        <!-- TOC -->
-        <div class="toc">
-          <h3>Table of Contents</h3>
-          <ol>
-            <li><a href="#jest-intro">Why Jest?</a></li>
-            <li><a href="#jest-setup">Setting Up Jest</a></li>
-            <li><a href="#jest-anatomy">Test Anatomy</a></li>
-            <li><a href="#jest-matchers">Matchers & Assertions</a></li>
-            <li><a href="#jest-hooks">Setup & Teardown</a></li>
-            <li><a href="#jest-mocking">Mocking & Spying</a></li>
-            <li><a href="#jest-rtl">React Testing Library</a></li>
-            <li><a href="#jest-async">Async Testing</a></li>
-            <li><a href="#jest-coverage">Coverage & CI</a></li>
-          </ol>
-        </div>
-
-        <!-- Section 1 -->
-        <section id="jest-intro">
-          <h2>1. Why Jest?</h2>
-          <p>Jest is a delightful JavaScript testing framework with a focus on simplicity. Created by Meta (Facebook), it's the go-to test runner for React projects and works beautifully with any JavaScript codebase.</p>
-
-          <h3>Key Features</h3>
-          <ul class="feature-list">
-            <li><i class="fas fa-check"></i> <strong>Zero Configuration</strong> — Works out of the box for most JavaScript projects</li>
-            <li><i class="fas fa-check"></i> <strong>Fast Execution</strong> — Parallel test running and intelligent test isolation</li>
-            <li><i class="fas fa-check"></i> <strong>Built-in Mocking</strong> — Powerful mocking for functions, modules, and timers</li>
-            <li><i class="fas fa-check"></i> <strong>Snapshot Testing</strong> — Catch unexpected UI changes automatically</li>
-            <li><i class="fas fa-check"></i> <strong>Code Coverage</strong> — Built-in coverage reports with no extra setup</li>
-            <li><i class="fas fa-check"></i> <strong>Rich Assertions</strong> — Comprehensive matcher library for any assertion need</li>
-          </ul>
-
-          <div class="comparison-table">
-            <table>
-              <thead>
-                <tr><th>Feature</th><th>Jest</th><th>Mocha</th></tr>
-              </thead>
-              <tbody>
-                <tr><td>Setup</td><td>Zero config</td><td>Requires config</td></tr>
-                <tr><td>Assertion Library</td><td>Built-in (expect)</td><td>Needs Chai</td></tr>
-                <tr><td>Mocking</td><td>Built-in</td><td>Sinon (external)</td></tr>
-                <tr><td>Coverage</td><td>Built-in (Istanbul)</td><td>Needs nyc</td></tr>
-                <tr><td>Snapshot Testing</td><td>Built-in</td><td>Not available</td></tr>
-                <tr><td>Parallel Execution</td><td>Automatic</td><td>Manual setup</td></tr>
-              </tbody>
-            </table>
-          </div>
-        </section>
-
-        <!-- Section 2 -->
-        <section id="jest-setup">
-          <h2>2. Setting Up Jest</h2>
-
-          <h3>For React Projects (with CRA)</h3>
-          <pre><code># Jest comes pre-installed with Create React App
-npx create-react-app my-app
-cd my-app
-
-# Just run the tests
-npm test</code></pre>
-
-          <h3>For Vanilla JavaScript Projects</h3>
-          <pre><code># Install Jest
-npm install --save-dev jest
-
-# Add test script to package.json
-{
-  "scripts": {
-    "test": "jest",
-    "test:watch": "jest --watch",
-    "test:coverage": "jest --coverage"
-  }
-}</code></pre>
-
-          <h3>jest.config.js</h3>
-          <pre><code>module.exports = {
-  testEnvironment: 'jsdom',  // For React/browser-like environment
-  collectCoverageFrom: [
-    'src/**/*.{js,jsx}',
-    '!src/index.js',
-    '!src/reportWebVitals.js',
-  ],
-  coverageThreshold: {
-    global: {
-      branches: 80,
-      functions: 80,
-      lines: 80,
-      statements: 80,
-    },
-  },
-  setupFilesAfterSetup: ['@testing-library/jest-dom'],
-}</code></pre>
-        </section>
-
-        <!-- Section 3 -->
-        <section id="jest-anatomy">
-          <h2>3. Test Anatomy</h2>
-          <p>Every Jest test follows a predictable structure using <code>describe</code>, <code>it</code>, and <code>expect</code>.</p>
-
-          <pre><code>// math.test.js
-
-describe('Math Operations', () => {
-
-  describe('add()', () => {
-    it('adds two positive numbers', () => {
-      expect(add(2, 3)).toBe(5)
-    })
-
-    it('adds negative numbers', () => {
-      expect(add(-1, -3)).toBe(-4)
-    })
-
-    it('handles zero', () => {
-      expect(add(5, 0)).toBe(5)
-    })
-  })
-
-  describe('divide()', () => {
-    it('divides two numbers', () => {
-      expect(divide(10, 2)).toBe(5)
-    })
-
-    it('throws on division by zero', () => {
-      expect(() => divide(10, 0)).toThrow('Cannot divide by zero')
-    })
-  })
-
-})</code></pre>
-
-          <div class="callout callout-warning">
-            <i class="fas fa-exclamation-triangle"></i>
-            <div>
-              <strong>One assertion per test:</strong> Each <code>it()</code> block should test one specific behavior. This makes failures easier to identify and debug.
-            </div>
-          </div>
-        </section>
-
-        <!-- Section 4 -->
-        <section id="jest-matchers">
-          <h2>4. Matchers & Assertions</h2>
-          <p>Jest's <code>expect()</code> comes with a rich set of matchers for any assertion scenario.</p>
-
-          <h3>Common Matchers</h3>
-          <pre><code>// Equality
-expect(value).toBe(42)            // Strict equality (===)
-expect(obj).toEqual({ a: 1 })    // Deep equality
-
-// Truthiness
-expect(value).toBeTruthy()
-expect(value).toBeFalsy()
-expect(value).toBeNull()
-expect(value).toBeDefined()
-
-// Numbers
-expect(price).toBeGreaterThan(10)
-expect(price).toBeLessThanOrEqual(100)
-expect(price).toBeCloseTo(9.99, 1)
-
-// Strings
-expect(name).toContain('Avinash')
-expect(name).toMatch(/^A\w+/)
-
-// Arrays
-expect(items).toContain('React')
-expect(items).toHaveLength(3)
-
-// Objects
-expect(user).toHaveProperty('name', 'John')
-expect(user).toHaveProperty('email')
-expect(user).toMatchObject({
-  name: 'John',
-  role: 'developer',
-})
-
-// Exceptions
-expect(() => badFn()).toThrow()
-expect(() => badFn()).toThrow('Error message')
-expect(() => badFn()).toThrow(Error)
-
-// Not
-expect(value).not.toBe(0)
-expect(items).not.toContain('Vue')</code></pre>
-
-          <h3>DOM Assertions (@testing-library/jest-dom)</h3>
-          <pre><code>import '@testing-library/jest-dom'
-
-// Element visibility
-expect(element).toBeVisible()
-expect(element).not.toBeInTheDocument()
-
-// Classes & Attributes
-expect(button).toHaveClass('active')
-expect(link).toHaveAttribute('href', '/about')
-
-// Content
-expect(element).toHaveTextContent('Hello')
-expect(element).toHaveValue('test@email.com')
-
-// Focus
-expect(input).toHaveFocus()
-expect(input).not.toHaveFocus()
-
-// Disabled
-expect(button).toBeDisabled()
-expect(button).not.toBeDisabled()</code></pre>
-        </section>
-
-        <!-- Section 5 -->
-        <section id="jest-hooks">
-          <h2>5. Setup & Teardown</h2>
-          <p>Jest provides hooks to run code before and after each test or test suite.</p>
-
-          <pre><code>describe('Database Tests', () => {
-  let db
-
-  // Run once before ALL tests in this describe block
-  beforeAll(async () => {
-    db = await createDatabase()
-  })
-
-  // Run before EACH test
-  beforeEach(async () => {
-    await db.clearUsers()
-    await db.insertUser({ name: 'Test User', email: 'test@test.com' })
-  })
-
-  // Run after EACH test
-  afterEach(async () => {
-    await db.clearLogs()
-  })
-
-  // Run once after ALL tests
-  afterAll(async () => {
-    await db.close()
-  })
-
-  it('fetches user', async () => {
-    const user = await db.findUser('test@test.com')
-    expect(user).toBeTruthy()
-    expect(user.name).toBe('Test User')
-  })
-
-  it('deletes user', async () => {
-    await db.deleteUser('test@test.com')
-    const user = await db.findUser('test@test.com')
-    expect(user).toBeNull()
-  })
-})</code></pre>
-        </section>
-
-        <!-- Section 6 -->
-        <section id="jest-mocking">
-          <h2>6. Mocking & Spying</h2>
-          <p>Mocking isolates your tests from external dependencies and gives you full control over behavior.</p>
-
-          <h3>Mock Functions</h3>
-          <pre><code>// Create a mock function
-const mockFn = jest.fn()
-
-// Call it
-mockFn('hello')
-mockFn('world')
-
-// Assertions
-expect(mockFn).toHaveBeenCalledTimes(2)
-expect(mockFn).toHaveBeenCalledWith('hello')
-expect(mockFn).toHaveBeenLastCalledWith('world')
-
-// Mock return values
-mockFn.mockReturnValue('result')
-mockFn.mockReturnValueOnce('first')
-mockFn.mockReturnValueOnce('second')
-
-expect(mockFn()).toBe('first')
-expect(mockFn()).toBe('second')
-expect(mockFn()).toBe('result')  // Returns to normal</code></pre>
-
-          <h3>Mocking Modules</h3>
-          <pre><code>// api.js
-export const fetchProjects = async () => {
-  const res = await fetch('/api/projects')
-  return res.json()
-}
-
-// api.test.js
-import { fetchProjects } from './api'
-
-jest.mock('./api')
-
-beforeEach(() => {
-  jest.clearAllMocks()
-})
-
-it('fetches projects', async () => {
-  const mockData = [{ id: 1, name: 'Project A' }]
-  fetchProjects.mockResolvedValue(mockData)
-
-  const result = await fetchProjects()
-  expect(result).toEqual(mockData)
-  expect(fetchProjects).toHaveBeenCalledTimes(1)
-})</code></pre>
-
-          <h3>Mocking API Calls (fetch)</h3>
-          <pre><code>// Mock fetch globally
-beforeEach(() => {
-  global.fetch = jest.fn()
-})
-
-afterEach(() => {
-  jest.restoreAllMocks()
-})
-
-it('fetches user data', async () => {
-  global.fetch.mockResolvedValue({
-    ok: true,
-    json: async () => ({ name: 'Avinash', role: 'Developer' }),
-  })
-
-  const user = await getUser(1)
-  expect(user.name).toBe('Avinash')
-  expect(fetch).toHaveBeenCalledWith('/api/users/1')
-})
-
-it('handles fetch errors', async () => {
-  global.fetch.mockResolvedValue({
-    ok: false,
-    status: 404,
-  })
-
-  await expect(getUser(999)).rejects.toThrow('User not found')
-})</code></pre>
-
-          <h3>Mocking Timers</h3>
-          <pre><code>beforeEach(() => {
-  jest.useFakeTimers()
-})
-
-afterEach(() => {
-  jest.useRealTimers()
-})
-
-it('calls callback after delay', () => {
-  const callback = jest.fn()
-  setTimeout(callback, 3000)
-
-  expect(callback).not.toHaveBeenCalled()
-
-  jest.advanceTimersByTime(3000)
-
-  expect(callback).toHaveBeenCalledTimes(1)
-})</code></pre>
-        </section>
-
-        <!-- Section 7 -->
-        <section id="jest-rtl">
-          <h2>7. React Testing Library</h2>
-          <p>React Testing Library (RTL) lets you test components the way users interact with them.</p>
-
-          <h3>Installation</h3>
-          <pre><code>npm install --save-dev @testing-library/react @testing-library/jest-dom @testing-library/user-event</code></pre>
-
-          <h3>Testing a Button Component</h3>
-          <pre><code>// Button.jsx
-export function Button({ children, onClick, disabled }) {
-  return (
-    &lt;button
-      onClick={onClick}
-      disabled={disabled}
-      data-testid="btn-submit"
-    &gt;
-      {children}
-    &lt;/button&gt;
-  )
-}
-
-// Button.test.jsx
-import { render, screen } from '@testing-library/react'
-import userEvent from '@testing-library/user-event'
-import { Button } from './Button'
-
-describe('Button', () => {
-  it('renders with text', () => {
-    render(&lt;Button&gt;Submit&lt;/Button&gt;)
-    expect(screen.getByRole('button', { name: /submit/i })).toBeInTheDocument()
-  })
-
-  it('calls onClick when clicked', async () => {
-    const user = userEvent.setup()
-    const handleClick = jest.fn()
-
-    render(&lt;Button onClick={handleClick}&gt;Click Me&lt;/Button&gt;)
-    await user.click(screen.getByRole('button', { name: /click me/i }))
-
-    expect(handleClick).toHaveBeenCalledTimes(1)
-  })
-
-  it('is disabled when disabled prop is true', () => {
-    render(&lt;Button disabled&gt;Submit&lt;/Button&gt;)
-    expect(screen.getByRole('button')).toBeDisabled()
-  })
-})</code></pre>
-
-          <h3>Testing a Form Component</h3>
-          <pre><code>// ContactForm.test.jsx
-import { render, screen } from '@testing-library/react'
-import userEvent from '@testing-library/user-event'
-import { ContactForm } from './ContactForm'
-
-describe('ContactForm', () => {
-  it('validates required fields', async () => {
-    const user = userEvent.setup()
-    render(&lt;ContactForm /&gt;)
-
-    await user.click(screen.getByRole('button', { name: /send/i }))
-
-    expect(screen.getByText('Name is required')).toBeInTheDocument()
-    expect(screen.getByText('Email is required')).toBeInTheDocument()
-  })
-
-  it('submits form with valid data', async () => {
-    const user = userEvent.setup()
-    const handleSubmit = jest.fn()
-    render(&lt;ContactForm onSubmit={handleSubmit} /&gt;)
-
-    await user.type(screen.getByLabelText(/name/i), 'John')
-    await user.type(screen.getByLabelText(/email/i), 'john@test.com')
-    await user.type(screen.getByLabelText(/message/i), 'Hello!')
-    await user.click(screen.getByRole('button', { name: /send/i }))
-
-    expect(handleSubmit).toHaveBeenCalledWith({
-      name: 'John',
-      email: 'john@test.com',
-      message: 'Hello!',
-    })
-  })
-})</code></pre>
-
-          <h3>Finding Elements</h3>
-          <pre><code>// By role (preferred - accessibility-first)
-screen.getByRole('button', { name: /submit/i })
-screen.getByRole('textbox', { name: /email/i })
-screen.getByRole('heading', { name: /welcome/i })
-
-// By label
-screen.getByLabelText(/password/i)
-
-// By placeholder
-screen.getByPlaceholder(/search/i)
-
-// By text
-screen.getByText(/hello world/i)
-
-// By test id
-screen.getByTestId('login-form')
-
-// Query variants (return null instead of throwing)
-screen.queryByText('Hidden')           // Returns null if not found
-screen.queryByRole('button')           // Returns null if not found
-
-// Async (waits for element to appear)
-await screen.findByText('Loaded!')     // Waits until found</code></pre>
-        </section>
-
-        <!-- Section 8 -->
-        <section id="jest-async">
-          <h2>8. Async Testing</h2>
-          <p>Testing asynchronous code requires special handling for promises, async/await, and API calls.</p>
-
-          <h3>Async/Await</h3>
-          <pre><code>it('fetches user data', async () => {
-  const user = await fetchUser(1)
-  expect(user.name).toBe('Avinash')
-  expect(user.email).toContain('@')
-})
-
-it('handles rejected promises', async () => {
-  await expect(fetchUser(999))
-    .rejects
-    .toThrow('User not found')
-})</code></pre>
-
-          <h3>Testing Custom Hooks</h3>
-          <pre><code>// useCounter.js
-import { useState, useCallback } from 'react'
-
-export function useCounter(initialValue = 0) {
-  const [count, setCount] = useState(initialValue)
-  const increment = useCallback(() => setCount(c => c + 1), [])
-  const decrement = useCallback(() => setCount(c => c - 1), [])
-  const reset = useCallback(() => setCount(initialValue), [initialValue])
-
-  return { count, increment, decrement, reset }
-}
-
-// useCounter.test.js
-import { renderHook, act } from '@testing-library/react'
-import { useCounter } from './useCounter'
-
-describe('useCounter', () => {
-  it('starts with initial value', () => {
-    const { result } = renderHook(() => useCounter(10))
-    expect(result.current.count).toBe(10)
-  })
-
-  it('increments', () => {
-    const { result } = renderHook(() => useCounter(0))
-    act(() => result.current.increment())
-    expect(result.current.count).toBe(1)
-  })
-
-  it('resets to initial value', () => {
-    const { result } = renderHook(() => useCounter(5))
-    act(() => result.current.increment())
-    act(() => result.current.increment())
-    act(() => result.current.reset())
-    expect(result.current.count).toBe(5)
-  })
-})</code></pre>
-        </section>
-
-        <!-- Section 9 -->
-        <section id="jest-coverage">
-          <h2>9. Coverage & CI</h2>
-
-          <h3>Running Coverage</h3>
-          <pre><code># Run with coverage
-npm test -- --coverage
-
-# Watch mode with coverage
-npm test -- --coverage --watch</code></pre>
-
-          <h3>Coverage Report Output</h3>
-          <pre><code>----------|---------|----------|---------|---------|
-File      | % Stmts | % Branch | % Funcs | % Lines |
-----------|---------|----------|---------|---------|
-All files |   87.5  |   82.3   |   91.2  |   87.5  |
- src/     |   92.1  |   88.5   |   95.0  |   92.1  |
-  App.js  |  100.0  |  100.0   |  100.0  |  100.0  |
-  utils.js|   85.0  |   75.0   |   90.0  |   85.0  |
-----------|---------|----------|---------|---------|</code></pre>
-
-          <h3>GitHub Actions CI</h3>
-          <pre><code>name: Jest Tests
-
-on:
-  push:
-    branches: [main]
-  pull_request:
-    branches: [main]
-
-jobs:
-  test:
-    runs-on: ubuntu-latest
-    steps:
-      - uses: actions/checkout@v4
-      - uses: actions/setup-node@v4
-        with:
-          node-version: 18
-          cache: 'npm'
-      - run: npm ci
-      - run: npm test -- --coverage --watchAll=false
-      - name: Upload coverage
-        uses: actions/upload-artifact@v4
-        with:
-          name: coverage
-          path: coverage/</code></pre>
-
-          <div class="callout callout-tip">
-            <i class="fas fa-lightbulb"></i>
-            <div>
-              <strong>Coverage isn't everything:</strong> Aim for 80%+ coverage, but remember that 100% coverage doesn't mean zero bugs. Focus on testing critical paths and edge cases.
-            </div>
-          </div>
-
-          <h3>Jest Best Practices Summary</h3>
-          <div class="best-practices">
-            <div class="practice-item">
-              <h4><i class="fas fa-check-circle"></i> Test Behavior, Not Implementation</h4>
-              <pre><code>// Don't test internal state
-expect(component.state.count).toBe(1)
-
-// Test what the user sees
-expect(screen.getByText('1 item')).toBeInTheDocument()</code></pre>
-            </div>
-            <div class="practice-item">
-              <h4><i class="fas fa-check-circle"></i> Use descriptive test names</h4>
-              <pre><code>// Bad
-it('works', () => { ... })
-
-// Good
-it('displays an error message when email is invalid', () => { ... })</code></pre>
-            </div>
-            <div class="practice-item">
-              <h4><i class="fas fa-check-circle"></i> Keep tests independent</h4>
-              <p>Each test should work in isolation. Don't rely on test execution order or shared mutable state.</p>
-            </div>
-            <div class="practice-item">
-              <h4><i class="fas fa-check-circle"></i> Prefer userEvent over fireEvent</h4>
-              <pre><code>// fireEvent fires a synthetic event
-fireEvent.click(button)
-
-// userEvent simulates real user interaction
-await userEvent.click(button)  // Handles focus, keyboard, etc.</code></pre>
-            </div>
-          </div>
-        </section>
-      </div>
-    </div>
-  </article>
-
-  <!-- BACK TO TOP -->
-  <div class="back-to-top">
-    <a href="#cypress-testing" class="btn btn-primary">
-      <i class="fas fa-arrow-up"></i> Back to Top
-    </a>
-  </div>
+  </section>
 
   <!-- FOOTER -->
   <footer class="footer">
@@ -1225,7 +355,6 @@ await userEvent.click(button)  // Handles focus, keyboard, etc.</code></pre>
   </footer>
 
   <script>
-    // Mobile nav for blog page
     const hamburger = document.getElementById('hamburger');
     const mobileMenu = document.getElementById('mobileMenu');
     let overlay = document.createElement('div');

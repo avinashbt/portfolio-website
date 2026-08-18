@@ -1,0 +1,576 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>How to Deploy React App on GitHub Pages | Avinash Bawage - Frontend Developer & React Engineer</title>
+  <meta name="description" content="Complete guide to deploying your React application to GitHub Pages with step-by-step instructions, GitHub Actions workflow, and troubleshooting tips.">
+  <meta name="keywords" content="deploy React GitHub Pages, React deployment, GitHub Actions React, gh-pages, React hosting free">
+  <link rel="shortcut icon" href="../favicon.jpg" type="image/x-icon">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800&family=JetBrains+Mono:wght@400;500&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css">
+  <link rel="stylesheet" href="../styles.css">
+  <link rel="stylesheet" href="../blog.css">
+</head>
+<body>
+
+  <!-- NAV -->
+  <nav class="nav scrolled" id="nav">
+    <div class="nav-container">
+      <a href="../index.html" class="nav-logo">
+        <span class="logo-bracket">{</span> AB <span class="logo-bracket">}</span>
+      </a>
+      <ul class="nav-links">
+        <li><a href="../index.html#about">About</a></li>
+        <li><a href="../index.html#skills">Skills</a></li>
+        <li><a href="../index.html#projects">Projects</a></li>
+        <li><a href="../blog.html" class="nav-blog-link" style="color:#6366f1">Blog</a></li>
+        <li><a href="../index.html#contact" class="nav-cta">Hire Me</a></li>
+      </ul>
+      <button class="hamburger" id="hamburger" aria-label="Toggle menu">
+        <span></span><span></span><span></span>
+      </button>
+    </div>
+  </nav>
+
+  <div class="mobile-menu" id="mobileMenu">
+    <ul>
+      <li><a href="../index.html#about">About</a></li>
+      <li><a href="../index.html#skills">Skills</a></li>
+      <li><a href="../index.html#projects">Projects</a></li>
+      <li><a href="../blog.html">Blog</a></li>
+      <li><a href="../index.html#contact">Hire Me</a></li>
+    </ul>
+  </div>
+
+  <!-- BLOG HEADER -->
+  <header class="blog-hero">
+    <div class="container">
+      <a href="../blog.html" class="blog-back"><i class="fas fa-arrow-left"></i> Back to Blog</a>
+      <h1 class="blog-hero-title">How to Deploy React App on GitHub Pages</h1>
+      <p class="blog-hero-desc">Free, fast hosting for your React projects — with GitHub Actions automation and custom domain support.</p>
+    </div>
+  </header>
+
+  <article class="blog-article" id="deploy-react-github-pages">
+    <div class="container">
+      <div class="article-header">
+        <div class="article-meta">
+          <span class="article-tag">Deployment</span>
+          <span class="article-date"><i class="fas fa-calendar"></i> 2026</span>
+          <span class="article-read"><i class="fas fa-clock"></i> 10 min read</span>
+        </div>
+        <h1 class="article-title">How to Deploy React App on GitHub Pages</h1>
+        <p class="article-subtitle">Everything you need to get your React application live on GitHub Pages — from repository setup to custom domains and automated deployments.</p>
+        <div class="article-author">
+          <img src="../profile1.jpg" alt="Avinash Bawage" class="author-avatar">
+          <div>
+            <span class="author-name">Avinash Bawage</span>
+            <span class="author-role">Frontend Developer & React Engineer</span>
+          </div>
+        </div>
+      </div>
+
+      <div class="article-content">
+        <!-- TOC -->
+        <div class="toc">
+          <h3>Table of Contents</h3>
+          <ol>
+            <li><a href="#ghp-prereq">Prerequisites</a></li>
+            <li><a href="#ghp-create">Creating a React App</a></li>
+            <li><a href="#ghp-repo">Setting Up GitHub Repository</a></li>
+            <li><a href="#ghp-ghpages">Installing gh-pages Package</a></li>
+            <li><a href="#ghp-config">Configuring package.json</a></li>
+            <li><a href="#ghp-actions">Deploying with GitHub Actions</a></li>
+            <li><a href="#ghp-branch">Deploying with gh-pages Branch</a></li>
+            <li><a href="#ghp-routing">Handling Client-Side Routing</a></li>
+            <li><a href="#ghp-domain">Custom Domain Setup</a></li>
+            <li><a href="#ghp-troubleshoot">Troubleshooting Common Issues</a></li>
+          </ol>
+        </div>
+
+        <!-- Section 1 -->
+        <section id="ghp-prereq">
+          <h2>1. Prerequisites</h2>
+          <p>Before deploying, make sure you have the following installed and configured on your machine.</p>
+
+          <div class="comparison-table">
+            <table>
+              <thead>
+                <tr><th>Requirement</th><th>Minimum Version</th><th>Check Command</th></tr>
+              </thead>
+              <tbody>
+                <tr><td>Node.js</td><td>16.x or higher</td><td><code>node -v</code></td></tr>
+                <tr><td>npm</td><td>8.x or higher</td><td><code>npm -v</code></td></tr>
+                <tr><td>Git</td><td>2.x</td><td><code>git --version</code></td></tr>
+                <tr><td>GitHub Account</td><td>Any</td><td>github.com</td></tr>
+              </tbody>
+            </table>
+          </div>
+
+          <pre><code># Verify installations
+node -v      # Should show v18.x or higher
+npm -v       # Should show 9.x or higher
+git --version # Should show git version 2.x</code></pre>
+
+          <div class="callout callout-info">
+            <i class="fas fa-info-circle"></i>
+            <div>
+              <strong>Note:</strong> If you don't have Node.js installed, download it from <code>nodejs.org</code>. The LTS (Long Term Support) version is recommended for stability.
+            </div>
+          </div>
+        </section>
+
+        <!-- Section 2 -->
+        <section id="ghp-create">
+          <h2>2. Creating a React App</h2>
+          <p>You can use either Vite (recommended) or Create React App to scaffold your project.</p>
+
+          <h3>Using Vite</h3>
+          <pre><code>npm create vite@latest my-portfolio -- --template react
+cd my-portfolio
+npm install</code></pre>
+
+          <h3>Using Create React App</h3>
+          <pre><code>npx create-react-app my-portfolio
+cd my-portfolio</code></pre>
+
+          <h3>Verify It Works</h3>
+          <pre><code># Start the dev server
+npm run dev    # Vite
+npm start      # CRA
+
+# Build for production
+npm run build</code></pre>
+
+          <p>After running <code>npm run build</code>, you'll see a <code>dist/</code> folder (Vite) or <code>build/</code> folder (CRA) containing your production-ready files.</p>
+        </section>
+
+        <!-- Section 3 -->
+        <section id="ghp-repo">
+          <h2>3. Setting Up GitHub Repository</h2>
+          <p>Create a new repository on GitHub and push your code.</p>
+
+          <h3>Create a New Repository</h3>
+          <pre><code># Initialize git in your project
+git init
+
+# Add all files
+git add .
+
+# Commit
+git commit -m "Initial commit"
+
+# Rename branch to main
+git branch -M main
+
+# Add remote (replace YOUR_USERNAME and REPO_NAME)
+git remote add origin https://github.com/YOUR_USERNAME/REPO_NAME.git
+
+# Push to GitHub
+git push -u origin main</code></pre>
+
+          <div class="callout callout-warning">
+            <i class="fas fa-exclamation-triangle"></i>
+            <div>
+              <strong>Repository naming matters:</strong> For GitHub Pages, your site will be available at <code>https://YOUR_USERNAME.github.io/REPO_NAME/</code>. If your repo is named <code>YOUR_USERNAME.github.io</code>, it becomes your main GitHub Pages site.
+            </div>
+          </div>
+        </section>
+
+        <!-- Section 4 -->
+        <section id="ghp-ghpages">
+          <h2>4. Installing gh-pages Package</h2>
+          <p>The <code>gh-pages</code> npm package simplifies deploying to GitHub Pages by creating and pushing to a <code>gh-pages</code> branch.</p>
+
+          <pre><code># Install as dev dependency
+npm install --save-dev gh-pages</code></pre>
+
+          <p>This package provides a <code>predeploy</code> and <code>deploy</code> script that builds your app and pushes the output to the <code>gh-pages</code> branch automatically.</p>
+
+          <div class="callout callout-tip">
+            <i class="fas fa-lightbulb"></i>
+            <div>
+              <strong>Why gh-pages?</strong> It handles the build-and-deploy workflow in a single command. It creates a separate branch (<code>gh-pages</code>) containing only the built files, keeping your main branch clean.
+            </div>
+          </div>
+        </section>
+
+        <!-- Section 5 -->
+        <section id="ghp-config">
+          <h2>5. Configuring package.json</h2>
+          <p>Add the <code>homepage</code> field and deployment scripts to your <code>package.json</code>.</p>
+
+          <h3>For Vite Projects</h3>
+          <pre><code>{
+  "name": "my-portfolio",
+  "homepage": "https://YOUR_USERNAME.github.io/REPO_NAME",
+  "scripts": {
+    "dev": "vite",
+    "build": "vite build",
+    "preview": "vite preview",
+    "predeploy": "npm run build",
+    "deploy": "gh-pages -d dist"
+  },
+  "devDependencies": {
+    "gh-pages": "^6.0.0"
+  }
+}</code></pre>
+
+          <h3>For Create React App Projects</h3>
+          <pre><code>{
+  "name": "my-portfolio",
+  "homepage": "https://YOUR_USERNAME.github.io/REPO_NAME",
+  "scripts": {
+    "start": "react-scripts start",
+    "build": "react-scripts build",
+    "test": "react-scripts test",
+    "predeploy": "npm run build",
+    "deploy": "gh-pages -d build"
+  },
+  "devDependencies": {
+    "gh-pages": "^6.0.0"
+  }
+}</code></pre>
+
+          <div class="callout callout-warning">
+            <i class="fas fa-exclamation-triangle"></i>
+            <div>
+              <strong>Important:</strong> The <code>homepage</code> field tells React where the app will be hosted. Without it, asset paths will be wrong and your site will show a blank page.
+            </div>
+          </div>
+        </section>
+
+        <!-- Section 6 -->
+        <section id="ghp-actions">
+          <h2>6. Deploying with GitHub Actions</h2>
+          <p>GitHub Actions provides automated deployment on every push. This is the modern, recommended approach.</p>
+
+          <h3>.github/workflows/deploy.yml</h3>
+          <pre><code>name: Deploy React to GitHub Pages
+
+on:
+  push:
+    branches: [main]
+  workflow_dispatch:
+
+permissions:
+  contents: read
+  pages: write
+  id-token: write
+
+concurrency:
+  group: "pages"
+  cancel-in-progress: false
+
+jobs:
+  build:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout
+        uses: actions/checkout@v4
+
+      - name: Setup Node
+        uses: actions/setup-node@v4
+        with:
+          node-version: 18
+          cache: 'npm'
+
+      - name: Install dependencies
+        run: npm ci
+
+      - name: Build
+        run: npm run build
+        env:
+          VITE_BASE_URL: /REPO_NAME/
+
+      - name: Upload artifact
+        uses: actions/upload-pages-artifact@v3
+        with:
+          path: ./dist
+
+  deploy:
+    environment:
+      name: github-pages
+      url: ${{ steps.deployment.outputs.page_url }}
+    runs-on: ubuntu-latest
+    needs: build
+    steps:
+      - name: Deploy to GitHub Pages
+        id: deployment
+        uses: actions/deploy-pages@v4</code></pre>
+
+          <h3>Enable GitHub Pages in Repository Settings</h3>
+          <ol>
+            <li>Go to your repository on GitHub</li>
+            <li>Click <strong>Settings</strong> → <strong>Pages</strong></li>
+            <li>Under <strong>Source</strong>, select <strong>GitHub Actions</strong></li>
+            <li>Save the settings</li>
+          </ol>
+
+          <div class="callout callout-tip">
+            <i class="fas fa-lightbulb"></i>
+            <div>
+              <strong>workflow_dispatch:</strong> This trigger lets you manually deploy from the Actions tab without pushing new code — useful for re-deploying after configuration changes.
+            </div>
+          </div>
+        </section>
+
+        <!-- Section 7 -->
+        <section id="ghp-branch">
+          <h2>7. Deploying with gh-pages Branch</h2>
+          <p>Alternatively, use the <code>gh-pages</code> package directly from your terminal.</p>
+
+          <pre><code># Deploy in one command
+npm run deploy</code></pre>
+
+          <p>This runs the <code>predeploy</code> script (builds the app) and then <code>gh-pages -d dist</code> which pushes the <code>dist/</code> folder to the <code>gh-pages</code> branch.</p>
+
+          <h3>Manual gh-pages Push</h3>
+          <pre><code># Build the app
+npm run build
+
+# Navigate into the build output
+cd dist
+
+# Initialize git
+git init
+git add -A
+git commit -m 'Deploy'
+
+# Push to gh-pages branch
+git push -f git@github.com:YOUR_USERNAME/REPO_NAME.git main:gh-pages</code></pre>
+
+          <div class="callout callout-info">
+            <i class="fas fa-info-circle"></i>
+            <div>
+              <strong>GitHub Actions vs gh-pages:</strong> GitHub Actions is preferred because it keeps your deployment config in code, runs on GitHub's servers, and doesn't require push access from your local machine.
+            </div>
+          </div>
+        </section>
+
+        <!-- Section 8 -->
+        <section id="ghp-routing">
+          <h2>8. Handling Client-Side Routing</h2>
+          <p>If your React app uses React Router, you need to handle routing on GitHub Pages since it only serves static files.</p>
+
+          <h3>The Problem</h3>
+          <p>When you navigate to <code>/about</code> on GitHub Pages, it tries to find an <code>about.html</code> file that doesn't exist, resulting in a 404 error.</p>
+
+          <h3>Solution 1: HashRouter (Easiest)</h3>
+          <pre><code>// Use HashRouter instead of BrowserRouter
+import { HashRouter as Router, Routes, Route } from 'react-router-dom'
+
+function App() {
+  return (
+    &lt;Router&gt;
+      &lt;Routes&gt;
+        &lt;Route path="/" element={&lt;Home /&gt;} /&gt;
+        &lt;Route path="/about" element={&lt;About /&gt;} /&gt;
+        &lt;Route path="/projects" element={&lt;Projects /&gt;} /&gt;
+      &lt;/Routes&gt;
+    &lt;/Router&gt;
+  )
+}
+
+// URL will be: https://yoursite.github.io/repo/#/about</code></pre>
+
+          <h3>Solution 2: BrowserRouter with 404.html Redirect</h3>
+          <pre><code>// Add a 404.html redirect (in your public/ folder)
+&lt;!DOCTYPE html&gt;
+&lt;html&gt;
+  &lt;head&gt;
+    &lt;meta http-equiv="refresh" content="0; url=/REPO_NAME/"&gt;
+    &lt;script&gt;
+      window.location.href = '/REPO_NAME/' +
+        window.location.pathname.substr(1).replace(/\/$/, '')
+    &lt;/script&gt;
+  &lt;/head&gt;
+&lt;/html&gt;</code></pre>
+
+          <div class="comparison-table">
+            <table>
+              <thead>
+                <tr><th>Approach</th><th>Pros</th><th>Cons</th></tr>
+              </thead>
+              <tbody>
+                <tr><td>HashRouter</td><td>Zero config, works immediately</td><td>URLs contain <code>#</code> (ugly)</td></tr>
+                <tr><td>BrowserRouter + 404.html</td><td>Clean URLs</td><td>Extra file needed, more complex</td></tr>
+                <tr><td>BrowserRouter + SPA plugin</td><td>Clean URLs, automatic redirect</td><td>Requires GitHub Actions setup</td></tr>
+              </tbody>
+            </table>
+          </div>
+        </section>
+
+        <!-- Section 9 -->
+        <section id="ghp-domain">
+          <h2>9. Custom Domain Setup</h2>
+          <p>Use your own domain name instead of the default GitHub Pages URL.</p>
+
+          <h3>Step 1: Add a CNAME File</h3>
+          <pre><code># In your public/ or src/ directory, create CNAME file
+echo "yourdomain.com" &gt; public/CNAME</code></pre>
+
+          <h3>Step 2: Configure DNS</h3>
+          <p>At your domain registrar, add these DNS records:</p>
+
+          <div class="comparison-table">
+            <table>
+              <thead>
+                <tr><th>Type</th><th>Name</th><th>Value</th><th>TTL</th></tr>
+              </thead>
+              <tbody>
+                <tr><td>A</td><td>@</td><td>185.199.108.153</td><td>3600</td></tr>
+                <tr><td>A</td><td>@</td><td>185.199.109.153</td><td>3600</td></tr>
+                <tr><td>A</td><td>@</td><td>185.199.110.153</td><td>3600</td></tr>
+                <tr><td>A</td><td>@</td><td>185.199.111.153</td><td>3600</td></tr>
+                <tr><td>CNAME</td><td>www</td><td>YOUR_USERNAME.github.io</td><td>3600</td></tr>
+              </tbody>
+            </table>
+          </div>
+
+          <h3>Step 3: Enable in GitHub Settings</h3>
+          <ol>
+            <li>Go to repository <strong>Settings</strong> → <strong>Pages</strong></li>
+            <li>Under <strong>Custom domain</strong>, enter your domain</li>
+            <li>Check <strong>Enforce HTTPS</strong></li>
+          </ol>
+
+          <div class="callout callout-info">
+            <i class="fas fa-info-circle"></i>
+            <div>
+              <strong>DNS propagation:</strong> It can take up to 24-48 hours for DNS changes to propagate worldwide. Use <code>dig yourdomain.com</code> to check if the records are live.
+            </div>
+          </div>
+        </section>
+
+        <!-- Section 10 -->
+        <section id="ghp-troubleshoot">
+          <h2>10. Troubleshooting Common Issues</h2>
+
+          <h3>Blank White Page</h3>
+          <pre><code>// Problem: The homepage field is missing or wrong
+// Fix: Ensure package.json has correct homepage
+{
+  "homepage": "https://username.github.io/repo-name"
+}
+
+// Also check your router basename if using BrowserRouter
+&lt;BrowserRouter basename="/repo-name"&gt;</code></pre>
+
+          <h3>404 Error on Refresh</h3>
+          <pre><code>// Problem: Client-side routing without server config
+// Fix: Use HashRouter or add 404.html redirect
+
+// For Create React App, add this to public/ folder:
+// public/redirect.html → rename to 404.html
+&lt;meta http-equiv="refresh" content="0;url=/"&gt;</code></pre>
+
+          <h3>Assets Not Loading (CSS/JS 404)</h3>
+          <pre><code>// Problem: Asset paths are absolute instead of relative
+// Fix: Don't use absolute paths in your code
+
+// Bad
+&lt;img src="/images/logo.png" /&gt;
+
+// Good (use relative or process.env.PUBLIC_URL)
+&lt;img src={process.env.PUBLIC_URL + "/images/logo.png"} /&gt;
+
+// For Vite, use the base config in vite.config.js:
+export default defineConfig({
+  base: '/REPO_NAME/',
+})</code></pre>
+
+          <h3>Deployment Succeeds But Site Doesn't Update</h3>
+          <pre><code># Clear your browser cache
+# Or use hard refresh: Ctrl+Shift+R (Windows) / Cmd+Shift+R (Mac)
+
+# Check GitHub Pages settings for correct source branch
+# gh-pages branch should contain the built files, not source code</code></pre>
+
+          <div class="callout callout-warning">
+            <i class="fas fa-exclamation-triangle"></i>
+            <div>
+              <strong>Don't commit secrets:</strong> Never commit API keys, tokens, or environment variables to your repository. Use GitHub Secrets for CI/CD and <code>.env.local</code> for local development.
+            </div>
+          </div>
+
+          <h3>Quick Deployment Checklist</h3>
+          <ul class="feature-list">
+            <li><i class="fas fa-check"></i> <code>homepage</code> field set in package.json</li>
+            <li><i class="fas fa-check"></i> Build runs without errors (<code>npm run build</code>)</li>
+            <li><i class="fas fa-check"></i> Repository is public (or GitHub Pro for private)</li>
+            <li><i class="fas fa-check"></i> GitHub Pages source is set to <code>gh-pages</code> branch or GitHub Actions</li>
+            <li><i class="fas fa-check"></i> Router configured with correct basename or HashRouter</li>
+            <li><i class="fas fa-check"></i> All asset paths are relative (no leading <code>/</code>)</li>
+            <li><i class="fas fa-check"></i> No secrets or API keys in code</li>
+          </ul>
+        </section>
+      </div>
+    </div>
+  </article>
+
+  <!-- BACK TO TOP -->
+  <div class="back-to-top">
+    <a href="#top" class="btn btn-primary">
+      <i class="fas fa-arrow-up"></i> Back to Top
+    </a>
+  </div>
+
+  <!-- FOOTER -->
+  <footer class="footer">
+    <div class="container">
+      <div class="footer-content">
+        <div class="footer-brand">
+          <a href="../index.html" class="nav-logo">
+            <span class="logo-bracket">{</span> AB <span class="logo-bracket">}</span>
+          </a>
+          <p>Building modern web experiences with clean code, comprehensive tests, and continuous improvement.</p>
+        </div>
+        <div class="footer-links">
+          <h4>Navigation</h4>
+          <ul>
+            <li><a href="../index.html">Portfolio</a></li>
+            <li><a href="../index.html#about">About</a></li>
+            <li><a href="../index.html#projects">Projects</a></li>
+            <li><a href="../index.html#contact">Contact</a></li>
+          </ul>
+        </div>
+        <div class="footer-social">
+          <h4>Connect</h4>
+          <div class="footer-icons">
+            <a href="https://github.com/avinashbt" target="_blank"><i class="fab fa-github"></i></a>
+            <a href="https://www.linkedin.com/in/avinash-bawage-99ba58200/?locale=en_US" target="_blank"><i class="fab fa-linkedin-in"></i></a>
+            <a href="https://twitter.com/AvinashBawge" target="_blank"><i class="fab fa-twitter"></i></a>
+            <a href="mailto:avi.bawge9@gmail.com"><i class="fas fa-envelope"></i></a>
+          </div>
+        </div>
+      </div>
+      <div class="footer-bottom">
+        <p>Built with <span class="footer-heart">&hearts;</span> by Avinash Bawage &mdash; &copy; 2026</p>
+      </div>
+    </div>
+  </footer>
+
+  <script>
+    const hamburger = document.getElementById('hamburger');
+    const mobileMenu = document.getElementById('mobileMenu');
+    let overlay = document.createElement('div');
+    overlay.className = 'mobile-overlay';
+    document.body.appendChild(overlay);
+
+    function toggleMenu() {
+      hamburger.classList.toggle('active');
+      mobileMenu.classList.toggle('active');
+      overlay.classList.toggle('active');
+      document.body.style.overflow = mobileMenu.classList.contains('active') ? 'hidden' : '';
+    }
+
+    hamburger.addEventListener('click', toggleMenu);
+    overlay.addEventListener('click', toggleMenu);
+    document.querySelectorAll('.mobile-menu a').forEach(a => a.addEventListener('click', toggleMenu));
+  </script>
+</body>
+</html>

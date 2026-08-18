@@ -1,0 +1,837 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>React Movie Search App Using API | Avinash Bawage - Frontend Developer & React Engineer</title>
+  <meta name="description" content="Build a complete React movie search app using OMDB API with search, details modal, favorites, and responsive design. Step-by-step tutorial with code.">
+  <meta name="keywords" content="React movie search, OMDB API, React project, movie app tutorial, React API integration, Vite React">
+  <link rel="shortcut icon" href="../favicon.jpg" type="image/x-icon">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800&family=JetBrains+Mono:wght@400;500&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css">
+  <link rel="stylesheet" href="../styles.css">
+  <link rel="stylesheet" href="../blog.css">
+</head>
+<body>
+
+  <!-- NAV -->
+  <nav class="nav scrolled" id="nav">
+    <div class="nav-container">
+      <a href="../index.html" class="nav-logo">
+        <span class="logo-bracket">{</span> AB <span class="logo-bracket">}</span>
+      </a>
+      <ul class="nav-links">
+        <li><a href="../index.html#about">About</a></li>
+        <li><a href="../index.html#skills">Skills</a></li>
+        <li><a href="../index.html#projects">Projects</a></li>
+        <li><a href="../blog.html" class="nav-blog-link" style="color:#6366f1">Blog</a></li>
+        <li><a href="../index.html#contact" class="nav-cta">Hire Me</a></li>
+      </ul>
+      <button class="hamburger" id="hamburger" aria-label="Toggle menu">
+        <span></span><span></span><span></span>
+      </button>
+    </div>
+  </nav>
+
+  <div class="mobile-menu" id="mobileMenu">
+    <ul>
+      <li><a href="../index.html#about">About</a></li>
+      <li><a href="../index.html#skills">Skills</a></li>
+      <li><a href="../index.html#projects">Projects</a></li>
+      <li><a href="../blog.html">Blog</a></li>
+      <li><a href="../index.html#contact">Hire Me</a></li>
+    </ul>
+  </div>
+
+  <!-- BLOG HEADER -->
+  <header class="blog-hero">
+    <div class="container">
+      <a href="../blog.html" class="blog-back"><i class="fas fa-arrow-left"></i> Back to Blog</a>
+      <h1 class="blog-hero-title">React Movie Search App Using API</h1>
+      <p class="blog-hero-desc">Build a complete movie search application with React, featuring search, detail modals, favorites, and responsive design using the OMDB API.</p>
+    </div>
+  </header>
+
+  <article class="blog-article" id="react-movie-search-app">
+    <div class="container">
+      <div class="article-header">
+        <div class="article-meta">
+          <span class="article-tag">React Project</span>
+          <span class="article-date"><i class="fas fa-calendar"></i> 2026</span>
+          <span class="article-read"><i class="fas fa-clock"></i> 11 min read</span>
+        </div>
+        <h1 class="article-title">React Movie Search App Using API</h1>
+        <p class="article-subtitle">A hands-on tutorial building a full-featured movie search app with React and the OMDB API</p>
+        <div class="article-author">
+          <img src="../profile1.jpg" alt="Avinash Bawage" class="author-avatar">
+          <div>
+            <span class="author-name">Avinash Bawage</span>
+            <span class="author-role">Frontend Developer & React Engineer</span>
+          </div>
+        </div>
+      </div>
+
+      <div class="article-content">
+        <div class="toc">
+          <h3>Table of Contents</h3>
+          <ol>
+            <li><a href="#what-were-building">What We're Building</a></li>
+            <li><a href="#getting-api-key">Getting an API Key</a></li>
+            <li><a href="#project-setup">Project Setup</a></li>
+            <li><a href="#search-component">Building the Search Component</a></li>
+            <li><a href="#fetching-data">Fetching Movie Data</a></li>
+            <li><a href="#displaying-results">Displaying Results</a></li>
+            <li><a href="#movie-detail-modal">Movie Detail Modal</a></li>
+            <li><a href="#handling-errors">Handling Errors &amp; Loading States</a></li>
+            <li><a href="#adding-favorites">Adding Favorites</a></li>
+            <li><a href="#responsive-design">Responsive Design</a></li>
+          </ol>
+        </div>
+
+        <section id="what-were-building">
+          <h2>1. What We're Building</h2>
+          <p>In this tutorial, we'll build a complete movie search application using React. The app will allow users to search for movies by title, view detailed information in a modal, save favorites to localStorage, and enjoy a fully responsive layout.</p>
+
+          <h3>Features</h3>
+          <ul>
+            <li><strong>Search bar</strong> with debounce to avoid excessive API calls</li>
+            <li><strong>Movie cards grid</strong> displaying poster, title, year, and type</li>
+            <li><strong>Detail modal</strong> showing plot, ratings, cast, and runtime</li>
+            <li><strong>Favorites system</strong> persisted in localStorage</li>
+            <li><strong>Loading &amp; error states</strong> with spinners and messages</li>
+            <li><strong>Responsive design</strong> that works on mobile, tablet, and desktop</li>
+          </ul>
+
+          <div class="callout callout-info">
+            <i class="fas fa-info-circle"></i>
+            <p><strong>Prerequisites:</strong> You should have basic knowledge of React hooks (useState, useEffect) and how to work with APIs. Node.js and npm should be installed on your machine.</p>
+          </div>
+        </section>
+
+        <section id="getting-api-key">
+          <h2>2. Getting an API Key</h2>
+          <p>We'll use the OMDB (Open Movie Database) API to fetch movie data. It's free for basic usage and provides all the data we need.</p>
+
+          <h3>Steps to Get Your API Key</h3>
+          <ol>
+            <li>Go to <strong>http://www.omdbapi.com/apikey.aspx</strong></li>
+            <li>Select the <strong>FREE</strong> tier (1,000 requests per day)</li>
+            <li>Enter your email and click <strong>Submit</strong></li>
+            <li>Check your email and click the activation link</li>
+            <li>Your API key will be displayed — copy it</li>
+          </ol>
+
+          <h3>Setting Up Environment Variables</h3>
+          <p>Create a <code>.env</code> file in your project root:</p>
+          <pre><code>VITE_OMDB_API_KEY=your_api_key_here</code></pre>
+
+          <div class="callout callout-warning">
+            <i class="fas fa-exclamation-triangle"></i>
+            <p><strong>Security:</strong> Never commit your API key to version control. Add <code>.env</code> to your <code>.gitignore</code> file. For production, use a backend proxy to hide your key.</p>
+          </div>
+
+          <p>In Vite, environment variables are accessed via <code>import.meta.env.VITE_OMDB_API_KEY</code>. This is different from Create React App which uses <code>process.env.REACT_APP_</code>.</p>
+        </section>
+
+        <section id="project-setup">
+          <h2>3. Project Setup</h2>
+          <p>We'll scaffold our project using Vite for fast development and optimized builds.</p>
+
+          <h3>Create the Project</h3>
+          <pre><code>npm create vite@latest movie-search-app -- --template react
+cd movie-search-app
+npm install</code></pre>
+
+          <h3>Install Dependencies</h3>
+          <pre><code>npm install axios</code></pre>
+
+          <p>We'll use Axios for HTTP requests because it provides automatic JSON transformation, request/response interceptors, and better error handling than the native fetch API.</p>
+
+          <h3>Project Structure</h3>
+          <pre><code>movie-search-app/
+├── src/
+│   ├── components/
+│   │   ├── SearchBar.jsx
+│   │   ├── MovieCard.jsx
+│   │   ├── MovieGrid.jsx
+│   │   ├── MovieModal.jsx
+│   │   ├── Favorites.jsx
+│   │   └── Spinner.jsx
+│   ├── hooks/
+│   │   └── useDebounce.js
+│   ├── utils/
+│   │   └── api.js
+│   ├── App.jsx
+│   ├── App.css
+│   └── main.jsx
+├── .env
+└── package.json</code></pre>
+
+          <div class="callout callout-tip">
+            <i class="fas fa-lightbulb"></i>
+            <p><strong>Tip:</strong> Organizing your components and hooks into separate folders from the start keeps your project maintainable as it grows.</p>
+          </div>
+        </section>
+
+        <section id="search-component">
+          <h2>4. Building the Search Component</h2>
+          <p>The search component is the entry point of our app. We'll create a controlled input with debounce functionality to prevent unnecessary API calls on every keystroke.</p>
+
+          <h3>Creating the useDebounce Hook</h3>
+          <pre><code>// src/hooks/useDebounce.js
+import { useState, useEffect } from 'react';
+
+export function useDebounce(value, delay = 500) {
+  const [debouncedValue, setDebouncedValue] = useState(value);
+
+  useEffect(() => {
+    const timer = setTimeout(() => {
+      setDebouncedValue(value);
+    }, delay);
+
+    return () => clearTimeout(timer);
+  }, [value, delay]);
+
+  return debouncedValue;
+}</code></pre>
+
+          <h3>SearchBar Component</h3>
+          <pre><code>// src/components/SearchBar.jsx
+import { useState } from 'react';
+import { useDebounce } from '../hooks/useDebounce';
+
+export default function SearchBar({ onSearch }) {
+  const [query, setQuery] = useState('');
+  const debouncedQuery = useDebounce(query, 500);
+
+  const handleSubmit = (e) => {
+    e.preventDefault();
+    if (query.trim()) {
+      onSearch(query.trim());
+    }
+  };
+
+  // Trigger search when debounced value changes
+  useEffect(() => {
+    if (debouncedQuery) {
+      onSearch(debouncedQuery);
+    }
+  }, [debouncedQuery, onSearch]);
+
+  return (
+    &lt;form className="search-bar" onSubmit={handleSubmit}&gt;
+      &lt;input
+        type="text"
+        placeholder="Search for movies..."
+        value={query}
+        onChange={(e) => setQuery(e.target.value)}
+        className="search-input"
+      /&gt;
+      &lt;button type="submit" className="search-btn"&gt;
+        &lt;i className="fas fa-search"&gt;&lt;/i&gt;
+      &lt;/button&gt;
+    &lt;/form&gt;
+  );
+}</code></pre>
+
+          <p>The debounce hook delays the search by 500ms after the user stops typing, reducing API calls significantly while maintaining a responsive feel.</p>
+        </section>
+
+        <section id="fetching-data">
+          <h2>5. Fetching Movie Data</h2>
+          <p>Now let's create the API utility and wire up data fetching in our main App component.</p>
+
+          <h3>API Utility</h3>
+          <pre><code>// src/utils/api.js
+import axios from 'axios';
+
+const API_KEY = import.meta.env.VITE_OMDB_API_KEY;
+const BASE_URL = 'https://www.omdbapi.com/';
+
+const api = axios.create({
+  baseURL: BASE_URL,
+  params: {
+    apikey: API_KEY,
+  },
+});
+
+export const searchMovies = async (query, page = 1) => {
+  const response = await api.get('/', {
+    params: { s: query, page, type: 'movie' },
+  });
+  return response.data;
+};
+
+export const getMovieDetails = async (imdbID) => {
+  const response = await api.get('/', {
+    params: { i: imdbID, plot: 'full' },
+  });
+  return response.data;
+};</code></pre>
+
+          <h3>App Component with useEffect</h3>
+          <pre><code>// src/App.jsx
+import { useState, useEffect, useCallback } from 'react';
+import SearchBar from './components/SearchBar';
+import MovieGrid from './components/MovieGrid';
+import MovieModal from './components/MovieModal';
+import Spinner from './components/Spinner';
+import { searchMovies } from './utils/api';
+import './App.css';
+
+function App() {
+  const [movies, setMovies] = useState([]);
+  const [loading, setLoading] = useState(false);
+  const [error, setError] = useState(null);
+  const [selectedMovie, setSelectedMovie] = useState(null);
+  const [favorites, setFavorites] = useState(() => {
+    const saved = localStorage.getItem('favorites');
+    return saved ? JSON.parse(saved) : [];
+  });
+
+  const handleSearch = useCallback(async (query) => {
+    setLoading(true);
+    setError(null);
+    try {
+      const data = await searchMovies(query);
+      if (data.Response === 'True') {
+        setMovies(data.Search);
+      } else {
+        setError(data.Error);
+        setMovies([]);
+      }
+    } catch (err) {
+      setError('Failed to fetch movies. Please try again.');
+      setMovies([]);
+    } finally {
+      setLoading(false);
+    }
+  }, []);
+
+  useEffect(() => {
+    localStorage.setItem('favorites', JSON.stringify(favorites));
+  }, [favorites]);
+
+  return (
+    &lt;div className="app"&gt;
+      &lt;header className="app-header"&gt;
+        &lt;h1&gt;🎬 Movie Search&lt;/h1&gt;
+        &lt;SearchBar onSearch={handleSearch} /&gt;
+      &lt;/header&gt;
+
+      &lt;main&gt;
+        {loading &amp;&amp; &lt;Spinner /&gt;}
+        {error &amp;&amp; &lt;p className="error-message"&gt;{error}&lt;/p&gt;}
+        {!loading &amp;&amp; !error &amp;&amp; (
+          &lt;MovieGrid
+            movies={movies}
+            onSelect={setSelectedMovie}
+            favorites={favorites}
+            onToggleFavorite={setFavorites}
+          /&gt;
+        )}
+      &lt;/main&gt;
+
+      {selectedMovie &amp;&amp; (
+        &lt;MovieModal
+          movie={selectedMovie}
+          onClose={() =&gt; setSelectedMovie(null)}
+        /&gt;
+      )}
+    &lt;/div&gt;
+  );
+}
+
+export default App;</code></pre>
+
+          <div class="callout callout-info">
+            <i class="fas fa-info-circle"></i>
+            <p><strong>Key Concept:</strong> We use <code>useCallback</code> for the search handler to prevent unnecessary re-renders of child components. The <code>finally</code> block ensures loading state is always cleared.</p>
+          </div>
+        </section>
+
+        <section id="displaying-results">
+          <h2>6. Displaying Results</h2>
+          <p>We'll create a grid layout for movie cards, each showing the poster, title, year, and type.</p>
+
+          <h3>MovieCard Component</h3>
+          <pre><code>// src/components/MovieCard.jsx
+export default function MovieCard({ movie, onSelect, isFavorite, onToggleFavorite }) {
+  const handleFavoriteClick = (e) => {
+    e.stopPropagation();
+    onToggleFavorite(movie);
+  };
+
+  return (
+    &lt;div className="movie-card" onClick={() =&gt; onSelect(movie)}&gt;
+      &lt;div className="movie-poster"&gt;
+        &lt;img
+          src={movie.Poster !== 'N/A' ? movie.Poster : '/placeholder.png'}
+          alt={movie.Title}
+          loading="lazy"
+        /&gt;
+        &lt;button
+          className={`favorite-btn ${isFavorite ? 'active' : ''}`}
+          onClick={handleFavoriteClick}
+        &gt;
+          &lt;i className={isFavorite ? 'fas fa-heart' : 'far fa-heart'}&gt;&lt;/i&gt;
+        &lt;/button&gt;
+      &lt;/div&gt;
+      &lt;div className="movie-info"&gt;
+        &lt;h3 className="movie-title"&gt;{movie.Title}&lt;/h3&gt;
+        &lt;p className="movie-year"&gt;{movie.Year} &bull; {movie.Type}&lt;/p&gt;
+      &lt;/div&gt;
+    &lt;/div&gt;
+  );
+}</code></pre>
+
+          <h3>MovieGrid Component</h3>
+          <pre><code>// src/components/MovieGrid.jsx
+import MovieCard from './MovieCard';
+
+export default function MovieGrid({ movies, onSelect, favorites, onToggleFavorite }) {
+  const toggleFavorite = (movie) => {
+    const exists = favorites.find((fav) =&gt; fav.imdbID === movie.imdbID);
+    if (exists) {
+      onToggleFavorite(favorites.filter((fav) =&gt; fav.imdbID !== movie.imdbID));
+    } else {
+      onToggleFavorite([...favorites, movie]);
+    }
+  };
+
+  return (
+    &lt;div className="movie-grid"&gt;
+      {movies.map((movie) =&gt; (
+        &lt;MovieCard
+          key={movie.imdbID}
+          movie={movie}
+          onSelect={onSelect}
+          isFavorite={favorites.some((fav) =&gt; fav.imdbID === movie.imdbID)}
+          onToggleFavorite={toggleFavorite}
+        /&gt;
+      ))}
+    &lt;/div&gt;
+  );
+}</code></pre>
+
+          <h3>CSS Grid Styling</h3>
+          <pre><code>.movie-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(200px, 1fr));
+  gap: 1.5rem;
+  padding: 2rem 0;
+}
+
+.movie-card {
+  border-radius: 12px;
+  overflow: hidden;
+  background: #1a1a2e;
+  cursor: pointer;
+  transition: transform 0.3s ease, box-shadow 0.3s ease;
+}
+
+.movie-card:hover {
+  transform: translateY(-8px);
+  box-shadow: 0 12px 40px rgba(99, 102, 241, 0.3);
+}
+
+.movie-poster img {
+  width: 100%;
+  aspect-ratio: 2/3;
+  object-fit: cover;
+}</code></pre>
+
+          <div class="callout callout-tip">
+            <i class="fas fa-lightbulb"></i>
+            <p><strong>Tip:</strong> Use <code>loading="lazy"</code> on images to defer loading off-screen posters. This significantly improves initial page load performance.</p>
+          </div>
+        </section>
+
+        <section id="movie-detail-modal">
+          <h2>7. Movie Detail Modal</h2>
+          <p>When a user clicks a movie card, we'll fetch full details and display them in a modal overlay.</p>
+
+          <pre><code>// src/components/MovieModal.jsx
+import { useState, useEffect } from 'react';
+import { getMovieDetails } from '../utils/api';
+import Spinner from './Spinner';
+
+export default function MovieModal({ movie, onClose }) {
+  const [details, setDetails] = useState(null);
+  const [loading, setLoading] = useState(true);
+
+  useEffect(() => {
+    const fetchDetails = async () => {
+      try {
+        const data = await getMovieDetails(movie.imdbID);
+        setDetails(data);
+      } catch (err) {
+        console.error('Failed to fetch details:', err);
+      } finally {
+        setLoading(false);
+      }
+    };
+    fetchDetails();
+  }, [movie.imdbID]);
+
+  useEffect(() => {
+    const handleEsc = (e) => {
+      if (e.key === 'Escape') onClose();
+    };
+    document.addEventListener('keydown', handleEsc);
+    document.body.style.overflow = 'hidden';
+    return () => {
+      document.removeEventListener('keydown', handleEsc);
+      document.body.style.overflow = '';
+    };
+  }, [onClose]);
+
+  return (
+    &lt;div className="modal-overlay" onClick={onClose}&gt;
+      &lt;div className="modal-content" onClick={(e) =&gt; e.stopPropagation()}&gt;
+        &lt;button className="modal-close" onClick={onClose}&gt;
+          &lt;i className="fas fa-times"&gt;&lt;/i&gt;
+        &lt;/button&gt;
+
+        {loading ? (
+          &lt;Spinner /&gt;
+        ) : details ? (
+          &lt;div className="modal-body"&gt;
+            &lt;img src={details.Poster} alt={details.Title} className="modal-poster" /&gt;
+            &lt;div className="modal-info"&gt;
+              &lt;h2&gt;{details.Title} ({details.Year})&lt;/h2&gt;
+              &lt;div className="modal-meta"&gt;
+                &lt;span&gt;⭐ {details.imdbRating}/10&lt;/span&gt;
+                &lt;span&gt;🕐 {details.Runtime}&lt;/span&gt;
+                &lt;span&gt;🎭 {details.Genre}&lt;/span&gt;
+              &lt;/div&gt;
+              &lt;p className="modal-plot"&gt;{details.Plot}&lt;/p&gt;
+              &lt;p&gt;&lt;strong&gt;Director:&lt;/strong&gt; {details.Director}&lt;/p&gt;
+              &lt;p&gt;&lt;strong&gt;Actors:&lt;/strong&gt; {details.Actors}&lt;/p&gt;
+              &lt;p&gt;&lt;strong&gt;Awards:&lt;/strong&gt; {details.Awards}&lt;/p&gt;
+            &lt;/div&gt;
+          &lt;/div&gt;
+        ) : null}
+      &lt;/div&gt;
+    &lt;/div&gt;
+  );
+}</code></pre>
+
+          <div class="callout callout-info">
+            <i class="fas fa-info-circle"></i>
+            <p><strong>Accessibility:</strong> We handle Escape key to close the modal and use <code>stopPropagation</code> to prevent closing when clicking inside the modal content. The body scroll is locked while the modal is open.</p>
+          </div>
+        </section>
+
+        <section id="handling-errors">
+          <h2>8. Handling Errors &amp; Loading States</h2>
+          <p>A good user experience requires proper handling of loading states, errors, and empty results.</p>
+
+          <h3>Spinner Component</h3>
+          <pre><code>// src/components/Spinner.jsx
+export default function Spinner() {
+  return (
+    &lt;div className="spinner-container"&gt;
+      &lt;div className="spinner"&gt;&lt;/div&gt;
+      &lt;p&gt;Loading...&lt;/p&gt;
+    &lt;/div&gt;
+  );
+}</code></pre>
+
+          <h3>CSS for Spinner</h3>
+          <pre><code>.spinner-container {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  padding: 3rem;
+}
+
+.spinner {
+  width: 50px;
+  height: 50px;
+  border: 4px solid rgba(99, 102, 241, 0.2);
+  border-top-color: #6366f1;
+  border-radius: 50%;
+  animation: spin 0.8s linear infinite;
+}
+
+@keyframes spin {
+  to { transform: rotate(360deg); }
+}
+
+.error-message {
+  text-align: center;
+  color: #ef4444;
+  padding: 2rem;
+  font-size: 1.1rem;
+}</code></pre>
+
+          <h3>Empty State</h3>
+          <p>Add an empty state for when no results are found:</p>
+          <pre><code>// Inside MovieGrid.jsx
+if (movies.length === 0) {
+  return (
+    &lt;div className="empty-state"&gt;
+      &lt;i className="fas fa-film"&gt;&lt;/i&gt;
+      &lt;h3&gt;No movies found&lt;/h3&gt;
+      &lt;p&gt;Try searching for a different movie title&lt;/p&gt;
+    &lt;/div&gt;
+  );
+}</code></pre>
+
+          <div class="callout callout-warning">
+            <i class="fas fa-exclamation-triangle"></i>
+            <p><strong>Always handle edge cases:</strong> The OMDB API returns a string "False" for no results and an error message. Make sure to check <code>data.Response === 'True'</code> before trying to access <code>data.Search</code>.</p>
+          </div>
+        </section>
+
+        <section id="adding-favorites">
+          <h2>9. Adding Favorites</h2>
+          <p>We'll implement a favorites system using localStorage to persist the user's saved movies across sessions.</p>
+
+          <h3>Managing Favorites State</h3>
+          <pre><code>// In App.jsx - Initialize from localStorage
+const [favorites, setFavorites] = useState(() => {
+  try {
+    const saved = localStorage.getItem('movie-favorites');
+    return saved ? JSON.parse(saved) : [];
+  } catch {
+    return [];
+  }
+});
+
+// Save to localStorage whenever favorites change
+useEffect(() => {
+  localStorage.setItem('movie-favorites', JSON.stringify(favorites));
+}, [favorites]);
+
+// Toggle favorite function
+const toggleFavorite = (movie) => {
+  setFavorites((prev) => {
+    const exists = prev.find((fav) =&gt; fav.imdbID === movie.imdbID);
+    if (exists) {
+      return prev.filter((fav) =&gt; fav.imdbID !== movie.imdbID);
+    }
+    return [...prev, movie];
+  });
+};</code></pre>
+
+          <h3>Favorites Tab</h3>
+          <pre><code>// src/components/Favorites.jsx
+export default function Favorites({ favorites, onSelect, onRemove }) {
+  if (favorites.length === 0) {
+    return (
+      &lt;div className="favorites-empty"&gt;
+        &lt;i className="far fa-heart"&gt;&lt;/i&gt;
+        &lt;p&gt;No favorites yet. Click the heart icon on any movie to save it here.&lt;/p&gt;
+      &lt;/div&gt;
+    );
+  }
+
+  return (
+    &lt;div className="favorites-section"&gt;
+      &lt;h2&gt;Your Favorites ({favorites.length})&lt;/h2&gt;
+      &lt;div className="movie-grid"&gt;
+        {favorites.map((movie) =&gt; (
+          &lt;MovieCard
+            key={movie.imdbID}
+            movie={movie}
+            onSelect={onSelect}
+            isFavorite={true}
+            onToggleFavorite={() =&gt; onRemove(movie.imdbID)}
+          /&gt;
+        ))}
+      &lt;/div&gt;
+    &lt;/div&gt;
+  );
+}</code></pre>
+
+          <div class="callout callout-tip">
+            <i class="fas fa-lightbulb"></i>
+            <p><strong>Performance:</strong> For larger datasets, consider using <code>useReducer</code> instead of multiple <code>useState</code> calls. It provides more predictable state transitions and is easier to debug.</p>
+          </div>
+        </section>
+
+        <section id="responsive-design">
+          <h2>10. Responsive Design</h2>
+          <p>The final piece is making sure our app looks great on all screen sizes using CSS Grid and mobile-first design.</p>
+
+          <h3>Mobile-First CSS</h3>
+          <pre><code>/* Base styles (mobile) */
+.app {
+  min-height: 100vh;
+  background: #0f0f1a;
+  color: #e2e8f0;
+}
+
+.app-header {
+  text-align: center;
+  padding: 2rem 1rem;
+}
+
+.search-bar {
+  display: flex;
+  max-width: 600px;
+  margin: 1rem auto;
+  border-radius: 50px;
+  overflow: hidden;
+  background: #1a1a2e;
+}
+
+.search-input {
+  flex: 1;
+  padding: 1rem 1.5rem;
+  border: none;
+  background: transparent;
+  color: #fff;
+  font-size: 1rem;
+  outline: none;
+}
+
+.search-btn {
+  padding: 1rem 1.5rem;
+  background: #6366f1;
+  color: white;
+  border: none;
+  cursor: pointer;
+  transition: background 0.3s;
+}
+
+.search-btn:hover {
+  background: #4f46e5;
+}
+
+/* Tablet */
+@media (min-width: 768px) {
+  .movie-grid {
+    grid-template-columns: repeat(auto-fill, minmax(180px, 1fr));
+    gap: 1.5rem;
+    padding: 2rem;
+  }
+
+  .modal-body {
+    display: flex;
+    gap: 2rem;
+  }
+
+  .modal-poster {
+    max-width: 300px;
+  }
+}
+
+/* Desktop */
+@media (min-width: 1024px) {
+  .movie-grid {
+    grid-template-columns: repeat(auto-fill, minmax(200px, 1fr));
+    gap: 2rem;
+    max-width: 1200px;
+    margin: 0 auto;
+  }
+}</code></pre>
+
+          <h3>Modal Responsiveness</h3>
+          <pre><code>.modal-overlay {
+  position: fixed;
+  inset: 0;
+  background: rgba(0, 0, 0, 0.8);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  z-index: 1000;
+  padding: 1rem;
+}
+
+.modal-content {
+  background: #1a1a2e;
+  border-radius: 16px;
+  max-width: 800px;
+  width: 100%;
+  max-height: 90vh;
+  overflow-y: auto;
+  position: relative;
+}
+
+@media (max-width: 640px) {
+  .modal-body {
+    flex-direction: column;
+    align-items: center;
+  }
+
+  .modal-poster {
+    max-width: 200px;
+  }
+}</code></pre>
+
+          <div class="callout callout-tip">
+            <i class="fas fa-lightbulb"></i>
+            <p><strong>Testing:</strong> Use Chrome DevTools' device toolbar to test your responsive design across different screen sizes. Pay special attention to the modal on mobile — it should be full-width with proper padding.</p>
+          </div>
+
+          <p>And that's it! You now have a fully functional movie search app built with React. The key takeaways from this project are working with external APIs, managing complex state, creating reusable components, and implementing responsive layouts. You can extend this further by adding features like movie trailers, user authentication, or comparing movies side by side.</p>
+        </section>
+      </div>
+    </div>
+  </article>
+
+  <div class="back-to-top">
+    <a href="#top" class="btn btn-primary">
+      <i class="fas fa-arrow-up"></i> Back to Top
+    </a>
+  </div>
+
+  <footer class="footer">
+    <div class="container">
+      <div class="footer-content">
+        <div class="footer-brand">
+          <a href="../index.html" class="nav-logo">
+            <span class="logo-bracket">{</span> AB <span class="logo-bracket">}</span>
+          </a>
+          <p>Building modern web experiences with clean code, comprehensive tests, and continuous improvement.</p>
+        </div>
+        <div class="footer-links">
+          <h4>Navigation</h4>
+          <ul>
+            <li><a href="../index.html">Portfolio</a></li>
+            <li><a href="../index.html#about">About</a></li>
+            <li><a href="../index.html#projects">Projects</a></li>
+            <li><a href="../index.html#contact">Contact</a></li>
+          </ul>
+        </div>
+        <div class="footer-social">
+          <h4>Connect</h4>
+          <div class="footer-icons">
+            <a href="https://github.com/avinashbt" target="_blank"><i class="fab fa-github"></i></a>
+            <a href="https://www.linkedin.com/in/avinash-bawage-99ba58200/?locale=en_US" target="_blank"><i class="fab fa-linkedin-in"></i></a>
+            <a href="https://twitter.com/AvinashBawge" target="_blank"><i class="fab fa-twitter"></i></a>
+            <a href="mailto:avi.bawge9@gmail.com"><i class="fas fa-envelope"></i></a>
+          </div>
+        </div>
+      </div>
+      <div class="footer-bottom">
+        <p>Built with <span class="footer-heart">&hearts;</span> by Avinash Bawage &mdash; &copy; 2026</p>
+      </div>
+    </div>
+  </footer>
+
+  <script>
+    const hamburger = document.getElementById('hamburger');
+    const mobileMenu = document.getElementById('mobileMenu');
+    let overlay = document.createElement('div');
+    overlay.className = 'mobile-overlay';
+    document.body.appendChild(overlay);
+
+    function toggleMenu() {
+      hamburger.classList.toggle('active');
+      mobileMenu.classList.toggle('active');
+      overlay.classList.toggle('active');
+      document.body.style.overflow = mobileMenu.classList.contains('active') ? 'hidden' : '';
+    }
+
+    hamburger.addEventListener('click', toggleMenu);
+    overlay.addEventListener('click', toggleMenu);
+    document.querySelectorAll('.mobile-menu a').forEach(a => a.addEventListener('click', toggleMenu));
+  </script>
+</body>
+</html>
