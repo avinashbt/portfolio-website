@@ -1,69 +1,34 @@
 <!DOCTYPE html>
 <html lang="en">
-
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-
-  <title>Avinash Bawage | Web Developer & React Engineer</title>
-
-  <meta name="description"
-    content="Avinash Bawage is a Web Developer & React JS Engineer from Hyderabad. Creator of SpeedometerLive.online & InstantAIArticle.blog. Skilled in HTML, CSS, JavaScript, React, Node.js, PHP, MySQL.">
-  <meta name="keywords"
-    content="Avinash Bawage, Web Developer, React JS Developer, Frontend Developer, Portfolio, Hyderabad Web Developer">
+  <title>Avinash Bawage | Frontend Developer & React Engineer</title>
+  <meta name="description" content="Avinash Bawage — Frontend Developer with 4.6 years of experience building performant React apps with Cypress & Jest testing. Open to hire.">
+  <meta name="keywords" content="Avinash Bawage, Frontend Developer, React Engineer, Cypress, Jest, Testing, Hyderabad Developer, Hire Developer">
   <meta name="author" content="Avinash Bawage">
   <meta name="robots" content="index, follow">
-
-  <!-- Open Graph -->
-  <meta property="og:title" content="Avinash Bawage | Web Developer Portfolio">
-  <meta property="og:description"
-    content="Explore live projects, SaaS platforms, and modern web applications built by Avinash Bawage.">
+  <meta property="og:title" content="Avinash Bawage | Frontend Developer & React Engineer">
+  <meta property="og:description" content="4.6 years building React apps & bulletproof test suites. Open for opportunities.">
   <meta property="og:image" content="profile1.jpg">
   <meta property="og:url" content="https://avinashbt.github.io">
   <meta property="og:type" content="website">
-
-  <!-- Twitter -->
   <meta name="twitter:card" content="summary_large_image">
-
-  <!-- Favicon -->
   <link rel="shortcut icon" href="./favicon.jpg" type="image/x-icon" />
 
-  <!-- Google Fonts -->
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-  <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700;800&display=swap" rel="stylesheet">
-
-  <!-- Libraries -->
-  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.1/css/all.min.css" />
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800&family=JetBrains+Mono:wght@400;500&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css" />
   <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/aos/2.3.4/aos.css" />
-  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/Glide.js/3.4.1/css/glide.core.css" />
-  <link href="https://cdn.jsdelivr.net/npm/bootstrap-icons/font/bootstrap-icons.css" rel="stylesheet">
+  <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.11.3/font/bootstrap-icons.css">
 
-  <!-- Tailwind CSS -->
-  <script src="https://cdn.tailwindcss.com"></script>
-  <script>
-    tailwind.config = {
-      theme: {
-        extend: {
-          colors: {
-            primary: '#8342f9',
-            'primary-dark': '#6d2fd6',
-          }
-        }
-      }
-    }
-  </script>
-
-  <!-- Custom Stylesheet -->
-  <link rel="stylesheet" href="styles.css" />
-
-  <!-- Schema -->
   <script type="application/ld+json">
   {
     "@context": "https://schema.org",
     "@type": "Person",
     "name": "Avinash Bawage",
-    "jobTitle": "Web Developer",
+    "jobTitle": "Frontend Developer",
     "url": "https://avinashbt.github.io",
     "sameAs": [
       "https://github.com/avinashbt",
@@ -71,683 +36,580 @@
     ]
   }
   </script>
+
+  <link rel="stylesheet" href="styles.css" />
 </head>
+<body>
 
-<body onload="timeCount();">
+  <!-- NAV -->
+  <nav class="nav" id="nav">
+    <div class="nav-container">
+      <a href="#" class="nav-logo">
+        <span class="logo-bracket">{</span> AB <span class="logo-bracket">}</span>
+      </a>
+      <ul class="nav-links" id="navLinks">
+        <li><a href="#about">About</a></li>
+        <li><a href="#experience">Experience</a></li>
+        <li><a href="#skills">Skills</a></li>
+        <li><a href="#projects">Projects</a></li>
+        <li><a href="#services">Services</a></li>
+        <li><a href="blog.html" class="nav-blog-link">Blog</a></li>
+        <li><a href="#contact" class="nav-cta">Hire Me</a></li>
+      </ul>
+      <button class="hamburger" id="hamburger" aria-label="Toggle menu">
+        <span></span><span></span><span></span>
+      </button>
+    </div>
+  </nav>
 
-  <!-- Particles Canvas (3D Background) -->
-  <canvas id="particles-canvas"></canvas>
+  <!-- MOBILE NAV -->
+  <div class="mobile-menu" id="mobileMenu">
+    <ul>
+      <li><a href="#about">About</a></li>
+      <li><a href="#experience">Experience</a></li>
+      <li><a href="#skills">Skills</a></li>
+      <li><a href="#projects">Projects</a></li>
+      <li><a href="#services">Services</a></li>
+      <li><a href="blog.html">Blog</a></li>
+      <li><a href="#contact">Hire Me</a></li>
+    </ul>
+  </div>
 
-  <!-- Header -->
-  <header id="home" class="header">
-    <div class="hero-bg-gradient"></div>
-
-    <!-- 3D Floating Shapes -->
-    <div class="floating-shape"></div>
-    <div class="floating-shape"></div>
-    <div class="floating-shape"></div>
-    <!-- Navigation -->
-    <nav class="nav">
-      <div class="navigation container">
-        <div class="logo">
-          <h1><span class="logo-text">AB Developer</span></h1>
+  <!-- HERO -->
+  <header class="hero" id="home">
+    <div class="hero-bg">
+      <div class="hero-grid"></div>
+      <div class="hero-glow hero-glow-1"></div>
+      <div class="hero-glow hero-glow-2"></div>
+    </div>
+    <div class="hero-content">
+      <div class="hero-badge" data-aos="fade-down" data-aos-delay="200">
+        <span class="status-dot"></span> Open for Opportunities
+      </div>
+      <p class="hero-greeting" data-aos="fade-up" data-aos-delay="400">Hi, I'm</p>
+      <h1 class="hero-name" data-aos="fade-up" data-aos-delay="600">Avinash Bawage</h1>
+      <h2 class="hero-title" data-aos="fade-up" data-aos-delay="800">
+        <span id="typeText"></span><span class="cursor">|</span>
+      </h2>
+      <p class="hero-desc" data-aos="fade-up" data-aos-delay="1000">
+        I build performant React applications and write solid tests with Cypress & Jest.<br>
+        <strong>4.6 years</strong> turning complex problems into clean, tested code.
+      </p>
+      <div class="hero-actions" data-aos="fade-up" data-aos-delay="1200">
+        <a href="#contact" class="btn btn-primary">
+          <i class="fas fa-paper-plane"></i> Get In Touch
+        </a>
+        <a href="https://drive.google.com/file/d/1VmuOUSJU7ktLe5FLEhQfqUxO3oHJUNSr/view?usp=sharing" class="btn btn-ghost" target="_blank">
+          <i class="fas fa-download"></i> Download CV
+        </a>
+      </div>
+      <div class="hero-stats" data-aos="fade-up" data-aos-delay="1400">
+        <div class="stat">
+          <span class="stat-number">4.6<span class="stat-unit">+</span></span>
+          <span class="stat-label">Years Experience</span>
         </div>
-
-        <div class="menu">
-          <div class="top-nav">
-            <div class="logo">
-              <h1>AB Developer<span>.</span></h1>
-            </div>
-            <div class="close">
-              <i class="fas fa-times"></i>
-            </div>
-          </div>
-
-          <ul class="nav-list">
-            <li class="nav-item"><a href="#home" class="nav-link scroll-link">Home</a></li>
-            <li class="nav-item"><a href="#about" class="nav-link scroll-link">About</a></li>
-            <li class="nav-item"><a href="#services" class="nav-link scroll-link">Services</a></li>
-            <li class="nav-item"><a href="#skills" class="nav-link scroll-link">Skills</a></li>
-            <li class="nav-item"><a href="#projects" class="nav-link scroll-link">Projects</a></li>
-            <li class="nav-item"><a href="#websites" class="nav-link scroll-link">Websites</a></li>
-            <li class="nav-item"><a href="https://github.com/avinashbt" class="nav-link" target="_blank">Github</a></li>
-            <li class="nav-item"><a href="#contact" class="nav-link scroll-link">Contact</a></li>
-          </ul>
+        <div class="stat-divider"></div>
+        <div class="stat">
+          <span class="stat-number">14<span class="stat-unit">+</span></span>
+          <span class="stat-label">Projects Shipped</span>
         </div>
-
-        <div class="hamburger">
-          <i class="fas fa-bars"></i>
+        <div class="stat-divider"></div>
+        <div class="stat">
+          <span class="stat-number">2<span class="stat-unit">+</span></span>
+          <span class="stat-label">SaaS Products Live</span>
         </div>
       </div>
-    </nav>
-
-    <!-- Hero -->
-    <div class="hero">
-      <h3>Hello, my name is</h3>
-      <h1>Avinash Bawage</h1>
-      <h4>And I'm a <span id="type1"></span></h4>
-      <div class="hero-buttons">
-        <a href="https://drive.google.com/file/d/1VmuOUSJU7ktLe5FLEhQfqUxO3oHJUNSr/view?usp=sharing" class="btn btn-primary" target="_blank">
-          <i class="fas fa-download"></i> Download Resume
-        </a>
-        <a href="#contact" class="btn btn-outline scroll-link">Get In Touch</a>
+      <div class="hero-social" data-aos="fade-up" data-aos-delay="1600">
+        <a href="https://github.com/avinashbt" target="_blank" aria-label="GitHub"><i class="fab fa-github"></i></a>
+        <a href="https://www.linkedin.com/in/avinash-bawage-99ba58200/?locale=en_US" target="_blank" aria-label="LinkedIn"><i class="fab fa-linkedin-in"></i></a>
+        <a href="https://twitter.com/AvinashBawge" target="_blank" aria-label="Twitter"><i class="fab fa-twitter"></i></a>
+        <a href="mailto:avi.bawge9@gmail.com" aria-label="Email"><i class="fas fa-envelope"></i></a>
       </div>
     </div>
-
-    <img class="banner" src="./bg.png" alt="Developer illustration" />
-
-    <div class="icons">
-      <span><a href="https://github.com/avinashbt" target="_blank" aria-label="GitHub"><i class="fab fa-github"></i></a></span>
-      <span><a href="https://www.linkedin.com/in/avinash-bawage-99ba58200/?locale=en_US" target="_blank" aria-label="LinkedIn"><i class="fab fa-linkedin-in"></i></a></span>
-      <span><a href="https://twitter.com/AvinashBawge" target="_blank" aria-label="Twitter"><i class="fab fa-twitter"></i></a></span>
-      <span><a href="mailto:avi.bawge9@gmail.com" aria-label="Email"><i class="fas fa-envelope"></i></a></span>
+    <div class="hero-scroll-indicator">
+      <span>Scroll</span>
+      <div class="scroll-line"></div>
     </div>
   </header>
 
-  <!-- About -->
-  <section class="section about" id="about">
-    <div class="title">
-      <h1>About Me</h1>
-    </div>
-
-    <div class="about-center container">
-      <div class="left" data-aos="fade-right" data-aos-duration="2000">
-        <div class="profile-wrapper">
+  <!-- ABOUT -->
+  <section class="section" id="about">
+    <div class="container">
+      <div class="section-header" data-aos="fade-up">
+        <span class="section-tag">About</span>
+        <h2 class="section-title">Who I Am</h2>
+      </div>
+      <div class="about-grid">
+        <div class="about-image" data-aos="fade-right" data-aos-delay="200">
           <img src="./profile1.jpg" alt="Avinash Bawage" />
-          <div class="profile-decoration"></div>
+          <div class="about-image-decoration"></div>
         </div>
-      </div>
-      <div class="right" data-aos="fade-left" data-aos-duration="2000">
-        <h1>I'm Avinash Bawage, a <span id="type2"></span></h1>
-        <p>
-          Hi, I am Avinash Bawage — a Web App Developer and Digital Marketer.
-          I have <span id="times"></span> <span id="clock"></span> of experience
-          in web development since <b><span id="datefrom"></span></b>.
-          I specialize in building modern, responsive web applications using
-          HTML, CSS, JavaScript, Bootstrap, React.js, Node.js, and MySQL.
-        </p>
-        <div class="about-tags">
-          <span class="tag">React.js</span>
-          <span class="tag">Node.js</span>
-          <span class="tag">JavaScript</span>
-          <span class="tag">Bootstrap</span>
-          <span class="tag">MySQL</span>
-        </div>
-        <a href="https://drive.google.com/file/d/1VmuOUSJU7ktLe5FLEhQfqUxO3oHJUNSr/view?usp=sharing" class="btn" target="_blank">
-          <i class="fas fa-file-alt"></i> Download CV
-        </a>
-      </div>
-    </div>
-  </section>
-
-  <!-- Services -->
-  <section class="section theme" id="services">
-    <div class="title">
-      <h1>My Services</h1>
-    </div>
-
-    <div class="services-center container">
-      <div class="service" data-aos="fade-down" data-aos-duration="2000">
-        <span><i class="fab fa-accusoft"></i></span>
-        <h2>Web Design</h2>
-        <p>
-          Crafting responsive, pixel-perfect websites with clean code and modern UI/UX principles. From landing pages to full web applications.
-        </p>
-        <div class="service-tags">
-          <span>HTML</span>
-          <span>CSS</span>
-          <span>JavaScript</span>
-          <span>React</span>
-        </div>
-      </div>
-
-      <div class="service" data-aos="fade-up" data-aos-duration="2000">
-        <span><i class="fas fa-mobile-alt"></i></span>
-        <h2>Mobile App Design</h2>
-        <p>
-          Building cross-platform mobile experiences with responsive design that works seamlessly across all devices and screen sizes.
-        </p>
-        <div class="service-tags">
-          <span>React Native</span>
-          <span>Responsive</span>
-          <span>PWA</span>
-        </div>
-      </div>
-
-      <div class="service" data-aos="fade-down" data-aos-duration="2000">
-        <span><i class="fas fa-chart-line"></i></span>
-        <h2>Digital Marketing</h2>
-        <p>
-          Data-driven digital marketing strategies including SEO, social media campaigns, and analytics to grow your online presence.
-        </p>
-        <div class="service-tags">
-          <span>SEO</span>
-          <span>Analytics</span>
-          <span>Strategy</span>
-        </div>
-      </div>
-    </div>
-  </section>
-
-  <!-- Skills -->
-  <section class="section skills" id="skills">
-    <div class="title">
-      <h1>My Skills</h1>
-    </div>
-
-    <div class="skills-center container">
-      <div class="skills-left" data-aos="fade-right" data-aos-duration="2000">
-        <div class="skills-box">
-          <div class="skills-header">
-            <h4>HTML5</h4>
-            <span class="skill-percent">95%</span>
+        <div class="about-content" data-aos="fade-left" data-aos-delay="400">
+          <h3>Frontend Developer & React Engineer</h3>
+          <p>
+            I'm Avinash Bawage, a Frontend Developer based in Hyderabad, India.
+            Over the past <strong>4.6 years</strong>, I've built production-grade React applications,
+            designed intuitive user interfaces, and implemented testing strategies
+            with Cypress and Jest to ship code with confidence.
+          </p>
+          <p>
+            I specialize in <strong>React.js</strong>, <strong>JavaScript</strong>, and
+            <strong>modern testing frameworks</strong> like Cypress and Jest. I believe every feature
+            should be tested, every component should be accessible, and every deployment should be reliable.
+          </p>
+          <div class="about-tags">
+            <span>React.js</span>
+            <span>JavaScript</span>
+            <span>TypeScript</span>
+            <span>Node.js</span>
+            <span>Cypress</span>
+            <span>Jest</span>
+            <span>Redux</span>
+            <span>MySQL</span>
           </div>
-          <div class="skills-ilt">
-            <div class="skills-bar html"></div>
-          </div>
-        </div>
-        <div class="skills-box">
-          <div class="skills-header">
-            <h4>CSS3</h4>
-            <span class="skill-percent">85%</span>
-          </div>
-          <div class="skills-ilt">
-            <div class="skills-bar css"></div>
-          </div>
-        </div>
-        <div class="skills-box">
-          <div class="skills-header">
-            <h4>JavaScript</h4>
-            <span class="skill-percent">90%</span>
-          </div>
-          <div class="skills-ilt">
-            <div class="skills-bar javascript"></div>
-          </div>
-        </div>
-        <div class="skills-box">
-          <div class="skills-header">
-            <h4>Bootstrap</h4>
-            <span class="skill-percent">90%</span>
-          </div>
-          <div class="skills-ilt">
-            <div class="skills-bar bootstrap"></div>
-          </div>
-        </div>
-        <div class="skills-box">
-          <div class="skills-header">
-            <h4>React.js & Redux</h4>
-            <span class="skill-percent">85%</span>
-          </div>
-          <div class="skills-ilt">
-            <div class="skills-bar react"></div>
-          </div>
-        </div>
-        <div class="skills-box">
-          <div class="skills-header">
-            <h4>Node.js</h4>
-            <span class="skill-percent">70%</span>
-          </div>
-          <div class="skills-ilt">
-            <div class="skills-bar nodejs"></div>
-          </div>
-        </div>
-        <div class="skills-box">
-          <div class="skills-header">
-            <h4>MySQL</h4>
-            <span class="skill-percent">75%</span>
-          </div>
-          <div class="skills-ilt">
-            <div class="skills-bar mysql"></div>
-          </div>
-        </div>
-      </div>
-
-      <div class="right" data-aos="fade-left" data-aos-duration="2000">
-        <h3>My creative skills & experience</h3>
-        <p>
-          I'm a passionate Web App Developer and Digital Marketer with hands-on experience building real-world projects including SaaS platforms, admin panels, and interactive web applications. I focus on writing clean, maintainable code and creating intuitive user experiences.
-        </p>
-        <div class="skills-experience-grid">
-          <div class="experience-card">
-            <h4>14+</h4>
-            <p>Projects Completed</p>
-          </div>
-          <div class="experience-card">
-            <h4>2+</h4>
-            <p>Live SaaS Products</p>
-          </div>
-          <div class="experience-card">
-            <h4>5+</h4>
-            <p>Technologies</p>
-          </div>
-        </div>
-        <a href="https://drive.google.com/file/d/1VmuOUSJU7ktLe5FLEhQfqUxO3oHJUNSr/view?usp=sharing" class="btn" target="_blank">
-          <i class="fas fa-download"></i> Read More
-        </a>
-      </div>
-    </div>
-  </section>
-
-  <!-- Projects -->
-  <section class="section theme" id="projects">
-    <div class="title">
-      <h1>My Projects</h1>
-    </div>
-
-    <div class="teams-center container">
-      <div class="glide">
-        <div class="glide__track" data-glide-el="track">
-          <ul class="glide__slides">
-
-            <li class="glide__slide">
-              <div class="team">
-                <div class="img-cover">
-                  <img src="instantaiarticle.png" alt="Instant AI Article Generator" />
-                </div>
-                <div class="team-content">
-                  <h3>Instant AI Article Generator</h3>
-                  <span class="project-badge">SaaS</span>
-                  <p>Full-stack AI SaaS platform for SEO-optimized blog articles with login, payment integration, and admin controls.</p>
-                  <div class="tech-stack">
-                    <span>PHP</span><span>MySQL</span><span>AI API</span>
-                  </div>
-                  <a href="https://instantaiarticle.blog" class="btn" target="_blank">
-                    <i class="fas fa-external-link-alt"></i> Visit
-                  </a>
-                </div>
-              </div>
-            </li>
-
-            <li class="glide__slide">
-              <div class="team">
-                <div class="img-cover">
-                  <img src="speedometeronline.png" alt="Speedometer Live Online" />
-                </div>
-                <div class="team-content">
-                  <h3>Speedometer Live Online</h3>
-                  <span class="project-badge">Live</span>
-                  <p>Real-time GPS-based speedometer web app showing live speed, distance, and accuracy on mobile browsers.</p>
-                  <div class="tech-stack">
-                    <span>Next.js</span><span>Geolocation API</span>
-                  </div>
-                  <a href="https://speedometerlive.online" class="btn" target="_blank">
-                    <i class="fas fa-external-link-alt"></i> Visit
-                  </a>
-                </div>
-              </div>
-            </li>
-
-            <li class="glide__slide">
-              <div class="team">
-                <div class="img-cover">
-                  <img src="calculator.PNG" alt="Calculator App" />
-                </div>
-                <div class="team-content">
-                  <h3>Calculator App</h3>
-                  <span class="project-badge">React</span>
-                  <p>Modern calculator with add, subtract, multiply, and divide operations. Built with React.js.</p>
-                  <div class="tech-stack">
-                    <span>React.js</span><span>CSS3</span>
-                  </div>
-                  <a href="https://avinashbt.github.io/caltors/" class="btn" target="_blank">
-                    <i class="fas fa-external-link-alt"></i> Live
-                  </a>
-                </div>
-              </div>
-            </li>
-
-            <li class="glide__slide">
-              <div class="team">
-                <div class="img-cover">
-                  <img src="wordcount1.PNG" alt="Word Count Tool" />
-                </div>
-                <div class="team-content">
-                  <h3>Word Count Tool</h3>
-                  <span class="project-badge">React</span>
-                  <p>Count words, characters, reading time, and convert text case. Built with Bootstrap + React.</p>
-                  <div class="tech-stack">
-                    <span>React.js</span><span>Bootstrap</span>
-                  </div>
-                  <a href="https://avinashbt.github.io/wordcount/" class="btn" target="_blank">
-                    <i class="fas fa-external-link-alt"></i> Live
-                  </a>
-                </div>
-              </div>
-            </li>
-
-            <li class="glide__slide">
-              <div class="team">
-                <div class="img-cover">
-                  <img src="unitconversion.PNG" alt="Weight Conversion" />
-                </div>
-                <div class="team-content">
-                  <h3>Weight Conversion Website</h3>
-                  <span class="project-badge">HTML/CSS</span>
-                  <p>Convert weights between pounds, grams, kilograms, and ounces instantly.</p>
-                  <div class="tech-stack">
-                    <span>HTML</span><span>CSS</span><span>JavaScript</span>
-                  </div>
-                  <a href="https://avinashbt.github.io/Weight-Conversion-website-or-App/" class="btn" target="_blank">
-                    <i class="fas fa-external-link-alt"></i> Live
-                  </a>
-                </div>
-              </div>
-            </li>
-
-            <li class="glide__slide">
-              <div class="team">
-                <div class="img-cover">
-                  <img src="educationwebsite.PNG" alt="Education Website" />
-                </div>
-                <div class="team-content">
-                  <h3>Education Website</h3>
-                  <span class="project-badge">Multi-page</span>
-                  <p>Responsive education website with multiple pages — Home, About, and Contact. Works on all devices.</p>
-                  <div class="tech-stack">
-                    <span>HTML</span><span>CSS</span><span>JavaScript</span>
-                  </div>
-                  <a href="https://avinashbt.github.io/Html-css-Js-Website/" class="btn" target="_blank">
-                    <i class="fas fa-external-link-alt"></i> Live
-                  </a>
-                </div>
-              </div>
-            </li>
-
-            <li class="glide__slide">
-              <div class="team">
-                <div class="img-cover">
-                  <img src="edutech.PNG" alt="E-Courses Website" />
-                </div>
-                <div class="team-content">
-                  <h3>E-Courses Website</h3>
-                  <span class="project-badge">Bootstrap</span>
-                  <p>Responsive e-learning platform built with Bootstrap. Fully responsive across all devices.</p>
-                  <div class="tech-stack">
-                    <span>Bootstrap</span><span>HTML</span><span>CSS</span>
-                  </div>
-                  <a href="https://avinashbt.github.io/Bootstrap.Edn.website/" class="btn" target="_blank">
-                    <i class="fas fa-external-link-alt"></i> Live
-                  </a>
-                </div>
-              </div>
-            </li>
-
-            <li class="glide__slide">
-              <div class="team">
-                <div class="img-cover">
-                  <img src="./movies.PNG" alt="Movie React App" />
-                </div>
-                <div class="team-content">
-                  <h3>Movie React App</h3>
-                  <span class="project-badge">React</span>
-                  <p>Movie search app with API integration using useState and useEffect hooks.</p>
-                  <div class="tech-stack">
-                    <span>React.js</span><span>API</span>
-                  </div>
-                  <a href="https://avinashbt.github.io/Bootstrap.Edn.website/" class="btn" target="_blank">
-                    <i class="fas fa-external-link-alt"></i> Live
-                  </a>
-                </div>
-              </div>
-            </li>
-
-            <li class="glide__slide">
-              <div class="team">
-                <div class="img-cover">
-                  <img src="./adminpanel.PNG" alt="Admin Panel" />
-                </div>
-                <div class="team-content">
-                  <h3>Admin Panel</h3>
-                  <span class="project-badge">Dashboard</span>
-                  <p>Admin dashboard with search functionality, detail sidebar, and API integration.</p>
-                  <div class="tech-stack">
-                    <span>HTML</span><span>CSS</span><span>JavaScript</span>
-                  </div>
-                  <a href="https://avinashbt.github.io/Bootstrap.Edn.website/" class="btn" target="_blank">
-                    <i class="fas fa-external-link-alt"></i> Live
-                  </a>
-                </div>
-              </div>
-            </li>
-
-            <li class="glide__slide">
-              <div class="team">
-                <div class="img-cover">
-                  <img src="./texttospeech.PNG" alt="Text to Speech" />
-                </div>
-                <div class="team-content">
-                  <h3>Text to Speech Tool</h3>
-                  <span class="project-badge">Utility</span>
-                  <p>Text-to-speech conversion tool for accessibility and productivity.</p>
-                  <div class="tech-stack">
-                    <span>JavaScript</span><span>Web Speech API</span>
-                  </div>
-                  <a href="https://avinashbt.github.io/Bootstrap.Edn.website/" class="btn" target="_blank">
-                    <i class="fas fa-external-link-alt"></i> Live
-                  </a>
-                </div>
-              </div>
-            </li>
-
-            <li class="glide__slide">
-              <div class="team">
-                <div class="img-cover">
-                  <img src="mathwebsite.PNG" alt="Math Website" />
-                </div>
-                <div class="team-content">
-                  <h3>Math Tutorial Website</h3>
-                  <span class="project-badge">HTML/CSS</span>
-                  <p>Online education tutorial website for math learning.</p>
-                  <div class="tech-stack">
-                    <span>HTML</span><span>CSS</span>
-                  </div>
-                  <a href="https://avinashbt.github.io/SingleWebsite/" class="btn" target="_blank">
-                    <i class="fas fa-external-link-alt"></i> Live
-                  </a>
-                </div>
-              </div>
-            </li>
-
-            <li class="glide__slide">
-              <div class="team">
-                <div class="img-cover">
-                  <img src="stunninglandingpage.PNG" alt="Landing Page" />
-                </div>
-                <div class="team-content">
-                  <h3>Stunning Landing Page</h3>
-                  <span class="project-badge">HTML/CSS</span>
-                  <p>Beautiful landing page built with pure HTML and CSS.</p>
-                  <div class="tech-stack">
-                    <span>HTML</span><span>CSS</span>
-                  </div>
-                  <a href="https://avinashbt.github.io/Stunning_landing_page/" class="btn" target="_blank">
-                    <i class="fas fa-external-link-alt"></i> Live
-                  </a>
-                </div>
-              </div>
-            </li>
-
-          </ul>
-        </div>
-
-        <!-- Glide Controls -->
-        <div class="glide__arrows" data-glide-el="controls">
-          <button class="glide__arrow glide__arrow--left" data-glide-dir="<">
-            <i class="fas fa-chevron-left"></i>
-          </button>
-          <button class="glide__arrow glide__arrow--right" data-glide-dir=">">
-            <i class="fas fa-chevron-right"></i>
-          </button>
-        </div>
-      </div>
-    </div>
-  </section>
-
-  <!-- Quote -->
-  <section class="quote-section">
-    <div class="quote-content" data-aos="fade-up" data-aos-duration="1500">
-      <i class="fas fa-quote-left quote-icon"></i>
-      <blockquote>
-        "We all need people who will give us feedback. That's how we improve."
-      </blockquote>
-      <cite>— Bill Gates</cite>
-    </div>
-  </section>
-
-  <!-- Our Websites (Tailwind) -->
-  <section id="websites" class="py-20 bg-gradient-to-br from-gray-950 via-gray-900 to-gray-950 relative overflow-hidden">
-    <!-- Background decoration -->
-    <div class="absolute inset-0 overflow-hidden pointer-events-none">
-      <div class="absolute -top-40 -left-40 w-80 h-80 bg-primary/10 rounded-full blur-3xl"></div>
-      <div class="absolute -bottom-40 -right-40 w-80 h-80 bg-blue-500/10 rounded-full blur-3xl"></div>
-    </div>
-
-    <div class="max-w-6xl mx-auto px-6 relative z-10">
-      <!-- Heading -->
-      <div class="text-center mb-16" data-aos="fade-up" data-aos-duration="1000">
-        <h2 class="text-4xl font-bold text-white mb-4">Our Live Websites</h2>
-        <p class="text-gray-400 text-lg max-w-2xl mx-auto">Real-world web applications and SaaS products built and deployed in production.</p>
-        <div class="w-24 h-1 bg-gradient-to-r from-primary to-blue-500 mx-auto mt-6 rounded-full"></div>
-      </div>
-
-      <!-- Website Cards Grid -->
-      <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4 gap-6">
-
-        <!-- Card 1 -->
-        <a href="https://calculatorforall.online" target="_blank" class="group block bg-gray-800/50 backdrop-blur-sm border border-gray-700/50 rounded-2xl p-6 hover:border-primary/50 hover:bg-gray-800/80 transition-all duration-300 hover:-translate-y-2 hover:shadow-lg hover:shadow-primary/10" data-aos="fade-up" data-aos-delay="0">
-          <div class="flex items-center justify-center w-14 h-14 bg-gradient-to-br from-primary/20 to-blue-500/20 rounded-xl mb-4 group-hover:scale-110 transition-transform duration-300">
-            <i class="fas fa-calculator text-2xl text-primary"></i>
-          </div>
-          <h3 class="text-xl font-semibold text-white mb-2 group-hover:text-primary transition-colors">Calculator For All</h3>
-          <p class="text-gray-400 text-sm mb-4 leading-relaxed">A comprehensive online calculator for everyday math, unit conversions, and scientific calculations.</p>
-          <div class="flex items-center text-primary text-sm font-medium opacity-0 group-hover:opacity-100 transition-opacity duration-300">
-            Visit Website <i class="fas fa-arrow-right ml-2 text-xs group-hover:translate-x-1 transition-transform"></i>
-          </div>
-        </a>
-
-        <!-- Card 2 -->
-        <a href="https://speedometerlive.online" target="_blank" class="group block bg-gray-800/50 backdrop-blur-sm border border-gray-700/50 rounded-2xl p-6 hover:border-primary/50 hover:bg-gray-800/80 transition-all duration-300 hover:-translate-y-2 hover:shadow-lg hover:shadow-primary/10" data-aos="fade-up" data-aos-delay="100">
-          <div class="flex items-center justify-center w-14 h-14 bg-gradient-to-br from-green-500/20 to-emerald-500/20 rounded-xl mb-4 group-hover:scale-110 transition-transform duration-300">
-            <i class="fas fa-tachometer-alt text-2xl text-green-400"></i>
-          </div>
-          <h3 class="text-xl font-semibold text-white mb-2 group-hover:text-primary transition-colors">Speedometer Live</h3>
-          <p class="text-gray-400 text-sm mb-4 leading-relaxed">Real-time GPS-based speedometer web app showing live speed, distance, and accuracy on mobile.</p>
-          <div class="flex items-center text-primary text-sm font-medium opacity-0 group-hover:opacity-100 transition-opacity duration-300">
-            Visit Website <i class="fas fa-arrow-right ml-2 text-xs group-hover:translate-x-1 transition-transform"></i>
-          </div>
-        </a>
-
-        <!-- Card 3 -->
-        <a href="https://whatismycarspeed.in" target="_blank" class="group block bg-gray-800/50 backdrop-blur-sm border border-gray-700/50 rounded-2xl p-6 hover:border-primary/50 hover:bg-gray-800/80 transition-all duration-300 hover:-translate-y-2 hover:shadow-lg hover:shadow-primary/10" data-aos="fade-up" data-aos-delay="200">
-          <div class="flex items-center justify-center w-14 h-14 bg-gradient-to-br from-orange-500/20 to-red-500/20 rounded-xl mb-4 group-hover:scale-110 transition-transform duration-300">
-            <i class="fas fa-car text-2xl text-orange-400"></i>
-          </div>
-          <h3 class="text-xl font-semibold text-white mb-2 group-hover:text-primary transition-colors">What Is My Car Speed</h3>
-          <p class="text-gray-400 text-sm mb-4 leading-relaxed">Track your vehicle speed in real-time using GPS. Perfect for monitoring driving speed on any device.</p>
-          <div class="flex items-center text-primary text-sm font-medium opacity-0 group-hover:opacity-100 transition-opacity duration-300">
-            Visit Website <i class="fas fa-arrow-right ml-2 text-xs group-hover:translate-x-1 transition-transform"></i>
-          </div>
-        </a>
-
-        <!-- Card 4 -->
-        <a href="https://youtubedescriptionextractor.online" target="_blank" class="group block bg-gray-800/50 backdrop-blur-sm border border-gray-700/50 rounded-2xl p-6 hover:border-primary/50 hover:bg-gray-800/80 transition-all duration-300 hover:-translate-y-2 hover:shadow-lg hover:shadow-primary/10" data-aos="fade-up" data-aos-delay="300">
-          <div class="flex items-center justify-center w-14 h-14 bg-gradient-to-br from-red-500/20 to-pink-500/20 rounded-xl mb-4 group-hover:scale-110 transition-transform duration-300">
-            <i class="fab fa-youtube text-2xl text-red-500"></i>
-          </div>
-          <h3 class="text-xl font-semibold text-white mb-2 group-hover:text-primary transition-colors">YouTube Description Extractor</h3>
-          <p class="text-gray-400 text-sm mb-4 leading-relaxed">Extract and copy YouTube video descriptions instantly. A handy tool for content creators and marketers.</p>
-          <div class="flex items-center text-primary text-sm font-medium opacity-0 group-hover:opacity-100 transition-opacity duration-300">
-            Visit Website <i class="fas fa-arrow-right ml-2 text-xs group-hover:translate-x-1 transition-transform"></i>
-          </div>
-        </a>
-
-        <!-- Card 5 -->
-        <a href="https://instantaiarticle.blog" target="_blank" class="group block bg-gray-800/50 backdrop-blur-sm border border-gray-700/50 rounded-2xl p-6 hover:border-primary/50 hover:bg-gray-800/80 transition-all duration-300 hover:-translate-y-2 hover:shadow-lg hover:shadow-primary/10" data-aos="fade-up" data-aos-delay="0">
-          <div class="flex items-center justify-center w-14 h-14 bg-gradient-to-br from-purple-500/20 to-violet-500/20 rounded-xl mb-4 group-hover:scale-110 transition-transform duration-300">
-            <i class="fas fa-robot text-2xl text-purple-400"></i>
-          </div>
-          <h3 class="text-xl font-semibold text-white mb-2 group-hover:text-primary transition-colors">Instant AI Article</h3>
-          <p class="text-gray-400 text-sm mb-4 leading-relaxed">Full-stack AI SaaS platform to generate SEO-optimized blog articles with payment integration.</p>
-          <div class="flex items-center text-primary text-sm font-medium opacity-0 group-hover:opacity-100 transition-opacity duration-300">
-            Visit Website <i class="fas fa-arrow-right ml-2 text-xs group-hover:translate-x-1 transition-transform"></i>
-          </div>
-        </a>
- 
-        <!-- Card 7 -->
-        <a href="https://vehiclespeedometer.digitaldany.com" target="_blank" class="group block bg-gray-800/50 backdrop-blur-sm border border-gray-700/50 rounded-2xl p-6 hover:border-primary/50 hover:bg-gray-800/80 transition-all duration-300 hover:-translate-y-2 hover:shadow-lg hover:shadow-primary/10" data-aos="fade-up" data-aos-delay="200">
-          <div class="flex items-center justify-center w-14 h-14 bg-gradient-to-br from-yellow-500/20 to-amber-500/20 rounded-xl mb-4 group-hover:scale-110 transition-transform duration-300">
-            <i class="fas fa-bicycle text-2xl text-yellow-400"></i>
-          </div>
-          <h3 class="text-xl font-semibold text-white mb-2 group-hover:text-primary transition-colors">Vehicle Speedometer</h3>
-          <p class="text-gray-400 text-sm mb-4 leading-relaxed">Real-time vehicle speed tracking tool for cars, bikes, and other vehicles using GPS technology.</p>
-          <div class="flex items-center text-primary text-sm font-medium opacity-0 group-hover:opacity-100 transition-opacity duration-300">
-            Visit Website <i class="fas fa-arrow-right ml-2 text-xs group-hover:translate-x-1 transition-transform"></i>
-          </div>
-        </a>
-
-        <!-- "More Coming Soon" Card -->
-        <div class="flex items-center justify-center bg-gray-800/30 backdrop-blur-sm border-2 border-dashed border-gray-700/50 rounded-2xl p-6 min-h-[280px]" data-aos="fade-up" data-aos-delay="300">
-          <div class="text-center">
-            <div class="flex items-center justify-center w-14 h-14 bg-gray-800 rounded-xl mb-4 mx-auto">
-              <i class="fas fa-plus text-2xl text-gray-500"></i>
+          <div class="about-highlights">
+            <div class="highlight-item">
+              <i class="fas fa-check-circle"></i>
+              <span>4.6+ years of professional experience</span>
             </div>
-            <p class="text-gray-500 text-lg font-medium">More Projects</p>
-            <p class="text-gray-600 text-sm mt-1">Coming Soon</p>
+            <div class="highlight-item">
+              <i class="fas fa-check-circle"></i>
+              <span>2 live SaaS products in production</span>
+            </div>
+            <div class="highlight-item">
+              <i class="fas fa-check-circle"></i>
+              <span>End-to-end testing with Cypress & Jest</span>
+            </div>
+            <div class="highlight-item">
+              <i class="fas fa-check-circle"></i>
+              <span>Performance-optimized, accessible UIs</span>
+            </div>
+          </div>
+          <a href="https://drive.google.com/file/d/1VmuOUSJU7ktLe5FLEhQfqUxO3oHJUNSr/view?usp=sharing" class="btn btn-primary" target="_blank">
+            <i class="fas fa-file-alt"></i> View Full Resume
+          </a>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- EXPERIENCE -->
+  <section class="section section-dark" id="experience">
+    <div class="container">
+      <div class="section-header" data-aos="fade-up">
+        <span class="section-tag">Career</span>
+        <h2 class="section-title">Experience Timeline</h2>
+      </div>
+      <div class="timeline" data-aos="fade-up" data-aos-delay="200">
+        <div class="timeline-item">
+          <div class="timeline-marker"></div>
+          <div class="timeline-content">
+            <div class="timeline-header">
+              <h3>Frontend Developer</h3>
+              <span class="timeline-date">2021 - Present</span>
+            </div>
+            <p class="timeline-company">Full-time & Freelance</p>
+            <ul class="timeline-details">
+              <li>Built 14+ responsive web applications using React.js, Redux, and modern JavaScript</li>
+              <li>Implemented end-to-end testing strategies with Cypress achieving 85%+ code coverage</li>
+              <li>Developed unit and integration test suites using Jest and React Testing Library</li>
+              <li>Designed and launched 2 SaaS products from concept to production deployment</li>
+              <li>Optimized Core Web Vitals resulting in 40% faster page loads across projects</li>
+              <li>Mentored junior developers on testing best practices and clean code principles</li>
+            </ul>
           </div>
         </div>
+        <div class="timeline-item">
+          <div class="timeline-marker"></div>
+          <div class="timeline-content">
+            <div class="timeline-header">
+              <h3>SaaS Product Development</h3>
+              <span class="timeline-date">Ongoing</span>
+            </div>
+            <p class="timeline-company">Independent Projects</p>
+            <ul class="timeline-details">
+              <li>InstantAIArticle.blog — AI-powered SEO article generator with payment integration</li>
+              <li>SpeedometerLive.online — Real-time GPS speedometer with 10K+ monthly users</li>
+              <li>Full-stack development: frontend, backend, testing, deployment, monitoring</li>
+            </ul>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- SKILLS -->
+  <section class="section" id="skills">
+    <div class="container">
+      <div class="section-header" data-aos="fade-up">
+        <span class="section-tag">Tech Stack</span>
+        <h2 class="section-title">Skills & Tools</h2>
+      </div>
+      <div class="skills-grid">
+        <!-- Frontend -->
+        <div class="skill-category" data-aos="fade-up" data-aos-delay="100">
+          <div class="skill-category-header">
+            <i class="fas fa-code"></i>
+            <h3>Frontend</h3>
+          </div>
+          <div class="skill-items">
+            <div class="skill-item">
+              <span class="skill-name">React.js</span>
+              <div class="skill-bar"><div class="skill-fill" data-width="90"></div></div>
+            </div>
+            <div class="skill-item">
+              <span class="skill-name">JavaScript (ES6+)</span>
+              <div class="skill-bar"><div class="skill-fill" data-width="92"></div></div>
+            </div>
+            <div class="skill-item">
+              <span class="skill-name">HTML5 / CSS3</span>
+              <div class="skill-bar"><div class="skill-fill" data-width="95"></div></div>
+            </div>
+            <div class="skill-item">
+              <span class="skill-name">Redux / Context API</span>
+              <div class="skill-bar"><div class="skill-fill" data-width="85"></div></div>
+            </div>
+            <div class="skill-item">
+              <span class="skill-name">Bootstrap / Tailwind</span>
+              <div class="skill-bar"><div class="skill-fill" data-width="90"></div></div>
+            </div>
+          </div>
+        </div>
+
+        <!-- Backend -->
+        <div class="skill-category" data-aos="fade-up" data-aos-delay="200">
+          <div class="skill-category-header">
+            <i class="fas fa-server"></i>
+            <h3>Backend & DB</h3>
+          </div>
+          <div class="skill-items">
+            <div class="skill-item">
+              <span class="skill-name">Node.js</span>
+              <div class="skill-bar"><div class="skill-fill" data-width="72"></div></div>
+            </div>
+            <div class="skill-item">
+              <span class="skill-name">PHP</span>
+              <div class="skill-bar"><div class="skill-fill" data-width="68"></div></div>
+            </div>
+            <div class="skill-item">
+              <span class="skill-name">MySQL</span>
+              <div class="skill-bar"><div class="skill-fill" data-width="78"></div></div>
+            </div>
+            <div class="skill-item">
+              <span class="skill-name">Firebase</span>
+              <div class="skill-bar"><div class="skill-fill" data-width="80"></div></div>
+            </div>
+            <div class="skill-item">
+              <span class="skill-name">REST APIs</span>
+              <div class="skill-bar"><div class="skill-fill" data-width="88"></div></div>
+            </div>
+          </div>
+        </div>
+
+        <!-- Testing -->
+        <div class="skill-category skill-category-testing" data-aos="fade-up" data-aos-delay="300">
+          <div class="skill-category-header">
+            <i class="fas fa-vial"></i>
+            <h3>Testing & QA</h3>
+          </div>
+          <div class="skill-items">
+            <div class="skill-item">
+              <span class="skill-name">Cypress (E2E)</span>
+              <div class="skill-bar"><div class="skill-fill skill-fill-testing" data-width="90"></div></div>
+            </div>
+            <div class="skill-item">
+              <span class="skill-name">Jest</span>
+              <div class="skill-bar"><div class="skill-fill skill-fill-testing" data-width="88"></div></div>
+            </div>
+            <div class="skill-item">
+              <span class="skill-name">React Testing Library</span>
+              <div class="skill-bar"><div class="skill-fill skill-fill-testing" data-width="85"></div></div>
+            </div>
+            <div class="skill-item">
+              <span class="skill-name">Unit / Integration Testing</span>
+              <div class="skill-bar"><div class="skill-fill skill-fill-testing" data-width="90"></div></div>
+            </div>
+            <div class="skill-item">
+              <span class="skill-name">Test Coverage Analysis</span>
+              <div class="skill-bar"><div class="skill-fill skill-fill-testing" data-width="85"></div></div>
+            </div>
+          </div>
+        </div>
+
+        <!-- Tools -->
+        <div class="skill-category" data-aos="fade-up" data-aos-delay="400">
+          <div class="skill-category-header">
+            <i class="fas fa-wrench"></i>
+            <h3>Dev Tools</h3>
+          </div>
+          <div class="skill-items">
+            <div class="skill-item">
+              <span class="skill-name">Git / GitHub</span>
+              <div class="skill-bar"><div class="skill-fill" data-width="90"></div></div>
+            </div>
+            <div class="skill-item">
+              <span class="skill-name">VS Code</span>
+              <div class="skill-bar"><div class="skill-fill" data-width="95"></div></div>
+            </div>
+            <div class="skill-item">
+              <span class="skill-name">Chrome DevTools</span>
+              <div class="skill-bar"><div class="skill-fill" data-width="88"></div></div>
+            </div>
+            <div class="skill-item">
+              <span class="skill-name">Vercel / Netlify</span>
+              <div class="skill-bar"><div class="skill-fill" data-width="82"></div></div>
+            </div>
+            <div class="skill-item">
+              <span class="skill-name">npm / Webpack</span>
+              <div class="skill-bar"><div class="skill-fill" data-width="80"></div></div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- PROJECTS -->
+  <section class="section section-dark" id="projects">
+    <div class="container">
+      <div class="section-header" data-aos="fade-up">
+        <span class="section-tag">Portfolio</span>
+        <h2 class="section-title">Featured Projects</h2>
+      </div>
+      <div class="projects-grid">
+
+        <a href="https://instantaiarticle.blog" target="_blank" class="project-card" data-aos="fade-up" data-aos-delay="100">
+          <div class="project-image">
+            <img src="instantaiarticle.png" alt="Instant AI Article" />
+            <div class="project-overlay">
+              <i class="fas fa-external-link-alt"></i>
+            </div>
+          </div>
+          <div class="project-info">
+            <div class="project-meta">
+              <span class="project-badge badge-saas">SaaS</span>
+              <span class="project-badge badge-live">Live</span>
+            </div>
+            <h3>Instant AI Article</h3>
+            <p>AI-powered SaaS platform for SEO-optimized blog articles with payment integration, user auth, and admin dashboard.</p>
+            <div class="project-tech">
+              <span>PHP</span><span>MySQL</span><span>AI API</span><span>Stripe</span>
+            </div>
+          </div>
+        </a>
+
+        <a href="https://speedometerlive.online" target="_blank" class="project-card" data-aos="fade-up" data-aos-delay="200">
+          <div class="project-image">
+            <img src="speedometeronline.png" alt="Speedometer Live" />
+            <div class="project-overlay">
+              <i class="fas fa-external-link-alt"></i>
+            </div>
+          </div>
+          <div class="project-info">
+            <div class="project-meta">
+              <span class="project-badge badge-react">React</span>
+              <span class="project-badge badge-live">Live</span>
+            </div>
+            <h3>Speedometer Live</h3>
+            <p>Real-time GPS speedometer web app showing live speed, distance, and accuracy on mobile browsers.</p>
+            <div class="project-tech">
+              <span>Next.js</span><span>Geolocation API</span><span>React</span>
+            </div>
+          </div>
+        </a>
+
+        <a href="https://calculatorforall.online" target="_blank" class="project-card" data-aos="fade-up" data-aos-delay="300">
+          <div class="project-image">
+            <img src="calculator.PNG" alt="Calculator App" />
+            <div class="project-overlay">
+              <i class="fas fa-external-link-alt"></i>
+            </div>
+          </div>
+          <div class="project-info">
+            <div class="project-meta">
+              <span class="project-badge badge-react">React</span>
+            </div>
+            <h3>Calculator For All</h3>
+            <p>Comprehensive online calculator for math, unit conversions, and scientific calculations.</p>
+            <div class="project-tech">
+              <span>React.js</span><span>CSS3</span><span>JavaScript</span>
+            </div>
+          </div>
+        </a>
+
+        <a href="https://youtubedescriptionextractor.online" target="_blank" class="project-card" data-aos="fade-up" data-aos-delay="400">
+          <div class="project-image">
+            <img src="instantaiarticle.png" alt="YouTube Desc Extractor" />
+            <div class="project-overlay">
+              <i class="fas fa-external-link-alt"></i>
+            </div>
+          </div>
+          <div class="project-info">
+            <div class="project-meta">
+              <span class="project-badge badge-saas">SaaS</span>
+              <span class="project-badge badge-live">Live</span>
+            </div>
+            <h3>YouTube Desc Extractor</h3>
+            <p>Extract and copy YouTube video descriptions instantly. Tool for content creators and marketers.</p>
+            <div class="project-tech">
+              <span>JavaScript</span><span>YouTube API</span><span>HTML/CSS</span>
+            </div>
+          </div>
+        </a>
+
+        <a href="https://avinashbt.github.io/caltors/" target="_blank" class="project-card" data-aos="fade-up" data-aos-delay="500">
+          <div class="project-image">
+            <img src="calculator.PNG" alt="React Calculator" />
+            <div class="project-overlay">
+              <i class="fas fa-external-link-alt"></i>
+            </div>
+          </div>
+          <div class="project-info">
+            <div class="project-meta">
+              <span class="project-badge badge-react">React</span>
+            </div>
+            <h3>React Calculator</h3>
+            <p>Modern calculator with add, subtract, multiply, and divide operations.</p>
+            <div class="project-tech">
+              <span>React.js</span><span>CSS3</span>
+            </div>
+          </div>
+        </a>
+
+        <a href="https://avinashbt.github.io/wordcount/" target="_blank" class="project-card" data-aos="fade-up" data-aos-delay="600">
+          <div class="project-image">
+            <img src="wordcount1.PNG" alt="Word Count Tool" />
+            <div class="project-overlay">
+              <i class="fas fa-external-link-alt"></i>
+            </div>
+          </div>
+          <div class="project-info">
+            <div class="project-meta">
+              <span class="project-badge badge-react">React</span>
+            </div>
+            <h3>Word Count Tool</h3>
+            <p>Count words, characters, reading time, and convert text case with Bootstrap UI.</p>
+            <div class="project-tech">
+              <span>React.js</span><span>Bootstrap</span>
+            </div>
+          </div>
+        </a>
 
       </div>
     </div>
   </section>
 
-  <!-- Contact -->
-  <section class="section contact" id="contact">
-    <div class="title">
-      <h1>Contact Me</h1>
-    </div>
-
-    <div class="contact-center container">
-      <div class="left" data-aos="fade-down-right" data-aos-duration="2000">
-        <h2>Get in Touch</h2>
-        <p>
-          Have an idea or want to collaborate on a project? I'd love to hear from you. Let's build something amazing together.
-        </p>
-        <div class="contact-info">
-          <div>
-            <span class="icon"><i class="fas fa-user"></i></span>
-            <span class="content">
-              <h3>Name</h3>
-              <span>Avinash Bawage</span>
-            </span>
+  <!-- SERVICES -->
+  <section class="section" id="services">
+    <div class="container">
+      <div class="section-header" data-aos="fade-up">
+        <span class="section-tag">What I Do</span>
+        <h2 class="section-title">Services</h2>
+      </div>
+      <div class="services-grid">
+        <div class="service-card" data-aos="fade-up" data-aos-delay="100">
+          <div class="service-icon"><i class="fas fa-laptop-code"></i></div>
+          <h3>Frontend Development</h3>
+          <p>Building performant, accessible React applications with clean architecture and modern tooling.</p>
+          <div class="service-tech">
+            <span>React</span><span>Redux</span><span>JavaScript</span><span>HTML/CSS</span>
           </div>
-
-          <div>
-            <span class="icon"><i class="fas fa-map-marker-alt"></i></span>
-            <span class="content">
-              <h3>Address</h3>
-              <span>Hyderabad, Telangana, India</span>
-            </span>
+        </div>
+        <div class="service-card" data-aos="fade-up" data-aos-delay="200">
+          <div class="service-icon service-icon-testing"><i class="fas fa-vial"></i></div>
+          <h3>Testing with Cypress & Jest</h3>
+          <p>Writing end-to-end Cypress tests, Jest unit tests, and ensuring code quality across production applications.</p>
+          <div class="service-tech">
+            <span>Cypress</span><span>Jest</span><span>RTL</span><span>Coverage</span>
           </div>
-
-          <div>
-            <span class="icon"><i class="fas fa-envelope"></i></span>
-            <span class="content">
-              <h3>Email</h3>
-              <span>avi.bawge9@gmail.com</span>
-            </span>
+        </div>
+        <div class="service-card" data-aos="fade-up" data-aos-delay="300">
+          <div class="service-icon"><i class="fas fa-rocket"></i></div>
+          <h3>Web App Deployment</h3>
+          <p>Full deployment pipeline from CI/CD to production, including performance optimization and monitoring.</p>
+          <div class="service-tech">
+            <span>Vercel</span><span>GitHub Pages</span><span>Firebase</span><span>Netlify</span>
           </div>
         </div>
       </div>
-      <div class="right" data-aos="fade-up-left" data-aos-duration="2000">
-        <form class="form" id="frmContact" action="/contact" method="post">
-          <h2>Send a Message</h2>
-          <div class="form-row">
+    </div>
+  </section>
+
+  <!-- BLOG PREVIEW -->
+  <section class="section section-dark" id="blog">
+    <div class="container">
+      <div class="section-header" data-aos="fade-up">
+        <span class="section-tag">Blog</span>
+        <h2 class="section-title">Latest Articles</h2>
+      </div>
+      <div class="blog-grid">
+        <a href="blog.html#cypress-testing" class="blog-card" data-aos="fade-up" data-aos-delay="100">
+          <div class="blog-card-icon"><i class="fas fa-check-double"></i></div>
+          <span class="blog-card-tag">Testing</span>
+          <h3>Complete Guide to Cypress Testing in 2026</h3>
+          <p>From zero to production-ready E2E tests — a hands-on guide to Cypress with real-world examples and best practices.</p>
+          <span class="blog-card-read">Read Article <i class="fas fa-arrow-right"></i></span>
+        </a>
+        <a href="blog.html#jest-testing" class="blog-card" data-aos="fade-up" data-aos-delay="200">
+          <div class="blog-card-icon"><i class="fas fa-database"></i></div>
+          <span class="blog-card-tag">Testing</span>
+          <h3>Mastering Jest: Unit Testing for Modern JS Apps</h3>
+          <p>Write reliable unit and integration tests with Jest, React Testing Library, and mocking strategies.</p>
+          <span class="blog-card-read">Read Article <i class="fas fa-arrow-right"></i></span>
+        </a>
+      </div>
+    </div>
+  </section>
+
+  <!-- CONTACT -->
+  <section class="section" id="contact">
+    <div class="container">
+      <div class="section-header" data-aos="fade-up">
+        <span class="section-tag">Contact</span>
+        <h2 class="section-title">Let's Work Together</h2>
+      </div>
+      <div class="contact-grid">
+        <div class="contact-info" data-aos="fade-right" data-aos-delay="200">
+          <h3>Get in Touch</h3>
+          <p>Have a project in mind or looking for a dedicated frontend developer? I'd love to hear from you.</p>
+          <div class="contact-details">
+            <div class="contact-item">
+              <div class="contact-icon"><i class="fas fa-map-marker-alt"></i></div>
+              <div>
+                <span class="contact-label">Location</span>
+                <span class="contact-value">Hyderabad, Telangana, India</span>
+              </div>
+            </div>
+            <div class="contact-item">
+              <div class="contact-icon"><i class="fas fa-envelope"></i></div>
+              <div>
+                <span class="contact-label">Email</span>
+                <span class="contact-value">avi.bawge9@gmail.com</span>
+              </div>
+            </div>
+            <div class="contact-item">
+              <div class="contact-icon"><i class="fab fa-github"></i></div>
+              <div>
+                <span class="contact-label">GitHub</span>
+                <span class="contact-value">github.com/avinashbt</span>
+              </div>
+            </div>
+          </div>
+        </div>
+        <form class="contact-form" id="frmContact" data-aos="fade-left" data-aos-delay="400">
+          <div class="form-group">
             <input type="text" name="fullname" id="fullname" placeholder="Your Name" required />
+          </div>
+          <div class="form-group">
             <input type="email" name="email" id="email" placeholder="Your Email" required />
           </div>
-          <input type="text" name="subject" id="subject" placeholder="Subject" />
-          <textarea cols="10" rows="8" name="message" id="message" placeholder="Your Message" required></textarea>
-          <button type="submit" name="submit" class="btn btn-primary">
+          <div class="form-group">
+            <input type="text" name="subject" id="subject" placeholder="Subject" />
+          </div>
+          <div class="form-group">
+            <textarea name="message" id="message" rows="6" placeholder="Your Message" required></textarea>
+          </div>
+          <button type="submit" class="btn btn-primary btn-full">
             <i class="fas fa-paper-plane"></i> Send Message
           </button>
         </form>
@@ -755,126 +617,44 @@
     </div>
   </section>
 
-  <!-- Footer -->
-  <footer>
-    <div class="footer-content container">
-      <div class="footer-brand">
-        <h3>AB Developer<span>.</span></h3>
-        <p>Building modern web experiences with clean code and creative design.</p>
-      </div>
-      <div class="footer-links">
-        <h4>Quick Links</h4>
-        <ul>
-          <li><a href="#home" class="scroll-link">Home</a></li>
-          <li><a href="#about" class="scroll-link">About</a></li>
-          <li><a href="#services" class="scroll-link">Services</a></li>
-          <li><a href="#skills" class="scroll-link">Skills</a></li>
-          <li><a href="#projects" class="scroll-link">Projects</a></li>
-          <li><a href="#websites" class="scroll-link">Websites</a></li>
-          <li><a href="#contact" class="scroll-link">Contact</a></li>
-        </ul>
-      </div>
-      <div class="footer-social">
-        <h4>Connect</h4>
-        <div class="footer-icons">
-          <a href="https://github.com/avinashbt" target="_blank" aria-label="GitHub"><i class="fab fa-github"></i></a>
-          <a href="https://www.linkedin.com/in/avinash-bawage-99ba58200/?locale=en_US" target="_blank" aria-label="LinkedIn"><i class="fab fa-linkedin-in"></i></a>
-          <a href="https://twitter.com/AvinashBawge" target="_blank" aria-label="Twitter"><i class="fab fa-twitter"></i></a>
-          <a href="mailto:avi.bawge9@gmail.com" aria-label="Email"><i class="fas fa-envelope"></i></a>
+  <!-- FOOTER -->
+  <footer class="footer">
+    <div class="container">
+      <div class="footer-content">
+        <div class="footer-brand">
+          <a href="#" class="nav-logo">
+            <span class="logo-bracket">{</span> AB <span class="logo-bracket">}</span>
+          </a>
+          <p>Building modern web experiences with clean code, comprehensive tests, and continuous improvement.</p>
+        </div>
+        <div class="footer-links">
+          <h4>Navigation</h4>
+          <ul>
+            <li><a href="#about">About</a></li>
+            <li><a href="#skills">Skills</a></li>
+            <li><a href="#projects">Projects</a></li>
+            <li><a href="blog.html">Blog</a></li>
+            <li><a href="#contact">Contact</a></li>
+          </ul>
+        </div>
+        <div class="footer-social">
+          <h4>Connect</h4>
+          <div class="footer-icons">
+            <a href="https://github.com/avinashbt" target="_blank" aria-label="GitHub"><i class="fab fa-github"></i></a>
+            <a href="https://www.linkedin.com/in/avinash-bawage-99ba58200/?locale=en_US" target="_blank" aria-label="LinkedIn"><i class="fab fa-linkedin-in"></i></a>
+            <a href="https://twitter.com/AvinashBawge" target="_blank" aria-label="Twitter"><i class="fab fa-twitter"></i></a>
+            <a href="mailto:avi.bawge9@gmail.com" aria-label="Email"><i class="fas fa-envelope"></i></a>
+          </div>
         </div>
       </div>
-    </div>
-    <div class="footer-bottom">
-      <p>Created by <span>AB Developer</span> | &copy; <span id="yearid"></span> All rights reserved.</p>
+      <div class="footer-bottom">
+        <p>Built with <span class="footer-heart">&hearts;</span> by Avinash Bawage &mdash; &copy; <span id="yearid"></span></p>
+      </div>
     </div>
   </footer>
 
-  <!-- AOS -->
   <script src="https://cdnjs.cloudflare.com/ajax/libs/aos/2.3.4/aos.js"></script>
-  <!-- TypeIt -->
-  <script src="https://cdnjs.cloudflare.com/ajax/libs/typeit/7.0.4/typeit.min.js"></script>
-  <!-- GSAP -->
-  <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.5.1/gsap.min.js"></script>
-  <!-- Glide.js -->
-  <script src="https://cdnjs.cloudflare.com/ajax/libs/Glide.js/3.4.1/glide.min.js"></script>
-
-  <script>
-    // Year
-    document.getElementById("yearid").innerHTML = new Date().getFullYear();
-
-    // Experience calculation
-    function timeCount() {
-      setTimeout("timeCount()", 1000);
-    }
-
-    function getDateDifference(startDate, todaysdate) {
-      const start = new Date(startDate);
-      const end = new Date(todaysdate);
-      const diff = end.getTime() - start.getTime();
-      const years = Math.floor(diff / (1000 * 60 * 60 * 24 * 365));
-      const months = Math.floor((diff % (1000 * 60 * 60 * 24 * 365)) / (1000 * 60 * 60 * 24 * 30));
-      const days = Math.floor((diff % (1000 * 60 * 60 * 24 * 30)) / (1000 * 60 * 60 * 24));
-      return { years, months, days };
-    }
-
-    const currentDate = new Date();
-    const year = currentDate.getFullYear();
-    const month = currentDate.getMonth() + 1;
-    const day = currentDate.getDate();
-    const todaysdate = year + "-" + month + "-" + day;
-    const todaysdates = day + "-" + month + "-" + year;
-
-    const startDate = "2021-05-28";
-    const dateDifference = getDateDifference(startDate, todaysdate);
-
-    document.getElementById("clock").innerHTML =
-      `${dateDifference.years} years, ${dateDifference.months} months, ${dateDifference.days} days`;
-    document.getElementById("datefrom").innerHTML = `28-May-2021 to ${todaysdates}`;
-
-    // Greeting (safe check)
-    const greetEl = document.getElementById("greets");
-    if (greetEl) {
-      const hour = new Date().getHours();
-      let greet;
-      if (hour >= 6 && hour < 12) greet = "Good morning";
-      else if (hour >= 12 && hour < 17) greet = "Good afternoon";
-      else greet = "Good evening";
-      greetEl.textContent = greet;
-    }
-  </script>
-
-  <!-- Firebase Contact Form -->
-  <script type="module">
-    import { initializeApp } from "https://www.gstatic.com/firebasejs/9.22.1/firebase-app.js";
-    import { getDatabase, ref, set } from "https://www.gstatic.com/firebasejs/9.22.1/firebase-database.js";
-
-    const firebaseConfig = {
-      apiKey: "AIzaSyDPqUppaM_cINaQPUjk79_oNWHvses5mY0",
-      authDomain: "webapp-5ff55.firebaseapp.com",
-      projectId: "webapp-5ff55",
-      storageBucket: "webapp-5ff55.appspot.com",
-      messagingSenderId: "645643836728",
-      appId: "1:645643836728:web:3797fc8ee6a64023daf5cd",
-      measurementId: "G-H5PJRHC1BQ"
-    };
-
-    const app = initializeApp(firebaseConfig);
-    const db = getDatabase(app);
-
-    document.getElementById('frmContact').addEventListener('submit', function (e) {
-      e.preventDefault();
-      set(ref(db, 'users/' + Math.random().toString(36).slice(2, 7)), {
-        name: document.getElementById('fullname').value,
-        email: document.getElementById('email').value,
-        subject: document.getElementById('subject').value,
-        message: document.getElementById('message').value
-      });
-      alert('Your message has been sent successfully!');
-      document.getElementById('frmContact').reset();
-    });
-  </script>
-
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/typed.js/2.0.16/typed.min.js"></script>
   <script src="index.js"></script>
 </body>
-
 </html>
