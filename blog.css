@@ -4,7 +4,7 @@
 .blog-hero {
   padding: 12rem 0 4rem;
   text-align: center;
-  background: linear-gradient(180deg, rgba(99,102,241,.08) 0%, transparent 100%);
+  background: linear-gradient(180deg, var(--accent-bg) 0%, transparent 100%);
 }
 
 .blog-back {
@@ -12,13 +12,13 @@
   align-items: center;
   gap: .8rem;
   font-size: 1.4rem;
-  color: rgba(255,255,255,.4);
+  color: var(--text-dim);
   margin-bottom: 3rem;
   transition: all .3s;
 }
 
 .blog-back:hover {
-  color: #6366f1;
+  color: var(--accent);
   transform: translateX(-5px);
 }
 
@@ -26,7 +26,7 @@
   font-size: 4.8rem;
   font-weight: 800;
   margin-bottom: 1.5rem;
-  background: linear-gradient(135deg, #fff, #c4b5fd);
+  background: var(--gradient-text);
   -webkit-background-clip: text;
   -webkit-text-fill-color: transparent;
   background-clip: text;
@@ -34,7 +34,7 @@
 
 .blog-hero-desc {
   font-size: 1.8rem;
-  color: rgba(255,255,255,.5);
+  color: var(--text-muted);
   max-width: 600px;
   margin: 0 auto;
 }
@@ -48,7 +48,7 @@
   text-align: center;
   margin-bottom: 5rem;
   padding-bottom: 4rem;
-  border-bottom: 1px solid rgba(255,255,255,.06);
+  border-bottom: 1px solid var(--border);
 }
 
 .article-meta {
@@ -61,20 +61,20 @@
 }
 
 .article-tag {
-  background: rgba(99,102,241,.12);
-  color: #a5b4fc;
+  background: var(--accent-bg);
+  color: var(--accent-light);
   padding: .4rem 1.4rem;
   border-radius: 50px;
   font-size: 1.2rem;
   font-weight: 700;
   letter-spacing: 1px;
   text-transform: uppercase;
-  border: 1px solid rgba(99,102,241,.2);
+  border: 1px solid var(--accent-border);
 }
 
 .article-date, .article-read {
   font-size: 1.3rem;
-  color: rgba(255,255,255,.35);
+  color: var(--text-dim);
   display: flex;
   align-items: center;
   gap: .6rem;
@@ -84,7 +84,7 @@
   font-size: 3.8rem;
   font-weight: 800;
   margin-bottom: 1.5rem;
-  background: linear-gradient(135deg, #fff, #c4b5fd);
+  background: var(--gradient-text);
   -webkit-background-clip: text;
   -webkit-text-fill-color: transparent;
   background-clip: text;
@@ -93,7 +93,7 @@
 
 .article-subtitle {
   font-size: 1.8rem;
-  color: rgba(255,255,255,.5);
+  color: var(--text-muted);
   max-width: 700px;
   margin: 0 auto 2rem;
   line-height: 1.7;
@@ -111,20 +111,20 @@
   height: 5rem;
   border-radius: 50%;
   object-fit: cover;
-  border: 2px solid rgba(99,102,241,.3);
+  border: 2px solid var(--accent-border);
 }
 
 .author-name {
   display: block;
   font-size: 1.5rem;
   font-weight: 600;
-  color: #fff;
+  color: var(--text-primary);
 }
 
 .author-role {
   display: block;
   font-size: 1.3rem;
-  color: rgba(255,255,255,.4);
+  color: var(--text-dim);
 }
 
 /* Article Content */
@@ -137,7 +137,7 @@
   font-size: 2.8rem;
   font-weight: 700;
   margin: 5rem 0 2rem;
-  color: #fff;
+  color: var(--text-primary);
   padding-top: 2rem;
 }
 
@@ -145,24 +145,24 @@
   font-size: 2rem;
   font-weight: 600;
   margin: 3rem 0 1.2rem;
-  color: #e2e8f0;
+  color: var(--text-body);
 }
 
 .article-content p {
   font-size: 1.65rem;
-  color: rgba(255,255,255,.6);
+  color: var(--text-secondary);
   line-height: 1.9;
   margin-bottom: 1.5rem;
 }
 
 .article-content strong {
-  color: #c4b5fd;
+  color: var(--accent-lighter);
 }
 
 .article-content code {
   font-family: 'JetBrains Mono', monospace;
-  background: rgba(99,102,241,.1);
-  color: #a5b4fc;
+  background: var(--accent-bg);
+  color: var(--accent-light);
   padding: .2rem .7rem;
   border-radius: .5rem;
   font-size: 1.35rem;
@@ -175,7 +175,7 @@
 
 .article-content li {
   font-size: 1.6rem;
-  color: rgba(255,255,255,.55);
+  color: var(--text-muted);
   padding: .6rem 0 .6rem 2.5rem;
   position: relative;
   line-height: 1.7;
@@ -185,14 +185,14 @@
   position: absolute;
   left: 0;
   top: .8rem;
-  color: #22c55e;
+  color: var(--green);
   font-size: 1.2rem;
 }
 
 /* Table of Contents */
 .toc {
-  background: rgba(255,255,255,.03);
-  border: 1px solid rgba(255,255,255,.06);
+  background: var(--bg-card);
+  border: 1px solid var(--bg-card-border);
   border-radius: 1.6rem;
   padding: 2.5rem 3rem;
   margin-bottom: 4rem;
@@ -202,7 +202,7 @@
   font-size: 1.8rem;
   font-weight: 700;
   margin-bottom: 1.5rem;
-  color: #fff;
+  color: var(--text-primary);
 }
 
 .toc ol {
@@ -217,23 +217,23 @@
 }
 
 .toc li::marker {
-  color: #6366f1;
+  color: var(--accent);
   font-weight: 700;
 }
 
 .toc a {
-  color: rgba(255,255,255,.55);
+  color: var(--text-muted);
   transition: all .3s;
 }
 
 .toc a:hover {
-  color: #6366f1;
+  color: var(--accent);
 }
 
 /* Code Blocks */
 pre {
-  background: rgba(0,0,0,.4);
-  border: 1px solid rgba(255,255,255,.06);
+  background: var(--bg-code);
+  border: 1px solid var(--border);
   border-radius: 1.2rem;
   padding: 2rem;
   overflow-x: auto;
@@ -248,7 +248,7 @@ pre::before {
   left: 0;
   right: 0;
   height: 3px;
-  background: linear-gradient(90deg, #6366f1, #8b5cf6, #a78bfa);
+  background: linear-gradient(90deg, var(--accent), var(--violet), #a78bfa);
   border-radius: 1.2rem 1.2rem 0 0;
 }
 
@@ -256,7 +256,7 @@ pre code {
   font-family: 'JetBrains Mono', monospace;
   font-size: 1.35rem;
   line-height: 1.8;
-  color: #c4b5fd;
+  color: var(--accent-lighter);
   background: none;
   border: none;
   padding: 0;
@@ -289,33 +289,33 @@ pre code {
 .callout-info {
   background: rgba(59,130,246,.08);
   border: 1px solid rgba(59,130,246,.2);
-  color: rgba(255,255,255,.6);
+  color: var(--text-secondary);
 }
 
-.callout-info i { color: #60a5fa; }
+.callout-info i { color: var(--blue-light); }
 
 .callout-tip {
   background: rgba(34,197,94,.08);
   border: 1px solid rgba(34,197,94,.2);
-  color: rgba(255,255,255,.6);
+  color: var(--text-secondary);
 }
 
-.callout-tip i { color: #22c55e; }
+.callout-tip i { color: var(--green); }
 
 .callout-warning {
   background: rgba(234,179,8,.08);
   border: 1px solid rgba(234,179,8,.2);
-  color: rgba(255,255,255,.6);
+  color: var(--text-secondary);
 }
 
-.callout-warning i { color: #eab308; }
+.callout-warning i { color: var(--yellow); }
 
 /* Comparison Tables */
 .comparison-table {
   overflow-x: auto;
   margin: 2rem 0;
   border-radius: 1.2rem;
-  border: 1px solid rgba(255,255,255,.06);
+  border: 1px solid var(--border);
 }
 
 .comparison-table table {
@@ -324,8 +324,8 @@ pre code {
 }
 
 .comparison-table th {
-  background: rgba(99,102,241,.1);
-  color: #a5b4fc;
+  background: var(--accent-bg);
+  color: var(--accent-light);
   font-size: 1.3rem;
   font-weight: 700;
   padding: 1.2rem 1.6rem;
@@ -337,8 +337,8 @@ pre code {
 .comparison-table td {
   padding: 1rem 1.6rem;
   font-size: 1.4rem;
-  color: rgba(255,255,255,.55);
-  border-top: 1px solid rgba(255,255,255,.04);
+  color: var(--text-muted);
+  border-top: 1px solid var(--border);
 }
 
 .comparison-table td code {
@@ -347,7 +347,7 @@ pre code {
 }
 
 .comparison-table tr:hover td {
-  background: rgba(255,255,255,.02);
+  background: var(--bg-card-hover);
 }
 
 /* Best Practices */
@@ -359,15 +359,15 @@ pre code {
 }
 
 .practice-item {
-  background: rgba(255,255,255,.02);
-  border: 1px solid rgba(255,255,255,.06);
+  background: var(--bg-card);
+  border: 1px solid var(--bg-card-border);
   border-radius: 1.2rem;
   padding: 2.5rem;
   transition: all .3s;
 }
 
 .practice-item:hover {
-  border-color: rgba(99,102,241,.2);
+  border-color: var(--accent-border);
 }
 
 .practice-item h4 {
@@ -376,18 +376,18 @@ pre code {
   gap: 1rem;
   font-size: 1.7rem;
   font-weight: 700;
-  color: #fff;
+  color: var(--text-primary);
   margin-bottom: 1.2rem;
 }
 
 .practice-item h4 i {
-  color: #22c55e;
+  color: var(--green);
   font-size: 1.6rem;
 }
 
 .practice-item p {
   font-size: 1.5rem;
-  color: rgba(255,255,255,.5);
+  color: var(--text-muted);
   line-height: 1.7;
 }
 
@@ -403,7 +403,7 @@ pre code {
 .article-divider hr {
   border: none;
   height: 1px;
-  background: linear-gradient(90deg, transparent, rgba(99,102,241,.3), transparent);
+  background: linear-gradient(90deg, transparent, var(--accent-border-strong), transparent);
   max-width: 800px;
   margin: 0 auto;
 }
