@@ -1,0 +1,1767 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Top 30 React Interview Questions and Answers (2026) | Avinash Bawage - Frontend Developer &amp; React Engineer</title>
+  <meta name="description" content="Master your next React interview with these top 30 most-asked React interview questions and answers for 2026 — covering hooks, state management, performance, and advanced concepts with code examples.">
+  <meta name="keywords" content="React interview questions, React interview questions and answers, React developer interview, React hooks interview, React JS interview questions 2026, top React questions, React interview prep, frontend interview questions">
+  <meta name="robots" content="index, follow">
+  <meta name="author" content="Avinash Bawage">
+  <link rel="canonical" href="https://avinashbawage.com/blog/react-interview-questions.html">
+
+  <!-- Open Graph -->
+  <meta property="og:title" content="Top 30 React Interview Questions and Answers (2026)">
+  <meta property="og:description" content="Master your next React interview with top 30 most-asked questions covering hooks, state management, performance, and advanced concepts.">
+  <meta property="og:type" content="article">
+  <meta property="og:url" content="https://avinashbawage.com/blog/react-interview-questions.html">
+  <meta property="og:image" content="https://avinashbawage.com/profile1.jpg">
+  <meta property="article:published_time" content="2026-09-22">
+  <meta property="article:author" content="Avinash Bawage">
+  <meta property="article:tag" content="React">
+  <meta property="article:tag" content="Interview">
+  <meta property="article:tag" content="JavaScript">
+
+  <!-- Twitter Card -->
+  <meta name="twitter:card" content="summary_large_image">
+  <meta name="twitter:title" content="Top 30 React Interview Questions and Answers (2026)">
+  <meta name="twitter:description" content="Master your next React interview with top 30 most-asked questions covering hooks, state management, performance, and advanced concepts.">
+
+  <link rel="shortcut icon" href="../favicon.jpg" type="image/x-icon">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800&family=JetBrains+Mono:wght@400;500&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css">
+  <link rel="stylesheet" href="../styles.css">
+  <link rel="stylesheet" href="../blog.css">
+
+  <!-- Article Schema Markup -->
+  <script type="application/ld+json">
+  {
+    "@context": "https://schema.org",
+    "@type": "Article",
+    "headline": "Top 30 React Interview Questions and Answers (2026)",
+    "description": "Master your next React interview with these top 30 most-asked React interview questions and answers for 2026 — covering hooks, state management, performance, and advanced concepts.",
+    "author": {
+      "@type": "Person",
+      "name": "Avinash Bawage",
+      "url": "https://avinashbawage.com"
+    },
+    "datePublished": "2026-09-22",
+    "dateModified": "2026-09-22",
+    "publisher": {
+      "@type": "Person",
+      "name": "Avinash Bawage"
+    },
+    "mainEntityOfPage": {
+      "@type": "WebPage",
+      "@id": "https://avinashbawage.com/blog/react-interview-questions.html"
+    },
+    "keywords": ["React interview questions", "React hooks", "React state management", "frontend interview", "JavaScript interview"],
+    "wordCount": 4500,
+    "articleSection": "React Development"
+  }
+  </script>
+
+  <!-- FAQ Schema -->
+  <script type="application/ld+json">
+  {
+    "@context": "https://schema.org",
+    "@type": "FAQPage",
+    "mainEntity": [
+      {
+        "@type": "Question",
+        "name": "What is the virtual DOM in React?",
+        "acceptedAnswer": {
+          "@type": "Answer",
+          "text": "The Virtual DOM is a lightweight JavaScript representation of the real DOM. React uses it to batch updates and minimize costly DOM manipulations by comparing the new Virtual DOM with the previous one (diffing) and only updating the changed elements (reconciliation)."
+        }
+      },
+      {
+        "@type": "Question",
+        "name": "What are React Hooks?",
+        "acceptedAnswer": {
+          "@type": "Answer",
+          "text": "React Hooks are functions that let you use state and lifecycle features in functional components. The main built-in hooks are useState, useEffect, useContext, useReducer, useMemo, useCallback, and useRef."
+        }
+      },
+      {
+        "@type": "Question",
+        "name": "What is the difference between useState and useReducer?",
+        "acceptedAnswer": {
+          "@type": "Answer",
+          "text": "useState is simpler and best for independent state values. useReducer is better for complex state logic with multiple sub-values or when the next state depends on the previous one, similar to Redux reducer patterns."
+        }
+      },
+      {
+        "@type": "Question",
+        "name": "What is prop drilling in React?",
+        "acceptedAnswer": {
+          "@type": "Answer",
+          "text": "Prop drilling is the process of passing data through multiple levels of component props from parent to deeply nested children. It can be solved using React Context, Redux, or composition patterns."
+        }
+      },
+      {
+        "@type": "Question",
+        "name": "What is the difference between React.memo and useMemo?",
+        "acceptedAnswer": {
+          "@type": "Answer",
+          "text": "React.memo prevents unnecessary re-renders of a component by memoizing its output. useMemo memoizes the result of an expensive calculation inside a component. React.memo wraps the component; useMemo wraps a value computation."
+        }
+      }
+    ]
+  }
+  </script>
+</head>
+<body>
+
+  <!-- NAV -->
+  <nav class="nav scrolled" id="nav">
+    <div class="nav-container">
+      <a href="../index.html" class="nav-logo">
+        <span class="logo-bracket">{</span> AB <span class="logo-bracket">}</span>
+      </a>
+      <ul class="nav-links">
+        <li><a href="../index.html#about">About</a></li>
+        <li><a href="../index.html#skills">Skills</a></li>
+        <li><a href="../index.html#projects">Projects</a></li>
+        <li><a href="../blog.html" class="nav-blog-link" style="color:#6366f1">Blog</a></li>
+        <li><a href="../index.html#contact" class="nav-cta">Hire Me</a></li>
+      </ul>
+      <button class="theme-toggle" id="themeToggle" aria-label="Toggle dark/light mode">
+        <i class="fas fa-sun icon-sun"></i>
+        <i class="fas fa-moon icon-moon"></i>
+      </button>
+      <button class="hamburger" id="hamburger" aria-label="Toggle menu">
+        <span></span><span></span><span></span>
+      </button>
+    </div>
+  </nav>
+
+  <div class="mobile-menu" id="mobileMenu">
+    <ul>
+      <li><a href="../index.html#about">About</a></li>
+      <li><a href="../index.html#skills">Skills</a></li>
+      <li><a href="../index.html#projects">Projects</a></li>
+      <li><a href="../blog.html">Blog</a></li>
+      <li><a href="../index.html#contact">Hire Me</a></li>
+    </ul>
+  </div>
+
+  <!-- BLOG HEADER -->
+  <header class="blog-hero">
+    <div class="container">
+      <a href="../blog.html" class="blog-back"><i class="fas fa-arrow-left"></i> Back to Blog</a>
+      <h1 class="blog-hero-title">Top 30 React Interview Questions and Answers (2026)</h1>
+      <p class="blog-hero-desc">The most frequently asked React interview questions with detailed answers, code examples, and expert tips to help you land your dream frontend role.</p>
+    </div>
+  </header>
+
+  <article class="blog-article" id="react-interview-questions">
+    <div class="container">
+      <div class="article-header">
+        <div class="article-meta">
+          <span class="article-tag">React</span>
+          <span class="article-date"><i class="fas fa-calendar"></i> September 22, 2026</span>
+          <span class="article-read"><i class="fas fa-clock"></i> 20 min read</span>
+        </div>
+        <h1 class="article-title">Top 30 React Interview Questions and Answers (2026)</h1>
+        <p class="article-subtitle">The ultimate cheat sheet for React developer interviews — from fundamentals to advanced patterns</p>
+        <div class="article-author">
+          <img src="../profile1.jpg" alt="Avinash Bawage - Frontend Developer and React Engineer" class="author-avatar" width="50" height="50">
+          <div>
+            <span class="author-name">Avinash Bawage</span>
+            <span class="author-role">Frontend Developer &amp; React Engineer</span>
+          </div>
+        </div>
+      </div>
+
+      <div class="article-content">
+        <div class="toc">
+          <h3>Table of Contents</h3>
+          <ol>
+            <li><a href="#q1">What is React and why is it used?</a></li>
+            <li><a href="#q2">What is the Virtual DOM?</a></li>
+            <li><a href="#q3">What are Components in React?</a></li>
+            <li><a href="#q4">What is JSX?</a></li>
+            <li><a href="#q5">Props vs State</a></li>
+            <li><a href="#q6">What are React Hooks?</a></li>
+            <li><a href="#q7">useState Hook</a></li>
+            <li><a href="#q8">useEffect Hook</a></li>
+            <li><a href="#q9">useRef Hook</a></li>
+            <li><a href="#q10">useMemo vs useCallback</a></li>
+            <li><a href="#q11">useReducer Hook</a></li>
+            <li><a href="#q12">useContext Hook</a></li>
+            <li><a href="#q13">Custom Hooks</a></li>
+            <li><a href="#q14">What is Prop Drilling?</a></li>
+            <li><a href="#q15">React Context vs Redux</a></li>
+            <li><a href="#q16">What are Keys in React?</a></li>
+            <li><a href="#q17">What are Fragments?</a></li>
+            <li><a href="#q18">Controlled vs Uncontrolled Components</a></li>
+            <li><a href="#q19">What is Lifting State Up?</a></li>
+            <li><a href="#q20">What are Error Boundaries?</a></li>
+            <li><a href="#q21">React.memo and Memoization</a></li>
+            <li><a href="#q22">What is Code Splitting?</a></li>
+            <li><a href="#q23">What are Higher-Order Components?</a></li>
+            <li><a href="#q24">What are React Portals?</a></li>
+            <li><a href="#q25">Suspense and Lazy Loading</a></li>
+            <li><a href="#q26">What is the useEffect cleanup function?</a></li>
+            <li><a href="#q27">What are Synthetic Events?</a></li>
+            <li><a href="#q28">How does React handle forms?</a></li>
+            <li><a href="#q29">What is Server-Side Rendering (SSR)?</a></li>
+            <li><a href="#q30">React性能优化技巧</a></li>
+          </ol>
+        </div>
+
+        <!-- ====== SECTION 1: FUNDAMENTALS ====== -->
+
+        <section id="q1">
+          <h2>1. What is React and why is it used?</h2>
+          <p>React is an open-source JavaScript library developed by Meta (Facebook) for building user interfaces, particularly single-page applications (SPAs). It allows developers to create large web applications that can change data without reloading the page.</p>
+
+          <h3>Why use React?</h3>
+          <ul>
+            <li><i class="fas fa-check-circle"></i> <strong>Component-based architecture:</strong> Build encapsulated components that manage their own state, then compose them to make complex UIs</li>
+            <li><i class="fas fa-check-circle"></i> <strong>Virtual DOM:</strong> Efficiently updates and renders only the components that change, improving performance</li>
+            <li><i class="fas fa-check-circle"></i> <strong>Declarative:</strong> Describe what the UI should look like for each state, and React handles the DOM updates</li>
+            <li><i class="fas fa-check-circle"></i> <strong>Unidirectional data flow:</strong> Data flows one way (parent to child), making state changes predictable and debuggable</li>
+            <li><i class="fas fa-check-circle"></i> <strong>Rich ecosystem:</strong> Massive community, thousands of libraries, and strong tooling support</li>
+            <li><i class="fas fa-check-circle"></i> <strong>React Native:</strong> Same paradigm for building mobile apps on iOS and Android</li>
+          </ul>
+
+          <div class="callout callout-info">
+            <i class="fas fa-info-circle"></i>
+            <p><strong>Interview tip:</strong> Don't just say "it's a JavaScript framework." React is a <strong>library</strong>, not a framework. It handles the view layer and can be augmented with other libraries for routing, state management, etc.</p>
+          </div>
+        </section>
+
+        <section id="q2">
+          <h2>2. What is the Virtual DOM?</h2>
+          <p>The Virtual DOM is a lightweight JavaScript representation of the actual DOM (Document Object Model). It acts as a copy of the real DOM kept in memory and is used by React to optimize rendering performance.</p>
+
+          <h3>How it works (the Reconciliation process):</h3>
+          <ol>
+            <li>When state changes, React creates a new Virtual DOM tree</li>
+            <li>React compares (diffs) the new Virtual DOM with the previous one</li>
+            <li>React identifies the minimal set of changes needed</li>
+            <li>Only those specific changes are applied to the real DOM</li>
+          </ol>
+
+          <pre><code>// React batches updates and only touches the real DOM where needed
+// Without Virtual DOM: re-render entire list on every change
+// With Virtual DOM: only re-render the specific item that changed
+
+// This is why React is fast — it minimizes expensive DOM operations
+// Real DOM manipulation is 10-100x slower than JavaScript operations</code></pre>
+
+          <div class="callout callout-tip">
+            <i class="fas fa-lightbulb"></i>
+            <p><strong>Key insight:</strong> The Virtual DOM isn't inherently faster than the real DOM. React's advantage is in knowing <em>when</em> to update and <em>what</em> to update, minimizing unnecessary DOM manipulations.</p>
+          </div>
+        </section>
+
+        <section id="q3">
+          <h2>3. What are Components in React?</h2>
+          <p>Components are independent, reusable pieces of UI. They accept inputs (props) and return React elements describing what should appear on the screen.</p>
+
+          <h3>Functional Components (Modern Approach)</h3>
+          <pre><code>// Functional Component with props
+function UserCard({ name, email, avatar }) {
+  return (
+    &lt;div className="user-card"&gt;
+      &lt;img src={avatar} alt={name} /&gt;
+      &lt;h3&gt;{name}&lt;/h3&gt;
+      &lt;p&gt;{email}&lt;/p&gt;
+    &lt;/div&gt;
+  );
+}
+
+// Arrow function variant
+const UserCard = ({ name, email, avatar }) =&gt; (
+  &lt;div className="user-card"&gt;
+    &lt;img src={avatar} alt={name} /&gt;
+    &lt;h3&gt;{name}&lt;/h3&gt;
+    &lt;p&gt;{email}&lt;/p&gt;
+  &lt;/div&gt;
+);</code></pre>
+
+          <h3>Class Components (Legacy)</h3>
+          <pre><code>import { Component } from 'react';
+
+class UserCard extends Component {
+  render() {
+    const { name, email, avatar } = this.props;
+    return (
+      &lt;div className="user-card"&gt;
+        &lt;img src={avatar} alt={name} /&gt;
+        &lt;h3&gt;{name}&lt;/h3&gt;
+        &lt;p&gt;{email}&lt;/p&gt;
+      &lt;/div&gt;
+    );
+  }
+}</code></pre>
+
+          <div class="callout callout-info">
+            <i class="fas fa-info-circle"></i>
+            <p><strong>Best practice:</strong> Always use functional components with Hooks. Class components are still valid but are considered legacy. Functional components are simpler, easier to test, and have better performance.</p>
+          </div>
+        </section>
+
+        <section id="q4">
+          <h2>4. What is JSX?</h2>
+          <p>JSX (JavaScript XML) is a syntax extension that lets you write HTML-like code inside JavaScript. It makes creating React element trees more readable and expressive.</p>
+
+          <pre><code>// JSX is syntactic sugar for React.createElement()
+// JSX:
+const element = &lt;h1 className="title"&gt;Hello, {name}!&lt;/h1&gt;
+
+// Equivalent without JSX:
+const element = React.createElement(
+  'h1',
+  { className: 'title' },
+  `Hello, ${name}!`
+);
+
+// JSX supports expressions inside curly braces {}
+const greeting = &lt;p&gt;Current time: {new Date().toLocaleTimeString()}&lt;/p&gt;
+
+// JSX supports conditional rendering
+const display = &lt;div&gt;{isLoggedIn ? &lt;LogoutButton /&gt; : &lt;LoginButton /&gt;}&lt;/div&gt;
+
+// JSX supports mapping arrays
+const list = (
+  &lt;ul&gt;
+    {items.map(item =&gt; &lt;li key={item.id}&gt;{item.name}&lt;/li&gt;)}
+  &lt;/ul&gt;
+);</code></pre>
+
+          <h3>JSX Rules</h3>
+          <ul>
+            <li><i class="fas fa-check-circle"></i> Return a single root element (use Fragment <code>&lt;&gt;...&lt;/&gt;</code> if needed)</li>
+            <li><i class="fas fa-check-circle"></i> All tags must be closed (including self-closing like <code>&lt;img /&gt;</code>)</li>
+            <li><i class="fas fa-check-circle"></i> Use <code>className</code> instead of <code>class</code></li>
+            <li><i class="fas fa-check-circle"></i> Use <code>htmlFor</code> instead of <code>for</code></li>
+            <li><i class="fas fa-check-circle"></i> Inline styles use objects: <code>style={{ color: 'red' }}</code></li>
+          </ul>
+        </section>
+
+        <section id="q5">
+          <h2>5. Props vs State</h2>
+          <p>Understanding the difference between props and state is fundamental to React development.</p>
+
+          <div class="comparison-table">
+            <table>
+              <thead>
+                <tr>
+                  <th>Feature</th>
+                  <th>Props</th>
+                  <th>State</th>
+                </tr>
+              </thead>
+              <tbody>
+                <tr>
+                  <td><strong>Definition</strong></td>
+                  <td>Read-only inputs passed from parent to child</td>
+                  <td>Mutable data managed within the component</td>
+                </tr>
+                <tr>
+                  <td><strong>Mutability</strong></td>
+                  <td>Immutable — cannot be modified by the receiving component</td>
+                  <td>Mutable — updated via <code>setState</code> or <code>useState</code></td>
+                </tr>
+                <tr>
+                  <td><strong>Source</strong></td>
+                  <td>Parent component</td>
+                  <td>Component itself</td>
+                </tr>
+                <tr>
+                  <td><strong>Triggers re-render?</strong></td>
+                  <td>Only when parent re-renders</td>
+                  <td>Yes, whenever state changes</td>
+                </tr>
+                <tr>
+                  <td><strong>Use case</strong></td>
+                  <td>Configuration, data passing, callbacks</td>
+                  <td>Interactivity, dynamic data, form inputs</td>
+                </tr>
+              </tbody>
+            </table>
+          </div>
+
+          <pre><code>// Props: passed from parent
+function Parent() {
+  const [count, setCount] = useState(0);
+  return &lt;Child count={count} onIncrement={() =&gt; setCount(c =&gt; c + 1)} /&gt;;
+}
+
+// Child receives props (read-only)
+function Child({ count, onIncrement }) {
+  // Props cannot be modified: this.props.count++ // WRONG
+  return (
+    &lt;div&gt;
+      &lt;p&gt;Count: {count}&lt;/p&gt;
+      &lt;button onClick={onIncrement}&gt;+1&lt;/button&gt;
+    &lt;/div&gt;
+  );
+}
+
+// State: managed internally
+function Counter() {
+  const [count, setCount] = useState(0); // state
+  return &lt;button onClick={() =&gt; setCount(c =&gt; c + 1)}&gt;Count: {count}&lt;/button&gt;;
+}</code></pre>
+        </section>
+
+        <!-- ====== SECTION 2: HOOKS ====== -->
+
+        <section id="q6">
+          <h2>6. What are React Hooks?</h2>
+          <p>Hooks are functions that let you "hook into" React state and lifecycle features from functional components. They were introduced in React 16.8 to eliminate the need for class components.</p>
+
+          <h3>Rules of Hooks</h3>
+          <ul>
+            <li><i class="fas fa-exclamation-circle"></i> Only call Hooks at the <strong>top level</strong> — never inside loops, conditions, or nested functions</li>
+            <li><i class="fas fa-exclamation-circle"></i> Only call Hooks from <strong>React functions</strong> — either React function components or custom Hooks</li>
+          </ul>
+
+          <pre><code>// ✅ Correct: Hooks at top level
+function MyComponent() {
+  const [count, setCount] = useState(0);
+  const ref = useRef(null);
+
+  useEffect(() => {
+    document.title = `Count: ${count}`;
+  }, [count]);
+
+  return &lt;button ref={ref}&gt;{count}&lt;/button&gt;;
+}
+
+// ❌ Wrong: Hook inside condition
+function MyComponent({ shouldFetch }) {
+  if (shouldFetch) {
+    const [data, setData] = useState(null); // ❌ WRONG!
+  }
+}</code></pre>
+        </section>
+
+        <section id="q7">
+          <h2>7. useState Hook</h2>
+          <p><code>useState</code> is the most basic Hook. It declares a state variable that persists between re-renders.</p>
+
+          <pre><code>import { useState } from 'react';
+
+function Counter() {
+  const [count, setCount] = useState(0);
+  // count: current state value
+  // setCount: function to update state
+
+  // Functional update (recommended when new state depends on old state)
+  const increment = () =&gt; setCount(prev =&gt; prev + 1);
+
+  // Object state
+  const [user, setUser] = useState({ name: '', email: '' });
+
+  const updateUser = () =&gt; {
+    setUser(prev =&gt; ({ ...prev, name: 'John' })); // spread previous state
+    // setUser({ name: 'John' }); // ❌ WRONG: loses email field
+  };
+
+  return (
+    &lt;div&gt;
+      &lt;p&gt;Count: {count}&lt;/p&gt;
+      &lt;button onClick={increment}&gt;+1&lt;/button&gt;
+      &lt;input
+        value={user.name}
+        onChange={(e) =&gt; setUser(prev =&gt; ({ ...prev, name: e.target.value }))}
+      /&gt;
+    &lt;/div&gt;
+  );
+}</code></pre>
+
+          <div class="callout callout-warning">
+            <i class="fas fa-exclamation-triangle"></i>
+            <p><strong>Common mistake:</strong> Always use the functional updater form <code>setCount(prev =&gt; prev + 1)</code> when the new state depends on the previous state. Direct access <code>setCount(count + 1)</code> can cause stale state bugs due to closures.</p>
+          </div>
+        </section>
+
+        <section id="q8">
+          <h2>8. useEffect Hook</h2>
+          <p><code>useEffect</code> lets you perform side effects in functional components — data fetching, subscriptions, DOM manipulation, timers, and more.</p>
+
+          <pre><code>import { useState, useEffect } from 'react';
+
+function UserProfile({ userId }) {
+  const [user, setUser] = useState(null);
+  const [loading, setLoading] = useState(true);
+
+  // Runs after every render where userId changes
+  useEffect(() =&gt; {
+    let cancelled = false; // cleanup flag
+
+    const fetchUser = async () =&gt; {
+      setLoading(true);
+      try {
+        const res = await fetch(`/api/users/${userId}`);
+        const data = await res.json();
+        if (!cancelled) setUser(data);
+      } catch (err) {
+        console.error(err);
+      } finally {
+        if (!cancelled) setLoading(false);
+      }
+    };
+
+    fetchUser();
+
+    // Cleanup function: runs before next effect or on unmount
+    return () =&gt; { cancelled = true; };
+  }, [userId]); // dependency array
+
+  if (loading) return &lt;Spinner /&gt;;
+  return &lt;div&gt;{user?.name}&lt;/div&gt;;
+}
+
+// useEffect with different dependency patterns:
+useEffect(() =&gt; {
+  // Runs after EVERY render (no dependency array)
+});
+
+useEffect(() =&gt; {
+  // Runs only ONCE on mount (empty dependency array)
+}, []);
+
+useEffect(() =&gt; {
+  // Runs when 'userId' changes
+}, [userId]);
+
+useEffect(() =&gt; {
+  // Runs when 'userId' OR 'theme' changes
+}, [userId, theme]);</code></pre>
+
+          <h3>Common useEffect Patterns</h3>
+          <div class="comparison-table">
+            <table>
+              <thead>
+                <tr>
+                  <th>Pattern</th>
+                  <th>Dependency Array</th>
+                  <th>When It Runs</th>
+                </tr>
+              </thead>
+              <tbody>
+                <tr>
+                  <td>On every render</td>
+                  <td>Not provided</td>
+                  <td>After every render</td>
+                </tr>
+                <tr>
+                  <td>On mount only</td>
+                  <td><code>[]</code></td>
+                  <td>Once after initial render</td>
+                </tr>
+                <tr>
+                  <td>On value change</td>
+                  <td><code>[value]</code></td>
+                  <td>After render when value changes</td>
+                </tr>
+                <tr>
+                  <td>Cleanup only</td>
+                  <td>N/A</td>
+                  <td>Return function runs before next effect</td>
+                </tr>
+              </tbody>
+            </table>
+          </div>
+        </section>
+
+        <section id="q9">
+          <h2>9. useRef Hook</h2>
+          <p><code>useRef</code> creates a mutable reference object whose <code>.current</code> property persists across renders without triggering re-renders when changed.</p>
+
+          <h3>Use Cases</h3>
+          <ul>
+            <li><i class="fas fa-check-circle"></i> Accessing DOM elements directly</li>
+            <li><i class="fas fa-check-circle"></i> Storing previous values</li>
+            <li><i class="fas fa-check-circle"></i> Holding mutable values that don't cause re-renders</li>
+            <li><i class="fas fa-check-circle"></i> Storing timer IDs</li>
+          </ul>
+
+          <pre><code>import { useRef, useEffect, useState } from 'react';
+
+function TextInput() {
+  const inputRef = useRef(null);
+  const prevCountRef = useRef(0);
+  const [count, setCount] = useState(0);
+
+  // Focus input on mount
+  useEffect(() =&gt; {
+    inputRef.current.focus();
+  }, []);
+
+  // Track previous count without re-rendering
+  useEffect(() =&gt; {
+    prevCountRef.current = count;
+  }, [count]);
+
+  return (
+    &lt;div&gt;
+      &lt;input ref={inputRef} placeholder="Type here..." /&gt;
+      &lt;p&gt;Current: {count}, Previous: {prevCountRef.current}&lt;/p&gt;
+      &lt;button onClick={() =&gt; setCount(c =&gt; c + 1)}&gt;Increment&lt;/button&gt;
+    &lt;/div&gt;
+  );
+}</code></pre>
+
+          <div class="callout callout-info">
+            <i class="fas fa-info-circle"></i>
+            <p><strong>Key difference from useState:</strong> Changing a <code>useRef</code> value does NOT cause a re-render. Use useRef for values that need to persist but shouldn't trigger UI updates.</p>
+          </div>
+        </section>
+
+        <section id="q10">
+          <h2>10. useMemo vs useCallback</h2>
+          <p>Both are performance optimization hooks, but they serve different purposes.</p>
+
+          <div class="comparison-table">
+            <table>
+              <thead>
+                <tr>
+                  <th>Feature</th>
+                  <th>useMemo</th>
+                  <th>useCallback</th>
+                </tr>
+              </thead>
+              <tbody>
+                <tr>
+                  <td><strong>Purpose</strong></td>
+                  <td>Memoizes a <strong>computed value</strong></td>
+                  <td>Memoizes a <strong>function</strong></td>
+                </tr>
+                <tr>
+                  <td><strong>Returns</strong></td>
+                  <td>The memoized value</td>
+                  <td>The memoized function</td>
+                </tr>
+                <tr>
+                  <td><strong>Use case</strong></td>
+                  <td>Expensive calculations</td>
+                  <td>Stable function references for child components</td>
+                </tr>
+                <tr>
+                  <td><strong>Equivalent to</strong></td>
+                  <td><code>useCallback(() => value, [deps])</code></td>
+                  <td><code>useMemo(() => fn, [deps])</code></td>
+                </tr>
+              </tbody>
+            </table>
+          </div>
+
+          <pre><code>import { useMemo, useCallback, useState } from 'react';
+
+function ProductList({ products }) {
+  const [filter, setFilter] = useState('');
+  const [sortOrder, setSortOrder] = useState('asc');
+
+  // useMemo: expensive calculation — only re-runs when dependencies change
+  const filteredProducts = useMemo(() =&gt; {
+    console.log('Filtering products...'); // only logs when filter/sort changes
+    return products
+      .filter(p =&gt; p.name.toLowerCase().includes(filter.toLowerCase()))
+      .sort((a, b) =&gt; sortOrder === 'asc' ? a.price - b.price : b.price - a.price);
+  }, [products, filter, sortOrder]);
+
+  // useCallback: stable function reference — prevents child re-renders
+  const handleAddToCart = useCallback((productId) =&gt; {
+    console.log(`Adding product ${productId} to cart`);
+  }, []);
+
+  return (
+    &lt;div&gt;
+      &lt;input value={filter} onChange={(e) =&gt; setFilter(e.target.value)} /&gt;
+      {filteredProducts.map(product =&gt; (
+        &lt;ProductCard
+          key={product.id}
+          product={product}
+          onAddToCart={handleAddToCart}
+        /&gt;
+      ))}
+    &lt;/div&gt;
+  );
+}</code></pre>
+
+          <div class="callout callout-warning">
+            <i class="fas fa-exclamation-triangle"></i>
+            <p><strong>Don't over-optimize:</strong> Only use useMemo and useCallback when you've identified a performance bottleneck. Premature optimization adds complexity without benefit.</p>
+          </div>
+        </section>
+
+        <section id="q11">
+          <h2>11. useReducer Hook</h2>
+          <p><code>useReducer</code> is an alternative to <code>useState</code> for complex state logic. It's similar to Redux patterns and is ideal when state transitions depend on the previous state.</p>
+
+          <pre><code>import { useReducer } from 'react';
+
+// 1. Define reducer function
+const todoReducer = (state, action) =&gt; {
+  switch (action.type) {
+    case 'ADD_TODO':
+      return [...state, {
+        id: Date.now(),
+        text: action.payload,
+        completed: false
+      }];
+    case 'TOGGLE_TODO':
+      return state.map(todo =&gt;
+        todo.id === action.payload
+          ? { ...todo, completed: !todo.completed }
+          : todo
+      );
+    case 'DELETE_TODO':
+      return state.filter(todo =&gt; todo.id !== action.payload);
+    default:
+      return state;
+  }
+};
+
+function TodoApp() {
+  // 2. Initialize useReducer
+  const [todos, dispatch] = useReducer(todoReducer, []);
+
+  // 3. Dispatch actions
+  const addTodo = (text) =&gt; {
+    dispatch({ type: 'ADD_TODO', payload: text });
+  };
+
+  return (
+    &lt;div&gt;
+      &lt;input
+        onKeyDown={(e) =&gt; {
+          if (e.key === 'Enter') {
+            addTodo(e.target.value);
+            e.target.value = '';
+          }
+        }}
+      /&gt;
+      {todos.map(todo =&gt; (
+        &lt;div key={todo.id}&gt;
+          &lt;span
+            onClick={() =&gt; dispatch({ type: 'TOGGLE_TODO', payload: todo.id })}
+            style={{ textDecoration: todo.completed ? 'line-through' : 'none' }}
+          &gt;
+            {todo.text}
+          &lt;/span&gt;
+          &lt;button onClick={() =&gt; dispatch({ type: 'DELETE_TODO', payload: todo.id })}&gt;
+            ✕
+          &lt;/button&gt;
+        &lt;/div&gt;
+      ))}
+    &lt;/div&gt;
+  );
+}</code></pre>
+        </section>
+
+        <section id="q12">
+          <h2>12. useContext Hook</h2>
+          <p><code>useContext</code> provides a way to pass data through the component tree without manually passing props at every level (solving prop drilling).</p>
+
+          <pre><code>import { createContext, useContext, useState } from 'react';
+
+// 1. Create context
+const ThemeContext = createContext(null);
+
+// 2. Provider component
+function ThemeProvider({ children }) {
+  const [theme, setTheme] = useState('dark');
+
+  const toggleTheme = () =&gt; setTheme(prev =&gt;
+    prev === 'dark' ? 'light' : 'dark'
+  );
+
+  return (
+    &lt;ThemeContext.Provider value={{ theme, toggleTheme }}&gt;
+      {children}
+    &lt;/ThemeContext.Provider&gt;
+  );
+}
+
+// 3. Consumer component (any depth)
+function ThemedButton() {
+  const { theme, toggleTheme } = useContext(ThemeContext);
+
+  return (
+    &lt;button
+      onClick={toggleTheme}
+      className={`btn-${theme}`}
+    &gt;
+      Current theme: {theme}
+    &lt;/button&gt;
+  );
+}
+
+// 4. Wrap app with provider
+function App() {
+  return (
+    &lt;ThemeProvider&gt;
+      &lt;Header /&gt;  {/* ThemedButton can be anywhere in the tree */}
+    &lt;/ThemeProvider&gt;
+  );
+}</code></pre>
+
+          <div class="callout callout-tip">
+            <i class="fas fa-lightbulb"></i>
+            <p><strong>Performance note:</strong> When a context value changes, all consumers re-render. For performance-critical scenarios, split contexts or use <code>useMemo</code> on the provider value.</p>
+          </div>
+        </section>
+
+        <section id="q13">
+          <h2>13. Custom Hooks</h2>
+          <p>Custom Hooks let you extract component logic into reusable functions. A custom Hook is simply a JavaScript function whose name starts with "use" and that may call other Hooks.</p>
+
+          <pre><code>// Custom Hook: useLocalStorage
+import { useState, useEffect } from 'react';
+
+function useLocalStorage(key, initialValue) {
+  const [value, setValue] = useState(() =&gt; {
+    try {
+      const stored = localStorage.getItem(key);
+      return stored ? JSON.parse(stored) : initialValue;
+    } catch {
+      return initialValue;
+    }
+  });
+
+  useEffect(() =&gt; {
+    localStorage.setItem(key, JSON.stringify(value));
+  }, [key, value]);
+
+  return [value, setValue];
+}
+
+// Custom Hook: useFetch
+function useFetch(url) {
+  const [data, setData] = useState(null);
+  const [loading, setLoading] = useState(true);
+  const [error, setError] = useState(null);
+
+  useEffect(() =&gt; {
+    const controller = new AbortController();
+
+    fetch(url, { signal: controller.signal })
+      .then(res =&gt; res.json())
+      .then(setData)
+      .catch(setError)
+      .finally(() =&gt; setLoading(false));
+
+    return () =&gt; controller.abort();
+  }, [url]);
+
+  return { data, loading, error };
+}
+
+// Usage in any component
+function UserProfile() {
+  const [name, setName] = useLocalStorage('user-name', '');
+  const { data: user, loading } = useFetch(`/api/user/${name}`);
+
+  if (loading) return &lt;Spinner /&gt;;
+  return &lt;div&gt;{user?.name}&lt;/div&gt;;
+}</code></pre>
+        </section>
+
+        <section id="q14">
+          <h2>14. What is Prop Drilling?</h2>
+          <p>Prop drilling occurs when you pass data through multiple layers of components that don't need the data, just to reach a deeply nested child that does.</p>
+
+          <pre><code>// ❌ Prop drilling example: theme passes through 3 unnecessary layers
+function App() {
+  const [theme, setTheme] = useState('dark');
+  return &lt;Layout theme={theme} /&gt;;  // Layout doesn't use theme
+}
+
+function Layout({ theme }) {
+  return &lt;Sidebar theme={theme} /&gt;;  // Sidebar doesn't use theme
+}
+
+function Sidebar({ theme }) {
+  return &lt;ThemedButton theme={theme} /&gt;;  // This component needs theme
+}
+
+// ✅ Solution: Use Context
+function App() {
+  return (
+    &lt;ThemeProvider&gt;
+      &lt;Layout /&gt;  {/* No theme prop needed! */}
+    &lt;/ThemeProvider&gt;
+  );
+}
+
+function ThemedButton() {
+  const { theme } = useContext(ThemeContext);  // Direct access
+  return &lt;button className={`btn-${theme}`}&gt;Toggle&lt;/button&gt;;
+}</code></pre>
+        </section>
+
+        <section id="q15">
+          <h2>15. React Context vs Redux</h2>
+          <p>Both manage global state, but they serve different use cases.</p>
+
+          <div class="comparison-table">
+            <table>
+              <thead>
+                <tr>
+                  <th>Feature</th>
+                  <th>React Context</th>
+                  <th>Redux</th>
+                </tr>
+              </thead>
+              <tbody>
+                <tr>
+                  <td><strong>Purpose</strong></td>
+                  <td>Lightweight global state</td>
+                  <td>Complex state management</td>
+                </tr>
+                <tr>
+                  <td><strong>Learning curve</strong></td>
+                  <td>Low</td>
+                  <td>Medium-High</td>
+                </tr>
+                <tr>
+                  <td><strong>DevTools</strong></td>
+                  <td>None built-in</td>
+                  <td>Excellent (Redux DevTools)</td>
+                </tr>
+                <tr>
+                  <td><strong>Performance</strong></td>
+                  <td>Re-renders all consumers</td>
+                  <td>Selective subscriptions</td>
+                </tr>
+                <tr>
+                  <td><strong>Best for</strong></td>
+                  <td>Theme, auth, locale</td>
+                  <td>Large apps with complex state</td>
+                </tr>
+                <tr>
+                  <td><strong>Middleware</strong></td>
+                  <td>Not built-in</td>
+                  <td>Redux Thunk, Redux Saga</td>
+                </tr>
+              </tbody>
+            </table>
+          </div>
+
+          <div class="callout callout-tip">
+            <i class="fas fa-lightbulb"></i>
+            <p><strong>Modern recommendation:</strong> Start with React Context for simple global state. If you need middleware, time-travel debugging, or have highly frequent updates, consider Redux Toolkit (RTK).</p>
+          </div>
+        </section>
+
+        <!-- ====== SECTION 3: INTERMEDIATE ====== -->
+
+        <section id="q16">
+          <h2>16. What are Keys in React?</h2>
+          <p>Keys help React identify which items in a list have changed, been added, or removed. They give elements a stable identity across renders.</p>
+
+          <pre><code>// ✅ Correct: Using unique, stable IDs
+function TodoList({ todos }) {
+  return (
+    &lt;ul&gt;
+      {todos.map(todo =&gt; (
+        &lt;li key={todo.id}&gt;{todo.text}&lt;/li&gt;
+      ))}
+    &lt;/ul&gt;
+  );
+}
+
+// ❌ Wrong: Using index as key (causes bugs with reordering/deletion)
+{todos.map((todo, index) =&gt; (
+  &lt;li key={index}&gt;{todo.text}&lt;/li&gt;  // BAD!
+))}
+
+// ❌ Wrong: Using Math.random() as key (creates new key every render)
+{todos.map(todo =&gt; (
+  &lt;li key={Math.random()}&gt;{todo.text}&lt;/li&gt;  // VERY BAD!
+))}</code></pre>
+
+          <h3>When is index as key acceptable?</h3>
+          <ul>
+            <li><i class="fas fa-check-circle"></i> The list is static and will not be reordered or filtered</li>
+            <li><i class="fas fa-check-circle"></i> The list is generated from a non-deterministic source (like user input)</li>
+            <li><i class="fas fa-check-circle"></i> Items don't have unique IDs</li>
+          </ul>
+        </section>
+
+        <section id="q17">
+          <h2>17. What are Fragments?</h2>
+          <p>Fragments let you group multiple elements without adding extra DOM nodes. They solve the "multiple root elements" JSX limitation.</p>
+
+          <pre><code>// ❌ Problem: Can't return two elements without a wrapper
+function Header() {
+  return (
+    // &lt;div&gt; adds an unnecessary DOM node
+    &lt;div&gt;
+      &lt;h1&gt;Title&lt;/h1&gt;
+      &lt;p&gt;Subtitle&lt;/p&gt;
+    &lt;/div&gt;
+  );
+}
+
+// ✅ Solution 1: Short syntax
+function Header() {
+  return (
+    &lt;&gt;
+      &lt;h1&gt;Title&lt;/h1&gt;
+      &lt;p&gt;Subtitle&lt;/p&gt;
+    &lt;/&gt;
+  );
+}
+
+// ✅ Solution 2: Full syntax (needed when passing key prop in lists)
+function Header() {
+  return (
+    &lt;Fragment&gt;
+      &lt;h1&gt;Title&lt;/h1&gt;
+      &lt;p&gt;Subtitle&lt;/p&gt;
+    &lt;/Fragment&gt;
+  );
+}</code></pre>
+        </section>
+
+        <section id="q18">
+          <h2>18. Controlled vs Uncontrolled Components</h2>
+          <p>This distinction matters primarily for form elements and how React manages their state.</p>
+
+          <div class="comparison-table">
+            <table>
+              <thead>
+                <tr>
+                  <th>Feature</th>
+                  <th>Controlled</th>
+                  <th>Uncontrolled</th>
+                </tr>
+              </thead>
+              <tbody>
+                <tr>
+                  <td><strong>State source</strong></td>
+                  <td>React state (component)</td>
+                  <td>DOM itself (ref)</td>
+                </tr>
+                <tr>
+                  <td><strong>Data flow</strong></td>
+                  <td>Two-way binding</td>
+                  <td>Read from DOM when needed</td>
+                </tr>
+                <tr>
+                  <td><strong>Validation</strong></td>
+                  <td>On every keystroke</td>
+                  <td>On submit</td>
+                </tr>
+                <tr>
+                  <td><strong>Best for</strong></td>
+                  <td>Most forms, real-time validation</td>
+                  <td>Simple forms, file inputs</td>
+                </tr>
+              </tbody>
+            </table>
+          </div>
+
+          <pre><code>// ✅ Controlled Component (recommended)
+function ControlledForm() {
+  const [email, setEmail] = useState('');
+  const [password, setPassword] = useState('');
+
+  const handleSubmit = (e) =&gt; {
+    e.preventDefault();
+    console.log({ email, password });
+  };
+
+  return (
+    &lt;form onSubmit={handleSubmit}&gt;
+      &lt;input
+        type="email"
+        value={email}
+        onChange={(e) =&gt; setEmail(e.target.value)}
+        required
+      /&gt;
+      &lt;input
+        type="password"
+        value={password}
+        onChange={(e) =&gt; setPassword(e.target.value)}
+        required
+      /&gt;
+      &lt;button type="submit"&gt;Login&lt;/button&gt;
+    &lt;/form&gt;
+  );
+}
+
+// ⚡ Uncontrolled Component (use ref for quick reads)
+function UncontrolledForm() {
+  const emailRef = useRef(null);
+  const passwordRef = useRef(null);
+
+  const handleSubmit = (e) =&gt; {
+    e.preventDefault();
+    console.log({
+      email: emailRef.current.value,
+      password: passwordRef.current.value,
+    });
+  };
+
+  return (
+    &lt;form onSubmit={handleSubmit}&gt;
+      &lt;input type="email" ref={emailRef} defaultValue="" required /&gt;
+      &lt;input type="password" ref={passwordRef} defaultValue="" required /&gt;
+      &lt;button type="submit"&gt;Login&lt;/button&gt;
+    &lt;/form&gt;
+  );
+}</code></pre>
+        </section>
+
+        <section id="q19">
+          <h2>19. What is Lifting State Up?</h2>
+          <p>Lifting state up is the pattern of moving shared state to the nearest common ancestor of components that need it. Instead of syncing state between siblings, the parent holds the state and passes it down.</p>
+
+          <pre><code>// Two sibling components sharing state
+function TemperatureConverter() {
+  const [celsius, setCelsius] = useState('');
+
+  // State lives in parent, shared with both children
+  return (
+    &lt;div&gt;
+      &lt;TemperatureInput
+        scale="celsius"
+        value={celsius}
+        onChange={setCelsius}
+      /&gt;
+      &lt;TemperatureInput
+        scale="fahrenheit"
+        value={toFahrenheit(celsius)}
+        onChange={(f) =&gt; setCelsius(toCelsius(f))}
+      /&gt;
+      &lt;BoilingVerdict celsius={parseFloat(celsius)} /&gt;
+    &lt;/div&gt;
+  );
+}
+
+function TemperatureInput({ scale, value, onChange }) {
+  return (
+    &lt;fieldset&gt;
+      &lt;legend&gt;Enter temperature in {scale}:&lt;/legend&gt;
+      &lt;input
+        value={value}
+        onChange={(e) =&gt; onChange(e.target.value)}
+      /&gt;
+    &lt;/fieldset&gt;
+  );
+}</code></pre>
+        </section>
+
+        <section id="q20">
+          <h2>20. What are Error Boundaries?</h2>
+          <p>Error Boundaries are React components that catch JavaScript errors in their child component tree, log those errors, and display a fallback UI instead of crashing the entire app.</p>
+
+          <pre><code>import { Component } from 'react';
+
+class ErrorBoundary extends Component {
+  constructor(props) {
+    super(props);
+    this.state = { hasError: false, error: null, errorInfo: null };
+  }
+
+  static getDerivedStateFromError(error) {
+    return { hasError: true, error };
+  }
+
+  componentDidCatch(error, errorInfo) {
+    this.setState({ errorInfo });
+    // Log to error reporting service
+    console.error('Error caught:', error, errorInfo);
+  }
+
+  render() {
+    if (this.state.hasError) {
+      return (
+        &lt;div className="error-fallback"&gt;
+          &lt;h2&gt;Something went wrong&lt;/h2&gt;
+          &lt;p&gt;{this.state.error?.message}&lt;/p&gt;
+          &lt;button onClick={() =&gt; this.setState({ hasError: false })}&gt;
+            Try Again
+          &lt;/button&gt;
+        &lt;/div&gt;
+      );
+    }
+    return this.props.children;
+  }
+}
+
+// Usage
+&lt;ErrorBoundary&gt;
+  &lt;Dashboard /&gt;
+&lt;/ErrorBoundary&gt;</code></pre>
+
+          <div class="callout callout-info">
+            <i class="fas fa-info-circle"></i>
+            <p><strong>Note:</strong> Error Boundaries do NOT catch errors in event handlers, async code, server-side rendering, or errors in the boundary itself. Use try-catch in event handlers instead.</p>
+          </div>
+        </section>
+
+        <!-- ====== SECTION 4: ADVANCED ====== -->
+
+        <section id="q21">
+          <h2>21. React.memo and Memoization</h2>
+          <p><code>React.memo</code> is a higher-order component that wraps a functional component and prevents it from re-rendering if its props haven't changed (shallow comparison).</p>
+
+          <pre><code>import { memo, useState } from 'react';
+
+// This component will only re-render if its props change
+const ExpensiveList = memo(function ExpensiveList({ items, onSelect }) {
+  console.log('ExpensiveList rendered'); // Only logs when items change
+
+  return (
+    &lt;ul&gt;
+      {items.map(item =&gt; (
+        &lt;li key={item.id} onClick={() =&gt; onSelect(item.id)}&gt;
+          {item.name}
+        &lt;/li&gt;
+      ))}
+    &lt;/ul&gt;
+  );
+});
+
+// Custom comparison function for deeper control
+const MemoizedComponent = memo(
+  function MyComponent({ user, settings }) {
+    return &lt;div&gt;{user.name} - {settings.theme}&lt;/div&gt;;
+  },
+  (prevProps, nextProps) =&gt; {
+    // Return true if props are equal (skip re-render)
+    return prevProps.user.id === nextProps.user.id
+      &amp;&amp; prevProps.settings.theme === nextProps.settings.theme;
+  }
+);</code></pre>
+
+          <div class="callout callout-tip">
+            <i class="fas fa-lightbulb"></i>
+            <p><strong>When to use React.memo:</strong> When a component renders often with the same props, or when it has expensive rendering logic. Don't wrap every component — it adds overhead.</p>
+          </div>
+        </section>
+
+        <section id="q22">
+          <h2>22. What is Code Splitting?</h2>
+          <p>Code splitting breaks your app into smaller bundles that load on demand, reducing the initial page load time.</p>
+
+          <pre><code>import { lazy, Suspense } from 'react';
+
+// Lazy load components — only loaded when needed
+const Dashboard = lazy(() =&gt; import('./pages/Dashboard'));
+const Settings = lazy(() =&gt; import('./pages/Settings'));
+const Analytics = lazy(() =&gt; import('./pages/Analytics'));
+
+function App() {
+  return (
+    &lt;BrowserRouter&gt;
+      &lt;Suspense fallback={&lt;Spinner /&gt;}&gt;
+        &lt;Routes&gt;
+          &lt;Route path="/dashboard" element={&lt;Dashboard /&gt;} /&gt;
+          &lt;Route path="/settings" element={&lt;Settings /&gt;} /&gt;
+          &lt;Route path="/analytics" element={&lt;Analytics /&gt;} /&gt;
+        &lt;/Routes&gt;
+      &lt;/Suspense&gt;
+    &lt;/BrowserRouter&gt;
+  );
+}
+
+// Preload on hover for instant navigation
+function NavLink({ to, children }) {
+  const preload = () =&gt; {
+    if (to === '/dashboard') import('./pages/Dashboard');
+    else if (to === '/settings') import('./pages/Settings');
+  };
+
+  return (
+    &lt;Link to={to} onMouseEnter={preload}&gt;
+      {children}
+    &lt;/Link&gt;
+  );
+}</code></pre>
+        </section>
+
+        <section id="q23">
+          <h2>23. What are Higher-Order Components (HOC)?</h2>
+          <p>A Higher-Order Component is a function that takes a component and returns a new enhanced component. HOCs are used for cross-cutting concerns like authentication, logging, or data fetching.</p>
+
+          <pre><code>// HOC: Adds loading state to any component
+function withLoading(WrappedComponent) {
+  return function WithLoadingComponent({ isLoading, ...props }) {
+    if (isLoading) return &lt;div className="spinner"&gt;Loading...&lt;/div&gt;;
+    return &lt;WrappedComponent {...props} /&gt;;
+  };
+}
+
+// HOC: Adds authentication check
+function withAuth(WrappedComponent) {
+  return function WithAuthComponent(props) {
+    const { user, loading } = useAuth();
+
+    if (loading) return &lt;Spinner /&gt;;
+    if (!user) return &lt;Navigate to="/login" /&gt;;
+
+    return &lt;WrappedComponent {...props} user={user} /&gt;;
+  };
+}
+
+// Usage
+const UserDashboard = withAuth(withLoading(Dashboard));
+
+// Or compose multiple HOCs
+const EnhancedComponent = compose(
+  withAuth,
+  withLoading,
+  withLogger
+)(Dashboard);</code></pre>
+
+          <div class="callout callout-info">
+            <i class="fas fa-info-circle"></i>
+            <p><strong>Modern alternative:</strong> Custom Hooks are now preferred over HOCs for most use cases. HOCs are still valid but can cause wrapper hell and make debugging harder.</p>
+          </div>
+        </section>
+
+        <section id="q24">
+          <h2>24. What are React Portals?</h2>
+          <p>Portals let you render children into a DOM node that exists outside the parent component's DOM hierarchy. Useful for modals, tooltips, and dropdowns that need to escape overflow constraints.</p>
+
+          <pre><code>import { createPortal } from 'react-dom';
+
+function Modal({ isOpen, onClose, children }) {
+  if (!isOpen) return null;
+
+  return createPortal(
+    &lt;div className="modal-overlay" onClick={onClose}&gt;
+      &lt;div className="modal-content" onClick={(e) =&gt; e.stopPropagation()}&gt;
+        &lt;button className="modal-close" onClick={onClose}&gt;✕&lt;/button&gt;
+        {children}
+      &lt;/div&gt;
+    &lt;/div&gt;,
+    document.getElementById('modal-root') // Render outside #app
+  );
+}
+
+// In index.html:
+// &lt;div id="root"&gt;&lt;/div&gt;
+// &lt;div id="modal-root"&gt;&lt;/div&gt;</code></pre>
+        </section>
+
+        <section id="q25">
+          <h2>25. Suspense and Lazy Loading</h2>
+          <p><code>Suspense</code> lets you show a fallback while waiting for something to load — lazy components, data, or images.</p>
+
+          <pre><code>import { Suspense, lazy } from 'react';
+
+// Lazy loaded component
+const HeavyComponent = lazy(() =&gt; import('./HeavyComponent'));
+
+function App() {
+  return (
+    &lt;div&gt;
+      {/* Suspense boundary shows fallback while HeavyComponent loads */}
+      &lt;Suspense fallback={&lt;div className="skeleton"&gt;Loading...&lt;/div&gt;}&gt;
+        &lt;HeavyComponent /&gt;
+      &lt;/Suspense&gt;
+
+      {/* Nested Suspense boundaries for different sections */}
+      &lt;Suspense fallback={&lt;Spinner /&gt;}&gt;
+        &lt;Suspense fallback={&lt;SidebarSkeleton /&gt;}&gt;
+          &lt;Sidebar /&gt;
+        &lt;/Suspense&gt;
+        &lt;Suspense fallback={&lt;ContentSkeleton /&gt;}&gt;
+          &lt;MainContent /&gt;
+        &lt;/Suspense&gt;
+      &lt;/Suspense&gt;
+    &lt;/div&gt;
+  );
+}</code></pre>
+        </section>
+
+        <section id="q26">
+          <h2>26. What is the useEffect cleanup function?</h2>
+          <p>The cleanup function returned from useEffect runs before the effect re-fires and when the component unmounts. It's essential for preventing memory leaks.</p>
+
+          <pre><code>function ChatRoom({ roomId }) {
+  useEffect(() =&gt; {
+    const connection = createConnection(roomId);
+    connection.connect();
+
+    // Cleanup: runs when roomId changes or component unmounts
+    return () =&gt; {
+      connection.disconnect();
+    };
+  }, [roomId]);
+
+  return &lt;div&gt;Welcome to room {roomId}!&lt;/div&gt;;
+}
+
+// Timer example
+function Timer() {
+  const [seconds, setSeconds] = useState(0);
+
+  useEffect(() =&gt; {
+    const interval = setInterval(() =&gt; {
+      setSeconds(s =&gt; s + 1);
+    }, 1000);
+
+    // Cleanup: clear interval on unmount
+    return () =&gt; clearInterval(interval);
+  }, []);
+
+  return &lt;p&gt;Elapsed: {seconds}s&lt;/p&gt;;
+}
+
+// Subscription example
+function WindowSize() {
+  const [size, setSize] = useState(window.innerWidth);
+
+  useEffect(() =&gt; {
+    const handleResize = () =&gt; setSize(window.innerWidth);
+    window.addEventListener('resize', handleResize);
+
+    // Cleanup: remove event listener
+    return () =&gt; window.removeEventListener('resize', handleResize);
+  }, []);
+
+  return &lt;p&gt;Window width: {size}px&lt;/p&gt;;
+}</code></pre>
+        </section>
+
+        <section id="q27">
+          <h2>27. What are Synthetic Events?</h2>
+          <p>React's SyntheticEvent is a cross-browser wrapper around the browser's native event. It normalizes event handling so events work consistently across all browsers.</p>
+
+          <pre><code>function ClickHandler() {
+  // Synthetic Event
+  const handleClick = (e) =&gt; {
+    e.preventDefault();    // Works cross-browser
+    e.stopPropagation();   // Works cross-browser
+
+    console.log('Target:', e.target);           // Native DOM element
+    console.log('Current Target:', e.currentTarget); // Element with handler
+    console.log('Event Type:', e.type);         // 'click'
+
+    // Access native event if needed
+    console.log('Native event:', e.nativeEvent);
+  };
+
+  return &lt;button onClick={handleClick}&gt;Click me&lt;/button&gt;;
+}
+
+// Passing event data
+function ListItem({ item, onDelete }) {
+  const handleDelete = (e, id) =&gt; {
+    e.stopPropagation();
+    onDelete(id);
+  };
+
+  return (
+    &lt;li&gt;
+      {item.name}
+      &lt;button onClick={(e) =&gt; handleDelete(e, item.id)}&gt;Delete&lt;/button&gt;
+    &lt;/li&gt;
+  );
+}</code></pre>
+        </section>
+
+        <section id="q28">
+          <h2>28. How does React handle forms?</h2>
+          <p>React handles forms through controlled components where form data is handled by React state, or uncontrolled components where form data is handled by the DOM.</p>
+
+          <pre><code>// Complete form example with validation
+function RegistrationForm() {
+  const [formData, setFormData] = useState({
+    name: '',
+    email: '',
+    password: '',
+  });
+  const [errors, setErrors] = useState({});
+
+  const validate = () =&gt; {
+    const newErrors = {};
+    if (!formData.name.trim()) newErrors.name = 'Name is required';
+    if (!formData.email.includes('@')) newErrors.email = 'Invalid email';
+    if (formData.password.length &lt; 8) newErrors.password = 'Min 8 characters';
+    setErrors(newErrors);
+    return Object.keys(newErrors).length === 0;
+  };
+
+  const handleChange = (e) =&gt; {
+    const { name, value } = e.target;
+    setFormData(prev =&gt; ({ ...prev, [name]: value }));
+    // Clear error when user starts typing
+    if (errors[name]) setErrors(prev =&gt; ({ ...prev, [name]: '' }));
+  };
+
+  const handleSubmit = (e) =&gt; {
+    e.preventDefault();
+    if (validate()) {
+      console.log('Submitting:', formData);
+    }
+  };
+
+  return (
+    &lt;form onSubmit={handleSubmit}&gt;
+      &lt;div&gt;
+        &lt;input name="name" value={formData.name} onChange={handleChange} /&gt;
+        {errors.name &amp;&amp; &lt;span className="error"&gt;{errors.name}&lt;/span&gt;}
+      &lt;/div&gt;
+      &lt;div&gt;
+        &lt;input name="email" value={formData.email} onChange={handleChange} /&gt;
+        {errors.email &amp;&amp; &lt;span className="error"&gt;{errors.email}&lt;/span&gt;}
+      &lt;/div&gt;
+      &lt;div&gt;
+        &lt;input name="password" type="password" value={formData.password} onChange={handleChange} /&gt;
+        {errors.password &amp;&amp; &lt;span className="error"&gt;{errors.password}&lt;/span&gt;}
+      &lt;/div&gt;
+      &lt;button type="submit"&gt;Register&lt;/button&gt;
+    &lt;/form&gt;
+  );
+}</code></pre>
+        </section>
+
+        <section id="q29">
+          <h2>29. What is Server-Side Rendering (SSR)?</h2>
+          <p>SSR renders React components on the server and sends fully rendered HTML to the client. Next.js is the most popular React framework for SSR.</p>
+
+          <div class="comparison-table">
+            <table>
+              <thead>
+                <tr>
+                  <th>Feature</th>
+                  <th>CSR (Client-Side)</th>
+                  <th>SSR (Server-Side)</th>
+                  <th>SSG (Static)</th>
+                </tr>
+              </thead>
+              <tbody>
+                <tr>
+                  <td><strong>Rendering</strong></td>
+                  <td>In browser</td>
+                  <td>On server per request</td>
+                  <td>At build time</td>
+                </tr>
+                <tr>
+                  <td><strong>SEO</strong></td>
+                  <td>Poor (content not in HTML)</td>
+                  <td>Excellent</td>
+                  <td>Excellent</td>
+                </tr>
+                <tr>
+                  <td><strong>Performance</strong></td>
+                  <td>Slow initial load</td>
+                  <td>Fast first paint</td>
+                  <td>Fastest</td>
+                </tr>
+                <tr>
+                  <td><strong>Best for</strong></td>
+                  <td>SPAs, dashboards</td>
+                  <td>Dynamic content</td>
+                  <td>Blogs, docs, marketing</td>
+                </tr>
+              </tbody>
+            </table>
+          </div>
+
+          <div class="callout callout-info">
+            <i class="fas fa-info-circle"></i>
+            <p><strong>Next.js App Router</strong> uses React Server Components by default, which render on the server and send zero JavaScript to the client for those components — combining the best of SSR and SSG.</p>
+          </div>
+        </section>
+
+        <section id="q30">
+          <h2>30. React性能优化技巧</h2>
+          <p>Here are the top performance optimization techniques every React developer should know.</p>
+
+          <h3>1. Avoid Unnecessary Re-renders</h3>
+          <pre><code>// ❌ Creating new objects/functions on every render
+function Parent() {
+  return (
+    &lt;Child
+      style={{ color: 'red' }}       // new object every render!
+      onClick={() =&gt; doSomething()} // new function every render!
+    /&gt;
+  );
+}
+
+// ✅ Memoize objects and functions
+const style = { color: 'red' };
+const handleClick = useCallback(() =&gt; doSomething(), []);
+
+function Parent() {
+  return &lt;Child style={style} onClick={handleClick} /&gt;;
+}</code></pre>
+
+          <h3>2. Use React.memo for Pure Components</h3>
+          <pre><code>// Only re-renders when props change
+const ListItem = memo(function ListItem({ item, onDelete }) {
+  return (
+    &lt;li&gt;
+      {item.name}
+      &lt;button onClick={() =&gt; onDelete(item.id)}&gt;Delete&lt;/button&gt;
+    &lt;/li&gt;
+  );
+});</code></pre>
+
+          <h3>3. Virtualize Long Lists</h3>
+          <pre><code>// Only render visible items (use react-window or react-virtualized)
+import { FixedSizeList } from 'react-window';
+
+function VirtualList({ items }) {
+  return (
+    &lt;FixedSizeList
+      height={500}
+      width="100%"
+      itemCount={items.length}
+      itemSize={50}
+    &gt;
+      {({ index, style }) =&gt; (
+        &lt;div style={style}&gt;{items[index].name}&lt;/div&gt;
+      )}
+    &lt;/FixedSizeList&gt;
+  );
+}</code></pre>
+
+          <h3>4. Lazy Load Heavy Components</h3>
+          <pre><code>const Chart = lazy(() =&gt; import('./Chart'));
+const DataTable = lazy(() =&gt; import('./DataTable'));
+
+// Only load when needed
+&lt;Suspense fallback={&lt;Spinner /&gt;}&gt;
+  {showChart &amp;&amp; &lt;Chart data={data} /&gt;}
+&lt;/Suspense&gt;</code></pre>
+
+          <h3>5. Profile and Measure</h3>
+          <pre><code>// Use React DevTools Profiler to identify bottlenecks
+// Use Chrome Performance tab to measure actual render time
+// Use Why Did You Render (wdyr) library to trace unnecessary renders
+
+// Install: npm install @welldone-software/why-did-you-render
+import React from 'react';
+import wdyr from '@welldone-software/why-did-you-render';
+
+if (process.env.NODE_ENV === 'development') {
+  wdyr(React);
+}</code></pre>
+
+          <h3>Quick Checklist</h3>
+          <ul>
+            <li><i class="fas fa-check-circle"></i> Use <code>React.memo</code> for components that receive stable props</li>
+            <li><i class="fas fa-check-circle"></i> Use <code>useCallback</code> for functions passed as props</li>
+            <li><i class="fas fa-check-circle"></i> Use <code>useMemo</code> for expensive computations</li>
+            <li><i class="fas fa-check-circle"></i> Avoid creating objects/arrays inline in JSX</li>
+            <li><i class="fas fa-check-circle"></i> Use lazy loading and code splitting</li>
+            <li><i class="fas fa-check-circle"></i> Virtualize long lists (100+ items)</li>
+            <li><i class="fas fa-check-circle"></i> Keep state as close to where it's used as possible</li>
+            <li><i class="fas fa-check-circle"></i> Use production build for performance testing</li>
+          </ul>
+
+          <div class="callout callout-tip">
+            <i class="fas fa-lightbulb"></i>
+            <p><strong>Final tip:</strong> Always measure before optimizing. Use <code>console.time()</code>, React DevTools Profiler, and Chrome Lighthouse to identify actual bottlenecks before applying optimizations.</p>
+          </div>
+        </section>
+
+        <!-- CONCLUSION -->
+        <section>
+          <h2>Final Thoughts</h2>
+          <p>React interviews test more than just knowledge — they assess your understanding of <strong>why</strong> things work the way they do. Focus on understanding the concepts behind these answers rather than memorizing them.</p>
+
+          <h3>Key Takeaways</h3>
+          <ul>
+            <li><i class="fas fa-check-circle"></i> Master the fundamentals: JSX, components, props, state, and the Virtual DOM</li>
+            <li><i class="fas fa-check-circle"></i> Understand Hooks deeply — especially useState, useEffect, useRef, and useContext</li>
+            <li><i class="fas fa-check-circle"></i> Know when to use Context vs Redux vs local state</li>
+            <li><i class="fas fa-check-circle"></i> Practice writing custom Hooks and explaining their benefits</li>
+            <li><i class="fas fa-check-circle"></i> Be comfortable with performance optimization patterns</li>
+            <li><i class="fas fa-check-circle"></i> Understand server-side rendering concepts for modern React apps</li>
+          </ul>
+
+          <div class="callout callout-info">
+            <i class="fas fa-info-circle"></i>
+            <p><strong>Practice makes perfect:</strong> Build projects using these concepts. The best way to prepare for React interviews is to actually build React apps and explain your decisions along the way.</p>
+          </div>
+        </section>
+
+      </div>
+    </div>
+  </article>
+
+  <div class="back-to-top">
+    <a href="#top" class="btn btn-primary">
+      <i class="fas fa-arrow-up"></i> Back to Top
+    </a>
+  </div>
+
+  <!-- FOOTER -->
+  <footer class="footer">
+    <div class="container">
+      <div class="footer-content">
+        <div class="footer-brand">
+          <a href="../index.html" class="nav-logo">
+            <span class="logo-bracket">{</span> AB <span class="logo-bracket">}</span>
+          </a>
+          <p>Building modern web experiences with clean code, comprehensive tests, and continuous improvement.</p>
+        </div>
+        <div class="footer-links">
+          <h4>Navigation</h4>
+          <ul>
+            <li><a href="../index.html">Portfolio</a></li>
+            <li><a href="../index.html#about">About</a></li>
+            <li><a href="../index.html#projects">Projects</a></li>
+            <li><a href="../index.html#contact">Contact</a></li>
+          </ul>
+        </div>
+        <div class="footer-social">
+          <h4>Connect</h4>
+          <div class="footer-icons">
+            <a href="https://github.com/avinashbt" target="_blank"><i class="fab fa-github"></i></a>
+            <a href="https://www.linkedin.com/in/avinash-bawage-99ba58200/?locale=en_US" target="_blank"><i class="fab fa-linkedin-in"></i></a>
+            <a href="https://twitter.com/AvinashBawge" target="_blank"><i class="fab fa-twitter"></i></a>
+            <a href="mailto:avi.bawge9@gmail.com"><i class="fas fa-envelope"></i></a>
+          </div>
+        </div>
+      </div>
+      <div class="footer-bottom">
+        <p>Built with <span class="footer-heart">&hearts;</span> by Avinash Bawage &mdash; &copy; 2026</p>
+      </div>
+    </div>
+  </footer>
+
+  <script>
+    const hamburger = document.getElementById('hamburger');
+    const mobileMenu = document.getElementById('mobileMenu');
+    let overlay = document.createElement('div');
+    overlay.className = 'mobile-overlay';
+    document.body.appendChild(overlay);
+
+    function toggleMenu() {
+      hamburger.classList.toggle('active');
+      mobileMenu.classList.toggle('active');
+      overlay.classList.toggle('active');
+      document.body.style.overflow = mobileMenu.classList.contains('active') ? 'hidden' : '';
+    }
+
+    hamburger.addEventListener('click', toggleMenu);
+    overlay.addEventListener('click', toggleMenu);
+    document.querySelectorAll('.mobile-menu a').forEach(a => a.addEventListener('click', toggleMenu));
+  </script>
+  <script>
+    (function() {
+      const saved = localStorage.getItem('theme');
+      if (saved) document.documentElement.setAttribute('data-theme', saved);
+      else if (window.matchMedia('(prefers-color-scheme: light)').matches) document.documentElement.setAttribute('data-theme', 'light');
+    })();
+    document.getElementById('themeToggle').addEventListener('click', function() {
+      const current = document.documentElement.getAttribute('data-theme');
+      const next = current === 'light' ? 'dark' : 'light';
+      document.documentElement.setAttribute('data-theme', next);
+      localStorage.setItem('theme', next);
+    });
+  </script>
+</body>
+</html>
