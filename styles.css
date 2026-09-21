@@ -17,13 +17,13 @@
   --bg-icon-hover: rgba(99,102,241,.15);
 
   /* Text */
-  --text-primary: #fff;
-  --text-body: #e2e8f0;
-  --text-secondary: rgba(255,255,255,.6);
-  --text-muted: rgba(255,255,255,.5);
-  --text-faint: rgba(255,255,255,.4);
-  --text-dim: rgba(255,255,255,.35);
-  --text-ghost: rgba(255,255,255,.3);
+  --text-primary: #000;
+  --text-body: #1a1a1a;
+  --text-secondary: rgba(0,0,0,.6);
+  --text-muted: rgba(0,0,0,.5);
+  --text-faint: rgba(0,0,0,.4);
+  --text-dim: rgba(0,0,0,.35);
+  --text-ghost: rgba(0,0,0,.3);
 
   /* Accent - Indigo */
   --accent: #6366f1;
