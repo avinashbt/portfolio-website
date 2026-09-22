@@ -161,9 +161,9 @@ ul{list-style:none}
 }
 .theme-toggle:hover{border-color:var(--accent-border-strong);color:var(--accent);background:var(--accent-bg)}
 .theme-toggle .icon-sun,.theme-toggle .icon-moon{transition:all .3s}
-[data-theme="light"] .theme-toggle .icon-sun{display:none}
-[data-theme="dark"] .theme-toggle .icon-moon{display:none}
-:not([data-theme]) .theme-toggle .icon-moon{display:none}
+[data-theme="light"] .theme-toggle .icon-sun{display:block}
+[data-theme="dark"] .theme-toggle .icon-moon{display:block}
+:not([data-theme]) .theme-toggle .icon-moon{display:block}
 
 /* ========== NAVIGATION ========== */
 .nav{position:fixed;top:0;left:0;width:100%;z-index:1000;padding:1.6rem 0;transition:all .4s cubic-bezier(.4,0,.2,1)}
@@ -349,6 +349,36 @@ ul{list-style:none}
 
 @media(max-width:996px){.projects-grid{grid-template-columns:repeat(2,1fr)}}
 @media(max-width:600px){.projects-grid{grid-template-columns:1fr}}
+
+/* ========== HOSTED WEBSITES ========== */
+.section-subtitle{font-size:1.5rem;color:var(--text-muted);margin-top:1rem;max-width:600px;margin-left:auto;margin-right:auto;line-height:1.6}
+.websites-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:2.5rem}
+.website-card{background:var(--bg-card);border:1px solid var(--bg-card-border);border-radius:2rem;padding:2.8rem 2.4rem;display:flex;flex-direction:column;transition:all .4s cubic-bezier(.4,0,.2,1);position:relative;overflow:hidden}
+.website-card::before{content:'';position:absolute;top:0;left:0;right:0;height:3px;background:var(--gradient-primary);opacity:0;transition:opacity .4s}
+.website-card:hover{border-color:var(--accent-border-strong);transform:translateY(-8px);box-shadow:0 20px 50px var(--shadow-card)}
+.website-card:hover::before{opacity:1}
+.website-card-featured{border-color:var(--accent-border);background:linear-gradient(135deg, var(--accent-bg) 0%, var(--bg-card) 100%)}
+.website-card-icon{width:5.6rem;height:5.6rem;border-radius:1.4rem;display:flex;align-items:center;justify-content:center;font-size:2.2rem;color:var(--accent);background:var(--accent-bg);border:1px solid var(--accent-border);margin-bottom:1.6rem;transition:all .4s}
+.website-card:hover .website-card-icon{transform:scale(1.08);box-shadow:0 8px 20px var(--accent-glow)}
+.website-card-icon.icon-blue{color:var(--blue);background:var(--blue-bg);border-color:var(--blue-border)}
+.website-card-icon.icon-green{color:var(--green);background:var(--green-bg);border-color:var(--green-border)}
+.website-card-icon.icon-pink{color:#ec4899;background:rgba(236,72,153,.1);border-color:rgba(236,72,153,.2)}
+.website-card-icon.icon-violet{color:var(--violet);background:var(--violet-bg);border-color:var(--violet-border)}
+.website-card-icon.icon-accent{color:#fff;background:var(--gradient-primary);border-color:transparent}
+.website-card-badge{position:absolute;top:1.8rem;right:1.8rem;font-size:1rem;font-weight:700;padding:.3rem 1rem;border-radius:50px;display:inline-flex;align-items:center;gap:.4rem}
+.website-card-badge.badge-live{background:var(--green-bg);color:#4ade80;border:1px solid var(--green-border)}
+.website-card-badge.badge-live .dot{width:6px;height:6px;background:#22c55e;border-radius:50%;display:inline-block;animation:pulse 2s infinite}
+.website-card-badge.badge-seo{background:var(--blue-bg);color:var(--blue-light);border:1px solid var(--blue-border)}
+.website-card-badge.badge-pwa{background:rgba(99,102,241,.1);color:var(--accent-light);border:1px solid var(--accent-border)}
+.website-card-badge.badge-viral{background:rgba(236,72,153,.1);color:#f472b6;border:1px solid rgba(236,72,153,.2)}
+.website-card-badge.badge-blog{background:var(--violet-bg);color:#a78bfa;border:1px solid var(--violet-border)}
+.website-card-badge.badge-portfolio{background:var(--yellow-bg);color:#ca8a04;border:1px solid var(--yellow-border)}
+.website-card h3{font-size:1.7rem;font-weight:700;color:var(--text-primary);margin-bottom:.8rem}
+.website-card p{font-size:1.35rem;color:var(--text-muted);line-height:1.65;margin-bottom:1.4rem;flex:1}
+.website-card-link{font-size:1.25rem;font-weight:600;color:var(--accent);display:inline-flex;align-items:center;gap:.5rem;transition:all .3s}
+.website-card:hover .website-card-link{gap:.8rem;color:var(--accent-hover)}
+@media(max-width:996px){.websites-grid{grid-template-columns:repeat(2,1fr)}}
+@media(max-width:600px){.websites-grid{grid-template-columns:1fr}}
 
 /* ========== SERVICES ========== */
 .services-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:2.5rem}
