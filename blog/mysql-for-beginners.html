@@ -1,0 +1,1279 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>MySQL for Beginners: Complete Guide (2026) | Avinash Bawage</title>
+  <meta name="description" content="Learn MySQL from scratch — what it is, installation, databases, tables, data types, CRUD, WHERE, JOINs, indexes, constraints, and building a real-world project. Beginner-friendly guide 2026.">
+  <meta name="keywords" content="MySQL tutorial, MySQL for beginners, learn MySQL, SQL tutorial, MySQL database, SQL JOINs, MySQL CRUD, MySQL 2026">
+  <meta name="robots" content="index, follow">
+  <meta name="author" content="Avinash Bawage">
+  <link rel="canonical" href="https://avinashbawage.com/blog/mysql-for-beginners.html">
+
+  <!-- Open Graph -->
+  <meta property="og:title" content="MySQL for Beginners: Complete Guide (2026)">
+  <meta property="og:description" content="Learn MySQL from scratch — installation, databases, tables, CRUD, filtering, JOINs, indexes and a complete hands-on project with examples.">
+  <meta property="og:type" content="article">
+  <meta property="og:url" content="https://avinashbawage.com/blog/mysql-for-beginners.html">
+  <meta property="og:image" content="https://avinashbawage.com/profile1.jpg">
+  <meta property="article:published_time" content="2026-09-23">
+  <meta property="article:author" content="Avinash Bawage">
+  <meta property="article:tag" content="MySQL">
+  <meta property="article:tag" content="SQL">
+  <meta property="article:tag" content="Database">
+
+  <!-- Twitter Card -->
+  <meta name="twitter:card" content="summary_large_image">
+  <meta name="twitter:title" content="MySQL for Beginners: Complete Guide (2026)">
+  <meta name="twitter:description" content="Learn MySQL from scratch — installation, databases, tables, CRUD, filtering, JOINs, indexes and a complete hands-on project.">
+
+  <link rel="shortcut icon" href="../favicon.jpg" type="image/x-icon">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800&family=JetBrains+Mono:wght@400;500&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css">
+  <link rel="stylesheet" href="../styles.css">
+  <link rel="stylesheet" href="../blog.css">
+
+  <!-- Article Schema Markup -->
+  <script type="application/ld+json">
+  {
+    "@context": "https://schema.org",
+    "@type": "Article",
+    "headline": "MySQL for Beginners: Complete Guide (2026)",
+    "description": "Learn MySQL from scratch — what it is, installation, databases, tables, data types, CRUD, WHERE, JOINs, indexes, constraints, and building a real-world project.",
+    "author": {
+      "@type": "Person",
+      "name": "Avinash Bawage",
+      "url": "https://avinashbawage.com"
+    },
+    "datePublished": "2026-09-23",
+    "dateModified": "2026-09-23",
+    "publisher": {
+      "@type": "Person",
+      "name": "Avinash Bawage"
+    },
+    "mainEntityOfPage": {
+      "@type": "WebPage",
+      "@id": "https://avinashbawage.com/blog/mysql-for-beginners.html"
+    },
+    "keywords": ["MySQL tutorial", "MySQL for beginners", "SQL tutorial", "MySQL CRUD", "SQL JOINs"],
+    "wordCount": 5400,
+    "articleSection": "Database"
+  }
+  </script>
+
+  <!-- FAQ Schema -->
+  <script type="application/ld+json">
+  {
+    "@context": "https://schema.org",
+    "@type": "FAQPage",
+    "mainEntity": [
+      {
+        "@type": "Question",
+        "name": "Is MySQL the same as SQL?",
+        "acceptedAnswer": {
+          "@type": "Answer",
+          "text": "No. SQL (Structured Query Language) is the language used to query databases. MySQL is a database management system (DBMS) that uses SQL. Think of SQL as English and MySQL as a person who understands English."
+        }
+      },
+      {
+        "@type": "Question",
+        "name": "Do I need to install MySQL to learn it?",
+        "acceptedAnswer": {
+          "@type": "Answer",
+          "text": "Yes for local practice, but you can also use online alternatives like db-fiddle.com, SQL Fiddle, or PlanetScale's free tier. For serious learning, install MySQL Community Server or use Docker."
+        }
+      },
+      {
+        "@type": "Question",
+        "name": "MySQL vs PostgreSQL — which should a beginner learn?",
+        "acceptedAnswer": {
+          "@type": "Answer",
+          "text": "Start with MySQL — it is simpler to install, widely used in shared hosting and PHP stacks, and 90% of SQL knowledge transfers to PostgreSQL. Learn PostgreSQL later for advanced features like JSONB and full-text search."
+        }
+      },
+      {
+        "@type": "Question",
+        "name": "Is MySQL still relevant in 2026?",
+        "acceptedAnswer": {
+          "@type": "Answer",
+          "text": "Absolutely. MySQL powers WordPress, many SaaS products, and large companies like Facebook, Uber, and Airbnb. It is the most popular open-source relational database and a top interview topic for backend roles."
+        }
+      }
+    ]
+  }
+  </script>
+</head>
+<body>
+
+  <!-- NAV -->
+  <nav class="nav scrolled" id="nav">
+    <div class="nav-container">
+      <a href="../index.html" class="nav-logo">
+        <span class="logo-bracket">{</span> AB <span class="logo-bracket">}</span>
+      </a>
+      <ul class="nav-links">
+        <li><a href="../index.html#about">About</a></li>
+        <li><a href="../index.html#skills">Skills</a></li>
+        <li><a href="../index.html#projects">Projects</a></li>
+        <li><a href="../blog.html" class="nav-blog-link" style="color:#6366f1">Blog</a></li>
+        <li><a href="../index.html#contact" class="nav-cta">Hire Me</a></li>
+      </ul>
+      <button class="theme-toggle" id="themeToggle" aria-label="Toggle dark/light mode">
+        <i class="fas fa-sun icon-sun"></i>
+        <i class="fas fa-moon icon-moon"></i>
+      </button>
+      <button class="hamburger" id="hamburger" aria-label="Toggle menu">
+        <span></span><span></span><span></span>
+      </button>
+    </div>
+  </nav>
+
+  <div class="mobile-menu" id="mobileMenu">
+    <ul>
+      <li><a href="../index.html#about">About</a></li>
+      <li><a href="../index.html#skills">Skills</a></li>
+      <li><a href="../index.html#projects">Projects</a></li>
+      <li><a href="../blog.html">Blog</a></li>
+      <li><a href="../index.html#contact">Hire Me</a></li>
+    </ul>
+  </div>
+
+  <!-- BLOG HEADER -->
+  <header class="blog-hero">
+    <div class="container">
+      <a href="../blog.html" class="blog-back"><i class="fas fa-arrow-left"></i> Back to Blog</a>
+      <h1 class="blog-hero-title">MySQL for Beginners: Complete Guide (2026)</h1>
+      <p class="blog-hero-desc">Learn MySQL from zero — installation to building a real database with tables, queries, JOINs, and best practices step-by-step.</p>
+    </div>
+  </header>
+
+  <article class="blog-article" id="mysql-for-beginners">
+    <div class="container">
+      <div class="article-header">
+        <div class="article-meta">
+          <span class="article-tag">MySQL</span>
+          <span class="article-date"><i class="fas fa-calendar"></i> September 23, 2026</span>
+          <span class="article-read"><i class="fas fa-clock"></i> 20 min read</span>
+        </div>
+        <h1 class="article-title">MySQL for Beginners: Complete Guide (2026)</h1>
+        <p class="article-subtitle">The only MySQL beginner guide you need — from installation to writing powerful queries with hands-on examples</p>
+        <div class="article-author">
+          <img src="../profile1.jpg" alt="Avinash Bawage - Frontend Developer and React Engineer" class="author-avatar" width="50" height="50">
+          <div>
+            <span class="author-name">Avinash Bawage</span>
+            <span class="author-role">Frontend Developer &amp; React Engineer</span>
+          </div>
+        </div>
+      </div>
+
+      <div class="article-content">
+        <div class="toc">
+          <h3>Table of Contents</h3>
+          <ol>
+            <li><a href="#what-is-mysql">What is MySQL? SQL vs MySQL</a></li>
+            <li><a href="#why-mysql">Why Use MySQL?</a></li>
+            <li><a href="#how-mysql-works">How MySQL Works: Architecture</a></li>
+            <li><a href="#installation">Installation & Setup</a></li>
+            <li><a href="#first-database">Your First Database & Table</a></li>
+            <li><a href="#data-types">Data Types Explained</a></li>
+            <li><a href="#crud">CRUD — Create, Read, Update, Delete</a></li>
+            <li><a href="#filtering">Filtering: WHERE, LIKE, IN, BETWEEN</a></li>
+            <li><a href="#sorting">Sorting & Limiting: ORDER BY, LIMIT</a></li>
+            <li><a href="#constraints">Constraints: PRIMARY KEY, FOREIGN KEY, UNIQUE</a></li>
+            <li><a href="#joins">JOINs: INNER, LEFT, RIGHT</a></li>
+            <li><a href="#aggregations">Aggregations: COUNT, SUM, AVG, GROUP BY</a></li>
+            <li><a href="#indexes">Indexes & Performance</a></li>
+            <li><a href="#project">Project: E-Commerce Database from Scratch</a></li>
+            <li><a href="#nodejs-connect">Connect MySQL with Node.js</a></li>
+            <li><a href="#best-practices">Best Practices & Cheatsheet</a></li>
+            <li><a href="#mysql-vs-others">MySQL vs PostgreSQL vs SQLite</a></li>
+            <li><a href="#faq">FAQ</a></li>
+          </ol>
+        </div>
+
+        <section id="what-is-mysql">
+          <h2>1. What is MySQL? SQL vs MySQL</h2>
+          <p>MySQL is an <strong>open-source Relational Database Management System (RDBMS)</strong> that stores data in tables (rows and columns) and lets you query it using <strong>SQL (Structured Query Language)</strong>.</p>
+          <p>Created in 1995 and now owned by Oracle, MySQL powers <strong>WordPress, Facebook, Uber, Airbnb, Netflix</strong> and millions of websites worldwide. It is the <strong>#1 most popular open-source database</strong>.</p>
+
+          <h3>SQL vs MySQL — The Common Confusion</h3>
+          <div class="comparison-table">
+            <table>
+              <thead>
+                <tr>
+                  <th>Term</th>
+                  <th>What It Is</th>
+                  <th>Analogy</th>
+                </tr>
+              </thead>
+              <tbody>
+                <tr>
+                  <td><strong>SQL</strong></td>
+                  <td>Language to talk to databases</td>
+                  <td>English language</td>
+                </tr>
+                <tr>
+                  <td><strong>MySQL</strong></td>
+                  <td>Software that understands SQL</td>
+                  <td>Person who speaks English</td>
+                </tr>
+                <tr>
+                  <td><strong>PostgreSQL, SQLite</strong></td>
+                  <td>Other software that also understand SQL</td>
+                  <td>Other people who also speak English</td>
+                </tr>
+              </tbody>
+            </table>
+          </div>
+
+          <pre><code>-- SQL is the same across databases (90% similar):
+SELECT * FROM users WHERE age &gt; 18;
+
+-- MySQL is the database that EXECUTES this SQL and returns results.
+-- PostgreSQL, SQLite, SQL Server all run similar SQL.</code></pre>
+
+          <h3>How Data is Stored: Tables</h3>
+          <pre><code>Table: users
++----+----------+-------+---------------------+
+| id | name     | age   | email               |
++----+----------+-------+---------------------+
+| 1  | Avinash  | 28    | avi@example.com     |
+| 2  | Priya    | 26    | priya@example.com   |
+| 3  | Rohan    | 30    | rohan@example.com   |
++----+----------+-------+---------------------+
+  ↑      ↑        ↑       ↑
+ PK   VARCHAR   INT     VARCHAR  — columns have types
+ Rows = records, Columns = fields</code></pre>
+
+          <div class="callout callout-info">
+            <i class="fas fa-info-circle"></i>
+            <p><strong>In simple words:</strong> Think of MySQL as Excel on steroids — tables are like sheets, rows are records, columns are fields. But unlike Excel, MySQL handles millions of rows, enforces rules (constraints), links tables together (JOINs), and serves data to your apps via queries.</p>
+          </div>
+        </section>
+
+        <section id="why-mysql">
+          <h2>2. Why Use MySQL?</h2>
+
+          <h3>Advantages</h3>
+          <ul>
+            <li><i class="fas fa-check-circle"></i> <strong>Free & open-source</strong> — Community Edition costs nothing, enterprise support available</li>
+            <li><i class="fas fa-check-circle"></i> <strong>Beginner friendly</strong> — simple installation, readable SQL, huge tutorial community</li>
+            <li><i class="fas fa-check-circle"></i> <strong>Proven at scale</strong> — handles millions of queries per second at Facebook / Uber</li>
+            <li><i class="fas fa-check-circle"></i> <strong>Works everywhere</strong> — Node.js, PHP, Python, Java, WordPress, shared hosting</li>
+            <li><i class="fas fa-check-circle"></i> <strong>ACID compliant</strong> — Atomicity, Consistency, Isolation, Durability — your data stays safe</li>
+            <li><i class="fas fa-check-circle"></i> <strong>Great tooling</strong> — MySQL Workbench, phpMyAdmin, CLI, and cloud options (PlanetScale, AWS RDS)</li>
+          </ul>
+
+          <h3>When NOT to Use MySQL</h3>
+          <ul>
+            <li><i class="fas fa-times-circle"></i> Unstructured data (JSON-heavy docs) → consider MongoDB</li>
+            <li><i class="fas fa-times-circle"></i> Need advanced geospatial or full-text search → PostgreSQL may be better</li>
+            <li><i class="fas fa-times-circle"></i> Tiny local app with no server → SQLite is simpler (single file, zero config)</li>
+          </ul>
+
+          <pre><code>✅ Use MySQL for: blogs, e-commerce, SaaS, user accounts, inventories
+✅ Use MySQL when: data has clear relationships (users → orders → products)
+✅ Use MySQL when: you need transactions (payments must not lose money)</code></pre>
+        </section>
+
+        <section id="how-mysql-works">
+          <h2>3. How MySQL Works: Architecture</h2>
+          <p>Understanding the big picture before writing queries makes everything click faster.</p>
+
+          <pre><code>// How your app talks to MySQL:
+// ┌──────────┐    SQL Query     ┌──────────────────┐    Reads/Writes   ┌────────┐
+// │ Your App │ ──────────────→  │   MySQL Server   │ ───────────────→ │ Disk   │
+// │ (Node.js)│ ←──────────────  │  (mysqld process)│ ←─────────────── │ Files  │
+// └──────────┘   Result Rows    └──────────────────┘                  └────────┘
+//
+// Inside MySQL Server:
+// 1. Connection Layer  — handles client connections & auth
+// 2. SQL Layer         — parses SQL, optimizes, executes
+// 3. Storage Engine    — InnoDB (default) stores actual data on disk</code></pre>
+
+          <h3>Key Concepts</h3>
+          <ul>
+            <li><i class="fas fa-check-circle"></i> <strong>Server (mysqld)</strong> — the MySQL program running in background that holds all databases</li>
+            <li><i class="fas fa-check-circle"></i> <strong>Client (mysql)</strong> — CLI or GUI that connects to the server to run queries</li>
+            <li><i class="fas fa-check-circle"></i> <strong>Database</strong> — a container for tables (like a folder). One server can have many databases</li>
+            <li><i class="fas fa-check-circle"></i> <strong>Table</strong> — rows + columns inside a database</li>
+            <li><i class="fas fa-check-circle"></i> <strong>Storage Engine</strong> — InnoDB is the default (supports transactions, foreign keys, row-level locking)</li>
+          </ul>
+
+          <div class="callout callout-tip">
+            <i class="fas fa-lightbulb"></i>
+            <p><strong>Mental model:</strong> MySQL Server is a building. Inside it are databases (apartments). Inside each apartment are tables (rooms). Inside each room are rows (furniture). SQL is the language you use to ask the building manager to fetch or rearrange things.</p>
+          </div>
+        </section>
+
+        <section id="installation">
+          <h2>4. Installation & Setup</h2>
+          <p>Get MySQL running in under 5 minutes — pick one method.</p>
+
+          <h3>Option 1: Official Installer (Easiest for Beginners)</h3>
+          <pre><code># 1. Download MySQL Community Server from https://dev.mysql.com/downloads/mysql/
+# 2. Choose your OS (Windows / macOS / Linux)
+# 3. Install — set a root password when prompted (remember it!)
+# 4. Verify in terminal:
+
+mysql --version
+# mysql  Ver 8.0.42 for Win64
+
+mysql -u root -p
+# Enter password: ****
+# mysql&gt;   ← you are now inside MySQL shell
+# Type EXIT; to leave</code></pre>
+
+          <h3>Option 2: Docker (Recommended for Developers)</h3>
+          <pre><code># Run MySQL 8 in one command — no system install needed
+docker run --name mysql-dev \
+  -e MYSQL_ROOT_PASSWORD=mypassword \
+  -e MYSQL_DATABASE=testdb \
+  -p 3306:3306 -d mysql:8
+
+# Connect
+docker exec -it mysql-dev mysql -u root -p
+# or
+mysql -h 127.0.0.1 -u root -p
+
+# Stop / start later
+docker stop mysql-dev
+docker start mysql-dev</code></pre>
+
+          <h3>Option 3: Online — No Install</h3>
+          <p>Practice instantly without installing: <strong>db-fiddle.com</strong>, <strong>SQL Fiddle</strong>, or <strong>OneCompiler MySQL</strong>.</p>
+
+          <h3>Install MySQL Workbench (GUI)</h3>
+          <p>Download from <strong>dev.mysql.com/downloads/workbench</strong> — visual table designer, query editor, and server dashboard. Great for beginners who prefer clicking over typing.</p>
+
+          <div class="callout callout-warning">
+            <i class="fas fa-exclamation-triangle"></i>
+            <p><strong>Common mistake:</strong> Forgetting the root password. If you do, reset it via <code>mysqld --skip-grant-tables</code> or reinstall via Docker (just delete the container and rerun). For learning, use a simple password like <code>root</code> or <code>password</code> — change it for production.</p>
+          </div>
+        </section>
+
+        <section id="first-database">
+          <h2>5. Your First Database & Table</h2>
+          <p>Let's create a database and a table — the foundation of every MySQL project.</p>
+
+          <pre><code>-- ============================================
+-- Connect and explore
+-- ============================================
+SHOW DATABASES;   -- list all databases
+
+-- Create your own database
+CREATE DATABASE shop_db;
+USE shop_db;     -- switch to it
+SELECT DATABASE(); -- confirms: shop_db
+
+-- ============================================
+-- Create a table
+-- ============================================
+CREATE TABLE users (
+  id       INT AUTO_INCREMENT PRIMARY KEY,
+  name     VARCHAR(100) NOT NULL,
+  email    VARCHAR(150) NOT NULL UNIQUE,
+  age      INT,
+  created_at TIMESTAMP DEFAULT CURRENT_TIMESTAMP
+);
+
+-- Check it
+SHOW TABLES;
+DESCRIBE users;   -- show columns and types
+SHOW CREATE TABLE users; -- full definition</code></pre>
+
+          <h3>Insert & View Data</h3>
+          <pre><code>-- Insert rows
+INSERT INTO users (name, email, age) VALUES
+  ('Avinash', 'avi@example.com', 28),
+  ('Priya',   'priya@example.com', 26),
+  ('Rohan',   'rohan@example.com', 30);
+
+-- View
+SELECT * FROM users;
+
+-- Result:
+-- +----+---------+---------+------+---------------------+
+-- | id | name    | email   | age  | created_at          |
+-- +----+---------+---------+------+---------------------+
+-- |  1 | Avinash | avi@... |   28 | 2026-09-23 10:00:00 |
+-- +----+---------+---------+------+---------------------+</code></pre>
+
+          <div class="callout callout-info">
+            <i class="fas fa-info-circle"></i>
+            <p><strong>Semicolons matter.</strong> Every SQL statement ends with <code>;</code>. In the MySQL CLI you can write multi-line queries — it waits for <code>;</code> before executing. Press Enter without <code>;</code> and you get a <code>-&gt;</code> continuation prompt — just add <code>;</code> and press Enter again.</p>
+          </div>
+        </section>
+
+        <section id="data-types">
+          <h2>6. Data Types Explained</h2>
+          <p>Choosing the right type saves space, prevents bugs, and speeds up queries.</p>
+
+          <div class="comparison-table">
+            <table>
+              <thead>
+                <tr>
+                  <th>Category</th>
+                  <th>Type</th>
+                  <th>Use For</th>
+                  <th>Example</th>
+                </tr>
+              </thead>
+              <tbody>
+                <tr>
+                  <td><strong>Numeric</strong></td>
+                  <td><code>INT</code></td>
+                  <td>Whole numbers</td>
+                  <td><code>age INT</code> → 28</td>
+                </tr>
+                <tr>
+                  <td></td>
+                  <td><code>DECIMAL(10,2)</code></td>
+                  <td>Money (exact)</td>
+                  <td><code>price DECIMAL(10,2)</code> → 1999.99</td>
+                </tr>
+                <tr>
+                  <td><strong>String</strong></td>
+                  <td><code>VARCHAR(n)</code></td>
+                  <td>Variable-length text</td>
+                  <td><code>name VARCHAR(100)</code></td>
+                </tr>
+                <tr>
+                  <td></td>
+                  <td><code>CHAR(n)</code></td>
+                  <td>Fixed length (e.g. country code)</td>
+                  <td><code>code CHAR(2)</code> → 'IN'</td>
+                </tr>
+                <tr>
+                  <td></td>
+                  <td><code>TEXT</code></td>
+                  <td>Long text (articles, comments)</td>
+                  <td><code>body TEXT</code></td>
+                </tr>
+                <tr>
+                  <td><strong>Date/Time</strong></td>
+                  <td><code>DATE</code></td>
+                  <td>Date only</td>
+                  <td><code>2026-09-23</code></td>
+                </tr>
+                <tr>
+                  <td></td>
+                  <td><code>DATETIME</code></td>
+                  <td>Date + time</td>
+                  <td><code>2026-09-23 10:00:00</code></td>
+                </tr>
+                <tr>
+                  <td></td>
+                  <td><code>TIMESTAMP</code></td>
+                  <td>Auto time zone aware</td>
+                  <td><code>DEFAULT CURRENT_TIMESTAMP</code></td>
+                </tr>
+                <tr>
+                  <td><strong>Other</strong></td>
+                  <td><code>BOOLEAN</code></td>
+                  <td>True/false (stored as TINYINT)</td>
+                  <td><code>is_active BOOLEAN</code></td>
+                </tr>
+                <tr>
+                  <td></td>
+                  <td><code>ENUM('a','b')</code></td>
+                  <td>Pick from list</td>
+                  <td><code>status ENUM('pending','shipped')</code></td>
+                </tr>
+                <tr>
+                  <td></td>
+                  <td><code>JSON</code></td>
+                  <td>JSON data (MySQL 5.7+)</td>
+                  <td><code>meta JSON</code></td>
+                </tr>
+              </tbody>
+            </table>
+          </div>
+
+          <pre><code>-- Example: products table with varied types
+CREATE TABLE products (
+  id          INT AUTO_INCREMENT PRIMARY KEY,
+  name        VARCHAR(200) NOT NULL,
+  description TEXT,
+  price       DECIMAL(10,2) NOT NULL,
+  stock       INT DEFAULT 0,
+  is_active   BOOLEAN DEFAULT TRUE,
+  created_at  TIMESTAMP DEFAULT CURRENT_TIMESTAMP
+);</code></pre>
+
+          <div class="callout callout-tip">
+            <i class="fas fa-lightbulb"></i>
+            <p><strong>Money tip:</strong> Never use <code>FLOAT</code> or <code>DOUBLE</code> for money — they cause rounding errors (0.1 + 0.2 ≠ 0.3). Always use <code>DECIMAL(10,2)</code> for prices, balances, and financial values.</p>
+          </div>
+        </section>
+
+        <section id="crud">
+          <h2>7. CRUD — Create, Read, Update, Delete</h2>
+          <p>CRUD is 90% of what you do with a database. Master these four operations.</p>
+
+          <pre><code>-- ============================================
+-- C — CREATE (INSERT)
+-- ============================================
+-- Single row
+INSERT INTO users (name, email, age) VALUES ('Neha', 'neha@example.com', 24);
+
+-- Multiple rows at once
+INSERT INTO users (name, email, age) VALUES
+  ('Aman', 'aman@example.com', 29),
+  ('Sara', 'sara@example.com', 31);
+
+-- Insert and get the new ID
+INSERT INTO users (name, email) VALUES ('Test', 'test@example.com');
+SELECT LAST_INSERT_ID(); -- returns the auto-increment id
+
+-- ============================================
+-- R — READ (SELECT)
+-- ============================================
+SELECT * FROM users;                          -- all rows, all columns
+SELECT name, email FROM users;                -- only specific columns
+SELECT * FROM users WHERE age &gt; 25;           -- filtered
+SELECT * FROM users WHERE id = 2;             -- single row by PK
+SELECT COUNT(*) FROM users;                   -- count rows
+
+-- ============================================
+-- U — UPDATE
+-- ============================================
+-- ⚠️ Always use WHERE — without it, you update EVERY row!
+UPDATE users SET age = 29 WHERE id = 1;
+UPDATE users SET name = 'Avinash B.', email = 'avi.b@example.com' WHERE id = 1;
+
+-- ============================================
+-- D — DELETE
+-- ============================================
+-- ⚠️ Always use WHERE — without it, you delete EVERY row!
+DELETE FROM users WHERE id = 5;
+
+-- Delete with condition
+DELETE FROM users WHERE age &lt; 18;
+
+-- Remove all rows but keep table structure
+TRUNCATE TABLE users;  -- faster than DELETE without WHERE
+
+-- Delete the entire table
+DROP TABLE users;      -- ⚠️ irreversible!</code></pre>
+
+          <div class="callout callout-warning">
+            <i class="fas fa-exclamation-triangle"></i>
+            <p><strong>Danger zone:</strong> Running <code>UPDATE users SET age = 0;</code> or <code>DELETE FROM users;</code> without <code>WHERE</code> affects every row. Before any UPDATE/DELETE, first run a <code>SELECT</code> with the same WHERE to preview which rows will be affected.</p>
+          </div>
+        </section>
+
+        <section id="filtering">
+          <h2>8. Filtering: WHERE, LIKE, IN, BETWEEN</h2>
+          <p><code>WHERE</code> is how you ask precise questions of your data.</p>
+
+          <pre><code>-- ============================================
+-- Comparison operators
+-- ============================================
+SELECT * FROM users WHERE age = 28;        -- equal
+SELECT * FROM users WHERE age != 28;       -- not equal
+SELECT * FROM users WHERE age &gt; 25;        -- greater than
+SELECT * FROM users WHERE age &gt;= 25;       -- greater or equal
+SELECT * FROM users WHERE age &lt; 30;        -- less than
+
+-- ============================================
+-- Logical operators
+-- ============================================
+SELECT * FROM users WHERE age &gt; 25 AND city = 'Hyderabad';
+SELECT * FROM users WHERE age &lt; 20 OR age &gt; 60;
+SELECT * FROM users WHERE NOT age = 28;
+
+-- ============================================
+-- IN — match any in a list
+-- ============================================
+SELECT * FROM users WHERE city IN ('Hyderabad', 'Mumbai', 'Delhi');
+SELECT * FROM users WHERE id IN (1, 3, 5);
+
+-- ============================================
+-- BETWEEN — range inclusive
+-- ============================================
+SELECT * FROM users WHERE age BETWEEN 25 AND 35;
+SELECT * FROM products WHERE price BETWEEN 100 AND 500;
+
+-- ============================================
+-- LIKE — pattern matching
+-- ============================================
+SELECT * FROM users WHERE name LIKE 'A%';     -- starts with A
+SELECT * FROM users WHERE name LIKE '%n';     -- ends with n
+SELECT * FROM users WHERE email LIKE '%@gmail.com'; -- Gmail users
+SELECT * FROM users WHERE name LIKE '%vi%';   -- contains "vi"
+
+-- Case-insensitive by default in MySQL (collation)
+-- Use BINARY for case-sensitive:
+SELECT * FROM users WHERE BINARY name = 'avinash'; -- exact case
+
+-- ============================================
+-- NULL handling
+-- ============================================
+SELECT * FROM users WHERE phone IS NULL;      -- missing phone
+SELECT * FROM users WHERE phone IS NOT NULL;  -- has phone
+-- ⚠️ Never use = NULL — always IS NULL / IS NOT NULL</code></pre>
+        </section>
+
+        <section id="sorting">
+          <h2>9. Sorting & Limiting: ORDER BY, LIMIT</h2>
+
+          <pre><code>-- Sort ascending (default A→Z, 0→9, old→new)
+SELECT * FROM users ORDER BY name ASC;
+SELECT * FROM users ORDER BY age ASC;
+
+-- Sort descending (Z→A, 9→0, new→old)
+SELECT * FROM users ORDER BY age DESC;
+SELECT * FROM products ORDER BY price DESC;
+
+-- Multiple sort keys
+SELECT * FROM users ORDER BY city ASC, age DESC;
+-- sort by city first, then by age within each city
+
+-- Limit results
+SELECT * FROM users LIMIT 5;               -- first 5 rows
+SELECT * FROM users LIMIT 10 OFFSET 20;    -- skip 20, take 10 (page 3 if page size 10)
+
+-- Pagination: page 1 → LIMIT 10 OFFSET 0
+--            page 2 → LIMIT 10 OFFSET 10
+--            page 3 → LIMIT 10 OFFSET 20
+
+-- Combine: get 5 most expensive products
+SELECT name, price FROM products ORDER BY price DESC LIMIT 5;
+
+-- Newest users first
+SELECT * FROM users ORDER BY created_at DESC LIMIT 10;</code></pre>
+
+          <div class="callout callout-tip">
+            <i class="fas fa-lightbulb"></i>
+            <p><strong>OFFSET is slow for large tables.</strong> For deep pagination (page 1000+), use keyset pagination instead: <code>SELECT * FROM users WHERE id &gt; 1000 ORDER BY id LIMIT 10</code> — this uses the index and stays fast even at millions of rows.</p>
+          </div>
+        </section>
+
+        <section id="constraints">
+          <h2>10. Constraints: PRIMARY KEY, FOREIGN KEY, UNIQUE</h2>
+          <p>Constraints are rules that keep your data clean and consistent — they prevent bugs at the database level.</p>
+
+          <pre><code>CREATE TABLE users (
+  id    INT AUTO_INCREMENT PRIMARY KEY,  -- unique, never null, auto number
+  email VARCHAR(150) NOT NULL UNIQUE,    -- no duplicates allowed
+  name  VARCHAR(100) NOT NULL,           -- must have a value
+  age   INT CHECK (age &gt;= 0 AND age &lt;= 120), -- valid range
+  city  VARCHAR(100) DEFAULT 'Unknown'   -- default if not provided
+);
+
+CREATE TABLE orders (
+  id         INT AUTO_INCREMENT PRIMARY KEY,
+  user_id    INT NOT NULL,
+  amount     DECIMAL(10,2) NOT NULL CHECK (amount &gt; 0),
+  status     ENUM('pending','shipped','delivered') DEFAULT 'pending',
+  created_at TIMESTAMP DEFAULT CURRENT_TIMESTAMP,
+
+  -- Foreign key: orders.user_id must exist in users.id
+  FOREIGN KEY (user_id) REFERENCES users(id)
+    ON DELETE CASCADE    -- if user deleted, delete their orders
+    ON UPDATE CASCADE
+);
+
+-- What each constraint does:
+-- PRIMARY KEY  → unique + not null + indexed (one per table, usually `id`)
+-- UNIQUE       → no duplicates (e.g. email)
+-- NOT NULL     → column must have a value
+-- CHECK        → value must satisfy condition
+-- FOREIGN KEY  → value must exist in another table
+-- DEFAULT      → value if none given</code></pre>
+
+          <h3>Foreign Key Actions</h3>
+          <div class="comparison-table">
+            <table>
+              <thead>
+                <tr>
+                  <th>Action</th>
+                  <th>When parent is deleted</th>
+                  <th>Use when</th>
+                </tr>
+              </thead>
+              <tbody>
+                <tr>
+                  <td><code>CASCADE</code></td>
+                  <td>Delete child rows too</td>
+                  <td>Orders belong to user — delete together</td>
+                </tr>
+                <tr>
+                  <td><code>SET NULL</code></td>
+                  <td>Set child FK to NULL</td>
+                  <td>Optional relationship</td>
+                </tr>
+                <tr>
+                  <td><code>RESTRICT</code></td>
+                  <td>Block deletion if children exist</td>
+                  <td>Prevent accidental loss (default)</td>
+                </tr>
+              </tbody>
+            </table>
+          </div>
+        </section>
+
+        <section id="joins">
+          <h2>11. JOINs: INNER, LEFT, RIGHT</h2>
+          <p>JOINs combine rows from two or more tables based on a related column — the most powerful SQL concept.</p>
+
+          <pre><code>-- Setup: two related tables
+-- users:  id, name, email
+-- orders: id, user_id, product, amount
+
+-- Sample data:
+-- users:  (1, Avinash), (2, Priya), (3, Rohan)
+-- orders: (1, user_id=1, Laptop, 60000)
+--         (2, user_id=1, Mouse, 800)
+--         (3, user_id=2, Keyboard, 3000)
+-- Rohan (id=3) has NO orders</code></pre>
+
+          <h3>INNER JOIN — Only Matching Rows</h3>
+          <pre><code>SELECT users.name, orders.product, orders.amount
+FROM users
+INNER JOIN orders ON users.id = orders.user_id;
+
+-- Result (only users who HAVE orders):
+-- Avinash | Laptop   | 60000
+-- Avinash | Mouse    | 800
+-- Priya   | Keyboard | 3000
+-- Rohan is EXCLUDED (no orders)</code></pre>
+
+          <h3>LEFT JOIN — All Left Table Rows + Matching Right</h3>
+          <pre><code>SELECT users.name, orders.product, orders.amount
+FROM users
+LEFT JOIN orders ON users.id = orders.user_id;
+
+-- Result (ALL users, even without orders):
+-- Avinash | Laptop   | 60000
+-- Avinash | Mouse    | 800
+-- Priya   | Keyboard | 3000
+-- Rohan   | NULL     | NULL   ← included with NULLs
+
+-- Find users who never ordered:
+SELECT users.name
+FROM users
+LEFT JOIN orders ON users.id = orders.user_id
+WHERE orders.id IS NULL;  -- Rohan</code></pre>
+
+          <h3>RIGHT JOIN — All Right Table Rows</h3>
+          <pre><code>SELECT users.name, orders.product
+FROM users
+RIGHT JOIN orders ON users.id = orders.user_id;
+-- All orders, even if user was deleted (rare — LEFT JOIN is preferred)</code></pre>
+
+          <pre><code>-- Visual cheat sheet:
+-- INNER JOIN:   A ∩ B           (intersection)
+-- LEFT JOIN:    A + (A ∩ B)     (all of A, matches from B)
+-- RIGHT JOIN:   B + (A ∩ B)     (all of B, matches from A)
+
+-- Multiple JOINs:
+SELECT users.name, orders.product, products.category
+FROM users
+JOIN orders   ON users.id = orders.user_id
+JOIN products ON orders.product_id = products.id
+WHERE users.city = 'Hyderabad';</code></pre>
+
+          <div class="callout callout-info">
+            <i class="fas fa-info-circle"></i>
+            <p><strong>Which JOIN to use?</strong> Use <code>INNER JOIN</code> when you want only rows with matches in both tables. Use <code>LEFT JOIN</code> when you want all rows from the left table even if there is no match — e.g., "show all users and their orders, if any." 95% of the time you need one of these two.</p>
+          </div>
+        </section>
+
+        <section id="aggregations">
+          <h2>12. Aggregations: COUNT, SUM, AVG, GROUP BY</h2>
+          <p>Aggregate functions summarize data — total sales, average age, orders per user.</p>
+
+          <pre><code>-- Count rows
+SELECT COUNT(*) FROM users;                    -- total users
+SELECT COUNT(*) FROM orders WHERE status = 'shipped';
+
+-- Sum, Avg, Min, Max
+SELECT SUM(amount) FROM orders;                -- total revenue
+SELECT AVG(amount) FROM orders;                -- average order value
+SELECT MIN(price) FROM products;              -- cheapest product
+SELECT MAX(price) FROM products;              -- most expensive
+
+-- GROUP BY — aggregate per group
+-- Orders per user:
+SELECT user_id, COUNT(*) AS order_count, SUM(amount) AS total_spent
+FROM orders
+GROUP BY user_id;
+
+-- Result:
+-- user_id | order_count | total_spent
+--       1 |           2 |       60800
+--       2 |           1 |        3000
+
+-- Revenue per status:
+SELECT status, COUNT(*) AS cnt, SUM(amount) AS revenue
+FROM orders
+GROUP BY status;
+
+-- HAVING — filter AFTER grouping (WHERE filters BEFORE)
+SELECT user_id, SUM(amount) AS total
+FROM orders
+GROUP BY user_id
+HAVING total &gt; 5000;   -- only users who spent &gt; 5000
+
+-- ⚠️ WHERE vs HAVING:
+-- WHERE  → filters rows before grouping
+-- HAVING → filters groups after grouping</code></pre>
+
+          <h3>Complete Example: Top Customers</h3>
+          <pre><code>SELECT
+  users.name,
+  COUNT(orders.id) AS orders_count,
+  SUM(orders.amount) AS total_spent
+FROM users
+LEFT JOIN orders ON users.id = orders.user_id
+GROUP BY users.id, users.name
+ORDER BY total_spent DESC
+LIMIT 5;</code></pre>
+        </section>
+
+        <section id="indexes">
+          <h2>13. Indexes & Performance</h2>
+          <p>An index is like a book's table of contents — it helps MySQL find rows without scanning every page.</p>
+
+          <pre><code>-- Without index: MySQL scans ALL rows (slow for large tables)
+SELECT * FROM users WHERE email = 'avi@example.com';
+-- → Full table scan: checks every row
+
+-- Add an index:
+CREATE INDEX idx_email ON users(email);
+-- Now the same query uses the index → instant even at 1M rows
+
+-- Check if index is used:
+EXPLAIN SELECT * FROM users WHERE email = 'avi@example.com';
+-- Look for: type = ref or const, key = idx_email (good)
+-- vs type = ALL (bad — full scan)
+
+-- Auto-indexed columns (no need to create manually):
+-- PRIMARY KEY is always indexed
+-- UNIQUE columns are indexed
+-- FOREIGN KEY columns are indexed
+
+-- Manual indexes — add for columns you filter/sort/join often:
+CREATE INDEX idx_city ON users(city);
+CREATE INDEX idx_status ON orders(status);
+CREATE INDEX idx_created ON orders(created_at);
+
+-- Composite index (multiple columns — order matters!)
+CREATE INDEX idx_city_age ON users(city, age);
+-- Fast for: WHERE city = 'Hyd' AND age &gt; 25
+-- Fast for: WHERE city = 'Hyd'
+-- NOT fast for: WHERE age &gt; 25 (city is first in index)
+
+-- Remove index:
+DROP INDEX idx_city ON users;</code></pre>
+
+          <div class="callout callout-warning">
+            <i class="fas fa-exclamation-triangle"></i>
+            <p><strong>Don't over-index.</strong> Each index speeds up reads but slows down writes (INSERT/UPDATE) and uses disk space. Index only columns you actually filter, join, or sort by. Start with no extra indexes, add them when <code>EXPLAIN</code> shows a full table scan on a slow query.</p>
+          </div>
+        </section>
+
+        <section id="project">
+          <h2>14. Project: E-Commerce Database from Scratch</h2>
+          <p>Let's build a complete mini shop database — users, products, orders — with relationships and real queries.</p>
+
+          <pre><code>-- ============================================
+-- Step 1: Create database
+-- ============================================
+DROP DATABASE IF EXISTS shop_db;
+CREATE DATABASE shop_db;
+USE shop_db;
+
+-- ============================================
+-- Step 2: Create tables with relationships
+-- ============================================
+CREATE TABLE users (
+  id         INT AUTO_INCREMENT PRIMARY KEY,
+  name       VARCHAR(100) NOT NULL,
+  email      VARCHAR(150) NOT NULL UNIQUE,
+  city       VARCHAR(100),
+  created_at TIMESTAMP DEFAULT CURRENT_TIMESTAMP
+);
+
+CREATE TABLE products (
+  id         INT AUTO_INCREMENT PRIMARY KEY,
+  name       VARCHAR(200) NOT NULL,
+  category   VARCHAR(100),
+  price      DECIMAL(10,2) NOT NULL CHECK (price &gt;= 0),
+  stock      INT DEFAULT 0,
+  created_at TIMESTAMP DEFAULT CURRENT_TIMESTAMP
+);
+
+CREATE TABLE orders (
+  id         INT AUTO_INCREMENT PRIMARY KEY,
+  user_id    INT NOT NULL,
+  product_id INT NOT NULL,
+  quantity   INT NOT NULL CHECK (quantity &gt; 0),
+  amount     DECIMAL(10,2) NOT NULL,
+  status     ENUM('pending','shipped','delivered','cancelled') DEFAULT 'pending',
+  created_at TIMESTAMP DEFAULT CURRENT_TIMESTAMP,
+  FOREIGN KEY (user_id) REFERENCES users(id) ON DELETE CASCADE,
+  FOREIGN KEY (product_id) REFERENCES products(id) ON DELETE RESTRICT
+);</code></pre>
+
+          <pre><code>-- ============================================
+-- Step 3: Insert sample data
+-- ============================================
+INSERT INTO users (name, email, city) VALUES
+  ('Avinash', 'avi@example.com', 'Hyderabad'),
+  ('Priya',   'priya@example.com', 'Mumbai'),
+  ('Rohan',   'rohan@example.com', 'Hyderabad');
+
+INSERT INTO products (name, category, price, stock) VALUES
+  ('Laptop',     'Electronics', 60000.00, 10),
+  ('Mouse',      'Electronics',   800.00, 100),
+  ('Keyboard',   'Electronics',  3000.00, 50),
+  ('Desk Chair', 'Furniture',   12000.00, 20);
+
+INSERT INTO orders (user_id, product_id, quantity, amount, status) VALUES
+  (1, 1, 1, 60000.00, 'delivered'),
+  (1, 2, 2,  1600.00, 'shipped'),
+  (2, 3, 1,  3000.00, 'pending'),
+  (2, 4, 1, 12000.00, 'delivered');</code></pre>
+
+          <pre><code>-- ============================================
+-- Step 4: Real queries — try each!
+-- ============================================
+
+-- 1. All orders with user name and product name
+SELECT users.name, products.name AS product, orders.quantity, orders.amount, orders.status
+FROM orders
+JOIN users    ON orders.user_id = users.id
+JOIN products ON orders.product_id = products.id;
+
+-- 2. Total revenue
+SELECT SUM(amount) AS total_revenue FROM orders WHERE status != 'cancelled';
+
+-- 3. Revenue per city
+SELECT users.city, SUM(orders.amount) AS revenue
+FROM orders JOIN users ON orders.user_id = users.id
+GROUP BY users.city;
+
+-- 4. Top selling product
+SELECT products.name, SUM(orders.quantity) AS total_sold
+FROM orders JOIN products ON orders.product_id = products.id
+GROUP BY products.id
+ORDER BY total_sold DESC LIMIT 1;
+
+-- 5. Users who never ordered
+SELECT name FROM users
+LEFT JOIN orders ON users.id = orders.user_id
+WHERE orders.id IS NULL;
+
+-- 6. Low stock alert
+SELECT name, stock FROM products WHERE stock &lt; 20;
+
+-- 7. Monthly sales
+SELECT DATE_FORMAT(created_at, '%Y-%m') AS month, SUM(amount) AS sales
+FROM orders
+GROUP BY month
+ORDER BY month;</code></pre>
+        </section>
+
+        <section id="nodejs-connect">
+          <h2>15. Connect MySQL with Node.js</h2>
+          <p>Most beginners want to use MySQL from JavaScript. Here is the minimal modern setup.</p>
+
+          <pre><code># Install driver
+npm install mysql2 dotenv
+
+# .env
+DB_HOST=localhost
+DB_USER=root
+DB_PASSWORD=mypassword
+DB_NAME=shop_db</code></pre>
+
+          <pre><code>// ============================================
+// db.js — connection pool (ESM)
+// ============================================
+import 'dotenv/config';
+import mysql from 'mysql2/promise';
+
+const pool = mysql.createPool({
+  host:     process.env.DB_HOST,
+  user:     process.env.DB_USER,
+  password: process.env.DB_PASSWORD,
+  database: process.env.DB_NAME,
+  waitForConnections: true,
+  connectionLimit: 10,
+});
+
+export default pool;
+
+// ============================================
+// Usage — query with parameterized SQL (prevents SQL injection!)
+// ============================================
+import pool from './db.js';
+
+// SELECT
+const [users] = await pool.query('SELECT * FROM users WHERE city = ?', ['Hyderabad']);
+console.log(users);
+
+// INSERT (safe from injection)
+const [result] = await pool.query(
+  'INSERT INTO users (name, email, city) VALUES (?, ?, ?)',
+  ['Neha', 'neha@example.com', 'Delhi']
+);
+console.log('Inserted ID:', result.insertId);
+
+// UPDATE
+await pool.query('UPDATE users SET city = ? WHERE id = ?', ['Pune', 1]);
+
+// JOIN
+const [orders] = await pool.query(`
+  SELECT users.name, products.name AS product, orders.amount
+  FROM orders
+  JOIN users ON orders.user_id = users.id
+  JOIN products ON orders.product_id = products.id
+`);
+
+// Express route example
+import express from 'express';
+const app = express();
+app.use(express.json());
+
+app.get('/api/users', async (req, res) =&gt; {
+  try {
+    const [rows] = await pool.query('SELECT * FROM users');
+    res.json(rows);
+  } catch (err) {
+    res.status(500).json({ error: err.message });
+  }
+});
+
+app.listen(3000, () =&gt; console.log('🚀 API at http://localhost:3000'));</code></pre>
+
+          <div class="callout callout-warning">
+            <i class="fas fa-exclamation-triangle"></i>
+            <p><strong>Never concatenate user input into SQL.</strong> <code>`SELECT * FROM users WHERE name = '${req.body.name}'`</code> is vulnerable to SQL injection — an attacker can delete your database. Always use <code>?</code> placeholders with parameter arrays as shown above.</p>
+          </div>
+        </section>
+
+        <section id="best-practices">
+          <h2>16. Best Practices & Cheatsheet</h2>
+
+          <h3>Essential SQL Cheatsheet</h3>
+          <pre><code>-- Databases
+SHOW DATABASES;  CREATE DATABASE db;  USE db;  DROP DATABASE db;
+
+-- Tables
+SHOW TABLES;  DESCRIBE tbl;  DROP TABLE tbl;  TRUNCATE TABLE tbl;
+
+-- CRUD
+INSERT INTO tbl (col) VALUES ('val');
+SELECT col FROM tbl WHERE cond ORDER BY col LIMIT n;
+UPDATE tbl SET col='val' WHERE cond;
+DELETE FROM tbl WHERE cond;
+
+-- Filtering
+WHERE col = val  |  IN (a,b)  |  BETWEEN x AND y  |  LIKE '%pat%'  |  IS NULL
+
+-- JOINs
+SELECT * FROM A INNER JOIN B ON A.id = B.a_id;
+SELECT * FROM A LEFT JOIN B ON A.id = B.a_id WHERE B.id IS NULL; -- A without B
+
+-- Aggregation
+COUNT(*)  SUM(col)  AVG(col)  MIN(col)  MAX(col)  GROUP BY col  HAVING cond
+
+-- Indexes
+CREATE INDEX idx ON tbl(col);  DROP INDEX idx ON tbl;  EXPLAIN SELECT ...;</code></pre>
+
+          <h3>Golden Rules</h3>
+          <ul>
+            <li><i class="fas fa-check-circle"></i> <strong>Always use PRIMARY KEY</strong> — every table needs an <code>INT AUTO_INCREMENT PRIMARY KEY</code></li>
+            <li><i class="fas fa-check-circle"></i> <strong>Use FOREIGN KEY</strong> — let the database enforce relationships, not just your app code</li>
+            <li><i class="fas fa-check-circle"></i> <strong>Use <code>DECIMAL</code> for money</strong> — never <code>FLOAT</code></li>
+            <li><i class="fas fa-check-circle"></i> <strong>Parameterize queries</strong> — use <code>?</code> placeholders to prevent SQL injection</li>
+            <li><i class="fas fa-check-circle"></i> <strong>Index wisely</strong> — primary keys are auto-indexed; add indexes for WHERE/JOIN columns</li>
+            <li><i class="fas fa-check-circle"></i> <strong>Backup regularly</strong> — <code>mysqldump -u root -p shop_db &gt; backup.sql</code></li>
+            <li><i class="fas fa-check-circle"></i> <strong>Name consistently</strong> — tables plural lowercase (<code>users</code>), columns snake_case (<code>created_at</code>)</li>
+            <li><i class="fas fa-check-circle"></i> <strong>Use <code>NOT NULL</code> + <code>DEFAULT</code></strong> — avoid unexpected NULLs</li>
+          </ul>
+
+          <div class="callout callout-info">
+            <i class="fas fa-info-circle"></i>
+            <p><strong>Backup & restore:</strong> <code>mysqldump -u root -p shop_db &gt; backup.sql</code> to export, and <code>mysql -u root -p shop_db &lt; backup.sql</code> to restore. Run this before any major change or migration.</p>
+          </div>
+        </section>
+
+        <section id="mysql-vs-others">
+          <h2>17. MySQL vs PostgreSQL vs SQLite</h2>
+
+          <div class="comparison-table">
+            <table>
+              <thead>
+                <tr>
+                  <th>Feature</th>
+                  <th>MySQL</th>
+                  <th>PostgreSQL</th>
+                  <th>SQLite</th>
+                </tr>
+              </thead>
+              <tbody>
+                <tr>
+                  <td><strong>Best for</strong></td>
+                  <td>Web apps, WordPress, SaaS</td>
+                  <td>Complex queries, analytics</td>
+                  <td>Local apps, mobile, prototyping</td>
+                </tr>
+                <tr>
+                  <td><strong>Setup</strong></td>
+                  <td>Server install / Docker</td>
+                  <td>Server install / Docker</td>
+                  <td>Single file, zero config</td>
+                </tr>
+                <tr>
+                  <td><strong>Scale</strong></td>
+                  <td>Millions of rows, replication</td>
+                  <td>Millions, advanced features</td>
+                  <td>Small to medium apps</td>
+                </tr>
+                <tr>
+                  <td><strong>JSON support</strong></td>
+                  <td>JSON column (basic)</td>
+                  <td>JSONB (powerful, indexed)</td>
+                  <td>JSON1 extension</td>
+                </tr>
+                <tr>
+                  <td><strong>Transactions</strong></td>
+                  <td>Yes (InnoDB)</td>
+                  <td>Yes (full ACID)</td>
+                  <td>Yes</td>
+                </tr>
+                <tr>
+                  <td><strong>Learning curve</strong></td>
+                  <td>Low — beginner friendly</td>
+                  <td>Medium</td>
+                  <td>Very low</td>
+                </tr>
+                <tr>
+                  <td><strong>Hosting</strong></td>
+                  <td>Everywhere (cheap)</td>
+                  <td>Render, Supabase, AWS RDS</td>
+                  <td>Embedded only</td>
+                </tr>
+                <tr>
+                  <td><strong>When to pick</strong></td>
+                  <td>Default for most web projects</td>
+                  <td>Need advanced SQL features</td>
+                  <td>No server / offline first</td>
+                </tr>
+              </tbody>
+            </table>
+          </div>
+        </section>
+
+        <section id="faq">
+          <h2>18. Frequently Asked Questions</h2>
+
+          <h3>Is MySQL the same as SQL?</h3>
+          <p>No. <strong>SQL</strong> is the language (<code>SELECT * FROM users</code>). <strong>MySQL</strong> is the database software that understands and executes SQL. Other databases like PostgreSQL and SQLite also use SQL — learning MySQL teaches you SQL you can use anywhere.</p>
+
+          <h3>Do I need to install MySQL to learn it?</h3>
+          <p>For serious practice, yes — install MySQL Community Server or run it via Docker (<code>docker run -e MYSQL_ROOT_PASSWORD=pass -p 3306:3306 -d mysql:8</code>). For quick experiments, use online tools like <strong>db-fiddle.com</strong> or <strong>OneCompiler</strong> without any install.</p>
+
+          <h3>MySQL vs PostgreSQL — which should a beginner learn?</h3>
+          <p>Start with <strong>MySQL</strong>. It is simpler to set up, powers more beginner-friendly stacks (WordPress, PHP, Node), and 90% of what you learn transfers to PostgreSQL. Move to PostgreSQL later if you need JSONB, full-text search, or advanced analytics.</p>
+
+          <h3>Is MySQL still relevant in 2026?</h3>
+          <p>Absolutely. MySQL is the most popular open-source relational database, used by millions of sites and top companies. Knowing it is a standard backend interview requirement and a must-have skill for full-stack developers.</p>
+
+          <h3>What is the difference between CHAR and VARCHAR?</h3>
+          <p><code>CHAR(10)</code> always uses 10 characters (pads with spaces) — good for fixed-length codes like <code>CHAR(2)</code> for country codes. <code>VARCHAR(100)</code> uses only as much space as needed — good for names, emails. Use VARCHAR for most text.</p>
+
+          <h3>How long does it take to learn MySQL?</h3>
+          <p>Basic CRUD and filtering: <strong>2–3 days</strong>. JOINs and aggregations: <strong>1–2 weeks</strong> with practice. Production-ready skills (indexes, constraints, Node.js integration): <strong>1 month</strong> of building real projects like the e-commerce database above.</p>
+
+          <div class="callout callout-tip">
+            <i class="fas fa-lightbulb"></i>
+            <p><strong>Your next steps:</strong> 1) Build the shop database above → 2) Add authentication tables (users + sessions) → 3) Connect it to an Express API → 4) Learn transactions (<code>START TRANSACTION; COMMIT; ROLLBACK;</code>) for payment flows → 5) Deploy with PlanetScale or AWS RDS. Each step levels up your backend skills.</p>
+          </div>
+
+          <p>MySQL is the backbone of data-driven applications. Start with databases and tables, master CRUD, then unlock the real power with JOINs and aggregations. Practice with the e-commerce project, connect it to Node.js, and you will have a portfolio-ready full-stack skill. Open your terminal, run <code>mysql -u root -p</code>, and write your first <code>CREATE TABLE</code> today.</p>
+        </section>
+      </div>
+    </div>
+  </article>
+
+  <div class="back-to-top">
+    <a href="#top" class="btn btn-primary">
+      <i class="fas fa-arrow-up"></i> Back to Top
+    </a>
+  </div>
+
+  <footer class="footer">
+    <div class="container">
+      <div class="footer-content">
+        <div class="footer-brand">
+          <a href="../index.html" class="nav-logo">
+            <span class="logo-bracket">{</span> AB <span class="logo-bracket">}</span>
+          </a>
+          <p>Building modern web experiences with clean code, comprehensive tests, and continuous improvement.</p>
+        </div>
+        <div class="footer-links">
+          <h4>Navigation</h4>
+          <ul>
+            <li><a href="../index.html">Portfolio</a></li>
+            <li><a href="../index.html#about">About</a></li>
+            <li><a href="../index.html#projects">Projects</a></li>
+            <li><a href="../index.html#contact">Contact</a></li>
+          </ul>
+        </div>
+        <div class="footer-social">
+          <h4>Connect</h4>
+          <div class="footer-icons">
+            <a href="https://github.com/avinashbt" target="_blank"><i class="fab fa-github"></i></a>
+            <a href="https://www.linkedin.com/in/avinash-bawage-99ba58200/?locale=en_US" target="_blank"><i class="fab fa-linkedin-in"></i></a>
+            <a href="https://twitter.com/AvinashBawge" target="_blank"><i class="fab fa-twitter"></i></a>
+            <a href="mailto:avi.bawge9@gmail.com"><i class="fas fa-envelope"></i></a>
+          </div>
+        </div>
+      </div>
+      <div class="footer-bottom">
+        <p>Built with <span class="footer-heart">&hearts;</span> by Avinash Bawage &mdash; &copy; 2026</p>
+      </div>
+    </div>
+  </footer>
+
+  <script>
+    const hamburger = document.getElementById('hamburger');
+    const mobileMenu = document.getElementById('mobileMenu');
+    let overlay = document.createElement('div');
+    overlay.className = 'mobile-overlay';
+    document.body.appendChild(overlay);
+
+    function toggleMenu() {
+      hamburger.classList.toggle('active');
+      mobileMenu.classList.toggle('active');
+      overlay.classList.toggle('active');
+      document.body.style.overflow = mobileMenu.classList.contains('active') ? 'hidden' : '';
+    }
+
+    hamburger.addEventListener('click', toggleMenu);
+    overlay.addEventListener('click', toggleMenu);
+    document.querySelectorAll('.mobile-menu a').forEach(a => a.addEventListener('click', toggleMenu));
+  </script>
+  <script>
+    (function() {
+      const saved = localStorage.getItem('theme');
+      if (saved) document.documentElement.setAttribute('data-theme', saved);
+      else if (window.matchMedia('(prefers-color-scheme: light)').matches) document.documentElement.setAttribute('data-theme', 'light');
+    })();
+    document.getElementById('themeToggle').addEventListener('click', function() {
+      const current = document.documentElement.getAttribute('data-theme');
+      const next = current === 'light' ? 'dark' : 'light';
+      document.documentElement.setAttribute('data-theme', next);
+      localStorage.setItem('theme', next);
+    });
+  </script>
+</body>
+</html>
