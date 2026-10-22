@@ -92,7 +92,7 @@ Hi, I'm **Avinash Bawage**, a Software Engineer passionate about:
 📧 Email: avi.bawge9@gmail.com
 
 💼 LinkedIn:
-https://www.linkedin.com/in/avinash-b-99ba58200/
+https://www.linkedin.com/in/avinash-bawage-ai-99ba58200/
 
 🐙 GitHub:
 https://github.com/avinashbt
