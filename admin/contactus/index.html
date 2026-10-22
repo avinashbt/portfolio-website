@@ -1,0 +1,311 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Contact Messages | Admin — Avinash Bawage</title>
+  <meta name="robots" content="noindex, nofollow" />
+  <link rel="shortcut icon" href="../../favicon.jpg" type="image/x-icon" />
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&family=JetBrains+Mono:wght@400;600&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css" />
+  <style>
+    :root{
+      --bg:#0b1020; --bg2:#111834; --card:#151d3d; --card2:#1a2450;
+      --text:#e7ecff; --muted:#93a0c9; --accent:#6366f1; --accent2:#8b5cf6;
+      --green:#22c55e; --red:#ef4444; --amber:#f59e0b;
+      --border:#26315e; --radius:1.4rem;
+    }
+    *{margin:0;padding:0;box-sizing:border-box}
+    body{font-family:'Inter',sans-serif;background:var(--bg);color:var(--text);min-height:100vh;font-size:15px;line-height:1.6}
+    a{color:var(--accent);text-decoration:none}
+
+    /* ---------- TOP BAR ---------- */
+    .topbar{position:sticky;top:0;z-index:50;display:flex;align-items:center;gap:14px;flex-wrap:wrap;
+      padding:14px 24px;background:rgba(11,16,32,.85);backdrop-filter:blur(14px);border-bottom:1px solid var(--border)}
+    .logo{font-family:'JetBrains Mono',monospace;font-weight:600;font-size:19px;color:#fff}
+    .logo span{color:var(--accent)}
+    .topbar h1{font-size:16px;font-weight:600;color:var(--muted);flex:1}
+    .topbar h1 i{color:var(--accent);margin-right:6px}
+    .btn{display:inline-flex;align-items:center;gap:7px;padding:9px 15px;border-radius:10px;border:1px solid var(--border);
+      background:var(--card);color:var(--text);font-size:13.5px;font-weight:500;cursor:pointer;transition:.2s;font-family:inherit}
+    .btn:hover{border-color:var(--accent);transform:translateY(-1px)}
+    .btn-primary{background:linear-gradient(135deg,var(--accent),var(--accent2));border:none;color:#fff}
+    .btn-danger:hover{border-color:var(--red);color:var(--red)}
+    .btn-sm{padding:6px 10px;font-size:12.5px;border-radius:8px}
+
+    /* ---------- STATS ---------- */
+    .stats{display:grid;grid-template-columns:repeat(auto-fit,minmax(170px,1fr));gap:14px;padding:22px 24px 0}
+    .stat{background:var(--card);border:1px solid var(--border);border-radius:var(--radius);padding:16px 18px}
+    .stat b{display:block;font-size:26px;font-weight:700}
+    .stat small{color:var(--muted);font-size:12.5px;text-transform:uppercase;letter-spacing:.6px}
+    .stat.unread b{color:var(--amber)}
+    .stat.total b{color:var(--accent)}
+
+    /* ---------- TOOLBAR ---------- */
+    .toolbar{display:flex;gap:12px;flex-wrap:wrap;align-items:center;padding:18px 24px}
+    .search{flex:1;min-width:220px;position:relative}
+    .search i{position:absolute;left:14px;top:50%;transform:translateY(-50%);color:var(--muted)}
+    .search input{width:100%;padding:11px 14px 11px 40px;border-radius:11px;border:1px solid var(--border);
+      background:var(--card);color:var(--text);font-size:14px;font-family:inherit;outline:none}
+    .search input:focus{border-color:var(--accent)}
+
+    /* ---------- LIST ---------- */
+    .list{padding:0 24px 60px;display:flex;flex-direction:column;gap:14px;max-width:1100px}
+    .msg{background:var(--card);border:1px solid var(--border);border-radius:var(--radius);padding:18px 20px;transition:.2s}
+    .msg:hover{border-color:var(--accent)}
+    .msg.unread{border-left:4px solid var(--amber);background:linear-gradient(90deg,rgba(245,158,11,.06),var(--card) 30%)}
+    .msg-head{display:flex;align-items:center;gap:10px;flex-wrap:wrap;margin-bottom:8px}
+    .avatar{width:38px;height:38px;border-radius:50%;background:linear-gradient(135deg,var(--accent),var(--accent2));
+      display:flex;align-items:center;justify-content:center;font-weight:700;color:#fff;font-size:15px;flex-shrink:0}
+    .msg-name{font-weight:600;font-size:15.5px}
+    .msg-email{color:var(--muted);font-size:13px}
+    .msg-date{margin-left:auto;color:var(--muted);font-size:12.5px;white-space:nowrap}
+    .msg-subject{font-weight:600;color:var(--accent2);margin-bottom:6px;font-size:14.5px}
+    .msg-body{color:var(--text);white-space:pre-wrap;word-break:break-word;font-size:14.5px;background:var(--bg2);
+      border-radius:10px;padding:12px 14px;margin:8px 0 12px;border:1px solid var(--border)}
+    .msg-actions{display:flex;gap:8px;flex-wrap:wrap}
+    .badge{display:inline-block;padding:2px 9px;border-radius:20px;font-size:11px;font-weight:600;letter-spacing:.4px}
+    .badge-unread{background:rgba(245,158,11,.15);color:var(--amber)}
+    .badge-read{background:rgba(34,197,94,.15);color:var(--green)}
+
+    .empty,.loading{text-align:center;padding:70px 20px;color:var(--muted)}
+    .empty i,.loading i{font-size:42px;display:block;margin-bottom:14px;color:var(--border)}
+    .loading i{color:var(--accent);animation:spin 1s linear infinite}
+    @keyframes spin{to{transform:rotate(360deg)}}
+
+    /* ---------- PIN GATE ---------- */
+    .gate{position:fixed;inset:0;background:var(--bg);display:flex;align-items:center;justify-content:center;z-index:100;padding:20px}
+    .gate-card{background:var(--card);border:1px solid var(--border);border-radius:18px;padding:36px 32px;width:100%;max-width:390px;text-align:center}
+    .gate-card .lock{font-size:38px;color:var(--accent);margin-bottom:14px}
+    .gate-card h2{font-size:20px;margin-bottom:6px}
+    .gate-card p{color:var(--muted);font-size:13.5px;margin-bottom:20px}
+    .gate-card input{width:100%;padding:12px 14px;border-radius:10px;border:1px solid var(--border);background:var(--bg2);
+      color:var(--text);font-size:15px;text-align:center;font-family:'JetBrains Mono',monospace;letter-spacing:3px;outline:none;margin-bottom:14px}
+    .gate-card input:focus{border-color:var(--accent)}
+    .gate-error{color:var(--red);font-size:13px;margin-bottom:10px;display:none}
+    .hidden{display:none !important}
+
+    @media(max-width:640px){
+      .topbar h1{display:none}
+      .stats,.toolbar,.list{padding-left:14px;padding-right:14px}
+      .msg-date{margin-left:0;width:100%}
+    }
+  </style>
+</head>
+<body>
+
+  <!-- PIN GATE -->
+  <div class="gate" id="gate">
+    <div class="gate-card">
+      <div class="lock"><i class="fas fa-lock"></i></div>
+      <h2>Admin Access</h2>
+      <p>Enter your passcode to view contact messages</p>
+      <input type="password" id="pinInput" placeholder="••••••••" autocomplete="off" />
+      <div class="gate-error" id="gateError"><i class="fas fa-exclamation-circle"></i> Wrong passcode, try again</div>
+      <button class="btn btn-primary" id="pinBtn" style="width:100%;justify-content:center">
+        <i class="fas fa-sign-in-alt"></i> Unlock
+      </button>
+    </div>
+  </div>
+
+  <!-- ADMIN PANEL -->
+  <div id="panel" class="hidden">
+    <div class="topbar">
+      <div class="logo">{ <span>AB</span> }</div>
+      <h1><i class="fas fa-inbox"></i> Contact Messages — from "Let's Work Together" form</h1>
+      <button class="btn" id="exportBtn"><i class="fas fa-file-csv"></i> Export CSV</button>
+      <button class="btn" id="refreshBtn"><i class="fas fa-sync"></i> Refresh</button>
+      <button class="btn btn-danger" id="logoutBtn"><i class="fas fa-sign-out-alt"></i> Logout</button>
+    </div>
+
+    <div class="stats">
+      <div class="stat total"><b id="totalCount">0</b><small>Total Messages</small></div>
+      <div class="stat unread"><b id="unreadCount">0</b><small>Unread</small></div>
+      <div class="stat"><b id="lastDate" style="font-size:16px;padding-top:6px">—</b><small>Latest Message</small></div>
+    </div>
+
+    <div class="toolbar">
+      <div class="search">
+        <i class="fas fa-search"></i>
+        <input type="text" id="searchInput" placeholder="Search by name, email, subject or message…" />
+      </div>
+      <button class="btn" id="toggleUnreadBtn"><i class="fas fa-envelope-open"></i> Unread only</button>
+    </div>
+
+    <div class="list" id="list">
+      <div class="loading"><i class="fas fa-circle-notch"></i> Loading messages from Firebase…</div>
+    </div>
+  </div>
+
+  <script type="module">
+    // =====================================================
+    //  ADMIN — Contact messages saved by the portfolio
+    //  "Let's Work Together" form (Firebase Realtime DB)
+    //  Passcode below can be changed anytime in this file.
+    // =====================================================
+    import { initializeApp } from 'https://www.gstatic.com/firebasejs/9.22.1/firebase-app.js';
+    import { getDatabase, ref, onValue, update, remove }
+      from 'https://www.gstatic.com/firebasejs/9.22.1/firebase-database.js';
+
+    const ADMIN_PIN = 'avinash@2026';
+    const AUTH_KEY = 'contactAdminAuth';
+
+    const firebaseConfig = {
+      apiKey: "AIzaSyDPqUppaM_cINaQPUjk79_oNWHvses5mY0",
+      authDomain: "webapp-5ff55.firebaseapp.com",
+      projectId: "webapp-5ff55",
+      storageBucket: "webapp-5ff55.appspot.com",
+      messagingSenderId: "645643836728",
+      appId: "1:645643836728:web:3797fc8ee6a64023daf5cd"
+    };
+
+    const $ = id => document.getElementById(id);
+    const gate = $('gate'), panel = $('panel'), list = $('list');
+    let allMessages = [];
+    let unreadOnly = false;
+
+    // ---------- PIN GATE ----------
+    function unlock() {
+      gate.classList.add('hidden');
+      panel.classList.remove('hidden');
+      start();
+    }
+    $('pinBtn').addEventListener('click', () => {
+      if ($('pinInput').value === ADMIN_PIN) {
+        try { sessionStorage.setItem(AUTH_KEY, '1'); } catch (e) {}
+        unlock();
+      } else {
+        $('gateError').style.display = 'block';
+        $('pinInput').value = '';
+        $('pinInput').focus();
+      }
+    });
+    $('pinInput').addEventListener('keydown', e => { if (e.key === 'Enter') $('pinBtn').click(); });
+
+    let authed = false;
+    try { authed = sessionStorage.getItem(AUTH_KEY) === '1'; } catch (e) {}
+    if (authed) unlock(); else $('pinInput').focus();
+
+    $('logoutBtn').addEventListener('click', () => {
+      try { sessionStorage.removeItem(AUTH_KEY); } catch (e) {}
+      location.reload();
+    });
+
+    // ---------- FIREBASE ----------
+    const app = initializeApp(firebaseConfig);
+    const db = getDatabase(app);
+
+    function formatDate(ts) {
+      if (!ts) return '—';
+      return new Date(ts).toLocaleString('en-GB', {
+        day: '2-digit', month: 'short', year: 'numeric',
+        hour: '2-digit', minute: '2-digit'
+      });
+    }
+    function escapeHtml(s) {
+      return String(s ?? '').replace(/[&<>"']/g, c =>
+        ({ '&': '&amp;', '<': '&lt;', '>': '&gt;', '"': '&quot;', "'": '&#39;' }[c]));
+    }
+
+    function start() {
+      onValue(ref(db, 'users'), snap => {
+        const data = snap.val() || {};
+        allMessages = Object.entries(data)
+          .map(([id, m]) => ({ id, ...m }))
+          .sort((a, b) => (b.createdAt || 0) - (a.createdAt || 0));
+        render();
+      }, { onlyOnce: false });
+    }
+
+    function render() {
+      const q = $('searchInput').value.trim().toLowerCase();
+      const items = allMessages.filter(m => {
+        if (unreadOnly && m.read) return false;
+        if (!q) return true;
+        return [m.name, m.email, m.subject, m.message]
+          .some(v => String(v || '').toLowerCase().includes(q));
+      });
+
+      // stats
+      $('totalCount').textContent = allMessages.length;
+      $('unreadCount').textContent = allMessages.filter(m => !m.read).length;
+      const latest = allMessages.find(m => m.createdAt);
+      $('lastDate').textContent = latest ? formatDate(latest.createdAt) : '—';
+
+      if (!items.length) {
+        list.innerHTML = `<div class="empty"><i class="fas fa-inbox"></i>
+          ${allMessages.length ? 'No messages match your search.' : 'No messages yet — share your contact link and they will appear here live.'}</div>`;
+        return;
+      }
+
+      list.innerHTML = items.map(m => {
+        const initials = (m.name || '?').trim().split(/\s+/).map(w => w[0]).slice(0, 2).join('').toUpperCase();
+        const unread = !m.read;
+        return `
+        <div class="msg ${unread ? 'unread' : ''}">
+          <div class="msg-head">
+            <div class="avatar">${escapeHtml(initials)}</div>
+            <div>
+              <div class="msg-name">${escapeHtml(m.name || 'Anonymous')}
+                <span class="badge ${unread ? 'badge-unread' : 'badge-read'}">${unread ? 'UNREAD' : 'READ'}</span>
+              </div>
+              <div class="msg-email">${escapeHtml(m.email || 'no email')}</div>
+            </div>
+            <div class="msg-date"><i class="far fa-clock"></i> ${formatDate(m.createdAt)}</div>
+          </div>
+          ${m.subject ? `<div class="msg-subject"><i class="fas fa-tag"></i> ${escapeHtml(m.subject)}</div>` : ''}
+          <div class="msg-body">${escapeHtml(m.message || '(no message)')}</div>
+          <div class="msg-actions">
+            <a class="btn btn-sm" href="mailto:${escapeHtml(m.email || '')}?subject=Re: ${escapeHtml(m.subject || 'Your enquiry')}">
+              <i class="fas fa-reply"></i> Reply</a>
+            <button class="btn btn-sm" data-act="read" data-id="${m.id}">
+              <i class="fas fa-${unread ? 'envelope-open' : 'envelope'}"></i> Mark as ${unread ? 'read' : 'unread'}</button>
+            <button class="btn btn-sm btn-danger" data-act="del" data-id="${m.id}">
+              <i class="fas fa-trash"></i> Delete</button>
+          </div>
+        </div>`;
+      }).join('');
+
+      list.querySelectorAll('button[data-act]').forEach(btn => {
+        btn.addEventListener('click', () => {
+          const id = btn.dataset.id;
+          if (btn.dataset.act === 'read') {
+            const m = allMessages.find(x => x.id === id);
+            update(ref(db, 'users/' + id), { read: !m.read });
+          } else if (btn.dataset.act === 'del') {
+            if (confirm('Delete this message permanently?')) remove(ref(db, 'users/' + id));
+          }
+        });
+      });
+    }
+
+    $('searchInput').addEventListener('input', render);
+    $('refreshBtn').addEventListener('click', render);
+    $('toggleUnreadBtn').addEventListener('click', function () {
+      unreadOnly = !unreadOnly;
+      this.innerHTML = unreadOnly
+        ? '<i class="fas fa-envelope"></i> Show all'
+        : '<i class="fas fa-envelope-open"></i> Unread only';
+      render();
+    });
+
+    // ---------- CSV EXPORT ----------
+    $('exportBtn').addEventListener('click', () => {
+      const esc = v => `"${String(v ?? '').replace(/"/g, '""')}"`;
+      const rows = [['Date', 'Name', 'Email', 'Subject', 'Message', 'Status']];
+      allMessages.forEach(m => rows.push([
+        m.createdAt ? new Date(m.createdAt).toISOString() : '',
+        m.name, m.email, m.subject, m.message, m.read ? 'Read' : 'Unread'
+      ]));
+      const csv = rows.map(r => r.map(esc).join(',')).join('\n');
+      const a = document.createElement('a');
+      a.href = URL.createObjectURL(new Blob([csv], { type: 'text/csv' }));
+      a.download = 'contact-messages.csv';
+      a.click();
+      URL.revokeObjectURL(a.href);
+    });
+  </script>
+</body>
+</html>
