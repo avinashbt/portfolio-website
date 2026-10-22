@@ -16,6 +16,14 @@
   <meta name="twitter:card" content="summary_large_image">
   <link rel="shortcut icon" href="./favicon.jpg" type="image/x-icon" />
 
+  <!-- hreflang: tell Google which language version for each country (English = default) -->
+  <link rel="alternate" hreflang="en" href="https://avinashbt.github.io/" />
+  <link rel="alternate" hreflang="en-GB" href="https://avinashbt.github.io/?lang=en-GB" />
+  <link rel="alternate" hreflang="en-CA" href="https://avinashbt.github.io/?lang=en-CA" />
+  <link rel="alternate" hreflang="ja" href="https://avinashbt.github.io/?lang=ja" />
+  <link rel="alternate" hreflang="fr" href="https://avinashbt.github.io/?lang=fr" />
+  <link rel="alternate" hreflang="x-default" href="https://avinashbt.github.io/" />
+
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
   <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800&family=JetBrains+Mono:wght@400;500&display=swap" rel="stylesheet">
@@ -52,15 +60,25 @@
         <span class="logo-bracket">{</span> AB <span class="logo-bracket">}</span>
       </a>
       <ul class="nav-links" id="navLinks">
-        <li><a href="#about">About</a></li>
-        <li><a href="#experience">Experience</a></li>
-        <li><a href="#skills">Skills</a></li>
-        <li><a href="#projects">Projects</a></li>
-        <li><a href="#websites">Websites</a></li>
-        <li><a href="#services">Services</a></li>
-        <li><a href="blog.html" class="nav-blog-link">Blog</a></li>
-        <li><a href="#contact" class="nav-cta">Hire Me</a></li>
+        <li><a href="#about" data-i18n="nav.about">About</a></li>
+        <li><a href="#experience" data-i18n="nav.exp">Experience</a></li>
+        <li><a href="#skills" data-i18n="nav.skills">Skills</a></li>
+        <li><a href="#projects" data-i18n="nav.projects">Projects</a></li>
+        <li><a href="#websites" data-i18n="nav.websites">Websites</a></li>
+        <li><a href="#services" data-i18n="nav.services">Services</a></li>
+        <li><a href="blog.html" class="nav-blog-link" data-i18n="nav.blog">Blog</a></li>
+        <li><a href="#contact" class="nav-cta" data-i18n="nav.hire">Hire Me</a></li>
       </ul>
+      <div class="lang-switcher">
+        <i class="fas fa-globe lang-globe"></i>
+        <select class="lang-select" aria-label="Select language">
+          <option value="en">🇺🇸 English</option>
+          <option value="en-GB">🇬🇧 English (UK)</option>
+          <option value="en-CA">🇨🇦 English (CA)</option>
+          <option value="ja">🇯🇵 日本語</option>
+          <option value="fr">🇫🇷 Français</option>
+        </select>
+      </div>
       <button class="theme-toggle" id="themeToggle" aria-label="Toggle dark/light mode">
         <i class="fas fa-sun icon-sun"></i>
         <i class="fas fa-moon icon-moon"></i>
@@ -74,14 +92,26 @@
   <!-- MOBILE NAV -->
   <div class="mobile-menu" id="mobileMenu">
     <ul>
-      <li><a href="#about">About</a></li>
-      <li><a href="#experience">Experience</a></li>
-      <li><a href="#skills">Skills</a></li>
-      <li><a href="#projects">Projects</a></li>
-      <li><a href="#websites">Websites</a></li>
-      <li><a href="#services">Services</a></li>
-      <li><a href="blog.html">Blog</a></li>
-      <li><a href="#contact">Hire Me</a></li>
+      <li><a href="#about" data-i18n="nav.about">About</a></li>
+      <li><a href="#experience" data-i18n="nav.exp">Experience</a></li>
+      <li><a href="#skills" data-i18n="nav.skills">Skills</a></li>
+      <li><a href="#projects" data-i18n="nav.projects">Projects</a></li>
+      <li><a href="#websites" data-i18n="nav.websites">Websites</a></li>
+      <li><a href="#services" data-i18n="nav.services">Services</a></li>
+      <li><a href="blog.html" data-i18n="nav.blog">Blog</a></li>
+      <li><a href="#contact" data-i18n="nav.hire">Hire Me</a></li>
+      <li class="mobile-lang-item">
+        <div class="lang-switcher lang-switcher-mobile">
+          <i class="fas fa-globe lang-globe"></i>
+          <select class="lang-select" aria-label="Select language">
+            <option value="en">🇺🇸 English</option>
+            <option value="en-GB">🇬🇧 English (UK)</option>
+            <option value="en-CA">🇨🇦 English (CA)</option>
+            <option value="ja">🇯🇵 日本語</option>
+            <option value="fr">🇫🇷 Français</option>
+          </select>
+        </div>
+      </li>
     </ul>
   </div>
 
@@ -93,40 +123,40 @@
       <div class="hero-glow hero-glow-2"></div>
     </div>
     <div class="hero-content">
-      <div class="hero-badge" data-aos="fade-down" data-aos-delay="200">
+      <div class="hero-badge" data-aos="fade-down" data-aos-delay="200" data-i18n="hero.badge">
         <span class="status-dot"></span> Currently working at TCS
       </div>
-      <p class="hero-greeting" data-aos="fade-up" data-aos-delay="400">Hi, I'm</p>
+      <p class="hero-greeting" data-aos="fade-up" data-aos-delay="400" data-i18n="hero.hello">Hi, I'm</p>
       <h1 class="hero-name" data-aos="fade-up" data-aos-delay="600">Avinash Bawage</h1>
       <h2 class="hero-title" data-aos="fade-up" data-aos-delay="800">
         <span id="typeText"></span><span class="cursor">|</span>
       </h2>
-      <p class="hero-desc" data-aos="fade-up" data-aos-delay="1000">
+      <p class="hero-desc" data-aos="fade-up" data-aos-delay="1000" data-i18n="hero.desc">
         Frontend Developer at <strong>TCS (Tata Consultancy Services)</strong> — I build performant React applications and write solid tests with Cypress & Jest.<br>
         <strong>4.6 years</strong> turning complex problems into clean, tested code.
       </p>
       <div class="hero-actions" data-aos="fade-up" data-aos-delay="1200">
-        <a href="#contact" class="btn btn-primary">
+        <a href="#contact" class="btn btn-primary" data-i18n="hero.cta1">
           <i class="fas fa-paper-plane"></i> Get In Touch
         </a>
-        <a href="https://drive.google.com/file/d/1VmuOUSJU7ktLe5FLEhQfqUxO3oHJUNSr/view?usp=sharing" class="btn btn-ghost" target="_blank">
+        <a href="https://drive.google.com/file/d/1VmuOUSJU7ktLe5FLEhQfqUxO3oHJUNSr/view?usp=sharing" class="btn btn-ghost" target="_blank" data-i18n="hero.cta2">
           <i class="fas fa-download"></i> Download CV
         </a>
       </div>
       <div class="hero-stats" data-aos="fade-up" data-aos-delay="1400">
         <div class="stat">
           <span class="stat-number">4.6<span class="stat-unit">+</span></span>
-          <span class="stat-label">Years Experience</span>
+          <span class="stat-label" data-i18n="hero.stat1">Years Experience</span>
         </div>
         <div class="stat-divider"></div>
         <div class="stat">
           <span class="stat-number">14<span class="stat-unit">+</span></span>
-          <span class="stat-label">Projects Shipped</span>
+          <span class="stat-label" data-i18n="hero.stat2">Projects Shipped</span>
         </div>
         <div class="stat-divider"></div>
         <div class="stat">
           <span class="stat-number">2<span class="stat-unit">+</span></span>
-          <span class="stat-label">SaaS Products Live</span>
+          <span class="stat-label" data-i18n="hero.stat3">SaaS Products Live</span>
         </div>
       </div>
       <div class="hero-social" data-aos="fade-up" data-aos-delay="1600">
@@ -137,7 +167,7 @@
       </div>
     </div>
     <div class="hero-scroll-indicator">
-      <span>Scroll</span>
+      <span data-i18n="hero.scroll">Scroll</span>
       <div class="scroll-line"></div>
     </div>
   </header>
@@ -146,8 +176,8 @@
   <section class="section" id="about">
     <div class="container">
       <div class="section-header" data-aos="fade-up">
-        <span class="section-tag">About</span>
-        <h2 class="section-title">Who I Am</h2>
+        <span class="section-tag" data-i18n="about.tag">About</span>
+        <h2 class="section-title" data-i18n="about.title">Who I Am</h2>
       </div>
       <div class="about-grid">
         <div class="about-image" data-aos="fade-right" data-aos-delay="200">
@@ -155,14 +185,14 @@
           <div class="about-image-decoration"></div>
         </div>
         <div class="about-content" data-aos="fade-left" data-aos-delay="400">
-          <h3>Frontend Developer @ TCS & React Engineer</h3>
-          <p>
+          <h3 data-i18n="about.h3">Frontend Developer @ TCS & React Engineer</h3>
+          <p data-i18n="about.p1">
             I'm Avinash Bawage, a Frontend Developer at <strong>TCS (Tata Consultancy Services)</strong> based in Hyderabad, India.
             Over the past <strong>4.6 years</strong>, I've built production-grade React applications,
             designed intuitive user interfaces, and implemented testing strategies
             with Cypress and Jest to ship code with confidence.
           </p>
-          <p>
+          <p data-i18n="about.p2">
             I specialize in <strong>React.js</strong>, <strong>JavaScript</strong>, and
             <strong>modern testing frameworks</strong> like Cypress and Jest. Currently working at TCS, I build scalable frontend solutions for enterprise clients while also shipping independent SaaS products. I believe every feature
             should be tested, every component should be accessible, and every deployment should be reliable.
@@ -180,26 +210,26 @@
           <div class="about-highlights">
             <div class="highlight-item">
               <i class="fas fa-building" style="color: var(--accent);"></i>
-              <span>Currently working at <strong>TCS (Tata Consultancy Services)</strong></span>
+              <span data-i18n="about.hl1">Currently working at <strong>TCS (Tata Consultancy Services)</strong></span>
             </div>
             <div class="highlight-item">
               <i class="fas fa-check-circle"></i>
-              <span>4.6+ years of professional experience</span>
+              <span data-i18n="about.hl2">4.6+ years of professional experience</span>
             </div>
             <div class="highlight-item">
               <i class="fas fa-check-circle"></i>
-              <span>2 live SaaS products in production</span>
+              <span data-i18n="about.hl3">2 live SaaS products in production</span>
             </div>
             <div class="highlight-item">
               <i class="fas fa-check-circle"></i>
-              <span>End-to-end testing with Cypress & Jest</span>
+              <span data-i18n="about.hl4">End-to-end testing with Cypress & Jest</span>
             </div>
             <div class="highlight-item">
               <i class="fas fa-check-circle"></i>
-              <span>Performance-optimized, accessible UIs</span>
+              <span data-i18n="about.hl5">Performance-optimized, accessible UIs</span>
             </div>
           </div>
-          <a href="https://drive.google.com/file/d/1VmuOUSJU7ktLe5FLEhQfqUxO3oHJUNSr/view?usp=sharing" class="btn btn-primary" target="_blank">
+          <a href="https://drive.google.com/file/d/1VmuOUSJU7ktLe5FLEhQfqUxO3oHJUNSr/view?usp=sharing" class="btn btn-primary" target="_blank" data-i18n="about.resume">
             <i class="fas fa-file-alt"></i> View Full Resume
           </a>
         </div>
@@ -211,25 +241,25 @@
   <section class="section section-dark" id="experience">
     <div class="container">
       <div class="section-header" data-aos="fade-up">
-        <span class="section-tag">Career</span>
-        <h2 class="section-title">Experience Timeline</h2>
+        <span class="section-tag" data-i18n="exp.tag">Career</span>
+        <h2 class="section-title" data-i18n="exp.title">Experience Timeline</h2>
       </div>
       <div class="timeline" data-aos="fade-up" data-aos-delay="200">
         <div class="timeline-item">
           <div class="timeline-marker" style="background: var(--green); box-shadow: 0 0 0 3px rgba(34,197,94,.2);"></div>
           <div class="timeline-content" style="border-color: var(--green-border-soft);">
             <div class="timeline-header">
-              <h3>Frontend Developer <span style="color: var(--green); font-weight: 600;">@ TCS</span></h3>
-              <span class="timeline-date" style="background: var(--green-bg); color: var(--green-dark); border: 1px solid var(--green-border);">Present</span>
+              <h3 data-i18n="exp.role1">Frontend Developer <span style="color: var(--green); font-weight: 600;">@ TCS</span></h3>
+              <span class="timeline-date" style="background: var(--green-bg); color: var(--green-dark); border: 1px solid var(--green-border);" data-i18n="exp.present">Present</span>
             </div>
-            <p class="timeline-company"><i class="fas fa-building" style="margin-right: 6px; color: var(--green);"></i> Tata Consultancy Services (TCS) — Hyderabad</p>
+            <p class="timeline-company" data-i18n="exp.company1"><i class="fas fa-building" style="margin-right: 6px; color: var(--green);"></i> Tata Consultancy Services (TCS) — Hyderabad</p>
             <ul class="timeline-details">
-              <li>Currently working as Frontend Developer at TCS building enterprise-grade React applications</li>
-              <li>Built 14+ responsive web applications using React.js, Redux, and modern JavaScript</li>
-              <li>Implemented end-to-end testing strategies with Cypress achieving 85%+ code coverage</li>
-              <li>Developed unit and integration test suites using Jest and React Testing Library</li>
-              <li>Optimized Core Web Vitals resulting in 40% faster page loads across projects</li>
-              <li>Collaborating with cross-functional teams in Agile environment at TCS</li>
+              <li data-i18n="exp.b1">Currently working as Frontend Developer at TCS building enterprise-grade React applications</li>
+              <li data-i18n="exp.b2">Built 14+ responsive web applications using React.js, Redux, and modern JavaScript</li>
+              <li data-i18n="exp.b3">Implemented end-to-end testing strategies with Cypress achieving 85%+ code coverage</li>
+              <li data-i18n="exp.b4">Developed unit and integration test suites using Jest and React Testing Library</li>
+              <li data-i18n="exp.b5">Optimized Core Web Vitals resulting in 40% faster page loads across projects</li>
+              <li data-i18n="exp.b6">Collaborating with cross-functional teams in Agile environment at TCS</li>
             </ul>
           </div>
         </div>
@@ -237,14 +267,14 @@
           <div class="timeline-marker"></div>
           <div class="timeline-content">
             <div class="timeline-header">
-              <h3>SaaS Product Development</h3>
-              <span class="timeline-date">Ongoing</span>
+              <h3 data-i18n="exp.role2">SaaS Product Development</h3>
+              <span class="timeline-date" data-i18n="exp.ongoing">Ongoing</span>
             </div>
-            <p class="timeline-company">Independent Projects</p>
+            <p class="timeline-company" data-i18n="exp.indep">Independent Projects</p>
             <ul class="timeline-details">
-              <li>InstantAIArticle.blog — AI-powered SEO article generator with payment integration</li>
-              <li>SpeedometerLive.online — Real-time GPS speedometer with 10K+ monthly users</li>
-              <li>Full-stack development: frontend, backend, testing, deployment, monitoring</li>
+              <li data-i18n="exp.s1">InstantAIArticle.blog — AI-powered SEO article generator with payment integration</li>
+              <li data-i18n="exp.s2">SpeedometerLive.online — Real-time GPS speedometer with 10K+ monthly users</li>
+              <li data-i18n="exp.s3">Full-stack development: frontend, backend, testing, deployment, monitoring</li>
             </ul>
           </div>
         </div>
@@ -256,15 +286,15 @@
   <section class="section" id="skills">
     <div class="container">
       <div class="section-header" data-aos="fade-up">
-        <span class="section-tag">Tech Stack</span>
-        <h2 class="section-title">Skills & Tools</h2>
+        <span class="section-tag" data-i18n="skills.tag">Tech Stack</span>
+        <h2 class="section-title" data-i18n="skills.title">Skills & Tools</h2>
       </div>
       <div class="skills-grid">
         <!-- Frontend -->
         <div class="skill-category" data-aos="fade-up" data-aos-delay="100">
           <div class="skill-category-header">
             <i class="fas fa-code"></i>
-            <h3>Frontend</h3>
+            <h3 data-i18n="skills.cat1">Frontend</h3>
           </div>
           <div class="skill-items">
             <div class="skill-item">
@@ -294,7 +324,7 @@
         <div class="skill-category" data-aos="fade-up" data-aos-delay="200">
           <div class="skill-category-header">
             <i class="fas fa-server"></i>
-            <h3>Backend & DB</h3>
+            <h3 data-i18n="skills.cat2">Backend & DB</h3>
           </div>
           <div class="skill-items">
             <div class="skill-item">
@@ -324,7 +354,7 @@
         <div class="skill-category skill-category-testing" data-aos="fade-up" data-aos-delay="300">
           <div class="skill-category-header">
             <i class="fas fa-vial"></i>
-            <h3>Testing & QA</h3>
+            <h3 data-i18n="skills.cat3">Testing & QA</h3>
           </div>
           <div class="skill-items">
             <div class="skill-item">
@@ -340,11 +370,11 @@
               <div class="skill-bar"><div class="skill-fill skill-fill-testing" data-width="85"></div></div>
             </div>
             <div class="skill-item">
-              <span class="skill-name">Unit / Integration Testing</span>
+              <span class="skill-name" data-i18n="sk.unit">Unit / Integration Testing</span>
               <div class="skill-bar"><div class="skill-fill skill-fill-testing" data-width="90"></div></div>
             </div>
             <div class="skill-item">
-              <span class="skill-name">Test Coverage Analysis</span>
+              <span class="skill-name" data-i18n="sk.coverage">Test Coverage Analysis</span>
               <div class="skill-bar"><div class="skill-fill skill-fill-testing" data-width="85"></div></div>
             </div>
           </div>
@@ -354,7 +384,7 @@
         <div class="skill-category" data-aos="fade-up" data-aos-delay="400">
           <div class="skill-category-header">
             <i class="fas fa-wrench"></i>
-            <h3>Dev Tools</h3>
+            <h3 data-i18n="skills.cat4">Dev Tools</h3>
           </div>
           <div class="skill-items">
             <div class="skill-item">
@@ -387,8 +417,8 @@
   <section class="section section-dark" id="projects">
     <div class="container">
       <div class="section-header" data-aos="fade-up">
-        <span class="section-tag">Portfolio</span>
-        <h2 class="section-title">Featured Projects</h2>
+        <span class="section-tag" data-i18n="proj.tag">Portfolio</span>
+        <h2 class="section-title" data-i18n="proj.title">Featured Projects</h2>
       </div>
       <div class="projects-grid">
 
@@ -405,7 +435,7 @@
               <span class="project-badge badge-live">Live</span>
             </div>
             <h3>Instant AI Article</h3>
-            <p>AI-powered SaaS platform for SEO-optimized blog articles with payment integration, user auth, and admin dashboard.</p>
+            <p data-i18n="proj.d1">AI-powered SaaS platform for SEO-optimized blog articles with payment integration, user auth, and admin dashboard.</p>
             <div class="project-tech">
               <span>PHP</span><span>MySQL</span><span>AI API</span><span>Stripe</span>
             </div>
@@ -425,7 +455,7 @@
               <span class="project-badge badge-live">Live</span>
             </div>
             <h3>Speedometer Live</h3>
-            <p>Real-time GPS speedometer web app showing live speed, distance, and accuracy on mobile browsers.</p>
+            <p data-i18n="proj.d2">Real-time GPS speedometer web app showing live speed, distance, and accuracy on mobile browsers.</p>
             <div class="project-tech">
               <span>Next.js</span><span>Geolocation API</span><span>React</span>
             </div>
@@ -444,7 +474,7 @@
               <span class="project-badge badge-react">React</span>
             </div>
             <h3>Calculator For All</h3>
-            <p>Comprehensive online calculator for math, unit conversions, and scientific calculations.</p>
+            <p data-i18n="proj.d3">Comprehensive online calculator for math, unit conversions, and scientific calculations.</p>
             <div class="project-tech">
               <span>React.js</span><span>CSS3</span><span>JavaScript</span>
             </div>
@@ -464,7 +494,7 @@
               <span class="project-badge badge-live">Live</span>
             </div>
             <h3>YouTube Desc Extractor</h3>
-            <p>Extract and copy YouTube video descriptions instantly. Tool for content creators and marketers.</p>
+            <p data-i18n="proj.d4">Extract and copy YouTube video descriptions instantly. Tool for content creators and marketers.</p>
             <div class="project-tech">
               <span>JavaScript</span><span>YouTube API</span><span>HTML/CSS</span>
             </div>
@@ -483,7 +513,7 @@
               <span class="project-badge badge-react">React</span>
             </div>
             <h3>React Calculator</h3>
-            <p>Modern calculator with add, subtract, multiply, and divide operations.</p>
+            <p data-i18n="proj.d5">Modern calculator with add, subtract, multiply, and divide operations.</p>
             <div class="project-tech">
               <span>React.js</span><span>CSS3</span>
             </div>
@@ -502,7 +532,7 @@
               <span class="project-badge badge-react">React</span>
             </div>
             <h3>Word Count Tool</h3>
-            <p>Count words, characters, reading time, and convert text case with Bootstrap UI.</p>
+            <p data-i18n="proj.d6">Count words, characters, reading time, and convert text case with Bootstrap UI.</p>
             <div class="project-tech">
               <span>React.js</span><span>Bootstrap</span>
             </div>
@@ -517,9 +547,9 @@
   <section class="section" id="websites">
     <div class="container">
       <div class="section-header" data-aos="fade-up">
-        <span class="section-tag">Hosted Live</span>
-        <h2 class="section-title">My Websites</h2>
-        <p class="section-subtitle">All my live hosted projects — SaaS products, PWA apps & blogs running in production</p>
+        <span class="section-tag" data-i18n="sites.tag">Hosted Live</span>
+        <h2 class="section-title" data-i18n="sites.title">My Websites</h2>
+        <p class="section-subtitle" data-i18n="sites.sub">All my live hosted projects — SaaS products, PWA apps & blogs running in production</p>
       </div>
       <div class="websites-grid">
 
@@ -527,7 +557,7 @@
           <div class="website-card-icon icon-blue"><i class="fas fa-couch"></i></div>
           <span class="website-card-badge badge-seo">SEO Ready</span>
           <h3>Best Interior Designers Hyderabad</h3>
-          <p>Interior design studio website — 480+ flat, villa, kitchen &amp; office projects with free 3D design quotes.</p>
+          <p data-i18n="sites.d1">Interior design studio website — 480+ flat, villa, kitchen &amp; office projects with free 3D design quotes.</p>
           <span class="website-card-link">bestinteriordesignershyderabad.com <i class="fas fa-external-link-alt"></i></span>
         </a>
 
@@ -535,7 +565,7 @@
           <div class="website-card-icon"><i class="fas fa-calculator"></i></div>
           <span class="website-card-badge badge-live"><span class="dot"></span> Live</span>
           <h3>Calculator For All</h3>
-          <p>Free online calculators for math, percentage, EMI, SIP, GST, train fares and everyday needs.</p>
+          <p data-i18n="sites.d2">Free online calculators for math, percentage, EMI, SIP, GST, train fares and everyday needs.</p>
           <span class="website-card-link">calculatorforall.online <i class="fas fa-external-link-alt"></i></span>
         </a>
 
@@ -543,7 +573,7 @@
           <div class="website-card-icon icon-green"><i class="fas fa-car"></i></div>
           <span class="website-card-badge badge-seo">SEO Ready</span>
           <h3>Car PPF Experts</h3>
-          <p>Premium paint protection film (PPF) installation — full-car, front-end &amp; matte PPF quotes in India.</p>
+          <p data-i18n="sites.d3">Premium paint protection film (PPF) installation — full-car, front-end &amp; matte PPF quotes in India.</p>
           <span class="website-card-link">carppfexperts.com <i class="fas fa-external-link-alt"></i></span>
         </a>
 
@@ -551,7 +581,7 @@
           <div class="website-card-icon icon-violet"><i class="fas fa-blog"></i></div>
           <span class="website-card-badge badge-blog">Blog</span>
           <h3>Digital Dany</h3>
-          <p>Technology blog focused on AI, SEO, and Web Development — tutorials, tools &amp; insights.</p>
+          <p data-i18n="sites.d4">Technology blog focused on AI, SEO, and Web Development — tutorials, tools &amp; insights.</p>
           <span class="website-card-link">digitaldany.com <i class="fas fa-external-link-alt"></i></span>
         </a>
 
@@ -559,7 +589,7 @@
           <div class="website-card-icon icon-pink"><i class="fas fa-hourglass-half"></i></div>
           <span class="website-card-badge badge-viral">Viral</span>
           <h3>Fortnite Season Countdown</h3>
-          <p>Live Fortnite season countdown timer — track season end dates, Battle Pass and upcoming seasons.</p>
+          <p data-i18n="sites.d5">Live Fortnite season countdown timer — track season end dates, Battle Pass and upcoming seasons.</p>
           <span class="website-card-link">fortniteseasoncountdown.live <i class="fas fa-external-link-alt"></i></span>
         </a>
 
@@ -567,7 +597,7 @@
           <div class="website-card-icon icon-blue"><i class="fas fa-map-location-dot"></i></div>
           <span class="website-card-badge badge-seo">SEO Ready</span>
           <h3>Hyderabad Listings</h3>
-          <p>Business directory platform with SEO optimization — discover local businesses in Hyderabad.</p>
+          <p data-i18n="sites.d6">Business directory platform with SEO optimization — discover local businesses in Hyderabad.</p>
           <span class="website-card-link">hyderabadlistings.com <i class="fas fa-external-link-alt"></i></span>
         </a>
 
@@ -575,7 +605,7 @@
           <div class="website-card-icon icon-violet"><i class="fas fa-paint-roller"></i></div>
           <span class="website-card-badge badge-seo">SEO Ready</span>
           <h3>Sri Balaji Home Interiors</h3>
-          <p>Affordable home interior design in Hyderabad — modular kitchens, bedrooms &amp; complete home decor.</p>
+          <p data-i18n="sites.d7">Affordable home interior design in Hyderabad — modular kitchens, bedrooms &amp; complete home decor.</p>
           <span class="website-card-link">sribalajihomeinteriors.online <i class="fas fa-external-link-alt"></i></span>
         </a>
 
@@ -583,7 +613,7 @@
           <div class="website-card-icon icon-green"><i class="fas fa-train"></i></div>
           <span class="website-card-badge badge-pwa">PWA</span>
           <h3>Train Speed Test Online</h3>
-          <p>GPS speedometer for trains — live, max and average speed in km/h, mph or m/s. Free, no app needed.</p>
+          <p data-i18n="sites.d8">GPS speedometer for trains — live, max and average speed in km/h, mph or m/s. Free, no app needed.</p>
           <span class="website-card-link">trainspeedtestonline.com <i class="fas fa-external-link-alt"></i></span>
         </a>
 
@@ -591,7 +621,7 @@
           <div class="website-card-icon icon-pink"><i class="fas fa-heart"></i></div>
           <span class="website-card-badge badge-viral">Viral</span>
           <h3>True Love Calculator Soulmate (.in)</h3>
-          <p>Free soulmate compatibility test — check love percentage and romantic matching online instantly.</p>
+          <p data-i18n="sites.d9">Free soulmate compatibility test — check love percentage and romantic matching online instantly.</p>
           <span class="website-card-link">truelovecalculatorsoulmate.in <i class="fas fa-external-link-alt"></i></span>
         </a>
 
@@ -599,7 +629,7 @@
           <div class="website-card-icon icon-pink"><i class="fas fa-hand-holding-heart"></i></div>
           <span class="website-card-badge badge-viral">Viral</span>
           <h3>True Love Calculator Soulmate (.online)</h3>
-          <p>Love compatibility by name — instant love percentage score using numerology &amp; astrology.</p>
+          <p data-i18n="sites.d10">Love compatibility by name — instant love percentage score using numerology &amp; astrology.</p>
           <span class="website-card-link">truelovecalculatorsoulmate.online <i class="fas fa-external-link-alt"></i></span>
         </a>
 
@@ -607,7 +637,7 @@
           <div class="website-card-icon"><i class="fas fa-graduation-cap"></i></div>
           <span class="website-card-badge badge-live"><span class="dot"></span> Live</span>
           <h3>VTU SGPA Calculator</h3>
-          <p>SGPA, CGPA &amp; percentage calculator for VTU 2025, 2022, 2021 and 2018 schemes — fast and accurate.</p>
+          <p data-i18n="sites.d11">SGPA, CGPA &amp; percentage calculator for VTU 2025, 2022, 2021 and 2018 schemes — fast and accurate.</p>
           <span class="website-card-link">vtusgpacalculator.com <i class="fas fa-external-link-alt"></i></span>
         </a>
 
@@ -615,7 +645,7 @@
           <div class="website-card-icon icon-blue"><i class="fas fa-youtube"></i></div>
           <span class="website-card-badge badge-seo">SEO Ready</span>
           <h3>YouTube Description Extractor</h3>
-          <p>Free tool for creators &amp; marketers — extract video descriptions, titles, tags and metadata fast.</p>
+          <p data-i18n="sites.d12">Free tool for creators &amp; marketers — extract video descriptions, titles, tags and metadata fast.</p>
           <span class="website-card-link">youtubedescriptionextractor.online <i class="fas fa-external-link-alt"></i></span>
         </a>
 
@@ -627,30 +657,30 @@
   <section class="section" id="services">
     <div class="container">
       <div class="section-header" data-aos="fade-up">
-        <span class="section-tag">What I Do</span>
-        <h2 class="section-title">Services</h2>
+        <span class="section-tag" data-i18n="serv.tag">What I Do</span>
+        <h2 class="section-title" data-i18n="serv.title">Services</h2>
       </div>
       <div class="services-grid">
         <div class="service-card" data-aos="fade-up" data-aos-delay="100">
           <div class="service-icon"><i class="fas fa-laptop-code"></i></div>
-          <h3>Frontend Development</h3>
-          <p>Building performant, accessible React applications with clean architecture and modern tooling.</p>
+          <h3 data-i18n="serv.t1">Frontend Development</h3>
+          <p data-i18n="serv.d1">Building performant, accessible React applications with clean architecture and modern tooling.</p>
           <div class="service-tech">
             <span>React</span><span>Redux</span><span>JavaScript</span><span>HTML/CSS</span>
           </div>
         </div>
         <div class="service-card" data-aos="fade-up" data-aos-delay="200">
           <div class="service-icon service-icon-testing"><i class="fas fa-vial"></i></div>
-          <h3>Testing with Cypress & Jest</h3>
-          <p>Writing end-to-end Cypress tests, Jest unit tests, and ensuring code quality across production applications.</p>
+          <h3 data-i18n="serv.t2">Testing with Cypress & Jest</h3>
+          <p data-i18n="serv.d2">Writing end-to-end Cypress tests, Jest unit tests, and ensuring code quality across production applications.</p>
           <div class="service-tech">
             <span>Cypress</span><span>Jest</span><span>RTL</span><span>Coverage</span>
           </div>
         </div>
         <div class="service-card" data-aos="fade-up" data-aos-delay="300">
           <div class="service-icon"><i class="fas fa-rocket"></i></div>
-          <h3>Web App Deployment</h3>
-          <p>Full deployment pipeline from CI/CD to production, including performance optimization and monitoring.</p>
+          <h3 data-i18n="serv.t3">Web App Deployment</h3>
+          <p data-i18n="serv.d3">Full deployment pipeline from CI/CD to production, including performance optimization and monitoring.</p>
           <div class="service-tech">
             <span>Vercel</span><span>GitHub Pages</span><span>Firebase</span><span>Netlify</span>
           </div>
@@ -663,23 +693,23 @@
   <section class="section section-dark" id="blog">
     <div class="container">
       <div class="section-header" data-aos="fade-up">
-        <span class="section-tag">Blog</span>
-        <h2 class="section-title">Latest Articles</h2>
+        <span class="section-tag" data-i18n="blog.tag">Blog</span>
+        <h2 class="section-title" data-i18n="blog.title">Latest Articles</h2>
       </div>
       <div class="blog-grid">
         <a href="blog/react-portfolio-tutorial.html" class="blog-card" data-aos="fade-up" data-aos-delay="100">
           <div class="blog-card-icon"><i class="fas fa-code"></i></div>
           <span class="blog-card-tag">React</span>
-          <h3>React Portfolio Website Tutorial for Beginners</h3>
-          <p>Build a stunning portfolio website from scratch using React — component architecture, styling, and deployment.</p>
-          <span class="blog-card-read">Read Article <i class="fas fa-arrow-right"></i></span>
+          <h3 data-i18n="blog.h1">React Portfolio Website Tutorial for Beginners</h3>
+          <p data-i18n="blog.d1">Build a stunning portfolio website from scratch using React — component architecture, styling, and deployment.</p>
+          <span class="blog-card-read" data-i18n="blog.read">Read Article <i class="fas fa-arrow-right"></i></span>
         </a>
         <a href="blog/cypress-testing.html" class="blog-card" data-aos="fade-up" data-aos-delay="200">
           <div class="blog-card-icon"><i class="fas fa-check-double"></i></div>
           <span class="blog-card-tag">Testing</span>
-          <h3>Complete Guide to Cypress Testing in 2026</h3>
-          <p>From zero to production-ready E2E tests — a hands-on guide to Cypress with real-world examples and best practices.</p>
-          <span class="blog-card-read">Read Article <i class="fas fa-arrow-right"></i></span>
+          <h3 data-i18n="blog.h2">Complete Guide to Cypress Testing in 2026</h3>
+          <p data-i18n="blog.d2">From zero to production-ready E2E tests — a hands-on guide to Cypress with real-world examples and best practices.</p>
+          <span class="blog-card-read" data-i18n="blog.read">Read Article <i class="fas fa-arrow-right"></i></span>
         </a>
       </div>
     </div>
@@ -689,32 +719,32 @@
   <section class="section" id="contact">
     <div class="container">
       <div class="section-header" data-aos="fade-up">
-        <span class="section-tag">Contact</span>
-        <h2 class="section-title">Let's Work Together</h2>
+        <span class="section-tag" data-i18n="contact.tag">Contact</span>
+        <h2 class="section-title" data-i18n="contact.title">Let's Work Together</h2>
       </div>
       <div class="contact-grid">
         <div class="contact-info" data-aos="fade-right" data-aos-delay="200">
-          <h3>Get in Touch</h3>
-          <p>Have a project in mind or looking for a dedicated frontend developer? I'd love to hear from you.</p>
+          <h3 data-i18n="contact.h3">Get in Touch</h3>
+          <p data-i18n="contact.p">Have a project in mind or looking for a dedicated frontend developer? I'd love to hear from you.</p>
           <div class="contact-details">
             <div class="contact-item">
               <div class="contact-icon"><i class="fas fa-map-marker-alt"></i></div>
               <div>
-                <span class="contact-label">Location</span>
-                <span class="contact-value">Hyderabad, Telangana, India</span>
+                <span class="contact-label" data-i18n="contact.locLabel">Location</span>
+                <span class="contact-value" data-i18n="contact.locValue">Hyderabad, Telangana, India</span>
               </div>
             </div>
             <div class="contact-item">
               <div class="contact-icon"><i class="fas fa-envelope"></i></div>
               <div>
-                <span class="contact-label">Email</span>
+                <span class="contact-label" data-i18n="contact.emailLabel">Email</span>
                 <span class="contact-value">avi.bawge9@gmail.com</span>
               </div>
             </div>
             <div class="contact-item">
               <div class="contact-icon"><i class="fab fa-github"></i></div>
               <div>
-                <span class="contact-label">GitHub</span>
+                <span class="contact-label" data-i18n="contact.githubLabel">GitHub</span>
                 <span class="contact-value">github.com/avinashbt</span>
               </div>
             </div>
@@ -722,18 +752,18 @@
         </div>
         <form class="contact-form" id="frmContact" data-aos="fade-left" data-aos-delay="400">
           <div class="form-group">
-            <input type="text" name="fullname" id="fullname" placeholder="Your Name" required />
+            <input type="text" name="fullname" id="fullname" placeholder="Your Name" data-i18n-ph="ph.name" required />
           </div>
           <div class="form-group">
-            <input type="email" name="email" id="email" placeholder="Your Email" required />
+            <input type="email" name="email" id="email" placeholder="Your Email" data-i18n-ph="ph.email" required />
           </div>
           <div class="form-group">
-            <input type="text" name="subject" id="subject" placeholder="Subject" />
+            <input type="text" name="subject" id="subject" placeholder="Subject" data-i18n-ph="ph.subject" />
           </div>
           <div class="form-group">
-            <textarea name="message" id="message" rows="6" placeholder="Your Message" required></textarea>
+            <textarea name="message" id="message" rows="6" placeholder="Your Message" data-i18n-ph="ph.msg" required></textarea>
           </div>
-          <button type="submit" class="btn btn-primary btn-full">
+          <button type="submit" class="btn btn-primary btn-full" data-i18n="contact.send">
             <i class="fas fa-paper-plane"></i> Send Message
           </button>
         </form>
@@ -749,21 +779,21 @@
           <a href="#" class="nav-logo">
             <span class="logo-bracket">{</span> AB <span class="logo-bracket">}</span>
           </a>
-          <p>Building modern web experiences with clean code, comprehensive tests, and continuous improvement.</p>
+          <p data-i18n="foot.desc">Building modern web experiences with clean code, comprehensive tests, and continuous improvement.</p>
         </div>
         <div class="footer-links">
-          <h4>Navigation</h4>
+          <h4 data-i18n="foot.nav">Navigation</h4>
           <ul>
-            <li><a href="#about">About</a></li>
-            <li><a href="#skills">Skills</a></li>
-            <li><a href="#projects">Projects</a></li>
-            <li><a href="#websites">Websites</a></li>
-            <li><a href="blog.html">Blog</a></li>
-            <li><a href="#contact">Contact</a></li>
+            <li><a href="#about" data-i18n="nav.about">About</a></li>
+            <li><a href="#skills" data-i18n="nav.skills">Skills</a></li>
+            <li><a href="#projects" data-i18n="nav.projects">Projects</a></li>
+            <li><a href="#websites" data-i18n="nav.websites">Websites</a></li>
+            <li><a href="blog.html" data-i18n="nav.blog">Blog</a></li>
+            <li><a href="#contact" data-i18n="contact.tag">Contact</a></li>
           </ul>
         </div>
         <div class="footer-social">
-          <h4>Connect</h4>
+          <h4 data-i18n="foot.connect">Connect</h4>
           <div class="footer-icons">
             <a href="https://github.com/avinashbt" target="_blank" aria-label="GitHub"><i class="fab fa-github"></i></a>
             <a href="https://www.linkedin.com/in/avinash-bawage-99ba58200/?locale=en_US" target="_blank" aria-label="LinkedIn"><i class="fab fa-linkedin-in"></i></a>
@@ -773,7 +803,7 @@
         </div>
       </div>
       <div class="footer-bottom">
-        <p>Built with <span class="footer-heart">&hearts;</span> by Avinash Bawage &mdash; &copy; <span id="yearid"></span></p>
+        <p><span data-i18n="foot.built">Built with <span class="footer-heart">&hearts;</span> by Avinash Bawage &mdash; &copy;</span> <span id="yearid"></span></p>
       </div>
     </div>
   </footer>
@@ -788,6 +818,7 @@
   <script src="https://cdnjs.cloudflare.com/ajax/libs/aos/2.3.4/aos.js"></script>
   <script src="https://cdnjs.cloudflare.com/ajax/libs/typed.js/2.0.16/typed.min.js"></script>
   <script src="index.js"></script>
+  <script src="i18n.js"></script>
   <script>
     document.getElementById('themeToggle').addEventListener('click', function() {
       const current = document.documentElement.getAttribute('data-theme');

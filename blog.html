@@ -129,12 +129,22 @@
         <span class="logo-bracket">{</span> AB <span class="logo-bracket">}</span>
       </a>
       <ul class="nav-links">
-        <li><a href="index.html#about">About</a></li>
-        <li><a href="index.html#skills">Skills</a></li>
-        <li><a href="index.html#projects">Projects</a></li>
-        <li><a href="blog.html" class="nav-blog-link" style="color:#6366f1">Blog</a></li>
-        <li><a href="index.html#contact" class="nav-cta">Hire Me</a></li>
+        <li><a href="index.html#about" data-i18n="nav.about">About</a></li>
+        <li><a href="index.html#skills" data-i18n="nav.skills">Skills</a></li>
+        <li><a href="index.html#projects" data-i18n="nav.projects">Projects</a></li>
+        <li><a href="blog.html" class="nav-blog-link" style="color:#6366f1" data-i18n="nav.blog">Blog</a></li>
+        <li><a href="index.html#contact" class="nav-cta" data-i18n="nav.hire">Hire Me</a></li>
       </ul>
+      <div class="lang-switcher">
+        <i class="fas fa-globe lang-globe"></i>
+        <select class="lang-select" aria-label="Select language">
+          <option value="en">🇺🇸 English</option>
+          <option value="en-GB">🇬🇧 English (UK)</option>
+          <option value="en-CA">🇨🇦 English (CA)</option>
+          <option value="ja">🇯🇵 日本語</option>
+          <option value="fr">🇫🇷 Français</option>
+        </select>
+      </div>
       <button class="theme-toggle" id="themeToggle" aria-label="Toggle dark/light mode">
         <i class="fas fa-sun icon-sun"></i>
         <i class="fas fa-moon icon-moon"></i>
@@ -542,5 +552,6 @@
       localStorage.setItem('theme', next);
     });
   </script>
+  <script src="i18n.js"></script>
 </body>
 </html>

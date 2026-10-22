@@ -41,15 +41,23 @@ document.querySelectorAll('a[href^="#"]').forEach(link => {
 });
 
 // ========== TYPED.JS ==========
-if (document.getElementById('typeText')) {
-  new Typed('#typeText', {
-    strings: ['Frontend Developer', 'React Engineer', 'JavaScript Developer', 'Cypress & Jest Testing'],
+// Exposed globally so i18n.js can restart it with translated strings
+window.initTyped = function (strings) {
+  const el = document.getElementById('typeText');
+  if (!el || typeof Typed === 'undefined') return;
+  if (window.__typedInstance && typeof window.__typedInstance.destroy === 'function') {
+    window.__typedInstance.destroy();
+  }
+  el.textContent = '';
+  window.__typedInstance = new Typed('#typeText', {
+    strings: strings || ['Frontend Developer', 'React Engineer', 'JavaScript Developer', 'Cypress & Jest Testing'],
     typeSpeed: 60,
     backSpeed: 40,
     backDelay: 2000,
     loop: true,
   });
-}
+};
+window.initTyped();
 
 // ========== SKILL BAR ANIMATION ==========
 const skillObserver = new IntersectionObserver(entries => {
@@ -122,10 +130,10 @@ if (document.getElementById('frmContact')) {
           subject: document.getElementById('subject').value,
           message: document.getElementById('message').value
         }).then(() => {
-          alert('Message sent successfully!');
+          alert(window.t ? window.t('msg.ok') : 'Message sent successfully!');
           document.getElementById('frmContact').reset();
         }).catch(() => {
-          alert('Something went wrong. Please try again.');
+          alert(window.t ? window.t('msg.err') : 'Something went wrong. Please try again.');
         });
       });
     });
