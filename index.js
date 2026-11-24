@@ -40,24 +40,18 @@ document.querySelectorAll('a[href^="#"]').forEach(link => {
   });
 });
 
-// ========== TYPED.JS ==========
-// Exposed globally so i18n.js can restart it with translated strings
-window.initTyped = function (strings) {
-  const el = document.getElementById('typeText');
-  if (!el || typeof Typed === 'undefined') return;
-  if (window.__typedInstance && typeof window.__typedInstance.destroy === 'function') {
-    window.__typedInstance.destroy();
-  }
-  el.textContent = '';
-  window.__typedInstance = new Typed('#typeText', {
-    strings: strings || ['Frontend Developer', 'React Engineer', 'JavaScript Developer', 'Cypress & Jest Testing'],
-    typeSpeed: 60,
-    backSpeed: 40,
-    backDelay: 2000,
-    loop: true,
+// ========== ACTIVE NAVIGATION ==========
+const navLinks = document.querySelectorAll('.nav-links a[href^="#"]');
+const observedSections = document.querySelectorAll('section[id], header[id]');
+const sectionObserver = new IntersectionObserver(entries => {
+  entries.forEach(entry => {
+    if (!entry.isIntersecting) return;
+    navLinks.forEach(link => {
+      link.classList.toggle('active', link.getAttribute('href') === '#' + entry.target.id);
+    });
   });
-};
-window.initTyped();
+}, { rootMargin: '-35% 0px -55%', threshold: 0 });
+observedSections.forEach(section => sectionObserver.observe(section));
 
 // ========== SKILL BAR ANIMATION ==========
 const skillObserver = new IntersectionObserver(entries => {

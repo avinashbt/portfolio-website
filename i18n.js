@@ -21,9 +21,9 @@
     'nav.blog': 'Blog',
     'nav.hire': 'Hire Me',
 
-    'hero.badge': `<span class="status-dot"></span> Currently working at TCS`,
+    'hero.badge': `<span class="status-dot"></span> Available for React.js / Next.js opportunities`,
     'hero.hello': `Hi, I'm`,
-    'hero.desc': `Frontend Developer at <strong>TCS (Tata Consultancy Services)</strong> — I build performant React applications and write solid tests with Cypress &amp; Jest.<br><strong>4.6 years</strong> turning complex problems into clean, tested code.`,
+    'hero.desc': `Building scalable, performant and production-ready web applications with React.js, Next.js and TypeScript.`,
     'hero.cta1': `<i class="fas fa-paper-plane"></i> Get In Touch`,
     'hero.cta2': `<i class="fas fa-download"></i> Download CV`,
     'hero.stat1': `Years Experience`,
@@ -33,12 +33,12 @@
 
     'about.tag': `About`,
     'about.title': `Who I Am`,
-    'about.h3': `Frontend Developer @ TCS &amp; React Engineer`,
-    'about.p1': `I'm Avinash Bawage, a Frontend Developer at <strong>TCS (Tata Consultancy Services)</strong> based in Hyderabad, India. Over the past <strong>4.6 years</strong>, I've built production-grade React applications, designed intuitive user interfaces, and implemented testing strategies with Cypress and Jest to ship code with confidence.`,
-    'about.p2': `I specialize in <strong>React.js</strong>, <strong>JavaScript</strong>, and <strong>modern testing frameworks</strong> like Cypress and Jest. Currently working at TCS, I build scalable frontend solutions for enterprise clients while also shipping independent SaaS products. I believe every feature should be tested, every component should be accessible, and every deployment should be reliable.`,
-    'about.hl1': `Currently working at <strong>TCS (Tata Consultancy Services)</strong>`,
-    'about.hl2': `4.6+ years of professional experience`,
-    'about.hl3': `2 live SaaS products in production`,
+    'about.h3': `Senior Frontend React.js Developer`,
+    'about.p1': `I'm a Senior Frontend React.js Developer with 5+ years of experience building production-ready web applications.`,
+    'about.p2': `My core expertise includes React.js, Next.js, TypeScript, JavaScript, Redux and REST API integration. I've worked on enterprise applications, SaaS products and independent web platforms, focusing on clean architecture, responsive interfaces, performance and reliable production releases.`,
+    'about.hl1': `React.js, Next.js and TypeScript expertise`,
+    'about.hl2': `5+ years of frontend development experience`,
+    'about.hl3': `Agile team and production release experience`,
     'about.hl4': `End-to-end testing with Cypress &amp; Jest`,
     'about.hl5': `Performance-optimized, accessible UIs`,
     'about.resume': `<i class="fas fa-file-alt"></i> View Full Resume`,
@@ -46,19 +46,19 @@
     'exp.tag': `Career`,
     'exp.title': `Experience Timeline`,
     'exp.role1': `Frontend Developer <span style="color: var(--green); font-weight: 600;">@ TCS</span>`,
-    'exp.present': `Present`,
+    'exp.present': `Employment dates available in resume`,
     'exp.company1': `<i class="fas fa-building" style="margin-right: 6px; color: var(--green);"></i> Tata Consultancy Services (TCS) — Hyderabad`,
-    'exp.b1': `Currently working as Frontend Developer at TCS building enterprise-grade React applications`,
-    'exp.b2': `Built 14+ responsive web applications using React.js, Redux, and modern JavaScript`,
-    'exp.b3': `Implemented end-to-end testing strategies with Cypress achieving 85%+ code coverage`,
-    'exp.b4': `Developed unit and integration test suites using Jest and React Testing Library`,
-    'exp.b5': `Optimized Core Web Vitals resulting in 40% faster page loads across projects`,
-    'exp.b6': `Collaborating with cross-functional teams in Agile environment at TCS`,
+    'exp.b1': `Worked on production web applications using React.js and modern JavaScript`,
+    'exp.b2': `Developed responsive UI modules and new frontend features`,
+    'exp.b3': `Integrated REST APIs and handled asynchronous frontend data flows`,
+    'exp.b4': `Fixed production defects and supported reliable releases`,
+    'exp.b5': `Worked with Agile/Scrum teams and unit testing practices`,
+    'exp.b6': `Contributed to frontend production releases`,
     'exp.role2': `SaaS Product Development`,
     'exp.ongoing': `Ongoing`,
     'exp.indep': `Independent Projects`,
     'exp.s1': `InstantAIArticle.blog — AI-powered SEO article generator with payment integration`,
-    'exp.s2': `SpeedometerLive.online — Real-time GPS speedometer with 10K+ monthly users`,
+    'exp.s2': `SpeedometerLive.online — Real-time GPS speedometer for mobile browsers`,
     'exp.s3': `Full-stack development: frontend, backend, testing, deployment, monitoring`,
 
     'skills.tag': `Tech Stack`,
@@ -147,7 +147,7 @@
 
     'hero.badge': `<span class="status-dot"></span> 現在 TCS（タタ コンサルタンシーサービシズ）で勤務中`,
     'hero.hello': 'こんにちは、私は',
-    'hero.desc': `<strong>TCS（タタ コンサルタンシーサービシズ）</strong>でフロントエンド開発者として、パフォーマンスの高い React アプリケーションを開発し、Cypress と Jest で堅牢なテストを書いています。<br><strong>4.6年</strong>の経験で、複雑な問題をクリーンでテスト済みのコードに変えてきました。`,
+    'hero.desc': `React.js、Next.js、TypeScriptを使用して、スケーラブルで高パフォーマンスな本番Webアプリケーションを構築しています。`,
     'hero.cta1': `<i class="fas fa-paper-plane"></i> お問い合わせ`,
     'hero.cta2': `<i class="fas fa-download"></i> 履歴書をダウンロード`,
     'hero.stat1': '年の実務経験',
@@ -158,10 +158,10 @@
     'about.tag': '私について',
     'about.title': '自己紹介',
     'about.h3': `TCS フロントエンド開発者 &amp; React エンジニア`,
-    'about.p1': `私はアビナシュ・バワゲ、インド・ハイデラバードを拠点に活動する <strong>TCS（タタ コンサルタンシーサービシズ）</strong>のフロントエンド開発者です。過去<strong>4.6年</strong>で、本番品質の React アプリケーションの構築、直感的な UI の設計、Cypress と Jest を用いたテスト戦略の実装を行い、自信を持ってコードをリリースしてきました。`,
+    'about.p1': `私は本番Webアプリケーションの構築に5年以上の経験を持つシニアフロントエンドReact.js開発者です。`,
     'about.p2': `<strong>React.js</strong>、<strong>JavaScript</strong>、Cypress や Jest などの<strong>最新テストフレームワーク</strong>を得意としています。現在は TCS に勤務しながら、エンタープライズクライアント向けのスケーラブルなフロントエンドソリューションを開発するとともに、個人の SaaS 製品もリリースしています。すべての機能にテストを、すべてのコンポーネントにアクセシビリティを、すべてのデプロイに信頼性を。`,
     'about.hl1': `現在 <strong>TCS（タタ コンサルタンシーサービシズ）</strong>で勤務中`,
-    'about.hl2': '4.6年以上の実務経験',
+    'about.hl2': 'フロントエンド開発で5年以上の経験',
     'about.hl3': '本番稼働中の SaaS 製品 2 件',
     'about.hl4': `Cypress &amp; Jest による E2E テスト`,
     'about.hl5': 'パフォーマンス最適化・アクセシブルな UI',
@@ -174,7 +174,7 @@
     'exp.company1': `<i class="fas fa-building" style="margin-right: 6px; color: var(--green);"></i> Tata Consultancy Services (TCS) — ハイデラバード`,
     'exp.b1': '現在 TCS でフロントエンド開発者としてエンタープライズ品質の React アプリケーションを開発',
     'exp.b2': 'React.js、Redux、モダン JavaScript を使い 14 以上のレスポンシブ Web アプリを構築',
-    'exp.b3': 'Cypress による E2E テスト戦略を実装し、コードカバレッジ 85% 以上を達成',
+    'exp.b3': 'REST APIを連携し、非同期フロントエンドデータフローを扱いました',
     'exp.b4': 'Jest と React Testing Library によるユニット・統合テストスイートを開発',
     'exp.b5': 'コアウェブバイタルを最適化し、全プロジェクトでページ読み込みを 40% 高速化',
     'exp.b6': 'TCS のアジャイル環境でクロスファンクショナルチームと協働',
@@ -386,7 +386,7 @@
   // Regional English variants: base English + small spelling overrides
   const EN_GB = Object.assign({}, EN, {
     'about.hl5': 'Performance-optimised, accessible UIs',
-    'exp.b5': 'Optimised Core Web Vitals resulting in 40% faster page loads across projects',
+    'exp.b5': 'Agile/Scrumチームとユニットテストの実務に取り組んできました',
     'proj.d1': 'AI-powered SaaS platform for SEO-optimised blog articles with payment integration, user auth, and admin dashboard.',
     'sites.d4': 'Technology blog focused on AI, SEO, and Web Development — tutorials, tools &amp; insights.',
     'sites.d6': 'Business directory platform with SEO optimisation — discover local businesses in Hyderabad.'
@@ -411,20 +411,20 @@
   // ---------- Page meta per language (SEO) ----------
   const META = {
     en: {
-      title: 'Avinash Bawage | Frontend Developer @ TCS | React Engineer',
-      desc: 'Avinash Bawage — Frontend Developer at TCS (Tata Consultancy Services) with 4.6 years of experience building performant React apps with Cypress & Jest testing.'
+      title: 'Senior React.js Developer | React.js, Next.js & TypeScript | Avinash Bawage',
+      desc: 'Senior React.js Developer with 5+ years of experience in React.js, Next.js, TypeScript, Redux, REST APIs and frontend performance.'
     },
     'en-GB': {
-      title: 'Avinash Bawage | Frontend Developer @ TCS | React Engineer',
-      desc: 'Avinash Bawage — Frontend Developer at TCS (Tata Consultancy Services) with 4.6 years of experience building performant React apps with Cypress & Jest testing.'
+      title: 'Senior React.js Developer | React.js, Next.js & TypeScript | Avinash Bawage',
+      desc: 'Senior React.js Developer with 5+ years of experience in React.js, Next.js, TypeScript, Redux, REST APIs and frontend performance.'
     },
     'en-CA': {
-      title: 'Avinash Bawage | Frontend Developer @ TCS | React Engineer',
-      desc: 'Avinash Bawage — Frontend Developer at TCS (Tata Consultancy Services) with 4.6 years of experience building performant React apps with Cypress & Jest testing.'
+      title: 'Senior React.js Developer | React.js, Next.js & TypeScript | Avinash Bawage',
+      desc: 'Senior React.js Developer with 5+ years of experience in React.js, Next.js, TypeScript, Redux, REST APIs and frontend performance.'
     },
     ja: {
       title: 'Avinash Bawage | TCS フロントエンド開発者 | React エンジニア',
-      desc: 'Avinash Bawage — TCS（タタ コンサルタンシーサービシズ）で 4.6 年の経験を持つフロントエンド開発者。Cypress & Jest によるテストで高パフォーマンスな React アプリを開発。'
+      desc: 'React.js、Next.js、TypeScript、Redux、REST APIに強みを持つシニアフロントエンド開発者。'
     },
     fr: {
       title: 'Avinash Bawage | Développeur Frontend @ TCS | Ingénieur React',
